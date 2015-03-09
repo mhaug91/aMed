@@ -15,6 +15,7 @@
 		04FACED51AADBCF9009789BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED41AADBCF9009789BA /* Images.xcassets */; };
 		04FACED81AADBCF9009789BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED61AADBCF9009789BA /* LaunchScreen.xib */; };
 		04FACEE41AADBCF9009789BA /* aMedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEE31AADBCF9009789BA /* aMedTests.m */; };
+		5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,8 @@
 		04FACEDD1AADBCF9009789BA /* aMedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aMedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEE21AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEE31AADBCF9009789BA /* aMedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aMedTests.m; sourceTree = "<group>"; };
+		5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finnBehandlerTableViewController.h; sourceTree = "<group>"; };
+		5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = finnBehandlerTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				04FACECE1AADBCF9009789BA /* SecondViewController.h */,
 				04FACECF1AADBCF9009789BA /* SecondViewController.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
+				5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */,
+				5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */,
 				04FACED41AADBCF9009789BA /* Images.xcassets */,
 				04FACED61AADBCF9009789BA /* LaunchScreen.xib */,
 				04FACEC41AADBCF9009789BA /* Supporting Files */,
@@ -228,6 +233,7 @@
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
 				04FACECD1AADBCF9009789BA /* FirstViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
+				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +424,7 @@
 				04FACEE91AADBCF9009789BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		04FACEEA1AADBCF9009789BA /* Build configuration list for PBXNativeTarget "aMedTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +433,7 @@
 				04FACEEC1AADBCF9009789BA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
