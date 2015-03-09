@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="8Y0-Iq-M5W">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -94,10 +94,48 @@
             </objects>
             <point key="canvasLocation" x="750" y="360"/>
         </scene>
+        <!--NavBarController-->
+        <scene sceneID="FFA-lm-yI0">
+            <objects>
+                <viewController title="NavBarController" id="8Y0-Iq-M5W" customClass="NavBarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NXF-Sb-bHV"/>
+                        <viewControllerLayoutGuide type="bottom" id="yXS-wE-AW1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ewM-Fd-cd1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enG-rI-rkL">
+                                <rect key="frame" x="0.0" y="20" width="600" height="74"/>
+                                <color key="barTintColor" red="0.70005684030000004" green="0.1053079681" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Alternativ medisin of behandling" prompt="aMed" id="NOs-hH-nZa">
+                                        <barButtonItem key="backBarButtonItem" title="Tilbake" id="4Aa-yx-fTB"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="enG-rI-rkL" firstAttribute="top" secondItem="NXF-Sb-bHV" secondAttribute="bottom" id="Sgi-SM-DVS"/>
+                            <constraint firstItem="enG-rI-rkL" firstAttribute="leading" secondItem="ewM-Fd-cd1" secondAttribute="leading" id="u1s-x4-bg6"/>
+                            <constraint firstAttribute="trailing" secondItem="enG-rI-rkL" secondAttribute="trailing" id="vlQ-Ai-5gL"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngw-Th-N4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-690" y="4"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBar" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
