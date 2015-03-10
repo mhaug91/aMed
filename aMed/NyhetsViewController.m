@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "NyhetsViewController.h"
 
-@interface FirstViewController ()
+@interface NyhetsViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation NyhetsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

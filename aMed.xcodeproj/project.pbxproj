@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
-		04FACECD1AADBCF9009789BA /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* FirstViewController.m */; };
+		04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NyhetsViewController.m */; };
 		04FACED01AADBCF9009789BA /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECF1AADBCF9009789BA /* SecondViewController.m */; };
 		04FACED31AADBCF9009789BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED11AADBCF9009789BA /* Main.storyboard */; };
 		04FACED51AADBCF9009789BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED41AADBCF9009789BA /* Images.xcassets */; };
@@ -36,8 +36,8 @@
 		04FACEC61AADBCF9009789BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04FACEC81AADBCF9009789BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04FACEC91AADBCF9009789BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04FACECB1AADBCF9009789BA /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		04FACECC1AADBCF9009789BA /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		04FACECB1AADBCF9009789BA /* NyhetsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NyhetsViewController.h; sourceTree = "<group>"; };
+		04FACECC1AADBCF9009789BA /* NyhetsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NyhetsViewController.m; sourceTree = "<group>"; };
 		04FACECE1AADBCF9009789BA /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		04FACECF1AADBCF9009789BA /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		04FACED21AADBCF9009789BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,8 +95,8 @@
 			children = (
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
-				04FACECB1AADBCF9009789BA /* FirstViewController.h */,
-				04FACECC1AADBCF9009789BA /* FirstViewController.m */,
+				04FACECB1AADBCF9009789BA /* NyhetsViewController.h */,
+				04FACECC1AADBCF9009789BA /* NyhetsViewController.m */,
 				04FACECE1AADBCF9009789BA /* SecondViewController.h */,
 				04FACECF1AADBCF9009789BA /* SecondViewController.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
@@ -243,7 +243,7 @@
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
 				5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */,
 				5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */,
-				04FACECD1AADBCF9009789BA /* FirstViewController.m in Sources */,
+				04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
 			);
