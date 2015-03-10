@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface NyhetsViewController : UIViewController
+<UITableViewDataSource, UITableViewDelegate>
+
 
 
 @end
