@@ -10,18 +10,48 @@
 
 @interface finnBehandlerTableViewController ()
 
+@property (copy, nonatomic) NSArray *behandlere;
+
 @end
 
 @implementation finnBehandlerTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //Legger inn tabell av behandlere
+    self.behandlere = @[@"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
+                        @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg",
+                        @"Kristbjørg Rasmussen",
+                        @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
+                        @"Nina Brandsdal", @"Linda Opedal Mokleiv"];
+    UITableView *tableView = (id)[self.view viewWithTag:1];
+
+    tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
+  
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section{
+    return [self.behandlere count];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *SimpleTableIdentifiere = @"SimpleTableIdentifier";
     
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                             SimpleTableIdentifiere];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SimpleTableIdentifiere];
+    }
+    cell.textLabel.text = self.behandlere[indexPath.row];
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -31,17 +61,12 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
 #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 0;
-}
+}*/
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
