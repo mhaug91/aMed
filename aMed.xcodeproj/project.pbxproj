@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043B78FE1AB6E17200D7E10B /* BehListeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* BehListeTableViewController.m */; };
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
 		04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NyhetsViewController.m */; };
@@ -31,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		043B78FC1AB6E17200D7E10B /* BehListeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BehListeTableViewController.h; sourceTree = "<group>"; };
+		043B78FD1AB6E17200D7E10B /* BehListeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehListeTableViewController.m; sourceTree = "<group>"; };
 		04FACEC11AADBCF9009789BA /* aMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEC51AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEC61AADBCF9009789BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -100,6 +103,8 @@
 				04FACECE1AADBCF9009789BA /* SecondViewController.h */,
 				04FACECF1AADBCF9009789BA /* SecondViewController.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
+				043B78FC1AB6E17200D7E10B /* BehListeTableViewController.h */,
+				043B78FD1AB6E17200D7E10B /* BehListeTableViewController.m */,
 				5C218CCF1AADCEC100D408AC /* NavBarViewController.h */,
 				5C218CD01AADCEC100D408AC /* NavBarViewController.m */,
 				5C218CD21AADCF7400D408AC /* TabBarViewController.h */,
@@ -246,6 +251,7 @@
 				04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
+				043B78FE1AB6E17200D7E10B /* BehListeTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +376,7 @@
 				INFOPLIST_FILE = aMed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -380,6 +387,7 @@
 				INFOPLIST_FILE = aMed/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

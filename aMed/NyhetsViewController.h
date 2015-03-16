@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NyhetsViewController : UIViewController
+@interface NyhetsViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 
