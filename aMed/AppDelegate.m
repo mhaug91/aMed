@@ -14,11 +14,25 @@
 
 @implementation AppDelegate
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    //Setter farge på navigation baren.
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
+    [[UINavigationBar appearance] setTranslucent:NO];
+    //Setter farge på navigation baren.
+    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
+    [[UITabBar appearance] setTranslucent:NO];
+    //Endrer tittelen på navigation baren.
+    [[UINavigationBar appearance] setTitleTextAttributes:
+    [NSDictionary dictionaryWithObjectsAndKeys:
+    [UIColor whiteColor], NSForegroundColorAttributeName,
+    [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil]];
     return YES;
 }
+     -(UIStatusBarStyle)preferedStatusBarStyle{
+         return UIStatusBarStyleLightContent;
+     }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
