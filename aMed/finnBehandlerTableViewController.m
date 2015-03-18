@@ -8,6 +8,8 @@
 
 #import "finnBehandlerTableViewController.h"
 
+static NSString *finnBehandlerID = @"finnBehandlerID";
+
 @interface finnBehandlerTableViewController ()
 
 @property (copy, nonatomic) NSArray *behandlere;
@@ -24,9 +26,9 @@
                         @"Kristbjørg Rasmussen",
                         @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
                         @"Nina Brandsdal", @"Linda Opedal Mokleiv"];
-    UITableView *tableView = (id)[self.view viewWithTag:1];
+    //UITableView *tableView = (id)[self.view viewWithTag:1];
 
-    tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
+   // tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
   
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -41,18 +43,30 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *SimpleTableIdentifiere = @"SimpleTableIdentifier";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             SimpleTableIdentifiere];
+                             finnBehandlerID forIndexPath:indexPath];
     if(cell == nil){
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:SimpleTableIdentifiere];
+                reuseIdentifier:finnBehandlerID];
     }
     cell.textLabel.text = self.behandlere[indexPath.row];
     return cell;
 }
+
+/*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
+    
+    // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:SimpleTableIdentifier];
+    }
+    cell.textLabel.text = self.metoder[indexPath.row];
+    return cell;
+}*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

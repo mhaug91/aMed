@@ -22,6 +22,10 @@
     [self.view insertSubview:self.tabBarController.view atIndex:0];
 }
 
+-(UIStatusBarStyle)preferedStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
