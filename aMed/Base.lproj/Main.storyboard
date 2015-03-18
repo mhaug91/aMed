@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -108,11 +108,11 @@
                                 <include reference="VEM-bG-aa9"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="2oU-le-T3H"/>
+                                <include reference="Yvd-Vl-HQV"/>
                                 <exclude reference="9rN-TD-czx"/>
                                 <exclude reference="OF0-dl-bx1"/>
                                 <exclude reference="leP-go-3yi"/>
-                                <include reference="2oU-le-T3H"/>
-                                <include reference="Yvd-Vl-HQV"/>
                                 <exclude reference="g7P-0Z-nXe"/>
                             </mask>
                         </variation>
@@ -204,6 +204,42 @@
             </objects>
             <point key="canvasLocation" x="758" y="468"/>
         </scene>
+        <!--Kart-->
+        <scene sceneID="66y-5a-bBR">
+            <objects>
+                <viewController title="Kart" id="acA-nf-WPk" customClass="MapViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="piM-W5-hOz"/>
+                        <viewControllerLayoutGuide type="bottom" id="l5T-e5-kSx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="05H-0P-uQR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="397-T1-psP"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WiD-Qo-ip3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="756" y="1176"/>
+        </scene>
+        <!--Kart-->
+        <scene sceneID="g5b-4r-shl">
+            <objects>
+                <navigationController title="Kart" id="a4U-cm-4Wa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kart" id="wJE-mr-O60"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Jz-FD-B7E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="acA-nf-WPk" kind="relationship" relationship="rootViewController" id="Re7-oc-ciK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyn-Ll-BUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="1176"/>
+        </scene>
         <!--Behandlingsmetoder-->
         <scene sceneID="H0l-wh-qjj">
             <objects>
@@ -268,6 +304,7 @@
                         <segue destination="AMF-Qe-VeF" kind="relationship" relationship="viewControllers" id="wU5-gq-OA6"/>
                         <segue destination="W6H-Hn-YFr" kind="relationship" relationship="viewControllers" id="xNE-6I-6ZX"/>
                         <segue destination="REr-lC-9zg" kind="relationship" relationship="viewControllers" id="0fz-fP-BXv"/>
+                        <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
