@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -22,10 +22,10 @@
             </objects>
             <point key="canvasLocation" x="510" y="-1038"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Nyheter-->
         <scene sceneID="3Rc-YC-8Yh">
             <objects>
-                <tableViewController id="uQ6-lU-77d" customClass="NyhetsViewController" sceneMemberID="viewController">
+                <tableViewController title="Nyheter" id="uQ6-lU-77d" customClass="NyhetsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q6U-zN-PkS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
                             <outlet property="delegate" destination="uQ6-lU-77d" id="Re6-Dj-2C4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="pCg-Df-jfj"/>
+                    <navigationItem key="navigationItem" title="Nyheter" id="pCg-Df-jfj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Q9-I7-9Za" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,73 +87,70 @@
             </objects>
             <point key="canvasLocation" x="750" y="-354"/>
         </scene>
-        <!--second-->
-        <scene sceneID="wg7-f3-ORb">
+        <!--Finn behandler-->
+        <scene sceneID="Ve9-VP-QF7">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
-                        <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="210" height="42"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="216" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="second" image="second" id="cPa-gy-q4n"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="360"/>
-        </scene>
-        <!--FinnBehandler-->
-        <scene sceneID="CP0-ui-J2y">
-            <objects>
-                <tableViewController title="FinnBehandler" id="JlQ-rT-0hY" customClass="finnBehandlerTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Zeq-qq-wp0">
+                <tableViewController title="Finn behandler" id="aaB-FZ-4gb" customClass="finnBehandlerTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="jdo-eN-3bm">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="opq-XV-dxm">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finnBehandlerID" id="IsD-nD-7iL">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="opq-XV-dxm" id="gh4-76-yeL">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IsD-nD-7iL" id="wWT-4u-xSw">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Gfb-ln-wD9" kind="show" id="3d1-3u-7fu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
-                        <sections/>
                         <connections>
-                            <outlet property="dataSource" destination="JlQ-rT-0hY" id="mzE-VX-IqV"/>
-                            <outlet property="delegate" destination="JlQ-rT-0hY" id="gSZ-HE-ZgQ"/>
+                            <outlet property="dataSource" destination="aaB-FZ-4gb" id="JHZ-yY-U3Q"/>
+                            <outlet property="delegate" destination="aaB-FZ-4gb" id="FTx-TB-VEt"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Finn behandler" id="2WC-cc-GJd"/>
+                    <navigationItem key="navigationItem" title="Finn behandler" id="QMx-fT-m2g"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="R5g-IY-Fuq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="urj-bI-tDC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-362" y="752"/>
+            <point key="canvasLocation" x="1578" y="468"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SfD-0w-0YH">
+            <objects>
+                <viewController id="Gfb-ln-wD9" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Cn-HB-Wu8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zgr-fj-aK7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xUh-lq-pfW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RLk-Ti-fPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="466"/>
+        </scene>
+        <!--Finn behandler-->
+        <scene sceneID="8ze-Eh-eZI">
+            <objects>
+                <navigationController id="REr-lC-9zg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Finn behandler" id="iPK-jv-Jpd"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a7O-0v-x9U">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="aaB-FZ-4gb" kind="relationship" relationship="rootViewController" id="E4D-Hf-XFm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cPq-pV-2cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="758" y="468"/>
         </scene>
         <!--Behandlingsmetoder-->
         <scene sceneID="H0l-wh-qjj">
@@ -216,10 +213,9 @@
                         <color key="barTintColor" red="0.46666669845581055" green="0.0" blue="0.67843139171600342" alpha="1" colorSpace="deviceRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
-                        <segue destination="JlQ-rT-0hY" kind="relationship" relationship="viewControllers" id="SIi-VJ-rHL"/>
                         <segue destination="AMF-Qe-VeF" kind="relationship" relationship="viewControllers" id="wU5-gq-OA6"/>
                         <segue destination="W6H-Hn-YFr" kind="relationship" relationship="viewControllers" id="xNE-6I-6ZX"/>
+                        <segue destination="REr-lC-9zg" kind="relationship" relationship="viewControllers" id="0fz-fP-BXv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -227,7 +223,4 @@
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="second" width="30" height="30"/>
-    </resources>
 </document>
