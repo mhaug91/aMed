@@ -17,7 +17,7 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 @end
 
 @implementation NyhetsViewController{
-    //NSMutableArray *filteredNames;
+    NSMutableArray *filteredNames;
     UISearchDisplayController *searchController;
     NSArray *searchResults;
     
@@ -26,7 +26,6 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-
     NSLog(@"Hello Myhre");
     self.dwarves = @[@"Sleepy", @"Sneezy", @"Bashful", @"Happy",
                      @"Doc", @"Grumpy", @"Dopey",
@@ -34,15 +33,11 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
                      @"Balin", @"Dwalin", @"Fili", @"Kili",
                      @"Oin", @"Gloin", @"Bifur", @"Bofur",
                      @"Bombur"];
-    //UITableView *tableView = (id)[self.view viewWithTag:1];
-    //UIEdgeInsets contentInset = tableView.contentInset;
-    //contentInset.top = 94;
-    //[tableView setContentInset:contentInset];
-    // Do any additional setup after loading the view, typically from a nib.
-    //searchResults = [NSMutableArray array];
+    UITableView *tableView = (id)[self.view viewWithTag:1];
+    searchResults = [NSMutableArray array];
     UISearchBar *searchBar = [[UISearchBar alloc]
                               initWithFrame:CGRectMake(0, 0, 320, 44)];
-    //tableView.tableHeaderView = searchBar;
+    tableView.tableHeaderView = searchBar;
     searchController = [[UISearchDisplayController alloc]
                         initWithSearchBar:searchBar
                         contentsController:self];
@@ -64,13 +59,13 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    //if(tableView.tag ==  1){
+    if(tableView.tag ==  1){
         //NSString *key = self.keys[section];
         //NSArray *nameSection = self.names[key];
         return [self.dwarves count];
-    //} else {
+    } else {
         return [searchResults count];
-    //}
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -84,17 +79,11 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
-    /*
-    UIImage *image = [UIImage imageNamed:@"star"];
-    cell.imageView.image = image;
-    UIImage *image2 = [UIImage imageNamed:@"star3"];
-    cell.imageView.highlightedImage = image2;
-     */
-    //if (tableView.tag == 1) {
+    if (tableView.tag == 1) {
         cell.textLabel.text = self.dwarves[indexPath.row];
-    //} else {
-        //cell.textLabel.text = searchResults[indexPath.row];
-    //}
+    } else {
+        cell.textLabel.text = searchResults[indexPath.row];
+    }
     return cell;
 }
 
@@ -142,27 +131,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
     searchResults = [self.dwarves filteredArrayUsingPredicate:resultPredicate];
 }
 
-/*
- - (BOOL)searchDisplayController:(UISearchDisplayController *)controller
- shouldReloadTableForSearchString:(NSString *)searchString
- {
- [filteredNames removeAllObjects];
- if (searchString.length > 0) {
- NSPredicate *predicate =
- [NSPredicate
- predicateWithBlock:^BOOL(NSString *name, NSDictionary *b) {
- NSRange range = [name rangeOfString:searchString
- options:NSCaseInsensitiveSearch];
- return range.location != NSNotFound;
- }];
- for (NSString *key in self.keys) {
- NSArray *matches = [self.names[key]
- filteredArrayUsingPredicate: predicate];
- [filteredNames addObjectsFromArray:matches];
- }
- }
- return YES; }
- */
 
 
 
