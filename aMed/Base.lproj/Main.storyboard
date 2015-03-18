@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -63,7 +64,58 @@
                     <view key="view" contentMode="scaleToFill" id="JbZ-MP-T8I">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuj-Hl-cps">
+                                <rect key="frame" x="16" y="289" width="568" height="21"/>
+                                <color key="backgroundColor" red="0.99791207709999996" green="1" blue="0.1265196603" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="16" y="64" width="768" height="22"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VEM-bG-aa9">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="iPAD">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="377" y="385" width="33" height="30"/>
+                                </variation>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="VEM-bG-aa9" secondAttribute="centerX" id="2oU-le-T3H"/>
+                            <constraint firstItem="yuj-Hl-cps" firstAttribute="leading" secondItem="JbZ-MP-T8I" secondAttribute="leadingMargin" id="9rN-TD-czx"/>
+                            <constraint firstItem="yuj-Hl-cps" firstAttribute="trailing" secondItem="JbZ-MP-T8I" secondAttribute="trailingMargin" id="OF0-dl-bx1"/>
+                            <constraint firstAttribute="centerY" secondItem="VEM-bG-aa9" secondAttribute="centerY" id="Yvd-Vl-HQV"/>
+                            <constraint firstItem="8sV-Cd-xmB" firstAttribute="top" secondItem="yuj-Hl-cps" secondAttribute="bottom" constant="241" id="g7P-0Z-nXe"/>
+                            <constraint firstItem="yuj-Hl-cps" firstAttribute="top" secondItem="jce-s5-Gzi" secondAttribute="bottom" constant="225" id="leP-go-3yi"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="VEM-bG-aa9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2oU-le-T3H"/>
+                                <exclude reference="Yvd-Vl-HQV"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="VEM-bG-aa9"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="9rN-TD-czx"/>
+                                <exclude reference="OF0-dl-bx1"/>
+                                <exclude reference="leP-go-3yi"/>
+                                <include reference="2oU-le-T3H"/>
+                                <include reference="Yvd-Vl-HQV"/>
+                                <exclude reference="g7P-0Z-nXe"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5B-Ao-1CH" userLabel="First Responder" sceneMemberID="firstResponder"/>
