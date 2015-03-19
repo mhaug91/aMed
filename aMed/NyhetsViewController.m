@@ -60,8 +60,6 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
  numberOfRowsInSection:(NSInteger)section
 {
     if(tableView.tag ==  1){
-        //NSString *key = self.keys[section];
-        //NSArray *nameSection = self.names[key];
         return [self.dwarves count];
     } else {
         return [searchResults count];
@@ -91,7 +89,12 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *rowValue = self.dwarves[indexPath.row];
+    NSString *rowValue = nil;
+    if (tableView.tag == 1) {
+        rowValue = self.dwarves[indexPath.row];
+    } else {
+        rowValue = searchResults[indexPath.row];
+    }
     NSString *message = [[NSString alloc] initWithFormat:
                          @"You selected %@", rowValue];
     UIAlertView *alert = [[UIAlertView alloc]
@@ -101,6 +104,21 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
                           cancelButtonTitle:@"Yes I Did"
                           otherButtonTitles:nil];
     [alert show];
+    /*
+     NSString *rowValue = self.dwarves[indexPath.row];
+     NSString *message = [[NSString alloc] initWithFormat:
+     @"You selected %@", rowValue];
+
+    NSString *message = [[NSString alloc] initWithFormat:
+                         @"You selected %@", rowValue];
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:@"Row Selected!"
+                          message:message
+                          delegate:nil
+                          cancelButtonTitle:@"Yes I Did"
+                          otherButtonTitles:nil];
+    [alert show];
+     */
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -129,6 +147,29 @@ shouldReloadTableForSearchString:(NSString *)searchString
                                     searchText];
     
     searchResults = [self.dwarves filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+     if ([segue.identifier isEqualToString:SimpleTableIdentifier]) {
+         NSIndexPath *indexPath = nil;
+         NSString *dwarf = nil;
+         if (searchController.active) {
+             indexPath =[searchController.searchResultsTableView indexPathForCell:sender];
+             dwarf = searchResults[indexPath.row];
+         }else {
+             indexPath =[self.tableView indexPathForCell:sender];
+             dwarf = self.dwarves[indexPath.row];
+         }
+    //NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         UIViewController *nyVC = segue.destinationViewController;
+   
+        //nyVC.navigationItem.title = self.dwarves[indexPath.row];
+    //} else {
+        //nyVC.navigationItem.title = searchResults[indexPath.row];
+         nyVC.navigationItem.title = dwarf;
+    }
 }
 
 
