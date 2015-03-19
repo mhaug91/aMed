@@ -7,6 +7,7 @@
 //
 
 #import "NyhetsViewController.h"
+#import "NyhetsVisningController.h"
 
 static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 
@@ -70,7 +71,7 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
                              SimpleTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
@@ -162,12 +163,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
              indexPath =[self.tableView indexPathForCell:sender];
              dwarf = self.dwarves[indexPath.row];
          }
-    //NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          UIViewController *nyVC = segue.destinationViewController;
    
         //nyVC.navigationItem.title = self.dwarves[indexPath.row];
     //} else {
-        //nyVC.navigationItem.title = searchResults[indexPath.row];
+         //nyVC.navigationItem.title = searchResults[indexPath.row];
          nyVC.navigationItem.title = dwarf;
     }
 }

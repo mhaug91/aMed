@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Beh Info View Controller-->
         <scene sceneID="d89-Ev-xc9">
             <objects>
-                <viewController id="kq0-N3-XFN" sceneMemberID="viewController">
+                <viewController id="kq0-N3-XFN" customClass="BehInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wkc-fJ-4uZ"/>
                         <viewControllerLayoutGuide type="bottom" id="Quq-U9-6Wc"/>
@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="vwQ-tF-Q3z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Behandlingsinfo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
+                                <rect key="frame" x="279" y="289" width="124" height="21"/>
+                                <color key="backgroundColor" red="0.99791207709999996" green="1" blue="0.1265196603" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="wl4-gA-cqV"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cm-Xx-3Ez" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -248,23 +260,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableFooterView" tag="2" contentMode="redraw" id="fAe-lm-inC">
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="8RP-xp-dIK">
                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="wM1-Je-Nmv" id="z2i-a1-MlF"/>
+                                <outlet property="delegate" destination="wM1-Je-Nmv" id="wRl-Pw-Vmr"/>
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleTableIdentifier" id="tAe-kb-IUe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MetodeCell" id="tAe-kb-IUe">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tAe-kb-IUe" id="iNT-xd-Ybi">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="tintColor" red="0.37647058820000001" green="0.12941176469999999" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="kq0-N3-XFN" kind="show" id="9od-C8-Ey8"/>
+                                    <segue destination="kq0-N3-XFN" kind="show" id="bVx-bN-TA1"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -275,17 +287,17 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Behandlingsmetoder" id="VhL-co-hng"/>
                     <connections>
-                        <outlet property="searchDisplayController" destination="YAc-8k-5Z6" id="5Uj-57-eQW"/>
+                        <outlet property="searchDisplayController" destination="zSb-Uc-6R5" id="Zf2-vb-9mx"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WbI-eh-ndO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="YAc-8k-5Z6">
+                <searchDisplayController id="zSb-Uc-6R5">
                     <connections>
-                        <outlet property="delegate" destination="wM1-Je-Nmv" id="VoH-oq-FnX"/>
-                        <outlet property="searchBar" destination="fAe-lm-inC" id="0ke-mP-Zei"/>
-                        <outlet property="searchContentsController" destination="wM1-Je-Nmv" id="Naa-zL-Znn"/>
-                        <outlet property="searchResultsDataSource" destination="wM1-Je-Nmv" id="7cs-9n-4R3"/>
-                        <outlet property="searchResultsDelegate" destination="wM1-Je-Nmv" id="h3O-fh-uw4"/>
+                        <outlet property="delegate" destination="wM1-Je-Nmv" id="lnU-I8-ygA"/>
+                        <outlet property="searchBar" destination="8RP-xp-dIK" id="K6Z-E1-ZRQ"/>
+                        <outlet property="searchContentsController" destination="wM1-Je-Nmv" id="wLK-Er-nPf"/>
+                        <outlet property="searchResultsDataSource" destination="wM1-Je-Nmv" id="vrO-OF-kct"/>
+                        <outlet property="searchResultsDelegate" destination="wM1-Je-Nmv" id="Zwq-aW-Fob"/>
                     </connections>
                 </searchDisplayController>
             </objects>

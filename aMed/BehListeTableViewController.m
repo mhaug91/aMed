@@ -9,7 +9,7 @@
 #import "BehListeTableViewController.h"
 #import "BehMetViewController.m"
 
-static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 @interface BehListeTableViewController ()
 
@@ -17,7 +17,9 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 
 @end
 
-@implementation BehListeTableViewController
+@implementation BehListeTableViewController{
+    NSArray *searchResults;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -43,21 +45,23 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [self.metoder count];
-    return 0;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+    } else {
+        return [self.metoder count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier]; //forIndexPath:indexPath];
+    
     
     // Configure the cell...
     if (cell == nil) {
@@ -65,8 +69,45 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
-    cell.textLabel.text = self.metoder[indexPath.row];
+    NSString *metode = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        metode = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        metode = [self.metoder objectAtIndex:indexPath.row];
+    }
+    cell.textLabel.text = metode/*self.metoder[indexPath.row] */;
+    UIImage *image = [UIImage imageNamed:@"second"];
+    cell.imageView.image = image;
     return cell;
+}
+
+
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"SELF contains[cd] %@",
+                                    searchText];
+    
+    searchResults = [self.metoder filteredArrayUsingPredicate:resultPredicate];
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller
+  didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    [tableView registerClass:[UITableViewCell class]
+      forCellReuseIdentifier:SimpleTableIdentifier];
 }
 
 
@@ -104,6 +145,21 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
  }
  */
 
+/*
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *metode = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        metode = [searchResults objectAtIndex:indexPath.row];
+    } else {
+        metode = [self.metoder objectAtIndex:indexPath.row];
+    }
+    NSLog(@"valgte: %@", metode);
+}
+ */
+
+
 
 #pragma mark - Navigation
 
@@ -111,9 +167,20 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    BehMetViewController *behVC = segue.destinationViewController;
-    behVC.navigationItem.title = self.metoder[indexPath.row];
+        NSIndexPath *indexPath = nil;
+        NSString *metode = nil;
+        
+        if (self.searchDisplayController.active) {
+            NSLog(@"søkeresultat overgang");
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+            metode = [searchResults objectAtIndex:indexPath.row];
+        } else {
+            NSLog(@"metode overgang");
+            indexPath = [self.tableView indexPathForCell:sender];
+            metode = [self.metoder objectAtIndex:indexPath.row];
+        }
+        BehMetViewController *destViewController = segue.destinationViewController;
+        destViewController.navigationItem.title = metode;
 }
 
 @end
