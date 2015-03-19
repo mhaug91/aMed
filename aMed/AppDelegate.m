@@ -31,6 +31,8 @@
     [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil]];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
+    //UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"Behandlingsmetoder" image:[UIImage imageNamed:@"close.png"] tag:1];
     return YES;
 }
 

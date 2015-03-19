@@ -15,25 +15,53 @@
 
 @implementation MapViewController
 
+BOOL firstLocationUpdate_;
 GMSMapView *mapView_;
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+
+    
     //Laster inn kartet.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.86 longitude:151.20 zoom:6];
     
     mapView_= [GMSMapView mapWithFrame:CGRectZero camera:camera];
-    mapView_.myLocationEnabled = YES;
+    mapView_.settings.compassButton = YES;
+    mapView_.settings.myLocationButton = YES;
+    
+    [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
     self.view = mapView_;
-    
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title =@"Sydney";
-    marker.snippet=@"Australia";
-    marker.map = mapView_;
-    
+
+    //Metode for å legge inn behandlere på kartet.
+    NSArray *behandlere = @[@"Beate", @"Kjell", @"Knut"];
+    double koordinater[6] = {-33.86, 151.20, -37.4849, 144.5747, -35.1827, 149.0727};
+    NSInteger tall;
+    for (int i=0; i<behandlere.count; i++) {
+            GMSMarker *marker = [[GMSMarker alloc]init];
+            marker.position = CLLocationCoordinate2DMake(koordinater[tall], koordinater[1+tall]);
+            marker.title = behandlere[i];
+            marker.map = mapView_;
+        tall+=2;
+    }
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        mapView_.myLocationEnabled = YES;
+    });
     
 }
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
+    if (!firstLocationUpdate_){
+        firstLocationUpdate_ = YES;
+        CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
+        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
