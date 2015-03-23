@@ -10,6 +10,7 @@
 		042D14A61AB9C3DD0013D306 /* NyhetsVisningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */; };
 		043B78FE1AB6E17200D7E10B /* BehListeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* BehListeTableViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* BehInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* BehInfoViewController.m */; };
+		04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */; };
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
 		04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NyhetsViewController.m */; };
@@ -54,6 +55,8 @@
 		043B78FD1AB6E17200D7E10B /* BehListeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehListeTableViewController.m; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* BehInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BehInfoViewController.h; sourceTree = "<group>"; };
 		04A011B51ABAE9FD00A3341D /* BehInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BehInfoViewController.m; sourceTree = "<group>"; };
+		04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentMethod.h; sourceTree = "<group>"; };
+		04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentMethod.m; sourceTree = "<group>"; };
 		04FACEC11AADBCF9009789BA /* aMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEC51AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEC61AADBCF9009789BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -122,6 +125,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04D77C851AC01DB4009D74A1 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */,
+				04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
 		04FACEB81AADBCF9009789BA = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +156,7 @@
 		04FACEC31AADBCF9009789BA /* aMed */ = {
 			isa = PBXGroup;
 			children = (
+				04D77C851AC01DB4009D74A1 /* Objects */,
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
 				04FACECB1AADBCF9009789BA /* NyhetsViewController.h */,
@@ -322,6 +335,7 @@
 				5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */,
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
 				5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */,
+				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,

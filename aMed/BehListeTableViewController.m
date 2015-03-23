@@ -8,6 +8,9 @@
 
 #import "BehListeTableViewController.h"
 #import "BehMetViewController.m"
+#import "ThreatmentMethod.h"
+
+#define getDataURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
@@ -32,9 +35,11 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     self.metoder = @[@"masasje", @"healing", @"åndelig veiledning", @"Heimler",
                      @"Akupunktur", @"thaimasasje", @"trene",
                      @"naprapati", @"onani", @"løping", @"klatring",
-                     @"osteopati", @"psykoterapi", @"Mensendick", @"Fysio",
+                     @"osteopati", @"psykoterapi", @"Mensendieck", @"Fysio",
                      @"Hopping", @"aping", @"sprøyter", @"stikk",
                      @"homeopati"];
+    // Load data
+    [self retrieveData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +59,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [searchResults count];
     } else {
-        return [self.metoder count];
+        return [self.threatmentsArray count];
     }
 }
 
@@ -69,13 +74,16 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
-    NSString *metode = nil;
+    ThreatmentMethod *metode = nil;
+    metode = [self.threatmentsArray objectAtIndex:indexPath.row];
+    /*
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         metode = [searchResults objectAtIndex:indexPath.row];
     } else {
-        metode = [self.metoder objectAtIndex:indexPath.row];
+        metode = [self.threatmentsArray objectAtIndex:indexPath.row];
     }
-    cell.textLabel.text = metode/*self.metoder[indexPath.row] */;
+     */
+    cell.textLabel.text = metode.title/*self.metoder[indexPath.row] */;
     UIImage *image = [UIImage imageNamed:@"second"];
     cell.imageView.image = image;
     return cell;
@@ -181,6 +189,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         }
         BehMetViewController *destViewController = segue.destinationViewController;
         destViewController.navigationItem.title = metode;
+}
+
+#pragma mark Class methods
+- (void) retrieveData{
+    NSURL *url = [NSURL URLWithString:getDataURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    // setting up threatments Array
+    self.threatmentsArray = [[NSMutableArray alloc] init];
+    
+    //Loop through json Array
+    for (int i=0; i<self.jsonArray.count; i++) {
+        //Create our threatment object
+        NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
+        NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
+        
+        //add the threatment object to our threatments array
+        [self.threatmentsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
+        
+    }
+    
+    // reload our tableview
+    [self.tableView reloadData];
 }
 
 @end
