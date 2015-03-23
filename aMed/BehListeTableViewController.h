@@ -11,5 +11,13 @@
 @interface BehListeTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
+@property(strong, nonatomic) NSMutableArray *jsonArray;
+@property(strong, nonatomic) NSMutableArray *threatmentsArray;
+
+#pragma marks
+#pragma mark - Class methods
+- (void) retrieveData;
+
+
 
 @end
