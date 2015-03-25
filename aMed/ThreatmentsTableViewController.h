@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThreatmentMethod.h"
+#import "BehMetViewController.h"
+#import "ThreatmentInfoViewController.h"
 
-@interface BehListeTableViewController : UITableViewController
+@interface ThreatmentsTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property(strong, nonatomic) NSMutableArray *jsonArray;

@@ -6,21 +6,20 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "BehListeTableViewController.h"
-#import "ThreatmentMethod.h"
-#import "BehMetViewController.m"
+#import "ThreatmentsTableViewController.h"
+
 
 #define getDataURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
-@interface BehListeTableViewController ()
+@interface ThreatmentsTableViewController ()
 
 @property (copy, nonatomic) NSArray *metoder;
 
 @end
 
-@implementation BehListeTableViewController{
+@implementation ThreatmentsTableViewController{
     NSArray *searchResults;
 }
 
@@ -108,7 +107,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
                                     predicateWithFormat:@"SELF contains[cd] %@",
                                     searchText];
     
-    searchResults = [self.threatmentsArray filteredArrayUsingPredicate:resultPredicate];
+    searchResults = [self.metoder filteredArrayUsingPredicate:resultPredicate];
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller
@@ -175,6 +174,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])
+        {
+            
         NSIndexPath *indexPath = nil;
         ThreatmentMethod *metode = nil;
         
@@ -187,11 +190,16 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             indexPath = [self.tableView indexPathForCell:sender];
             metode = [self.threatmentsArray objectAtIndex:indexPath.row];
         }
-        BehMetViewController *destViewController = segue.destinationViewController;
+       //[[segue destinationViewController] getThreatmentMethod:metode];
+            
+        ThreatmentInfoViewController *destViewController = segue.destinationViewController;
         destViewController.navigationItem.title = metode.title;
+        [destViewController getThreatmentMethod:metode];
+            
+        }
 }
 
-#pragma mark Class methods
+#pragma mark database methods
 - (void) retrieveData{
     NSURL *url = [NSURL URLWithString:getDataURL];
     NSData *data = [NSData dataWithContentsOfURL:url];
