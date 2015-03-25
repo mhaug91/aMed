@@ -6,21 +6,20 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "BehListeTableViewController.h"
-#import "BehMetViewController.m"
-#import "ThreatmentMethod.h"
+#import "ThreatmentsTableViewController.h"
+
 
 #define getDataURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
-@interface BehListeTableViewController ()
+@interface ThreatmentsTableViewController ()
 
 @property (copy, nonatomic) NSArray *metoder;
 
 @end
 
-@implementation BehListeTableViewController{
+@implementation ThreatmentsTableViewController{
     NSArray *searchResults;
 }
 
@@ -175,8 +174,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])
+        {
+            
         NSIndexPath *indexPath = nil;
-        NSString *metode = nil;
+        ThreatmentMethod *metode = nil;
         
         if (self.searchDisplayController.active) {
             NSLog(@"søkeresultat overgang");
@@ -185,13 +188,18 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         } else {
             NSLog(@"metode overgang");
             indexPath = [self.tableView indexPathForCell:sender];
-            metode = [self.metoder objectAtIndex:indexPath.row];
+            metode = [self.threatmentsArray objectAtIndex:indexPath.row];
         }
-        BehMetViewController *destViewController = segue.destinationViewController;
-        destViewController.navigationItem.title = metode;
+       //[[segue destinationViewController] getThreatmentMethod:metode];
+            
+        ThreatmentInfoViewController *destViewController = segue.destinationViewController;
+        destViewController.navigationItem.title = metode.title;
+        [destViewController getThreatmentMethod:metode];
+            
+        }
 }
 
-#pragma mark Class methods
+#pragma mark database methods
 - (void) retrieveData{
     NSURL *url = [NSURL URLWithString:getDataURL];
     NSData *data = [NSData dataWithContentsOfURL:url];

@@ -6,16 +6,17 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "BehInfoViewController.h"
+#import "ThreatmentInfoViewController.h"
 
-@interface BehInfoViewController ()
+@interface ThreatmentInfoViewController ()
 
 @end
 
-@implementation BehInfoViewController
+@implementation ThreatmentInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setLabels];
     // Do any additional setup after loading the view.
 }
 
@@ -23,6 +24,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma marks
+#pragma mark Methods
+
+- (void) getThreatmentMethod:(id)threatmentObject{
+    self.currentMethod=threatmentObject;
+}
+
+- (void) setLabels{
+    self.aliasLabel.text =  self.currentMethod.alias;
+}
+
 
 /*
 #pragma mark - Navigation
