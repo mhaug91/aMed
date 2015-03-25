@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Behandlingsinfo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
-                                <rect key="frame" x="238" y="289" width="124" height="21"/>
-                                <color key="backgroundColor" red="0.99791207709999996" green="1" blue="0.1265196603" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Behandlingsinfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
+                                <rect key="frame" x="0.0" y="64" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -27,10 +26,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="lOm-1p-IR6" secondAttribute="centerY" id="5tG-ik-ubi"/>
                             <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="LoJ-n9-6ij"/>
                             <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="PFK-sb-uDJ"/>
-                            <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="wl4-gA-cqV"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

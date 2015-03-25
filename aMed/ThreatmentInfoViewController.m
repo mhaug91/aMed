@@ -8,6 +8,7 @@
 
 #import "ThreatmentInfoViewController.h"
 
+
 @interface ThreatmentInfoViewController ()
 
 @end
@@ -33,7 +34,9 @@
 }
 
 - (void) setLabels{
-    self.aliasLabel.text =  self.currentMethod.alias;
+    self.aliasLabel.text =  self.currentMethod.introText;
+    [self.aliasLabel sizeToFit];
+    
 }
 
 

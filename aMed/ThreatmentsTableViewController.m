@@ -9,7 +9,9 @@
 #import "ThreatmentsTableViewController.h"
 
 
-#define getDataURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
+#define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
+#define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
+
 
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
@@ -38,7 +40,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
                      @"Hopping", @"aping", @"sprøyter", @"stikk",
                      @"homeopati"];
     // Load data
-    [self retrieveData];
+    [self retrieveThreatmentsData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -179,29 +181,31 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         {
             
         NSIndexPath *indexPath = nil;
-        ThreatmentMethod *metode = nil;
-        
-        if (self.searchDisplayController.active) {
+        ThreatmentMethod *method = nil;
+        /* Fortsatt litt kuk med søkefeltet */
+        /*if (self.searchDisplayController.active) {
             NSLog(@"søkeresultat overgang");
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            metode = [searchResults objectAtIndex:indexPath.row];
-        } else {
+            method = [searchResults objectAtIndex:indexPath.row];
+        } */
+            //else {
             NSLog(@"metode overgang");
             indexPath = [self.tableView indexPathForCell:sender];
-            metode = [self.threatmentsArray objectAtIndex:indexPath.row];
-        }
-       //[[segue destinationViewController] getThreatmentMethod:metode];
-            
-        ThreatmentInfoViewController *destViewController = segue.destinationViewController;
-        destViewController.navigationItem.title = metode.title;
-        [destViewController getThreatmentMethod:metode];
+            method = [self.threatmentsArray objectAtIndex:indexPath.row];
+        //}
+        ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
+        destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
+        [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
+        NSString *alias = method.alias;
+        NSString *introtext = [self retreiveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
+        [method setIntroText:introtext]; //
             
         }
 }
 
 #pragma mark database methods
-- (void) retrieveData{
-    NSURL *url = [NSURL URLWithString:getDataURL];
+- (void) retrieveThreatmentsData{
+    NSURL *url = [NSURL URLWithString:getDataThreatmentsURL];
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
@@ -218,9 +222,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         [self.threatmentsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
         
     }
-    
-    // reload our tableview
-    [self.tableView reloadData];
 }
+
+/* This method returns the information of a selected threatmentmethod from the database.
+ * Takes an alias as the argument
+ */
+- (NSString *) retreiveThreatmentInfoData: (NSString *) alias
+{
+    NSString *info = nil;
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", getDataThreatmentInfoURL, alias]; // makes the urlstring where the info is stored
+    NSLog(urlString);
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray =[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    //Loop through json Array
+    for (int i=0; i<self.jsonArray.count; i++) {
+        info = [[self.jsonArray objectAtIndex:i] objectForKey:(@"introtext")];
+    }
+
+    
+    
+    return info;
+}
+
+
 
 @end
