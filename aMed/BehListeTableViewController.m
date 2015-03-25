@@ -7,8 +7,8 @@
 //
 
 #import "BehListeTableViewController.h"
-#import "BehMetViewController.m"
 #import "ThreatmentMethod.h"
+#import "BehMetViewController.m"
 
 #define getDataURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 
@@ -108,7 +108,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
                                     predicateWithFormat:@"SELF contains[cd] %@",
                                     searchText];
     
-    searchResults = [self.metoder filteredArrayUsingPredicate:resultPredicate];
+    searchResults = [self.threatmentsArray filteredArrayUsingPredicate:resultPredicate];
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller
@@ -176,7 +176,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
         NSIndexPath *indexPath = nil;
-        NSString *metode = nil;
+        ThreatmentMethod *metode = nil;
         
         if (self.searchDisplayController.active) {
             NSLog(@"søkeresultat overgang");
@@ -185,10 +185,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         } else {
             NSLog(@"metode overgang");
             indexPath = [self.tableView indexPathForCell:sender];
-            metode = [self.metoder objectAtIndex:indexPath.row];
+            metode = [self.threatmentsArray objectAtIndex:indexPath.row];
         }
         BehMetViewController *destViewController = segue.destinationViewController;
-        destViewController.navigationItem.title = metode;
+        destViewController.navigationItem.title = metode.title;
 }
 
 #pragma mark Class methods
