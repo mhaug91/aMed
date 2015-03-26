@@ -125,6 +125,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04B533A41AC42E530050013C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		04B533A51AC42E8E0050013C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 		04D77C851AC01DB4009D74A1 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +170,8 @@
 		04FACEC31AADBCF9009789BA /* aMed */ = {
 			isa = PBXGroup;
 			children = (
+				04B533A51AC42E8E0050013C /* Utils */,
+				04B533A41AC42E530050013C /* ViewControllers */,
 				04D77C851AC01DB4009D74A1 /* Objects */,
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,

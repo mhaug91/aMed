@@ -23,6 +23,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -38,6 +42,7 @@
                     </view>
                     <connections>
                         <outlet property="aliasLabel" destination="lOm-1p-IR6" id="kLn-98-Bbg"/>
+                        <outlet property="webView" destination="Rub-PU-Nrv" id="BtE-pV-8U4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2cm-Xx-3Ez" userLabel="First Responder" sceneMemberID="firstResponder"/>

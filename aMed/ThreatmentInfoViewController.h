@@ -19,7 +19,6 @@
 #pragma mark Methods
 
 - (void) getThreatmentMethod:(id)threatmentObject;
-- (void) setLabels;
-
+- (void) setWebView;
 
 @end
