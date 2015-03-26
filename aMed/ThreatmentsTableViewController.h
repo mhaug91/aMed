@@ -20,6 +20,7 @@
 #pragma marks
 #pragma mark - Class methods
 - (void) retrieveData;
+- (void) setWebView;
 
 
 

@@ -182,7 +182,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             
         NSIndexPath *indexPath = nil;
         ThreatmentMethod *method = nil;
-        /* Fortsatt litt kuk med søkefeltet */
+        /* Fortsatt litt rot med søkefeltet */
         /*if (self.searchDisplayController.active) {
             NSLog(@"søkeresultat overgang");
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
@@ -239,6 +239,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     //Loop through json Array
     for (int i=0; i<self.jsonArray.count; i++) {
         info = [[self.jsonArray objectAtIndex:i] objectForKey:(@"introtext")];
+        
     }
 
     

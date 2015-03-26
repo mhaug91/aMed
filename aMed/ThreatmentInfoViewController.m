@@ -10,6 +10,7 @@
 
 
 @interface ThreatmentInfoViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
@@ -17,7 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setLabels];
+    [self setWebView];
     // Do any additional setup after loading the view.
 }
 
@@ -33,11 +34,12 @@
     self.currentMethod=threatmentObject;
 }
 
-- (void) setLabels{
-    self.aliasLabel.text =  self.currentMethod.introText;
-    [self.aliasLabel sizeToFit];
-    
+
+- (void) setWebView{
+    [self.webView loadHTMLString:self.currentMethod.introText baseURL:nil];
 }
+
+
 
 
 /*
