@@ -34,10 +34,23 @@
     self.currentMethod=threatmentObject;
 }
 
-
+/* Puts the introtext made of html inside the webview
+ * Some adjustments to the string has to be made to display well.
+ */
 - (void) setWebView{
-    [self.webView loadHTMLString:self.currentMethod.introText baseURL:nil];
+    self.htmlString = self.currentMethod.introText; // stores the introtext in an own variable
+    /* If the image path is bad, for example: "images/...", replace it with the full path: */
+    if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring
+        self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+    }
+    /* Amed.no (the website) has a custom backbutton used on the pages for the
+     * treatment methods. This has to be removed from the text: */
+    self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];
+    [self.webView loadHTMLString:self.htmlString baseURL:nil];
+    
 }
+
+
 
 
 

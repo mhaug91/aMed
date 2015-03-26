@@ -17,23 +17,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Behandlingsinfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Behandlingsinfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
                                 <rect key="frame" x="0.0" y="64" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
-                                <rect key="frame" x="0.0" y="93" width="600" height="458"/>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Rub-PU-Nrv" firstAttribute="leading" secondItem="vwQ-tF-Q3z" secondAttribute="leading" id="D7v-Bb-KXf"/>
                             <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="LoJ-n9-6ij"/>
                             <constraint firstAttribute="centerX" secondItem="lOm-1p-IR6" secondAttribute="centerX" id="PFK-sb-uDJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Rub-PU-Nrv" secondAttribute="trailing" id="iuq-5Q-Yxl"/>
+                            <constraint firstItem="Rub-PU-Nrv" firstAttribute="top" secondItem="wkc-fJ-4uZ" secondAttribute="bottom" id="lLd-lO-H54"/>
+                            <constraint firstItem="Rub-PU-Nrv" firstAttribute="bottom" secondItem="Quq-U9-6Wc" secondAttribute="top" id="n7v-L2-57g"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="lOm-1p-IR6"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="LoJ-n9-6ij"/>
                                 <exclude reference="PFK-sb-uDJ"/>
@@ -41,7 +48,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="aliasLabel" destination="lOm-1p-IR6" id="kLn-98-Bbg"/>
                         <outlet property="webView" destination="Rub-PU-Nrv" id="BtE-pV-8U4"/>
                     </connections>
                 </viewController>
