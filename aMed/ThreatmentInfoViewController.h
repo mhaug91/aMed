@@ -10,9 +10,9 @@
 #import "ThreatmentMethod.h"
 @interface ThreatmentInfoViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *aliasLabel;
 
 @property(nonatomic, strong) ThreatmentMethod *currentMethod;
+@property(nonatomic, strong) NSString *htmlString;
 
 
 #pragma marks
