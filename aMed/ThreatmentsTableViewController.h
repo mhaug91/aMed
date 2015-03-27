@@ -10,17 +10,20 @@
 #import "ThreatmentMethod.h"
 #import "BehMetViewController.h"
 #import "ThreatmentInfoViewController.h"
+#import "RetrieveData.h"
 
 @interface ThreatmentsTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
+
+@property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
 
 #pragma marks
 #pragma mark - Class methods
-- (void) retrieveData;
-- (void) setWebView;
+//- (void) retrieveData;
+//- (void) setWebView;
 
 
 

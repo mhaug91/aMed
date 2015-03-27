@@ -40,7 +40,8 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
                      @"Hopping", @"aping", @"sprøyter", @"stikk",
                      @"homeopati"];
     // Load data
-    [self retrieveThreatmentsData];
+    self.rd = [[RetrieveData alloc] init];
+    self.threatmentsArray = [self.rd retrieveThreatmentsData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -196,56 +197,12 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
-        NSString *alias = method.alias;
-        NSString *introtext = [self retreiveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
+        NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
         [method setIntroText:introtext]; //
-            
         }
 }
 
-#pragma mark database methods
-- (void) retrieveThreatmentsData{
-    NSURL *url = [NSURL URLWithString:getDataThreatmentsURL];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    
-    // setting up threatments Array
-    self.threatmentsArray = [[NSMutableArray alloc] init];
-    
-    //Loop through json Array
-    for (int i=0; i<self.jsonArray.count; i++) {
-        //Create our threatment object
-        NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
-        NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
-        
-        //add the threatment object to our threatments array
-        [self.threatmentsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
-        
-    }
-}
 
-/* This method returns the information of a selected threatmentmethod from the database.
- * Takes an alias as the argument
- */
-- (NSString *) retreiveThreatmentInfoData: (NSString *) alias
-{
-    NSString *info = nil;
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", getDataThreatmentInfoURL, alias]; // makes the urlstring where the info is stored
-    NSLog(urlString);
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    self.jsonArray =[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-    
-    //Loop through json Array
-    for (int i=0; i<self.jsonArray.count; i++) {
-        info = [[self.jsonArray objectAtIndex:i] objectForKey:(@"introtext")];
-        
-    }
-
-    
-    
-    return info;
-}
 
 
 
