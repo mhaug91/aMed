@@ -39,8 +39,9 @@
  */
 - (void) setWebView{
     self.htmlString = self.currentMethod.introText; // stores the introtext in an own variable
+    
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
-    if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring
+    if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
         self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
     /* Amed.no (the website) has a custom backbutton used on the pages for the

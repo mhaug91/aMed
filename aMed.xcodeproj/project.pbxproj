@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		042D14A61AB9C3DD0013D306 /* NyhetsVisningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */; };
+		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
 		043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
 		04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */; };
@@ -51,6 +52,8 @@
 /* Begin PBXFileReference section */
 		042D14A41AB9C3DD0013D306 /* NyhetsVisningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NyhetsVisningController.h; sourceTree = "<group>"; };
 		042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NyhetsVisningController.m; sourceTree = "<group>"; };
+		042F18261AC56B0B0036D474 /* RetrieveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveData.h; sourceTree = "<group>"; };
+		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
 		043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentsTableViewController.h; sourceTree = "<group>"; };
 		043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentsTableViewController.m; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentInfoViewController.h; sourceTree = "<group>"; };
@@ -135,6 +138,8 @@
 		04B533A51AC42E8E0050013C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				042F18261AC56B0B0036D474 /* RetrieveData.h */,
+				042F18271AC56B0B0036D474 /* RetrieveData.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,
+				042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */,
 				04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */,
 				042D14A61AB9C3DD0013D306 /* NyhetsVisningController.m in Sources */,
 			);
