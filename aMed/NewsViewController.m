@@ -8,7 +8,7 @@
 
 #import "NewsViewController.h"
 
-static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
+static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 
 @interface NewsViewController ()
 
@@ -31,7 +31,8 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
                      @"Balin", @"Dwalin", @"Fili", @"Kili",
                      @"Oin", @"Gloin", @"Bifur", @"Bofur",
                      @"Bombur"];
-    
+    self.rd = [[RetrieveData alloc] init];
+    self.newsArray = [self.rd retrieveNewsData];
 
 }
 
@@ -49,7 +50,7 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
  numberOfRowsInSection:(NSInteger)section
 {
     
-        return [self.dwarves count];
+        return [self.newsArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -57,17 +58,18 @@ static NSString *SimpleTableIdentifier = @"SimpleTableIdentifier";
 {
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
-                             SimpleTableIdentifier];
+                             newsTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:SimpleTableIdentifier];
+                reuseIdentifier:newsTableIdentifier];
     }
-    cell.textLabel.text = self.dwarves[indexPath.row];
+    News *news = [self.newsArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = news.title;
     return cell;
 }
 
-
+/*
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -84,22 +86,27 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [alert show];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+ */
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-     if ([segue.identifier isEqualToString:SimpleTableIdentifier]) {
-         NSIndexPath *indexPath = nil;
-         NSString *dwarf = nil;
-        indexPath =[self.tableView indexPathForCell:sender];
-        dwarf = self.dwarves[indexPath.row];
-         UIViewController *nyVC = segue.destinationViewController;
+     if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
+         NSLog(@"pushNewsInfo");
+         
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+         News *news = [self.newsArray objectAtIndex:indexPath.row];
+         NewsInfoViewController *destVC = segue.destinationViewController;
    
         //nyVC.navigationItem.title = self.dwarves[indexPath.row];
     //} else {
          //nyVC.navigationItem.title = searchResults[indexPath.row];
-         nyVC.navigationItem.title = dwarf;
+         destVC.navigationItem.title = news.title;
+         [destVC getNewsObject:news];
+         NSString *introtext = [self.rd retrieveNewsInfoData:news.alias];
+         [news setIntroText:introtext];
+         
     }
 }
 

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -23,9 +24,10 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                             </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -64,13 +66,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimpleTableIdentifier" id="f7j-AY-dZ4">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="NewsTableIdentifier" id="f7j-AY-dZ4">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f7j-AY-dZ4" id="KVV-C8-46l">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="5LC-Yd-JE6" kind="show" id="Dc0-ul-4Fz"/>
+                                    <segue destination="5LC-Yd-JE6" kind="show" identifier="pushNewsInfo" id="Dc0-ul-4Fz"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -85,10 +87,10 @@
             </objects>
             <point key="canvasLocation" x="1570" y="-354"/>
         </scene>
-        <!--View Controller-->
+        <!--News Info View Controller-->
         <scene sceneID="Pm3-fq-Xcc">
             <objects>
-                <viewController id="5LC-Yd-JE6" sceneMemberID="viewController">
+                <viewController id="5LC-Yd-JE6" customClass="NewsInfoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jce-s5-Gzi"/>
                         <viewControllerLayoutGuide type="bottom" id="8sV-Cd-xmB"/>
@@ -116,18 +118,27 @@
                                     <rect key="frame" x="377" y="385" width="33" height="30"/>
                                 </variation>
                             </button>
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xaT-Ro-qz2">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="VEM-bG-aa9" secondAttribute="centerX" id="2oU-le-T3H"/>
+                            <constraint firstItem="xaT-Ro-qz2" firstAttribute="bottom" secondItem="8sV-Cd-xmB" secondAttribute="top" id="4f1-Bv-0gb"/>
                             <constraint firstItem="yuj-Hl-cps" firstAttribute="leading" secondItem="JbZ-MP-T8I" secondAttribute="leadingMargin" id="9rN-TD-czx"/>
+                            <constraint firstItem="xaT-Ro-qz2" firstAttribute="top" secondItem="jce-s5-Gzi" secondAttribute="bottom" id="AWY-xF-GUo"/>
                             <constraint firstItem="yuj-Hl-cps" firstAttribute="trailing" secondItem="JbZ-MP-T8I" secondAttribute="trailingMargin" id="OF0-dl-bx1"/>
+                            <constraint firstItem="xaT-Ro-qz2" firstAttribute="leading" secondItem="JbZ-MP-T8I" secondAttribute="leading" id="Umm-d6-vK9"/>
                             <constraint firstAttribute="centerY" secondItem="VEM-bG-aa9" secondAttribute="centerY" id="Yvd-Vl-HQV"/>
+                            <constraint firstAttribute="trailing" secondItem="xaT-Ro-qz2" secondAttribute="trailing" id="d4v-S0-zdl"/>
                             <constraint firstItem="8sV-Cd-xmB" firstAttribute="top" secondItem="yuj-Hl-cps" secondAttribute="bottom" constant="241" id="g7P-0Z-nXe"/>
                             <constraint firstItem="yuj-Hl-cps" firstAttribute="top" secondItem="jce-s5-Gzi" secondAttribute="bottom" constant="225" id="leP-go-3yi"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
+                                <exclude reference="yuj-Hl-cps"/>
                                 <exclude reference="VEM-bG-aa9"/>
                             </mask>
                             <mask key="constraints">
@@ -149,6 +160,9 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="webView" destination="xaT-Ro-qz2" id="bEk-ZG-yyD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5B-Ao-1CH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

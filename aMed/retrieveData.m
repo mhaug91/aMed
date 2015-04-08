@@ -12,7 +12,7 @@
 #define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
 
 #define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
-#define getNewsInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
+#define getNewsDataInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
 
 
 
@@ -86,6 +86,24 @@
     }
     return newsArray;
 }
+
+- (NSString *) retrieveNewsInfoData: (NSString *) alias
+{
+    NSString *info = nil;
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", getNewsDataInfoURL, alias]; // makes the urlstring where the info is stored
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray =[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    //Loop through json Array
+    for (int i=0; i<self.jsonArray.count; i++) {
+        info = [[self.jsonArray objectAtIndex:i] objectForKey:(@"introtext")];
+        
+    }
+    return info;
+}
+
+
 
 
 

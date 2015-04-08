@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "News.h"
-#import "BehMetViewController.h"
 #import "NewsViewController.h"
+#import "NewsInfoViewController.h"
 #import "RetrieveData.h"
 
 @interface NewsViewController : UITableViewController
@@ -17,7 +17,7 @@
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
-@property(strong, nonatomic) NSMutableArray *threatmentsArray;
+@property(strong, nonatomic) NSMutableArray *newsArray;
 
 
 @end
