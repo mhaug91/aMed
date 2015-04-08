@@ -21,6 +21,8 @@
 - (NSString *) retrieveThreatmentInfoData: (NSString *) alias;
 - (NSMutableArray *) retrieveThreatmentsData;
 
+- (NSMutableArray *) retrieveNewsData;
+
 
 
 @end

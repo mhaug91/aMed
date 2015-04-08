@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NyhetsVisningController : UIViewController
+@interface NewsInfoViewController : UIViewController
 
 @end

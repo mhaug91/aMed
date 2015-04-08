@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "NyhetsVisningController.h"
+#import "NewsInfoViewController.h"
 
-@interface NyhetsVisningController ()
+@interface NewsInfoViewController ()
 
 @end
 
-@implementation NyhetsVisningController
+@implementation NewsInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
