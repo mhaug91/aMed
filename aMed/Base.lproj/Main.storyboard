@@ -58,7 +58,7 @@
         <!--Nyheter-->
         <scene sceneID="3Rc-YC-8Yh">
             <objects>
-                <tableViewController title="Nyheter" id="uQ6-lU-77d" customClass="NyhetsViewController" sceneMemberID="viewController">
+                <tableViewController title="Nyheter" id="uQ6-lU-77d" customClass="NewsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Q6U-zN-PkS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

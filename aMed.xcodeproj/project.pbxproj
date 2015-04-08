@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		042D14A61AB9C3DD0013D306 /* NyhetsVisningController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */; };
+		042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */; };
 		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
 		043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
+		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */; };
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
-		04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NyhetsViewController.m */; };
+		04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NewsViewController.m */; };
 		04FACED31AADBCF9009789BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED11AADBCF9009789BA /* Main.storyboard */; };
 		04FACED51AADBCF9009789BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED41AADBCF9009789BA /* Images.xcassets */; };
 		04FACED81AADBCF9009789BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED61AADBCF9009789BA /* LaunchScreen.xib */; };
@@ -50,14 +51,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		042D14A41AB9C3DD0013D306 /* NyhetsVisningController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NyhetsVisningController.h; sourceTree = "<group>"; };
-		042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NyhetsVisningController.m; sourceTree = "<group>"; };
+		042D14A41AB9C3DD0013D306 /* NewsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfoViewController.h; sourceTree = "<group>"; };
+		042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoViewController.m; sourceTree = "<group>"; };
 		042F18261AC56B0B0036D474 /* RetrieveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveData.h; sourceTree = "<group>"; };
 		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
 		043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentsTableViewController.h; sourceTree = "<group>"; };
 		043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentsTableViewController.m; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentInfoViewController.h; sourceTree = "<group>"; };
 		04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentInfoViewController.m; sourceTree = "<group>"; };
+		04BC0BEC1AD515D500570763 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
+		04BC0BED1AD515D500570763 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentMethod.h; sourceTree = "<group>"; };
 		04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentMethod.m; sourceTree = "<group>"; };
 		04FACEC11AADBCF9009789BA /* aMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,8 +68,8 @@
 		04FACEC61AADBCF9009789BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		04FACEC81AADBCF9009789BA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		04FACEC91AADBCF9009789BA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		04FACECB1AADBCF9009789BA /* NyhetsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NyhetsViewController.h; sourceTree = "<group>"; };
-		04FACECC1AADBCF9009789BA /* NyhetsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NyhetsViewController.m; sourceTree = "<group>"; };
+		04FACECB1AADBCF9009789BA /* NewsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		04FACECC1AADBCF9009789BA /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		04FACED21AADBCF9009789BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04FACED41AADBCF9009789BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		04FACED71AADBCF9009789BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 			children = (
 				04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */,
 				04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */,
+				04BC0BEC1AD515D500570763 /* News.h */,
+				04BC0BED1AD515D500570763 /* News.m */,
 			);
 			name = Objects;
 			sourceTree = "<group>";
@@ -180,10 +185,10 @@
 				04D77C851AC01DB4009D74A1 /* Objects */,
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
-				04FACECB1AADBCF9009789BA /* NyhetsViewController.h */,
-				04FACECC1AADBCF9009789BA /* NyhetsViewController.m */,
-				042D14A41AB9C3DD0013D306 /* NyhetsVisningController.h */,
-				042D14A51AB9C3DD0013D306 /* NyhetsVisningController.m */,
+				04FACECB1AADBCF9009789BA /* NewsViewController.h */,
+				04FACECC1AADBCF9009789BA /* NewsViewController.m */,
+				042D14A41AB9C3DD0013D306 /* NewsInfoViewController.h */,
+				042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
 				04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */,
 				04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */,
@@ -352,18 +357,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BC0BEE1AD515D500570763 /* News.m in Sources */,
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
 				5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */,
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
 				5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */,
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
-				04FACECD1AADBCF9009789BA /* NyhetsViewController.m in Sources */,
+				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,
 				042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */,
 				04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */,
-				042D14A61AB9C3DD0013D306 /* NyhetsVisningController.m in Sources */,
+				042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

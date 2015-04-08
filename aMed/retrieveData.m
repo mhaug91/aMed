@@ -11,6 +11,11 @@
 #define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 #define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
 
+#define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
+#define getNewsInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
+
+
+
 
 @implementation RetrieveData
 
@@ -60,6 +65,28 @@
     }
     return threatmentsArray;
 }
+
+- (NSMutableArray *) retrieveNewsData{
+    NSURL *url = [NSURL URLWithString:getNewsDataURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    // setting up threatments Array
+    NSMutableArray *newsArray = [[NSMutableArray alloc] init];
+    
+    //Loop through json Array
+    for (int i=0; i<self.jsonArray.count; i++) {
+        //Create our threatment object
+        NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
+        NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
+        
+        //add the threatment object to our threatments array
+        [newsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
+        
+    }
+    return newsArray;
+}
+
 
 
 
