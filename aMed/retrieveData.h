@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "ThreatmentMethod.h"
+#import "Therapists.h"
+#import "Address.h"
+#import "Location.h"
 
 @interface RetrieveData : NSObject
 
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
+@property(strong, nonatomic) NSMutableArray *therapistArray;
 
 
 #pragma marks
@@ -20,6 +24,7 @@
 
 - (NSString *) retrieveThreatmentInfoData: (NSString *) alias;
 - (NSMutableArray *) retrieveThreatmentsData;
+- (NSMutableArray *) retrieveTherapists;
 
 - (NSMutableArray *) retrieveNewsData;
 - (NSString *) retrieveNewsInfoData: (NSString *) alias;

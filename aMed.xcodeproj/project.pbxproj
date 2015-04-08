@@ -38,6 +38,9 @@
 		5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */; };
 		5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CD01AADCEC100D408AC /* NavBarViewController.m */; };
 		5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CD31AADCF7400D408AC /* TabBarViewController.m */; };
+		5C2A3E811AD566AD0003A164 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7C1AD566AD0003A164 /* Address.m */; };
+		5C2A3E821AD566AD0003A164 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7E1AD566AD0003A164 /* Location.m */; };
+		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +101,12 @@
 		5C218CD01AADCEC100D408AC /* NavBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarViewController.m; sourceTree = "<group>"; };
 		5C218CD21AADCF7400D408AC /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		5C218CD31AADCF7400D408AC /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		5C2A3E7B1AD566AD0003A164 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		5C2A3E7C1AD566AD0003A164 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
+		5C2A3E7D1AD566AD0003A164 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		5C2A3E7E1AD566AD0003A164 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		5C2A3E7F1AD566AD0003A164 /* Therapists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Therapists.h; sourceTree = "<group>"; };
+		5C2A3E801AD566AD0003A164 /* Therapists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Therapists.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +161,12 @@
 			children = (
 				04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */,
 				04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */,
+				5C2A3E7B1AD566AD0003A164 /* Address.h */,
+				5C2A3E7C1AD566AD0003A164 /* Address.m */,
+				5C2A3E7D1AD566AD0003A164 /* Location.h */,
+				5C2A3E7E1AD566AD0003A164 /* Location.m */,
+				5C2A3E7F1AD566AD0003A164 /* Therapists.h */,
+				5C2A3E801AD566AD0003A164 /* Therapists.m */,
 				04BC0BEC1AD515D500570763 /* News.h */,
 				04BC0BED1AD515D500570763 /* News.m */,
 			);
@@ -358,9 +373,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				04BC0BEE1AD515D500570763 /* News.m in Sources */,
+				5C2A3E821AD566AD0003A164 /* Location.m in Sources */,
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
 				5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */,
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
+				5C2A3E811AD566AD0003A164 /* Address.m in Sources */,
 				5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */,
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
@@ -369,6 +386,7 @@
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,
 				042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */,
 				04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */,
+				5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */,
 				042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

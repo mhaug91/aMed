@@ -7,10 +7,11 @@
 //
 
 #import "RetrieveData.h"
+#import <CoreLocation/CoreLocation.h>
 
 #define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 #define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
-
+#define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 #define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
 #define getNewsDataInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
 
@@ -64,6 +65,69 @@
         
     }
     return threatmentsArray;
+}
+
+-(NSMutableArray *) retrieveTherapists{
+    
+    NSMutableArray *therapists = [[NSMutableArray alloc] init];
+    Therapists *therapist = [[Therapists alloc] init];
+    Address *address = [[Address alloc] init];
+    NSArray *tr_methods = [[NSMutableArray alloc] init];
+    
+    NSInteger postcode, phone;
+    
+    
+    NSURL *url = [NSURL URLWithString:getDataTherapistsURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    
+    for (int i = 0; i<self.jsonArray.count; i++) {
+        
+        //Address
+        NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"address")];
+        NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
+        NSString *state = [[self.jsonArray objectAtIndex:i] objectForKey:(@"state")];
+        NSString *country = [[self.jsonArray objectAtIndex:i] objectForKey:(@"country")];
+        @try {
+            postcode = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"zipcode")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception: %@", exception.reason);
+        }
+        @finally {
+            NSLog(@"Finally");
+        }
+        
+        //Therapist
+        NSString *firstName = [[self.jsonArray objectAtIndex:i] objectForKey:(@"firstname")];
+        NSString *lastName = [[self.jsonArray objectAtIndex:i] objectForKey:(@"lastname")];
+        NSString *avatar = [[self.jsonArray objectAtIndex:i] objectForKey:(@"avatar")];
+        NSString *website = [[self.jsonArray objectAtIndex:i] objectForKey:(@"website")];
+        NSString *occupation = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_yrke")];
+        NSString *company = [[self.jsonArray objectAtIndex:i] objectForKey:(@"company")];
+        @try {
+            phone = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"phone")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception: %@", exception.reason);
+        }
+        @finally {
+            NSLog(@"Finally");
+        }
+        NSString *comment = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_ajaxtekst")];
+        NSString *treatmentMethods = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
+        
+        //Splitting string of treatment methods into an array.
+        tr_methods = [treatmentMethods componentsSeparatedByString:(@"\\|\\*\\|")];
+        
+        address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
+        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods];
+        
+        [therapists addObject:therapist];
+        
+    }
+    return therapists;
 }
 
 - (NSMutableArray *) retrieveNewsData{

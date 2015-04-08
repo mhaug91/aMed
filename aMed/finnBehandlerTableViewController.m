@@ -8,6 +8,8 @@
 
 #import "finnBehandlerTableViewController.h"
 
+#define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
+
 static NSString *finnBehandlerID = @"finnBehandlerID";
 
 @interface finnBehandlerTableViewController ()
@@ -20,25 +22,33 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.rd = [[RetrieveData alloc] init];
+    self.therapists = [self.rd retrieveTherapists];
+    
+    
     //Legger inn tabell av behandlere
-    self.behandlere = @[@"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
-                        @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg",
-                        @"Kristbjørg Rasmussen",
-                        @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
-                        @"Nina Brandsdal", @"Linda Opedal Mokleiv"];
+    //self.behandlere = self.therapists;
+    
+    /*@[@"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
+     @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg",
+     @"Kristbjørg Rasmussen",
+     @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
+     @"Nina Brandsdal", @"Linda Opedal Mokleiv"];*/
     //UITableView *tableView = (id)[self.view viewWithTag:1];
-
-   // tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
-  
+    
+    // tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-
+    
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    return [self.behandlere count];
+    NSLog(@"%ld", [self.therapists count]);
+    return [self.therapists count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
@@ -51,22 +61,26 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:finnBehandlerID];
     }
-    cell.textLabel.text = self.behandlere[indexPath.row];
+    
+    Therapists *method = nil;
+    method = [self.therapists objectAtIndex:indexPath.row];
+    NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
+    cell.textLabel.text = name;
     return cell;
 }
 
 /*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
-    
-    // Configure the cell...
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:SimpleTableIdentifier];
-    }
-    cell.textLabel.text = self.metoder[indexPath.row];
-    return cell;
-}*/
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
+ 
+ // Configure the cell...
+ if (cell == nil) {
+ cell = [[UITableViewCell alloc]
+ initWithStyle:UITableViewCellStyleDefault
+ reuseIdentifier:SimpleTableIdentifier];
+ }
+ cell.textLabel.text = self.metoder[indexPath.row];
+ return cell;
+ }*/
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -76,64 +90,64 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 #pragma mark - Table view data source
 
 /*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}*/
+ #warning Potentially incomplete method implementation.
+ // Return the number of sections.
+ return 0;
+ }*/
 
 
 /*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
+ - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+ UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+ 
+ // Configure the cell...
+ 
+ return cell;
+ }
+ */
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

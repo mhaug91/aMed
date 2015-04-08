@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RetrieveData.h"
 
 @interface finnBehandlerTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate>
+
+@property(strong, nonatomic) RetrieveData *rd;
+@property(strong, nonatomic) NSMutableArray *jsonArray;
+@property(strong, nonatomic) NSMutableArray *therapists;
 
 @end
