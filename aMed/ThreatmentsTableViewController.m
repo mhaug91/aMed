@@ -15,15 +15,10 @@
 
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
-@interface ThreatmentsTableViewController ()
 
-@property (copy, nonatomic) NSArray *metoder;
-
-@end
 
 @implementation ThreatmentsTableViewController{
     NSArray *searchResults;
-    NSArray *threatmentMethods;
 }
 
 
@@ -36,28 +31,9 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.metoder = @[@"masasje", @"healing", @"åndelig veiledning", @"Heimler",
-                     @"Akupunktur", @"thaimasasje", @"trene",
-                     @"naprapati", @"onani", @"løping", @"klatring",
-                     @"osteopati", @"psykoterapi", @"Mensendieck", @"Fysio",
-                     @"Hopping", @"aping", @"sprøyter", @"stikk",
-                     @"homeopati"];
     // Load data
     self.rd = [[RetrieveData alloc] init];
     self.threatmentsArray = [self.rd retrieveThreatmentsData];
-    threatmentMethods =[self.rd retrieveThreatmentsData];
-    
-    /* Make an array of NSStrings to compare with searches */
-    /*
-    threatmentMethodStrings = [NSMutableArray array];
-    for (NSUInteger i = 0; i < [self.threatmentsArray count]; i++)
-    {
-        ThreatmentMethod *method = [self.threatmentsArray objectAtIndex:i];
-        [threatmentMethodStrings addObject:method.title];
-    }
-     */
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -212,7 +188,6 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             NSLog(@"søkeresultat overgang");
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             method = [searchResults objectAtIndex:indexPath.row];
-            NSLog(method.title);
         }
          else {
             NSLog(@"metode overgang");
