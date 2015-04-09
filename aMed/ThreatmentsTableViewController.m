@@ -23,7 +23,9 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 @implementation ThreatmentsTableViewController{
     NSArray *searchResults;
+    NSArray *threatmentMethods;
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +35,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     self.metoder = @[@"masasje", @"healing", @"åndelig veiledning", @"Heimler",
                      @"Akupunktur", @"thaimasasje", @"trene",
                      @"naprapati", @"onani", @"løping", @"klatring",
@@ -42,6 +45,19 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     // Load data
     self.rd = [[RetrieveData alloc] init];
     self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    threatmentMethods =[self.rd retrieveThreatmentsData];
+    
+    /* Make an array of NSStrings to compare with searches */
+    /*
+    threatmentMethodStrings = [NSMutableArray array];
+    for (NSUInteger i = 0; i < [self.threatmentsArray count]; i++)
+    {
+        ThreatmentMethod *method = [self.threatmentsArray objectAtIndex:i];
+        [threatmentMethodStrings addObject:method.title];
+    }
+     */
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -78,13 +94,13 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     }
     ThreatmentMethod *metode = nil;
     metode = [self.threatmentsArray objectAtIndex:indexPath.row];
-    /*
+    
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         metode = [searchResults objectAtIndex:indexPath.row];
     } else {
         metode = [self.threatmentsArray objectAtIndex:indexPath.row];
     }
-     */
+    
     cell.textLabel.text = metode.title/*self.metoder[indexPath.row] */;
     UIImage *image = [UIImage imageNamed:@"second"];
     cell.imageView.image = image;
@@ -104,13 +120,19 @@ shouldReloadTableForSearchString:(NSString *)searchString
     return YES;
 }
 
+
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
+    /* The predicate object searches through all the Threatments and returns the matched objects.
+     * it returns true or false.
+     * Filter the threatments using "title" as the search criteria.
+     * [c] means case sensitive. 
+     */
     NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"SELF contains[cd] %@",
+                                    predicateWithFormat:@"title contains[c] %@",
                                     searchText];
+    searchResults = [self.threatmentsArray filteredArrayUsingPredicate:resultPredicate];
     
-    searchResults = [self.metoder filteredArrayUsingPredicate:resultPredicate];
 }
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller
@@ -183,17 +205,20 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             
         NSIndexPath *indexPath = nil;
         ThreatmentMethod *method = nil;
-        /* Fortsatt litt rot med søkefeltet */
-        /*if (self.searchDisplayController.active) {
+        /*Fortsatt litt rot med søkefeltet */
+            
+            // Søkefelt fiksa =)
+        if (self.searchDisplayController.active) {
             NSLog(@"søkeresultat overgang");
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             method = [searchResults objectAtIndex:indexPath.row];
-        } */
-            //else {
+            NSLog(method.title);
+        }
+         else {
             NSLog(@"metode overgang");
             indexPath = [self.tableView indexPathForCell:sender];
             method = [self.threatmentsArray objectAtIndex:indexPath.row];
-        //}
+        }
         ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
