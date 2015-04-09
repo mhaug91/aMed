@@ -17,7 +17,6 @@
 
 
 @property(strong, nonatomic) RetrieveData *rd;
-@property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
 
 #pragma marks
