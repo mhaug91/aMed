@@ -19,6 +19,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWebView];
+    
+    self.rd = [[RetrieveData alloc] init];
+    self.allTherapists = [self.rd retrieveTherapists];
+    [self findAssociatedTherapists];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -44,10 +49,28 @@
     if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
         self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
+    
     /* Amed.no (the website) has a custom backbutton used on the pages for the
      * treatment methods. This has to be removed from the text: */
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];
     [self.webView loadHTMLString:self.htmlString baseURL:nil];
+    
+}
+
+/* This method finds the associated therapists with the current threatmentmethod */
+- (void) findAssociatedTherapists{
+    if(self.allTherapists != nil){
+        for(Therapists *t in self.allTherapists){ // Short for- loop. Loops through all therapists
+            for(NSString *s in t.treatmentMethods){ // Loops through the threatmentmethods of a therapist.
+                if([self.currentMethod.title isEqualToString:s]){ // if current method is associated with therapist
+                    NSLog(@"%@", t.firstName);
+                    [self.associatedTherapists addObject:t]; // add the therapist to associated therapists array.
+                    
+                }
+                
+            }
+        }
+    }
     
 }
 

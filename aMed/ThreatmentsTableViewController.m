@@ -46,7 +46,6 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
-    return [self.indexes count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
