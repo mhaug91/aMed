@@ -19,7 +19,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWebView];
-    
     self.rd = [[RetrieveData alloc] init];
     self.allTherapists = [self.rd retrieveTherapists];
     [self findAssociatedTherapists];
@@ -60,12 +59,12 @@
 /* This method finds the associated therapists with the current threatmentmethod */
 - (void) findAssociatedTherapists{
     if(self.allTherapists != nil){
+        self.associatedTherapists = [[NSMutableArray alloc] init];
         for(Therapists *t in self.allTherapists){ // Short for- loop. Loops through all therapists
             for(NSString *s in t.treatmentMethods){ // Loops through the threatmentmethods of a therapist.
                 if([self.currentMethod.title isEqualToString:s]){ // if current method is associated with therapist
                     NSLog(@"%@", t.firstName);
                     [self.associatedTherapists addObject:t]; // add the therapist to associated therapists array.
-                    
                 }
                 
             }
