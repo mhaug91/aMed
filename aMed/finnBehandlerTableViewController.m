@@ -58,7 +58,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
                              finnBehandlerID forIndexPath:indexPath];
     if(cell == nil){
         cell = [[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleDefault
+                initWithStyle:UITableViewCellStyleSubtitle
                 reuseIdentifier:finnBehandlerID];
     }
     
@@ -66,6 +66,14 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
     cell.textLabel.text = name;
+    
+    NSString *description = [NSString stringWithFormat:@"%@\r%@", method.company, method.company];
+    cell.detailTextLabel.text = description;
+    cell.detailTextLabel.numberOfLines = 2;
+    
+    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
+    cell.imageView.image =  [UIImage imageNamed:imagepath];
+    
     return cell;
 }
 
