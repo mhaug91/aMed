@@ -36,8 +36,6 @@
 		5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701DC1AB9A50100A9DB39 /* SystemConfiguration.framework */; };
 		5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */; };
 		5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */; };
-		5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CD01AADCEC100D408AC /* NavBarViewController.m */; };
-		5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CD31AADCF7400D408AC /* TabBarViewController.m */; };
 		5C2A3E811AD566AD0003A164 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7C1AD566AD0003A164 /* Address.m */; };
 		5C2A3E821AD566AD0003A164 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7E1AD566AD0003A164 /* Location.m */; };
 		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
@@ -97,10 +95,6 @@
 		5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finnBehandlerTableViewController.h; sourceTree = "<group>"; };
 		5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = finnBehandlerTableViewController.m; sourceTree = "<group>"; };
-		5C218CCF1AADCEC100D408AC /* NavBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBarViewController.h; sourceTree = "<group>"; };
-		5C218CD01AADCEC100D408AC /* NavBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarViewController.m; sourceTree = "<group>"; };
-		5C218CD21AADCF7400D408AC /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
-		5C218CD31AADCF7400D408AC /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		5C2A3E7B1AD566AD0003A164 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		5C2A3E7C1AD566AD0003A164 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		5C2A3E7D1AD566AD0003A164 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -140,11 +134,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		04B533A41AC42E530050013C /* ViewControllers */ = {
+		04B533A41AC42E530050013C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5C0701DE1AB9AB3100A9DB39 /* MapViewController.h */,
+				5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */,
+				5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */,
+				5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */,
+				04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */,
+				04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */,
+				043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */,
+				043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */,
+				042D14A41AB9C3DD0013D306 /* NewsInfoViewController.h */,
+				042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */,
+				04FACECB1AADBCF9009789BA /* NewsViewController.h */,
+				04FACECC1AADBCF9009789BA /* NewsViewController.m */,
 			);
-			name = ViewControllers;
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		04B533A51AC42E8E0050013C /* Utils */ = {
@@ -196,30 +202,14 @@
 			isa = PBXGroup;
 			children = (
 				04B533A51AC42E8E0050013C /* Utils */,
-				04B533A41AC42E530050013C /* ViewControllers */,
+				04B533A41AC42E530050013C /* Controllers */,
 				04D77C851AC01DB4009D74A1 /* Objects */,
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
-				04FACECB1AADBCF9009789BA /* NewsViewController.h */,
-				04FACECC1AADBCF9009789BA /* NewsViewController.m */,
-				042D14A41AB9C3DD0013D306 /* NewsInfoViewController.h */,
-				042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
-				04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */,
-				04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */,
-				043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */,
-				043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */,
-				5C218CCF1AADCEC100D408AC /* NavBarViewController.h */,
-				5C218CD01AADCEC100D408AC /* NavBarViewController.m */,
-				5C218CD21AADCF7400D408AC /* TabBarViewController.h */,
-				5C218CD31AADCF7400D408AC /* TabBarViewController.m */,
-				5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */,
-				5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */,
 				04FACED41AADBCF9009789BA /* Images.xcassets */,
 				04FACED61AADBCF9009789BA /* LaunchScreen.xib */,
 				04FACEC41AADBCF9009789BA /* Supporting Files */,
-				5C0701DE1AB9AB3100A9DB39 /* MapViewController.h */,
-				5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */,
 			);
 			path = aMed;
 			sourceTree = "<group>";
@@ -375,10 +365,8 @@
 				04BC0BEE1AD515D500570763 /* News.m in Sources */,
 				5C2A3E821AD566AD0003A164 /* Location.m in Sources */,
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
-				5C218CD41AADCF7400D408AC /* TabBarViewController.m in Sources */,
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
 				5C2A3E811AD566AD0003A164 /* Address.m in Sources */,
-				5C218CD11AADCEC100D408AC /* NavBarViewController.m in Sources */,
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,

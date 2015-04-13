@@ -39,7 +39,7 @@ GMSMapView *mapView_;
     //Metode for å legge inn behandlere på kartet.
     NSArray *behandlere = @[@"Beate", @"Kjell", @"Knut"];
     double koordinater[6] = {-33.86, 151.20, -37.4849, 144.5747, -35.1827, 149.0727};
-    NSInteger tall;
+    NSInteger tall = 0;
     for (int i=0; i<behandlere.count; i++) {
             GMSMarker *marker = [[GMSMarker alloc]init];
             marker.position = CLLocationCoordinate2DMake(koordinater[tall], koordinater[1+tall]);
