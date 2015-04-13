@@ -65,14 +65,18 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     Therapists *method = nil;
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
+    
+    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/%@", method.avatar];
+    UIImage *image = [UIImage imageNamed:imagepath];
+    cell.imageView.image = image;
+    
     cell.textLabel.text = name;
     
     NSString *description = [NSString stringWithFormat:@"%@\r%@", method.company, method.company];
     cell.detailTextLabel.text = description;
     cell.detailTextLabel.numberOfLines = 2;
     
-    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
-    cell.imageView.image =  [UIImage imageNamed:imagepath];
+
     
     return cell;
 }
