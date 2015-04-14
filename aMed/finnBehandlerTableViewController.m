@@ -67,17 +67,10 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     Therapists *method = nil;
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
-<<<<<<< HEAD
     cell.textLabel.text = name;
-    
-    NSString *description = [NSString stringWithFormat:@"%@\r%@", method.company, method.company];
-    cell.detailTextLabel.text = description;
-    cell.detailTextLabel.numberOfLines = 2;
-    
+
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
     cell.imageView.image =  [UIImage imageNamed:imagepath];
-=======
-    NSString *imagepath = [NSString stringWithFormat:@"http://www.amed.no/images/comprofiler/%@", method.avatar];
     NSString *therapistTreatments = [[method.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
     if([method.avatar isEqual:[NSNull null]]){
@@ -97,8 +90,6 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     cell.detailTextLabel.text = description;
     cell.detailTextLabel.numberOfLines = 2;
     
-
->>>>>>> Pikksaft
     
     return cell;
 }
