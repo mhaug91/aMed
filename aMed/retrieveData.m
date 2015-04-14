@@ -119,7 +119,7 @@
         NSString *treatmentMethods = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
         
         //Splitting string of treatment methods into an array.
-        tr_methods = [treatmentMethods componentsSeparatedByString:(@"\\|\\*\\|")];
+        tr_methods = [treatmentMethods componentsSeparatedByString:(@"|*|")];
         
         address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
         therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods];
