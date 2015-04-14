@@ -12,6 +12,7 @@
 
 static NSString *finnBehandlerID = @"finnBehandlerID";
 
+
 @interface finnBehandlerTableViewController ()
 
 @property (copy, nonatomic) NSArray *behandlere;
@@ -51,6 +52,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     return [self.therapists count];
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -61,10 +63,11 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
                 initWithStyle:UITableViewCellStyleSubtitle
                 reuseIdentifier:finnBehandlerID];
     }
-    
+
     Therapists *method = nil;
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
+<<<<<<< HEAD
     cell.textLabel.text = name;
     
     NSString *description = [NSString stringWithFormat:@"%@\r%@", method.company, method.company];
@@ -73,9 +76,33 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
     cell.imageView.image =  [UIImage imageNamed:imagepath];
+=======
+    NSString *imagepath = [NSString stringWithFormat:@"http://www.amed.no/images/comprofiler/%@", method.avatar];
+    NSString *therapistTreatments = [[method.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
+    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
+    if([method.avatar isEqual:[NSNull null]]){
+        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
+        cell.imageView.image = [UIImage imageWithData:image];
+
+    } else {
+        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
+        cell.imageView.image = [UIImage imageWithData:image];
+
+    }
+    
+    cell.textLabel.text = method.company;
+    cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:12];
+    
+    NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
+    cell.detailTextLabel.text = description;
+    cell.detailTextLabel.numberOfLines = 2;
+    
+
+>>>>>>> Pikksaft
     
     return cell;
 }
+
 
 /*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
