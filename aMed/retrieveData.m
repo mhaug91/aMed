@@ -145,7 +145,7 @@
         NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
         
         //add the threatment object to our threatments array
-        [newsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
+        [newsArray addObject:[[News alloc]initWithTitle:title andAlias:alias]];
         
     }
     return newsArray;
