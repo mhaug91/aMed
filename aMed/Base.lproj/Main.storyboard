@@ -214,7 +214,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Gfb-ln-wD9" kind="show" id="3d1-3u-7fu"/>
+                                    <segue destination="Gfb-ln-wD9" kind="show" identifier="pushTherapist" id="3d1-3u-7fu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -229,23 +229,42 @@
             </objects>
             <point key="canvasLocation" x="1578" y="468"/>
         </scene>
-        <!--Behandler-->
+        <!--Therapist View Controller-->
         <scene sceneID="SfD-0w-0YH">
             <objects>
-                <viewController title="Behandler" id="Gfb-ln-wD9" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Gfb-ln-wD9" customClass="TherapistViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8Cn-HB-Wu8"/>
-                        <viewControllerLayoutGuide type="bottom" id="Zgr-fj-aK7"/>
+                        <viewControllerLayoutGuide type="top" id="2FK-o4-zrx"/>
+                        <viewControllerLayoutGuide type="bottom" id="gWe-4X-jY1"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xUh-lq-pfW">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="nyI-Xe-S0L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-54-YM3">
+                                <rect key="frame" x="0.0" y="-13" width="600" height="1000"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
+                                <size key="value" width="320" height="800"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="rect" keyPath="keyPath">
+                                <rect key="value" x="0.0" y="0.0" width="320" height="600"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </scrollView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="contentView" destination="JDh-54-YM3" id="1XS-0U-kYX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLk-Ti-fPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2362" y="466"/>
+            <point key="canvasLocation" x="2394" y="462"/>
         </scene>
         <!--Finn behandler-->
         <scene sceneID="8ze-Eh-eZI">

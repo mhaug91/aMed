@@ -166,14 +166,30 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
  }
  */
 
-/*
+
  #pragma mark - Navigation
  
  // In a storyboard-based application, you will often want to do a little preparation before navigation
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
- }
- */
+ 
+     if([[segue identifier] isEqualToString:@"pushTherapist"]){
+ 
+         NSIndexPath *indexPath = nil;
+         Therapists *method = nil;
+         NSString *title = method.company;
+
+         NSLog(@"metode overgang");
+         indexPath = [self.tableView indexPathForCell:sender];
+         method = [self.therapists objectAtIndex:indexPath.row];
+
+         TherapistViewController *destViewController = segue.destinationViewController; // Getting new view controller
+         destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
+         [destViewController getTherapistObject:method]; // Passing object to ThreamentInfoController
+         //Therapists  *Therapist = [self.rd retrieveTherapists:method.company]; // Passing the ThreatmentMethod objects alias to get its info
+         //[method setIntroText:introtext]; //
+     }
+}
 
 @end
