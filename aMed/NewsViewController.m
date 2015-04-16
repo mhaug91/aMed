@@ -98,14 +98,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          News *news = [self.newsArray objectAtIndex:indexPath.row];
          NewsInfoViewController *destVC = segue.destinationViewController;
-   
-        //nyVC.navigationItem.title = self.dwarves[indexPath.row];
-    //} else {
-         //nyVC.navigationItem.title = searchResults[indexPath.row];
+         [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]];
          destVC.navigationItem.title = news.title;
          [destVC getNewsObject:news];
-         NSString *introtext = [self.rd retrieveNewsInfoData:news.alias];
-         [news setIntroText:introtext];
+         
          
     }
 }

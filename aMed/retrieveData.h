@@ -11,6 +11,7 @@
 #import "Therapists.h"
 #import "Address.h"
 #import "Location.h"
+#import "News.h"
 
 @interface RetrieveData : NSObject
 
