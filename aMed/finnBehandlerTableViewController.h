@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RetrieveData.h"
+#import "TherapistViewController.h"
 
 @interface finnBehandlerTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate>
