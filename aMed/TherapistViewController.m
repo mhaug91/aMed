@@ -9,15 +9,48 @@
 #import "TherapistViewController.h"
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
+#define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
+#define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
 
 @interface TherapistViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (strong, nonatomic) UITableView *tableView;
 
 @end
 
 @implementation TherapistViewController
 
+
+
+-(UITableView *)makeTableView
+{
+    double number = 0;
+    for (int i = 0 ; i<self.currentTherapist.treatmentMethods.count; i++) {
+        number += 40;
+    }
+    
+    CGFloat x = 0;
+    CGFloat y = 280;
+    CGFloat width = self.view.frame.size.width;
+    CGFloat height = number;
+    CGRect tableFrame = CGRectMake(x, y, width, height);
+    
+    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
+    
+    tableView.rowHeight = 40;
+    tableView.sectionFooterHeight = 10;
+    tableView.sectionHeaderHeight = 10;
+    tableView.scrollEnabled = YES;
+    tableView.showsVerticalScrollIndicator = YES;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    return tableView;
+}
 
 
 - (void)viewDidLoad {
@@ -30,13 +63,17 @@
     
     self.rd = [[RetrieveData alloc] init];
     self.therapists = [self.rd retrieveTherapists];
+    self.threatmentsArray = [self.rd retrieveThreatmentsData];
     //UINavigationBar
     [self firstLabel];
     [self imageView];
     [self secondLabel];
-    [self addTreatmentMethods];
+   // [self addTreatmentMethods];
     [self textField];
     [self thirdlabel];
+    self.tableView = [self makeTableView];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
+    [self.view addSubview:self.tableView];
     
     //self.view.backgroundColor = [UIColor grayColor];
 }
@@ -110,10 +147,44 @@
 }
 
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+
+        return [self.currentTherapist.treatmentMethods count];
+        
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TreatmentMethods";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    ThreatmentMethod *method = nil;
+    
+    method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
+    NSString *title = [NSString stringWithFormat:@"%@", method];
+    cell.textLabel.text = title;
+
+    
+    return cell;
+}
+
+
+
 - (IBAction)buttonTapped:(UIButton *)sender{
-    ThreatmentInfoViewController *viewController = [[ThreatmentInfoViewController alloc] init];
-    [self.navigationController pushViewController:viewController animated:YES];
+    [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
     NSLog(@"Button Tapped!");
+}
+
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *sender = [self.tableView cellForRowAtIndexPath:indexPath];
+
+    [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
 }
 
 -(void) thirdlabel{
@@ -156,14 +227,30 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    
+    if ([[segue identifier] isEqualToString:@"PushTreatmentInfo"])
+    {
+        NSString *title = self.selectedTreatmentMethod.title;
+        
+        NSIndexPath *indexPath = nil;
+        ThreatmentMethod *method = nil;
+        
+        indexPath = [self.tableView indexPathForCell:sender];
+        method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
+        
+        ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
+        destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
+        [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
+        NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
+        [method setIntroText:introtext]; //
+
+    }
 }
-*/
+
 
 @end

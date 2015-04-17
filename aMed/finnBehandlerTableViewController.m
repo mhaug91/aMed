@@ -49,6 +49,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     NSLog(@"%ld", [self.therapists count]);
+    tableView.rowHeight = 50;
     return [self.therapists count];
 }
 
@@ -70,12 +71,14 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     cell.textLabel.text = name;
 
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
-    cell.imageView.image =  [UIImage imageNamed:imagepath];
+    
+    cell.imageView.image = [UIImage imageNamed:imagepath];
     NSString *therapistTreatments = [[method.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
     if([method.avatar isEqual:[NSNull null]]){
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
         cell.imageView.image = [UIImage imageWithData:image];
+    
 
     } else {
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
@@ -83,8 +86,12 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
     }
     
+
+    
     cell.textLabel.text = method.company;
     cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:12];
+    cell.textLabel.textAlignment = NSTextAlignmentRight;
+
     
     NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
     cell.detailTextLabel.text = description;
