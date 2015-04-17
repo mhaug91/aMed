@@ -260,11 +260,12 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="contentView" destination="JDh-54-YM3" id="1XS-0U-kYX"/>
+                        <segue destination="kq0-N3-XFN" kind="show" identifier="PushTreatmentInfo" id="7iX-jM-EA2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLk-Ti-fPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2394" y="462"/>
+            <point key="canvasLocation" x="2380" y="468"/>
         </scene>
         <!--Finn behandler-->
         <scene sceneID="8ze-Eh-eZI">
@@ -415,4 +416,7 @@
     <resources>
         <image name="card_bg.png" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="7iX-jM-EA2"/>
+    </inferredMetricsTieBreakers>
 </document>
