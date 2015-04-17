@@ -13,12 +13,12 @@
 		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */; };
+		04DD67B91AE1329D005F7084 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DD67B81AE1329D005F7084 /* Launch Screen.xib */; };
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
 		04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACECC1AADBCF9009789BA /* NewsViewController.m */; };
 		04FACED31AADBCF9009789BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED11AADBCF9009789BA /* Main.storyboard */; };
 		04FACED51AADBCF9009789BA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED41AADBCF9009789BA /* Images.xcassets */; };
-		04FACED81AADBCF9009789BA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04FACED61AADBCF9009789BA /* LaunchScreen.xib */; };
 		04FACEE41AADBCF9009789BA /* aMedTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEE31AADBCF9009789BA /* aMedTests.m */; };
 		5C0701C31AB9A3C600A9DB39 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701C21AB9A3C600A9DB39 /* GoogleMaps.framework */; };
 		5C0701C51AB9A42900A9DB39 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5C0701C41AB9A42900A9DB39 /* GoogleMaps.bundle */; };
@@ -65,6 +65,7 @@
 		04BC0BED1AD515D500570763 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentMethod.h; sourceTree = "<group>"; };
 		04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentMethod.m; sourceTree = "<group>"; };
+		04DD67B81AE1329D005F7084 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		04FACEC11AADBCF9009789BA /* aMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEC51AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEC61AADBCF9009789BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -74,7 +75,6 @@
 		04FACECC1AADBCF9009789BA /* NewsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		04FACED21AADBCF9009789BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		04FACED41AADBCF9009789BA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		04FACED71AADBCF9009789BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		04FACEDD1AADBCF9009789BA /* aMedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aMedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEE21AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEE31AADBCF9009789BA /* aMedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aMedTests.m; sourceTree = "<group>"; };
@@ -206,6 +206,7 @@
 		04FACEC31AADBCF9009789BA /* aMed */ = {
 			isa = PBXGroup;
 			children = (
+				04DD67B81AE1329D005F7084 /* Launch Screen.xib */,
 				04B533A51AC42E8E0050013C /* Utils */,
 				04B533A41AC42E530050013C /* Controllers */,
 				04D77C851AC01DB4009D74A1 /* Objects */,
@@ -213,7 +214,6 @@
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
 				04FACED41AADBCF9009789BA /* Images.xcassets */,
-				04FACED61AADBCF9009789BA /* LaunchScreen.xib */,
 				04FACEC41AADBCF9009789BA /* Supporting Files */,
 			);
 			path = aMed;
@@ -347,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04FACED31AADBCF9009789BA /* Main.storyboard in Resources */,
-				04FACED81AADBCF9009789BA /* LaunchScreen.xib in Resources */,
+				04DD67B91AE1329D005F7084 /* Launch Screen.xib in Resources */,
 				04FACED51AADBCF9009789BA /* Images.xcassets in Resources */,
 				5C0701C51AB9A42900A9DB39 /* GoogleMaps.bundle in Resources */,
 			);
@@ -410,14 +410,6 @@
 				04FACED21AADBCF9009789BA /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		04FACED61AADBCF9009789BA /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				04FACED71AADBCF9009789BA /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -502,7 +494,7 @@
 		04FACEE81AADBCF9009789BA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -519,7 +511,7 @@
 		04FACEE91AADBCF9009789BA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
