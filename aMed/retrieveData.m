@@ -96,7 +96,6 @@
             NSLog(@"Exception: %@", exception.reason);
         }
         @finally {
-            NSLog(@"Finally");
         }
         
         //Therapist
@@ -113,7 +112,6 @@
             NSLog(@"Exception: %@", exception.reason);
         }
         @finally {
-            NSLog(@"Finally");
         }
         NSString *comment = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_ajaxtekst")];
         NSString *treatmentMethods = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
