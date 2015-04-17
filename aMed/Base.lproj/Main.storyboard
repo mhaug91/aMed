@@ -374,7 +374,7 @@
         <scene sceneID="6TY-1C-3Hr">
             <objects>
                 <navigationController id="AMF-Qe-VeF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Behandlingsmetoder" image="card_bg.png" id="NeK-N1-S34"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Behandlingsmetoder" image="first" id="NeK-N1-S34"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8K-eP-Mqb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -386,6 +386,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gHS-d1-e23" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1046" y="-1038"/>
+        </scene>
+        <!--Om oss-->
+        <scene sceneID="iKx-rf-UzT">
+            <objects>
+                <viewController id="frj-1q-hJt" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qCw-0Z-phf"/>
+                        <viewControllerLayoutGuide type="bottom" id="sF1-cb-Aci"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lth-HX-txA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Om oss" id="S7s-Dd-fB0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZE-95-8kW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1214" y="-60"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -405,6 +424,7 @@
                         <segue destination="W6H-Hn-YFr" kind="relationship" relationship="viewControllers" id="xNE-6I-6ZX"/>
                         <segue destination="REr-lC-9zg" kind="relationship" relationship="viewControllers" id="0fz-fP-BXv"/>
                         <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
+                        <segue destination="frj-1q-hJt" kind="relationship" relationship="viewControllers" id="N95-su-gc2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -413,6 +433,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="card_bg.png" width="26" height="26"/>
+        <image name="first" width="30" height="30"/>
     </resources>
 </document>
