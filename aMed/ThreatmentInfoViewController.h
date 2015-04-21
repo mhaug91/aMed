@@ -10,6 +10,9 @@
 #import "ThreatmentMethod.h"
 #import "Therapists.h"
 #import "retrieveData.h"
+#import "TherapistTableViewController.h"
+#import "NewsInfoViewController.h"
+#import "NewsViewController.h"
 @interface ThreatmentInfoViewController : UIViewController
 
 
@@ -18,6 +21,9 @@
 @property(nonatomic, strong) NSMutableArray *allTherapists;
 @property(nonatomic, strong) NSMutableArray *associatedTherapists;
 @property(nonatomic, strong) RetrieveData *rd;
+@property (strong, nonatomic) UITableView *tableView;
+//@property(nonatomic, weak)  TherapistTableViewController *f;
+
 
 
 #pragma marks

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "finnBehandlerTableViewController.h"
+#import "TherapistTableViewController.h"
 #import "retrieveData.h"
 #import "ThreatmentInfoViewController.h"
 #import "ThreatmentMethod.h"

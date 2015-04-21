@@ -6,27 +6,26 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "finnBehandlerTableViewController.h"
+#import "TherapistTableViewController.h"
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 
 static NSString *finnBehandlerID = @"finnBehandlerID";
 
 
-@interface finnBehandlerTableViewController ()
+@interface TherapistTableViewController ()
 
 @property (copy, nonatomic) NSArray *behandlere;
 
 @end
 
-@implementation finnBehandlerTableViewController
+@implementation TherapistTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     self.rd = [[RetrieveData alloc] init];
     self.therapists = [self.rd retrieveTherapists];
-
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
@@ -40,7 +39,6 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
                              finnBehandlerID forIndexPath:indexPath];
     if(cell == nil){
@@ -48,7 +46,6 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
                 initWithStyle:UITableViewCellStyleSubtitle
                 reuseIdentifier:finnBehandlerID];
     }
-
     Therapists *method = nil;
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];

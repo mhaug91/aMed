@@ -35,7 +35,7 @@
 		5C0701DB1AB9A4F300A9DB39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701DA1AB9A4F300A9DB39 /* QuartzCore.framework */; };
 		5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701DC1AB9A50100A9DB39 /* SystemConfiguration.framework */; };
 		5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */; };
-		5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */; };
+		5C218CCE1AADC5AA00D408AC /* TherapistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */; };
 		5C2A3E811AD566AD0003A164 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7C1AD566AD0003A164 /* Address.m */; };
 		5C2A3E821AD566AD0003A164 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7E1AD566AD0003A164 /* Location.m */; };
 		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
@@ -99,8 +99,8 @@
 		5C0701DC1AB9A50100A9DB39 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5C0701DE1AB9AB3100A9DB39 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = finnBehandlerTableViewController.h; sourceTree = "<group>"; };
-		5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = finnBehandlerTableViewController.m; sourceTree = "<group>"; };
+		5C218CCC1AADC5AA00D408AC /* TherapistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TherapistTableViewController.h; sourceTree = "<group>"; };
+		5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapistTableViewController.m; sourceTree = "<group>"; };
 		5C2A3E7B1AD566AD0003A164 /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		5C2A3E7C1AD566AD0003A164 /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		5C2A3E7D1AD566AD0003A164 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -157,8 +157,8 @@
 			children = (
 				5C0701DE1AB9AB3100A9DB39 /* MapViewController.h */,
 				5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */,
-				5C218CCC1AADC5AA00D408AC /* finnBehandlerTableViewController.h */,
-				5C218CCD1AADC5AA00D408AC /* finnBehandlerTableViewController.m */,
+				5C218CCC1AADC5AA00D408AC /* TherapistTableViewController.h */,
+				5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */,
 				04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */,
 				04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */,
 				043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */,
@@ -404,7 +404,7 @@
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
-				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
+				5C218CCE1AADC5AA00D408AC /* TherapistTableViewController.m in Sources */,
 				5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */,
 				5CF68D321AE63747005038CD /* Events.m in Sources */,
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,

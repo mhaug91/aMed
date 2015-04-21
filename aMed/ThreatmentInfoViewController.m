@@ -8,6 +8,7 @@
 
 #import "ThreatmentInfoViewController.h"
 
+static NSString *finnBehandlerID = @"TherapistCell";
 
 @interface ThreatmentInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -22,8 +23,10 @@
     self.rd = [[RetrieveData alloc] init];
     self.allTherapists = [self.rd retrieveTherapists];
     [self findAssociatedTherapists];
-    
-    // Do any additional setup after loading the view.
+    self.tableView = [self makeTableView];
+    if(self.tableView == nil) NSLog(@"Tom tabell");
+    else [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:finnBehandlerID];
+    [self.view addSubview:self.tableView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,8 +55,20 @@
     /* Amed.no (the website) has a custom backbutton used on the pages for the
      * treatment methods. This has to be removed from the text: */
     self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];
-    [self.webView loadHTMLString:self.htmlString baseURL:nil];
     
+    [self.webView loadHTMLString:self.htmlString baseURL:nil];
+    self.webView.delegate = self;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)aWebView
+{
+    aWebView.scrollView.scrollEnabled = YES;    // Property available in iOS 5.0 and later
+    CGRect frame = aWebView.frame;
+    
+    frame.size.width = self.view.frame.size.width;       // Your desired width here.
+    frame.size.height = 400;        // Set the height to a small one.
+    
+    aWebView.frame = frame;       // Set webView's Frame, forcing the Layout of its embedded scrollView with current Frame's constraints (Width set above).
 }
 
 /* This method finds the associated therapists with the current threatmentmethod */
@@ -71,6 +86,120 @@
         }
     }
     
+    
+}
+
+//Creates the tableview.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    
+    return [self.associatedTherapists count];
+    
+}
+
+//Defines each cell of the table view.
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    Therapists *terapist = nil;
+    
+    terapist = [self.associatedTherapists objectAtIndex:indexPath.row];
+    NSString *title = [NSString stringWithFormat:@"%@", terapist.firstName];
+    cell.textLabel.text = title;
+    
+    
+    return cell;
+}
+ */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+                         finnBehandlerID forIndexPath:indexPath];
+if(cell == nil){
+    cell = [[UITableViewCell alloc]
+            initWithStyle:UITableViewCellStyleSubtitle
+            reuseIdentifier:finnBehandlerID];
+}
+
+Therapists *therapist = nil;
+therapist = [self.associatedTherapists objectAtIndex:indexPath.row];
+NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
+cell.textLabel.text = name;
+
+NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
+
+cell.imageView.image = [UIImage imageNamed:imagepath];
+NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
+NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
+if([therapist.avatar isEqual:[NSNull null]]){
+    NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
+    cell.imageView.image = [UIImage imageWithData:image];
+    
+    
+} else {
+    NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
+    cell.imageView.image = [UIImage imageWithData:image];
+    
+}
+    
+
+
+
+cell.textLabel.text = therapist.company;
+cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:12];
+cell.textLabel.textAlignment = NSTextAlignmentRight;
+
+
+NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
+cell.detailTextLabel.text = description;
+cell.detailTextLabel.numberOfLines = 2;
+
+
+return cell;
+}
+
+
+//Method which creates the tableView
+-(UITableView *)makeTableView
+{
+    double number = 0;
+    for (int i = 0 ; i<self.associatedTherapists.count; i++) {
+        number += 40;
+    }
+    if(number == 0) return nil;
+    
+    CGFloat x = 0;
+    CGFloat y = 440;
+    CGFloat width = self.view.frame.size.width;
+    CGFloat height = number;
+    CGRect tableFrame = CGRectMake(x, y, width, height);
+    
+    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 400, width, 40)];
+    UILabel *labelView = [[UILabel alloc] initWithFrame:CGRectMake(0, 400, width, 40)];
+    labelView.text = @"uhuh";
+    labelView.backgroundColor = [UIColor colorWithRed:1.00 green:0.00 blue:0.00 alpha:1.0];
+    [headerView addSubview:labelView];
+    tableView.tableHeaderView = headerView;
+    tableView.rowHeight = 40;
+    tableView.sectionFooterHeight = 10;
+    tableView.sectionHeaderHeight = 10;
+    tableView.scrollEnabled = NO;
+    tableView.showsVerticalScrollIndicator = YES;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
+    
+    return tableView;
+        
 }
 
 

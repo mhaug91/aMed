@@ -10,11 +10,13 @@
 #import "RetrieveData.h"
 #import "TherapistViewController.h"
 
-@interface finnBehandlerTableViewController : UITableViewController
+@interface TherapistTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate>
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *therapists;
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+        cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 @end
