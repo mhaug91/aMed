@@ -229,6 +229,27 @@
             </objects>
             <point key="canvasLocation" x="1578" y="468"/>
         </scene>
+        <!--Behandler Info-->
+        <scene sceneID="MiL-aR-n8f">
+            <objects>
+                <viewController title="Behandler Info" id="dC3-VR-uI1" customClass="MapInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tVC-Ak-I27"/>
+                        <viewControllerLayoutGuide type="bottom" id="piz-EM-Kol"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rAB-mH-ISi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="contentView" destination="rAB-mH-ISi" id="3FR-LF-Vcn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HLh-nA-ndo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1546" y="1176"/>
+        </scene>
         <!--Therapist View Controller-->
         <scene sceneID="SfD-0w-0YH">
             <objects>
@@ -284,10 +305,10 @@
             </objects>
             <point key="canvasLocation" x="758" y="468"/>
         </scene>
-        <!--Kart-->
+        <!--Nærmeste behandler-->
         <scene sceneID="66y-5a-bBR">
             <objects>
-                <viewController title="Kart" id="acA-nf-WPk" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController title="Nærmeste behandler" id="acA-nf-WPk" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="piM-W5-hOz"/>
                         <viewControllerLayoutGuide type="bottom" id="l5T-e5-kSx"/>
@@ -297,17 +318,64 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Kart" id="397-T1-psP"/>
+                    <navigationItem key="navigationItem" title="Nærmeste behandler" id="397-T1-psP"/>
+                    <connections>
+                        <segue destination="dC3-VR-uI1" kind="show" identifier="PushMapInfo" id="dNk-oi-j2v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiD-Qo-ip3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="756" y="1176"/>
         </scene>
-        <!--Kart-->
+        <!--Arrangementer-->
+        <scene sceneID="Xud-2V-SXr">
+            <objects>
+                <tableViewController title="Arrangementer" id="OXJ-ca-XoW" customClass="EventsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mes-mr-Odl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="eventID" id="HlO-dx-8gf">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HlO-dx-8gf" id="lk7-GX-eUb">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OXJ-ca-XoW" id="68O-8E-WOY"/>
+                            <outlet property="delegate" destination="OXJ-ca-XoW" id="WgG-pc-IfY"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Arrangementer" id="Oqo-jc-4Mv"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gu1-fJ-m6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1746" y="900"/>
+        </scene>
+        <!--Arrangementer-->
+        <scene sceneID="3Qp-8c-zAT">
+            <objects>
+                <navigationController title="Arrangementer" id="K2x-MG-8Mm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Arrangementer" id="LZr-ey-r27"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kwv-e3-jvd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OXJ-ca-XoW" kind="relationship" relationship="rootViewController" id="D0A-T6-7Pk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pFb-Co-V8d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-814" y="908"/>
+        </scene>
+        <!--Nærmeste behandler-->
         <scene sceneID="g5b-4r-shl">
             <objects>
-                <navigationController title="Kart" id="a4U-cm-4Wa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kart" id="wJE-mr-O60"/>
+                <navigationController title="Nærmeste behandler" id="a4U-cm-4Wa" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Nærmeste behandler" id="wJE-mr-O60"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Jz-FD-B7E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -388,6 +456,44 @@
             </objects>
             <point key="canvasLocation" x="-1046" y="-1038"/>
         </scene>
+        <!--Om Oss-->
+        <scene sceneID="cT3-n0-ycR">
+            <objects>
+                <viewController title="Om Oss" id="5Id-sn-V4u" customClass="AboutUsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gXu-gy-M9g"/>
+                        <viewControllerLayoutGuide type="bottom" id="M3i-3v-Yzo"/>
+                    </layoutGuides>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="sV9-BB-F7w">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-FH-Nmf">
+                                <rect key="frame" x="0.0" y="-13" width="600" height="1000"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
+                                <size key="value" width="320" height="800"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="rect" keyPath="keyPath">
+                                <rect key="value" x="0.0" y="0.0" width="320" height="600"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </scrollView>
+                    <tabBarItem key="tabBarItem" title="Om oss" id="zlm-zC-0gi"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="contentView" destination="Vzs-FH-Nmf" id="q9r-6B-0SB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z0Y-s8-X6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-990" y="-242"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -406,6 +512,8 @@
                         <segue destination="W6H-Hn-YFr" kind="relationship" relationship="viewControllers" id="xNE-6I-6ZX"/>
                         <segue destination="REr-lC-9zg" kind="relationship" relationship="viewControllers" id="0fz-fP-BXv"/>
                         <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
+                        <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
+                        <segue destination="5Id-sn-V4u" kind="relationship" relationship="viewControllers" id="OYK-0s-aYZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

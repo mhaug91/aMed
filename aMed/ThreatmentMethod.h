@@ -17,4 +17,6 @@
 - (id) initWithTitle: (NSString *) title andAlias: (NSString *) alias andIntroText: (NSString *) iText;
 - (id) initWithTitle: (NSString *) title andAlias: (NSString *) alias;
 
+- (id) initWithTitle: (NSString *) title;
+
 @end

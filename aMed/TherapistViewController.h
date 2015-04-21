@@ -11,6 +11,7 @@
 #import "retrieveData.h"
 #import "ThreatmentInfoViewController.h"
 #import "ThreatmentMethod.h"
+#import "Therapists.h"
 
 @interface TherapistViewController : UIViewController
 
@@ -20,6 +21,8 @@
 @property(strong, nonatomic) Therapists *currentTherapist;
 @property(strong, nonatomic) ThreatmentMethod *selectedTreatmentMethod;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
+@property(nonatomic, strong) NSMutableArray *associatedMethods;
+
 
 - (void) getTherapistObject: (id) therapistObject;
 - (IBAction)buttonTapped:(UIButton *)sender;

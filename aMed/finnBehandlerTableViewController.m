@@ -26,23 +26,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     
     self.rd = [[RetrieveData alloc] init];
     self.therapists = [self.rd retrieveTherapists];
-    
-    
-    //Legger inn tabell av behandlere
-    //self.behandlere = self.therapists;
-    
-    /*@[@"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
-     @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg",
-     @"Kristbjørg Rasmussen",
-     @"Nina Brandsdal", @"Linda Opedal Mokleiv", @"Liv Grete Olsen", @"Kärstin Irene Trygg", @"Kristbjørg Rasmussen",
-     @"Nina Brandsdal", @"Linda Opedal Mokleiv"];*/
-    //UITableView *tableView = (id)[self.view viewWithTag:1];
-    
-    // tableView.contentInset = UIEdgeInsetsMake(94, 0, 74, 0);
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 

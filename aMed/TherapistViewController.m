@@ -22,7 +22,38 @@
 @implementation TherapistViewController
 
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //Getting data from the database
+    self.rd = [[RetrieveData alloc] init];
+    self.therapists = [self.rd retrieveTherapists];
+    self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    
+    self.navigationItem.title = self.currentTherapist.company;
+    
+    //Initiating methods to make each label and tableview
+    [self firstLabel];
+    [self imageView];
+    [self secondLabel];
+    [self textField];
+    [self thirdlabel];
+    [self findAssociatedTherapists];
+    self.tableView = [self makeTableView];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
+    [self.view addSubview:self.tableView];
 
+}
+
+- (void) getTherapistObject:(id)therapistObject{
+    self.currentTherapist = therapistObject;
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+//Method which creates the tableView
 -(UITableView *)makeTableView
 {
     double number = 0;
@@ -45,48 +76,14 @@
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
     tableView.bounces = YES;
-
+    
     tableView.delegate = self;
     tableView.dataSource = self;
     
     return tableView;
 }
 
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    /*UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame: CGRectMake(100, 200, 250,300)]; [[scrollView layer] setCornerRadius:10]; [[scrollView layer] setBorderColor: [[UIColor blackColor] CGColor]];
-    [[scrollView layer] setBorderWidth:0.50];*/
-
-    
-    
-    self.rd = [[RetrieveData alloc] init];
-    self.therapists = [self.rd retrieveTherapists];
-    self.threatmentsArray = [self.rd retrieveThreatmentsData];
-    //UINavigationBar
-    [self firstLabel];
-    [self imageView];
-    [self secondLabel];
-   // [self addTreatmentMethods];
-    [self textField];
-    [self thirdlabel];
-    self.tableView = [self makeTableView];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
-    [self.view addSubview:self.tableView];
-    
-    //self.view.backgroundColor = [UIColor grayColor];
-}
-
-- (void) getTherapistObject:(id)therapistObject{
-    self.currentTherapist = therapistObject;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+//First label of the view, shows the company name of the chosen therapist.
 -(void) firstLabel{
     NSString *company = self.currentTherapist.company;
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 43) ];
@@ -97,6 +94,7 @@
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Firmanavn: %@", company];
 }
+//Finds and shows the image of the chosen therapist.
 -(void) imageView{
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", self.currentTherapist.avatar];
     NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
@@ -120,6 +118,7 @@
     }
 
 }
+//Text label that is just a string.
 -(void) secondLabel{
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 243.0, self.view.frame.size.width, 43) ];
     label.textAlignment =  NSTextAlignmentCenter;
@@ -130,30 +129,14 @@
     label.text = [NSString stringWithFormat: @"Behandlingsmetoder:"];
 }
 
--(void) addTreatmentMethods{
-    double number = 0;
-    for (int i = 0; i < self.currentTherapist.treatmentMethods.count; i++){
-        NSString *tmethod = self.currentTherapist.treatmentMethods[i];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [button addTarget:self
-                   action:@selector(buttonTapped:)
-         forControlEvents:UIControlEventTouchUpInside];
-        [button setTitle:tmethod forState:UIControlStateNormal];
-        button.frame = CGRectMake(0.0, (286.0 + number), self.view.frame.size.width, 40.0);
-        number += 40;
-        button.layer.borderWidth = 1;
-        [self.contentView addSubview:button];
-    }
-}
-
-
+//Creates the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
 
         return [self.currentTherapist.treatmentMethods count];
         
 }
-
+//Defines each cell of the table view.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TreatmentMethods";
@@ -173,20 +156,14 @@
     return cell;
 }
 
-
-
-- (IBAction)buttonTapped:(UIButton *)sender{
-    [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
-    NSLog(@"Button Tapped!");
-}
-
+//Tells the application what to do when a table cell is pressed.
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *sender = [self.tableView cellForRowAtIndexPath:indexPath];
 
     [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
 }
-
+//Label which shows the contact information and address to the given therapist.
 -(void) thirdlabel{
     double distance = (self.currentTherapist.treatmentMethods.count * 40);
     
@@ -205,6 +182,7 @@
     label.text = [NSString stringWithFormat: @"Addresse: %@ \n Postnummer: %@ \n Sted: %@ \n Fylke: %@ \n Telefon: %@ \n Epost: --",address, zipcode, city, state, phone];
     label.numberOfLines = 6;
 }
+//Show an url link to the therapists website.
 -(void) textField{
     double distance = (self.currentTherapist.treatmentMethods.count * 40);
     NSString *url = self.currentTherapist.website;
@@ -226,28 +204,45 @@
         return YES;
 }
 
-
+//Compate the treatment methods of the therapist, to all the treatment methods existing in the database.
+- (void) findAssociatedTherapists{
+    if(self.threatmentsArray != nil){
+        self.associatedMethods = [[NSMutableArray alloc] init];
+        for(ThreatmentMethod *t in self.threatmentsArray){ // Short for- loop. Loops through all therapists
+            for(NSString *s in self.currentTherapist.treatmentMethods){ // Loops through the threatmentmethods of a therapist.
+                if([t.title isEqualToString:s]){ // if current method is associated with therapist
+                   // NSLog(@"%@", t.title);
+                    [self.associatedMethods addObject:t]; // add the therapist to associated therapists array.
+                    NSLog(@"%lu", (unsigned long)self.associatedMethods.count);
+                }
+                
+            }
+        }
+    }
+    
+}
 
 #pragma mark - Navigation
-
+//Segue that sends forward information from this view to the next.
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     
     if ([[segue identifier] isEqualToString:@"PushTreatmentInfo"])
     {
-        NSString *title = self.selectedTreatmentMethod.title;
         
         NSIndexPath *indexPath = nil;
-        ThreatmentMethod *method = nil;
+        
+
+
         
         indexPath = [self.tableView indexPathForCell:sender];
-        method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
+        ThreatmentMethod *method = self.associatedMethods[indexPath.row];
         
         ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
-        destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
+        destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
         NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
-        [method setIntroText:introtext]; //
+        [method setIntroText:introtext];
 
     }
 }

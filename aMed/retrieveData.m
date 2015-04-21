@@ -14,6 +14,7 @@
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 #define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
 #define getNewsDataInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
+#define getEventsURL @"http://www.amed.no/AmedApplication/getEvents.php"
 
 
 
@@ -67,7 +68,8 @@
     return threatmentsArray;
 }
 
--(NSMutableArray *) retrieveTherapists{
+
+-(NSMutableArray *) retrieveTherapists {
     
     NSMutableArray *therapists = [[NSMutableArray alloc] init];
     Therapists *therapist = [[Therapists alloc] init];
@@ -131,6 +133,7 @@
 }
 
 - (NSMutableArray *) retrieveNewsData{
+    
     NSURL *url = [NSURL URLWithString:getNewsDataURL];
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
@@ -149,6 +152,38 @@
         
     }
     return newsArray;
+}
+
+- (NSMutableArray *) retrieveEvents{
+    NSInteger event_id, eventdetail_id, category_id;
+    
+    NSURL *url = [NSURL URLWithString:getEventsURL];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    
+    Events *event = [[Events alloc] init];
+    NSMutableArray *eventArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i<self.jsonArray.count; i++) {
+        @try {
+            event_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"eventid")] integerValue];
+            eventdetail_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"eventdetail_id")] integerValue];
+            category_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"catid")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception: %@", exception.reason);
+        }
+        @finally {
+        }
+        NSString *start_date = [[self.jsonArray objectAtIndex:i] objectForKey:(@"startrepeat")];
+        NSString *end_date = [[self.jsonArray objectAtIndex:i] objectForKey:(@"endrepeat")];
+        NSString *summary = [[self.jsonArray objectAtIndex:i] objectForKey:(@"summary")];
+
+        event = [[Events alloc]initWithEvent_id:&event_id andEventdetail_id:&eventdetail_id andStart_date:start_date andEnd_date:end_date andSummary:summary andCategory_id:&category_id];
+        [eventArray addObject:event];
+            
+    }
+    return eventArray;
+
 }
 
 - (NSString *) retrieveNewsInfoData: (NSString *) alias

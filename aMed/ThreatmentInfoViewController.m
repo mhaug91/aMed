@@ -66,7 +66,7 @@
                     NSLog(@"%@", t.firstName);
                     [self.associatedTherapists addObject:t]; // add the therapist to associated therapists array.
                 }
-                
+
             }
         }
     }
