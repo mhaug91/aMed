@@ -497,50 +497,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0Y-s8-X6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-990" y="-242"/>
-        <!--Om oss-->
-        <scene sceneID="6QI-AQ-Jor">
-            <objects>
-                <viewController id="zu6-0K-4Fk" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="3C6-9h-2P8"/>
-                        <viewControllerLayoutGuide type="bottom" id="BXJ-N2-RoR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="aji-Si-wVd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hKE-pQ-p4d">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Nyheter" id="yZ4-Qe-dHE"/>
-                                </items>
-                            </navigationBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3z-RZ-6dj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
-                                <color key="backgroundColor" red="0.99791207709999996" green="1" blue="0.1265196603" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hKE-pQ-p4d" firstAttribute="leading" secondItem="aji-Si-wVd" secondAttribute="leading" id="eic-2B-15D"/>
-                            <constraint firstItem="hKE-pQ-p4d" firstAttribute="top" secondItem="aji-Si-wVd" secondAttribute="top" id="tFC-6C-Vou"/>
-                            <constraint firstAttribute="trailing" secondItem="hKE-pQ-p4d" secondAttribute="trailing" id="y4x-Lf-N41"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="hKE-pQ-p4d"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Om oss" id="J59-iD-VmG"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wEG-R8-hgm" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-964" y="-42"/>
-        </scene>
+            </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>

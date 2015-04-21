@@ -56,7 +56,6 @@ static NSString *eventID = @"eventID";
     
     Events *method = nil;
     method = [self.eventArray objectAtIndex:indexPath.row];
-    NSString *name = [NSString stringWithFormat:@" SMOKE  HEUEHUE"];
     cell.textLabel.text = method.summary
     ;
 
