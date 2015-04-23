@@ -24,7 +24,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -429,8 +429,8 @@
         <!--Kontakt oss-->
         <scene sceneID="QDv-Sq-dWk">
             <objects>
-                <tableViewController id="Hdm-hb-nwD" customClass="ContactTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mfH-FK-aNz">
+                <tableViewController title="Kontakt oss" id="Hdm-hb-nwD" customClass="ContactTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mfH-FK-aNz">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -449,7 +449,6 @@
                                                         <constraint firstAttribute="width" constant="131" id="kcX-1L-9kT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xAA-WY-h4U">
@@ -466,7 +465,6 @@
                                                 <constraint firstItem="tRr-jJ-isn" firstAttribute="bottom" secondItem="8SY-Rl-lTc" secondAttribute="bottomMargin" id="vWA-h8-DR0"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666666666666667" green="0.0" blue="0.67843137254901964" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="h8f-g8-n2u">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -479,7 +477,6 @@
                                                         <constraint firstAttribute="width" constant="131" id="lGu-Zs-hN3"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SD6-cZ-Tfq">
@@ -496,7 +493,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="SD6-cZ-Tfq" secondAttribute="trailing" id="fnb-nD-Xvy"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666669849999998" green="0.0" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="R2U-gq-c6T">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -509,7 +505,6 @@
                                                         <constraint firstAttribute="width" constant="131" id="He4-zq-F3W"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6rh-83-44V">
@@ -526,7 +521,6 @@
                                                 <constraint firstItem="AXD-QC-BKM" firstAttribute="leading" secondItem="fYb-87-vlO" secondAttribute="leading" id="oo3-sp-h3v"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666669849999998" green="0.0" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="2aq-aG-UQm">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -539,7 +533,6 @@
                                                         <constraint firstAttribute="width" constant="131" id="6mz-ds-TKk"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y8N-3d-iAm">
@@ -556,7 +549,6 @@
                                                 <constraint firstItem="gIG-wg-nFy" firstAttribute="leading" secondItem="73n-WJ-SHC" secondAttribute="leading" id="zct-iO-9Sw"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666669849999998" green="0.0" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="SRo-ai-5EV">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -569,7 +561,6 @@
                                                         <constraint firstAttribute="width" constant="131" id="C05-tB-qY8"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fCA-3x-YQ8">
@@ -586,9 +577,9 @@
                                                 <constraint firstItem="fCA-3x-YQ8" firstAttribute="top" secondItem="Bhp-Bj-0jK" secondAttribute="topMargin" constant="-1" id="wMo-gy-xAa"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666669849999998" green="0.0" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="234" id="RD1-SA-lrK">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="242" id="RD1-SA-lrK">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RD1-SA-lrK" id="B4R-PU-QEM">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -599,10 +590,9 @@
                                                         <constraint firstAttribute="width" constant="131" id="HcI-ly-Teb"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gyf-2X-7BA">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gyf-2X-7BA">
                                                     <rect key="frame" x="139" y="8" width="461" height="217"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -631,7 +621,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.46666669849999998" green="0.0" blue="0.6784313917" alpha="1" colorSpace="deviceRGB"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="sendCell" id="MHt-WO-A6C">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -835,7 +824,7 @@
         <image name="first" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="N1l-5T-GYT"/>
         <segue reference="TNK-JL-doa"/>
-        <segue reference="7iX-jM-EA2"/>
     </inferredMetricsTieBreakers>
 </document>

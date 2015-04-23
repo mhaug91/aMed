@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -126,6 +127,16 @@
     
     // Close the Mail Interface
     [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void) setBorderOfRequestField{
+    //To make the border look very close to a UITextField
+    [self.requestField.layer setBorderColor:[[[UIColor grayColor] colorWithAlphaComponent:0.2] CGColor]];
+    [self.requestField.layer setBorderWidth:1.0];
+    
+    //The rounded corner part, where you specify your view's corner radius:
+    self.requestField.layer.cornerRadius = 5;
+    self.requestField.clipsToBounds = YES;
 }
 
 /*
