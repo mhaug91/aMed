@@ -36,12 +36,12 @@
 		5C0701DB1AB9A4F300A9DB39 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701DA1AB9A4F300A9DB39 /* QuartzCore.framework */; };
 		5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0701DC1AB9A50100A9DB39 /* SystemConfiguration.framework */; };
 		5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */; };
-		5C218CCE1AADC5AA00D408AC /* TherapistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */; };
 		5C2A3E811AD566AD0003A164 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7C1AD566AD0003A164 /* Address.m */; };
 		5C2A3E821AD566AD0003A164 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7E1AD566AD0003A164 /* Location.m */; };
 		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
 		5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */; };
 		5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7002591ADD085800ACB51B /* TherapistViewController.m */; };
+		5CD9B7161AEA1F8C0016F03E /* TherapistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */; };
 		5CF68D2F1AE62ADB005038CD /* MapInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D2E1AE62ADB005038CD /* MapInfoViewController.m */; };
 		5CF68D321AE63747005038CD /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D311AE63747005038CD /* Events.m */; };
 		5CF68D351AE643F2005038CD /* EventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D341AE643F2005038CD /* EventsTableViewController.m */; };
@@ -345,7 +345,7 @@
 		04FACEB91AADBCF9009789BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = MacBarhaug;
 				TargetAttributes = {
 					04FACEC01AADBCF9009789BA = {
@@ -415,12 +415,8 @@
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
-<<<<<<< HEAD
-				5C218CCE1AADC5AA00D408AC /* TherapistTableViewController.m in Sources */,
-=======
-				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
+				5CD9B7161AEA1F8C0016F03E /* TherapistTableViewController.m in Sources */,
 				5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */,
->>>>>>> Pikksaft
 				5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */,
 				5CF68D321AE63747005038CD /* Events.m in Sources */,
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,

@@ -852,10 +852,7 @@
                         <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
                         <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
                         <segue destination="5Id-sn-V4u" kind="relationship" relationship="viewControllers" id="OYK-0s-aYZ"/>
-<<<<<<< HEAD
                         <segue destination="Hdm-hb-nwD" kind="relationship" relationship="viewControllers" id="CIs-4I-Ipl"/>
-=======
->>>>>>> Pikksaft
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
