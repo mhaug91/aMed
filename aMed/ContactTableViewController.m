@@ -25,7 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
-    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
+                                              initWithTitle:@"Info" style:UIBarButtonItemStylePlain
+                                              target:self action:@selector(buttonAction:)];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -157,6 +159,9 @@
     self.requestField.clipsToBounds = YES;
 }
 
+- (void) buttonAction:(id) sender{
+    
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
