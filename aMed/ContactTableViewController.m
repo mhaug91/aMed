@@ -41,13 +41,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return 8;
 }
@@ -57,51 +55,71 @@
 {
     UITableViewCell *theCellClicked = [self.tableView cellForRowAtIndexPath:indexPath];
     if(theCellClicked == self.resetCell){
-        NSLog(@"Fields have been resetted. ");
-        self.nameField.text=@"";
-        self.addressField.text=@"";
-        self.phoneField.text=@"";
-        self.stateField.text=@"";
-        self.zipCodeField.text=@"";
-        self.requestField.text=@"";
-
+        [self resetFields];
     }
     
     if(theCellClicked == self.sendCell){
         // Email Subject
-        NSString *emailTitle = @"Kontakt amed.no";
-        NSString *name = self.nameField.text;
-        NSString *phone = self.phoneField.text;
-        NSString *streetAddress = self.addressField.text;
-        NSString *zipCode = self.zipCodeField.text;
-        NSString *state = self.stateField.text;
-        NSString *request = self.requestField.text;
-        // Email Content
-        NSString *messageBody = [NSString stringWithFormat:@"%@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@", @"Navn: ", name,  @"\nTelefonnr: ", phone, @"\nGateadresse: ", streetAddress, @"\nPostnummer: ", zipCode,  @"\nPoststed: ", state, @"\nLurer på: ", request, @"\n\n Sendt Fra iOS enhet. "];
-        // To address
-        NSArray *toRecipents = [NSArray arrayWithObject:@"mhaug91@gmail.com"]; // For testformål
+        NSString *errorMessage = [self validateFields];
+        if(errorMessage){
+            [[[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+            return;
+        }
+        else{
+            NSString *emailTitle = @"Kontakt amed.no";
+            NSString *name = self.nameField.text;
+            NSString *phone = self.phoneField.text;
+            NSString *streetAddress = self.addressField.text;
+            NSString *zipCode = self.zipCodeField.text;
+            NSString *state = self.stateField.text;
+            NSString *requestText = self.requestField.text;
+            // Email Content
+            NSString *messageBody = [NSString stringWithFormat: @"Navn: %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@", name,  @"\nTelefonnr: ", phone, @"\nGateadresse: ", streetAddress, @"\nPostnummer: ", zipCode,  @"\nPoststed: ", state, @"\nLurer på: ", requestText, @"\n\n Sendt Fra iOS enhet. "];
+            // To address
+            NSArray *toRecipents = [NSArray arrayWithObject:@"mhaug91@gmail.com"]; // For testformål
         
-        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-        mc.mailComposeDelegate = self;
-        [mc setSubject:emailTitle];
-        [mc setMessageBody:messageBody isHTML:NO];
-        [mc setToRecipients:toRecipents];
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            [mc setToRecipients:toRecipents];
         
-        if (mc != nil) {
-            [self presentViewController:mc animated:YES completion:NULL];
-        }else{
-            NSLog(@"Mail ikke sendt");
-            UIAlertView *alert = [[UIAlertView alloc]
+            if (mc != nil) {
+                [self presentViewController:mc animated:YES completion:NULL];
+            }else{
+                NSLog(@"Mail ikke sendt");
+                UIAlertView *alert = [[UIAlertView alloc]
                                   initWithTitle:@"Konfigurer epost"
                                   message:@"Sett opp epost i epost instillingene på enheten for å kontakte oss"
                                   delegate:self
                                   cancelButtonTitle:@"ok!"
                                   otherButtonTitles:nil];
             
-            [alert show];
+                [alert show];
+            }
             
         }
     }
+}
+
+- (NSString *) validateFields{
+    NSString *errorMessage;
+    if([self.requestField.text length] == 0){
+        errorMessage = @"Henvendelse må fylles inn";
+        [self.requestField.layer setBorderColor:[[[UIColor redColor] colorWithAlphaComponent:1] CGColor]];
+
+    }
+    return errorMessage;
+}
+
+- (void) resetFields{
+    self.nameField.text=@"";
+    self.addressField.text=@"";
+    self.phoneField.text=@"";
+    self.stateField.text=@"";
+    self.zipCodeField.text=@"";
+    self.requestField.text=@"";
+
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
