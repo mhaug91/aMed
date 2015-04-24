@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RetrieveData.h"
+#import "SelectedEventViewController.h"
 
 
 @interface EventsTableViewController : UITableViewController
@@ -16,5 +17,6 @@
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *eventArray;
+@property(strong, nonatomic) NSMutableArray *filterArray;
 
 @end

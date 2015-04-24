@@ -153,30 +153,83 @@
 }
 
 - (NSMutableArray *) retrieveEvents{
-    NSInteger event_id, eventdetail_id, category_id;
+    NSInteger event_id, eventdetail_id, category_id, location_id, postcode;
+    
+    NSNumber *geo_longitude, *geo_latitude;
     
     NSURL *url = [NSURL URLWithString:getEventsURL];
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
     Events *event = [[Events alloc] init];
+    Address *address = [[Address alloc] init];
+    Location *location = [[Location alloc] init];
     NSMutableArray *eventArray = [[NSMutableArray alloc] init];
+    
+    
     for (int i = 0; i<self.jsonArray.count; i++) {
+        //Address
+        @try {
+            postcode = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"postcode")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception:s %@", exception.reason);
+        }
+        @finally {
+            NSLog(@"finally");
+        }
+        NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"street")];
+        NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
+        //Location
+        @try {
+            location_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"loc_id")] integerValue];
+            double dob_longitude = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"geolon")] doubleValue];
+            geo_longitude = [NSNumber numberWithDouble:dob_longitude];
+            double dob_latitude = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"geolat")] doubleValue];
+            geo_latitude = [NSNumber numberWithDouble:dob_latitude];
+
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception:h %@", exception.reason);
+        }
+        @finally {
+            NSLog(@"Finally");
+        }
+        NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
+        //Events
         @try {
             event_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"eventid")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception:event %@", exception.reason);
+        }
+        @finally {
+        }
+        @try {
             eventdetail_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"eventdetail_id")] integerValue];
+        }
+        @catch (NSException *exception) {
+            NSLog(@"Exception:detail %@", exception.reason);
+        }
+        @finally {
+        }
+        @try {
             category_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"catid")] integerValue];
         }
         @catch (NSException *exception) {
-            NSLog(@"Exception: %@", exception.reason);
+            NSLog(@"Exception:category %@", exception.reason);
         }
         @finally {
         }
         NSString *start_date = [[self.jsonArray objectAtIndex:i] objectForKey:(@"startrepeat")];
         NSString *end_date = [[self.jsonArray objectAtIndex:i] objectForKey:(@"endrepeat")];
         NSString *summary = [[self.jsonArray objectAtIndex:i] objectForKey:(@"summary")];
-
-        event = [[Events alloc]initWithEvent_id:&event_id andEventdetail_id:&eventdetail_id andStart_date:start_date andEnd_date:end_date andSummary:summary andCategory_id:&category_id];
+        
+        address = [[Address alloc] initWithStreet:street andCity:city andPostcode:&postcode];
+        
+        location = [[Location alloc] initWithLocation_id:&location_id andTitle:title andAddress:address andGeo_longitude:geo_longitude andGeo_latitude:geo_latitude];
+        
+        event = [[Events alloc]initWithEvent_id:&event_id andEventdetail_id:&eventdetail_id andStart_date:start_date andEnd_date:end_date andSummary:summary andLocation:location andCategory_id:&category_id];
         [eventArray addObject:event];
             
     }

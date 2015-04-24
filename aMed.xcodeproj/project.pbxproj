@@ -40,6 +40,7 @@
 		5C2A3E811AD566AD0003A164 /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7C1AD566AD0003A164 /* Address.m */; };
 		5C2A3E821AD566AD0003A164 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E7E1AD566AD0003A164 /* Location.m */; };
 		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
+		5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */; };
 		5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7002591ADD085800ACB51B /* TherapistViewController.m */; };
 		5CF68D2F1AE62ADB005038CD /* MapInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D2E1AE62ADB005038CD /* MapInfoViewController.m */; };
 		5CF68D321AE63747005038CD /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D311AE63747005038CD /* Events.m */; };
@@ -110,6 +111,8 @@
 		5C2A3E7E1AD566AD0003A164 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		5C2A3E7F1AD566AD0003A164 /* Therapists.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Therapists.h; sourceTree = "<group>"; };
 		5C2A3E801AD566AD0003A164 /* Therapists.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Therapists.m; sourceTree = "<group>"; };
+		5C60375B1AE7CEB10072E5DF /* SelectedEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedEventViewController.h; sourceTree = "<group>"; };
+		5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedEventViewController.m; sourceTree = "<group>"; };
 		5C7002581ADD085800ACB51B /* TherapistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TherapistViewController.h; sourceTree = "<group>"; };
 		5C7002591ADD085800ACB51B /* TherapistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapistViewController.m; sourceTree = "<group>"; };
 		5CF68D2D1AE62ADB005038CD /* MapInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInfoViewController.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				5CF68D341AE643F2005038CD /* EventsTableViewController.m */,
 				5CF68D361AE65743005038CD /* AboutUsViewController.h */,
 				5CF68D371AE65743005038CD /* AboutUsViewController.m */,
+				5C60375B1AE7CEB10072E5DF /* SelectedEventViewController.h */,
+				5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -410,7 +415,12 @@
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
+<<<<<<< HEAD
 				5C218CCE1AADC5AA00D408AC /* TherapistTableViewController.m in Sources */,
+=======
+				5C218CCE1AADC5AA00D408AC /* finnBehandlerTableViewController.m in Sources */,
+				5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */,
+>>>>>>> Pikksaft
 				5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */,
 				5CF68D321AE63747005038CD /* Events.m in Sources */,
 				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,

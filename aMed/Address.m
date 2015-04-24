@@ -21,6 +21,16 @@
     }
     return self;
 }
+-(id) initWithStreet:(NSString *)street andCity:(NSString *)city andPostcode:(NSInteger *)postcode{
+    self = [super init];
+    if (self){
+        self.street = street;
+        self.city = city;
+        self.postcode = *postcode;
+    }
+    return self;
+}
+
 -(NSString *)description{
     return [NSString stringWithFormat:@"%@, %@, %@, %ld, %@", _street, _city, _state, _postcode, _country];
 }
