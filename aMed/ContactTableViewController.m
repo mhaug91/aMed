@@ -11,9 +11,6 @@
 @interface ContactTableViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
-@property (weak, nonatomic) IBOutlet UITextField *addressField;
-@property (weak, nonatomic) IBOutlet UITextField *zipCodeField;
-@property (weak, nonatomic) IBOutlet UITextField *stateField;
 @property (weak, nonatomic) IBOutlet UITextView *requestField;
 @property (weak, nonatomic) IBOutlet UITableViewCell *sendCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *resetCell;
@@ -25,12 +22,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.navigationItem.rightBarButtonItem = infoButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +42,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 8;
+    return 5;
 }
 
 
@@ -67,14 +62,18 @@
         }
         else{
             NSString *emailTitle = @"Kontakt amed.no";
-            NSString *name = self.nameField.text;
-            NSString *phone = self.phoneField.text;
-            NSString *streetAddress = self.addressField.text;
-            NSString *zipCode = self.zipCodeField.text;
-            NSString *state = self.stateField.text;
+            NSString *nameString=@"";
+            if([self.nameField.text length] != 0 ){
+                nameString = [NSString stringWithFormat:@"Navn: %@ %@", self.nameField.text, @"\n"];
+            }
+            NSString *phoneString=@"";
+            if([self.phoneField.text length] != 0 ){
+                phoneString = [NSString stringWithFormat:@"Telefonnr: %@ %@", self.phoneField.text, @"\n"];
+
+            }
             NSString *requestText = self.requestField.text;
             // Email Content
-            NSString *messageBody = [NSString stringWithFormat: @"Navn: %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@ %@", name,  @"\nTelefonnr: ", phone, @"\nGateadresse: ", streetAddress, @"\nPostnummer: ", zipCode,  @"\nPoststed: ", state, @"\nLurer på: ", requestText, @"\n\n Sendt Fra iOS enhet. "];
+            NSString *messageBody = [NSString stringWithFormat: @"%@ %@ %@ %@ %@", nameString, phoneString, @"\nHenvendelse: ",requestText, @"\n\n Sendt Fra iOS enhet. "];
             // To address
             NSArray *toRecipents = [NSArray arrayWithObject:@"mhaug91@gmail.com"]; // For testformål
         
@@ -114,10 +113,7 @@
 
 - (void) resetFields{
     self.nameField.text=@"";
-    self.addressField.text=@"";
     self.phoneField.text=@"";
-    self.stateField.text=@"";
-    self.zipCodeField.text=@"";
     self.requestField.text=@"";
 
 }
@@ -157,6 +153,11 @@
     self.requestField.clipsToBounds = YES;
 }
 
+- (void) buttonAction:(id) sender{
+    NSString *title = @"Kontakt oss";
+    NSString *info = @"Her kan du kontakte oss ved å fylle ut skjemaet. Vi vil se gjennom din henvendelse og kontakte deg så fort som mulig. Personinfo ikke påkrevd.";
+    [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+}
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];

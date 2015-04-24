@@ -33,14 +33,10 @@ GMSMapView *mapView_;
     
     self.rd = [[RetrieveData alloc] init];
     self.therapists = [self.rd retrieveTherapists];
-    /*UIButton *btn = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [self buttonAction: self.navigationItem.rightBarButtonItem];*/
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                               initWithTitle:@"Info" style:UIBarButtonItemStylePlain
-                                               target:self action:@selector(buttonAction:)];
-    
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
+    [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
+    self.navigationItem.rightBarButtonItem = infoButtonItem;
     //Laster inn kartet.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:63.4187362
                                                             longitude:10.4387621 zoom:6];
