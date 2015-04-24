@@ -10,10 +10,10 @@
 
 @implementation Location
 
--(id)initWithLocation_id:(NSNumber *)location_id andTitle:(NSString *)title andAddress:(Address *)address andGeo_longitude:(NSNumber *)geo_longitude andGeo_latitude:(NSNumber *)geo_latitude{
+-(id)initWithLocation_id:(NSInteger *)location_id andTitle:(NSString *)title andAddress:(Address *)address andGeo_longitude:(NSNumber *)geo_longitude andGeo_latitude:(NSNumber *)geo_latitude{
     self = [super init];
     if(self){
-        self.location_id = location_id;
+        self.location_id = *location_id;
         self.title = title;
         self.address = address;
         self.geo_longitude = geo_longitude;

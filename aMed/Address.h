@@ -18,4 +18,5 @@
 
 -(id) initWithStreet: (NSString *) street andCity: (NSString *) city andState: (NSString *) state andPostcode:  (NSInteger  *) postcode andCountry: (NSString *) country;
 
+-(id) initWithStreet: (NSString *) street andCity: (NSString *) city andPostcode: (NSInteger *) postcode;
 @end

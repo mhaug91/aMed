@@ -345,6 +345,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HlO-dx-8gf" id="lk7-GX-eUb">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="szC-ZQ-asV" kind="show" identifier="PushSelectedEvent" id="UGP-2f-Xrh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -357,6 +360,43 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gu1-fJ-m6a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1746" y="900"/>
+        </scene>
+        <!--Selected event-->
+        <scene sceneID="fEy-If-lmu">
+            <objects>
+                <viewController title="Selected event" id="szC-ZQ-asV" customClass="SelectedEventViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rte-pd-GD1"/>
+                        <viewControllerLayoutGuide type="bottom" id="1dj-gy-hv3"/>
+                    </layoutGuides>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="VBp-NQ-keZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3XP-iB-XMa">
+                                <rect key="frame" x="0.0" y="-13" width="600" height="1000"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
+                                <size key="value" width="320" height="800"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="rect" keyPath="keyPath">
+                                <rect key="value" x="0.0" y="0.0" width="320" height="600"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </scrollView>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="600"/>
+                    <connections>
+                        <outlet property="contentView" destination="3XP-iB-XMa" id="VBA-NR-9Pz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TNi-bm-d4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2516" y="900"/>
         </scene>
         <!--Arrangementer-->
         <scene sceneID="3Qp-8c-zAT">
@@ -497,7 +537,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0Y-s8-X6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-990" y="-242"/>
-            </scene>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -518,7 +558,6 @@
                         <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
                         <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
                         <segue destination="5Id-sn-V4u" kind="relationship" relationship="viewControllers" id="OYK-0s-aYZ"/>
-                        <segue destination="zu6-0K-4Fk" kind="relationship" relationship="viewControllers" id="xOR-dY-Kf8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
