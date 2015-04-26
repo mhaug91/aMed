@@ -19,6 +19,9 @@
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *eventArray;
 @property(strong, nonatomic) NSMutableArray *associatedArray;
+@property(strong, nonatomic) NSMutableArray *filterArray;
+@property(strong, nonatomic) NSMutableArray *daySub;
+@property int day;
 
 
 - (void) getEventObject: (id) eventObject;

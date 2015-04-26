@@ -40,24 +40,27 @@ GMSMapView *mapView_;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
                                                initWithTitle:@"Info" style:UIBarButtonItemStylePlain
                                                target:self action:@selector(buttonAction:)];
+
     
     //Laster inn kartet.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:63.4187362
-                                                            longitude:10.4387621 zoom:6];
+                                                            longitude:22.1 zoom:12];
     
     mapView_= [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.settings.compassButton = YES;
     mapView_.settings.zoomGestures = YES;
     mapView_.settings.myLocationButton = YES;
+    CLLocation *l = mapView_.myLocation;
     
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
     self.view = mapView_;
-
+    
     for(Therapists *t in self.therapists){
             NSString *therapistAddress = [NSString stringWithFormat:@"%@, %@, %@", t.address.street, t.address.city, t.address.state];
         [gc geocodeAddress:therapistAddress];
         double lat = [[gc.geocode objectForKey:@"lat"] doubleValue];
         double lng = [[gc.geocode objectForKey:@"lng"] doubleValue];
+        [NSThread sleepForTimeInterval:.2];
         
         GMSMarker *marker = [[GMSMarker alloc] init];
         marker.position = CLLocationCoordinate2DMake(lat, lng);
@@ -97,7 +100,7 @@ GMSMapView *mapView_;
     if (!firstLocationUpdate_){
         firstLocationUpdate_ = YES;
         CLLocation *location = [change objectForKey:NSKeyValueChangeNewKey];
-        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:14];
+        mapView_.camera = [GMSCameraPosition cameraWithTarget:location.coordinate zoom:12];
     }
 }
 

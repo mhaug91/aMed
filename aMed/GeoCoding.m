@@ -30,7 +30,7 @@
     NSURL *queryUrl = [NSURL URLWithString:url];
    // kBgQueue = dispatch_queue_create("com.yourcompany.yourMeaningfulLabel", DISPATCH_QUEUE_SERIAL);
     dispatch_sync(kBgQueue, ^{
-        [NSThread sleepForTimeInterval:.2];
+        //[NSThread sleepForTimeInterval:.2];
         NSData *data = [NSData dataWithContentsOfURL: queryUrl];
         [self fetchedData:data];
         

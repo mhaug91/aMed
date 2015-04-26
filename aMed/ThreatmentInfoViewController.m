@@ -104,11 +104,23 @@ static NSString *CellIdentifier = @"newTherapistCell";
         if([therapist.avatar isEqual:[NSNull null]]){
             NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
             cell.imageView.image = [UIImage imageWithData:image];
+            CGSize itemSize = CGSizeMake(45, 50);
+            UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+            CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+            [cell.imageView.image drawInRect:imageRect];
+            cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
             
     
         } else {
             NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
             cell.imageView.image = [UIImage imageWithData:image];
+            CGSize itemSize = CGSizeMake(45, 50);
+            UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+            CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+            [cell.imageView.image drawInRect:imageRect];
+            cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
     
         }
         cell.textLabel.numberOfLines = 2;

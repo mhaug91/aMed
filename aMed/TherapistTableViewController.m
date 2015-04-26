@@ -26,7 +26,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     
     self.rd = [[RetrieveData alloc] init];
     self.therapists = [self.rd retrieveTherapists];
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
@@ -49,7 +49,6 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     Therapists *method = nil;
     method = [self.therapists objectAtIndex:indexPath.row];
     NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
-    cell.textLabel.text = name;
 
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
     
@@ -59,19 +58,30 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     if([method.avatar isEqual:[NSNull null]]){
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
         cell.imageView.image = [UIImage imageWithData:image];
+        CGSize itemSize = CGSizeMake(45, 50);
+        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+        [cell.imageView.image drawInRect:imageRect];
+        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
     
 
     } else {
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
         cell.imageView.image = [UIImage imageWithData:image];
+        CGSize itemSize = CGSizeMake(45, 50);
+        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+        [cell.imageView.image drawInRect:imageRect];
+        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
 
     }
     
 
     
     cell.textLabel.text = method.company;
-    cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:12];
-    cell.textLabel.textAlignment = NSTextAlignmentRight;
+    //cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:19];
 
     
     NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];

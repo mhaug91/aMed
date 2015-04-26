@@ -61,6 +61,9 @@ NSInteger EXHIBITION_2 = 86; //green
     
     Events *method = nil;
     method = [self.filterArray objectAtIndex:indexPath.row];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
+    cell.textLabel.font = font;
+    
     cell.textLabel.text = method.summary;
     //NSLog(@"%@",method.event_id );
 

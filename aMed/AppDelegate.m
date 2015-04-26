@@ -28,7 +28,7 @@
     [[UINavigationBar appearance] setTitleTextAttributes:
     [NSDictionary dictionaryWithObjectsAndKeys:
     [UIColor whiteColor], NSForegroundColorAttributeName,
-    [UIFont fontWithName:@"AmericanTypewriter" size:0.0], NSFontAttributeName, nil]];
+    [UIFont fontWithName:@"ArialMT" size:16.0], NSFontAttributeName, nil]];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
