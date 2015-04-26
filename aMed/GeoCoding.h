@@ -12,7 +12,7 @@
 
 - (id)init;
 - (void)geocodeAddress:(NSString *)address;
-
+- (void)fetchedData:(NSData *)data;
 @property (nonatomic, strong) NSDictionary *geocode;
 
 

@@ -10,6 +10,11 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+NSInteger sCOURSE = 66; // blue
+NSInteger sFESTIVAL = 71; //red
+NSInteger sEXHIBITION = 70; //green
+NSInteger sEXHIBITION_2 = 86; //green
+
 @interface SelectedEventViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -30,6 +35,7 @@ GMSMapView *mapView_;
     self.eventArray = [self.rd retrieveEvents];
     
     [self filterAssociated];
+    [self filterSameEvents];
     
     [self firstLabel];
     [self secondLabel];
@@ -44,7 +50,7 @@ GMSMapView *mapView_;
     [self tenthLabel];
     [self mapLabel];
     
-    
+    self.title = self.selectedEvent.summary;
     [self mapView];
     
     self.tableView = [self makeTableView];
@@ -75,7 +81,11 @@ GMSMapView *mapView_;
 }
 
 -(void) secondLabel{
+    if(self.day == 0){
+        self.day = 1;
+    }
     NSString *summary = self.selectedEvent.summary;
+    NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       (self.view.frame.size.width/3, 20.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -83,7 +93,7 @@ GMSMapView *mapView_;
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"ArialMT" size:(16.0)];
     [self.contentView addSubview:label];
-    label.text = summary;
+    label.text = summaryDay;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -278,14 +288,14 @@ GMSMapView *mapView_;
     CGFloat x = 0;
     CGFloat y = 500;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = number;
+    CGFloat height = number+20;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
     tableView.rowHeight = 40;
     tableView.sectionFooterHeight = 10;
-    tableView.sectionHeaderHeight = 10;
+    tableView.sectionHeaderHeight = 20;
     tableView.scrollEnabled = YES;
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
@@ -318,11 +328,61 @@ GMSMapView *mapView_;
     Events *method = nil;
     
     method = [self.associatedArray objectAtIndex:indexPath.row];
-    NSString *title = [NSString stringWithFormat:@"%@", method.summary];
+    
+    [self daySubEvents];
+    NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
+    NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
+    
+    
+    if(method.category_id == sCOURSE){
+        cell.imageView.image = [UIImage imageNamed:@"event_blue"];
+    } else if (method.category_id == sFESTIVAL){
+        cell.imageView.image = [UIImage imageNamed:@"event_red"];
+    } else if (method.category_id == sEXHIBITION || method.category_id == sEXHIBITION_2){
+        cell.imageView.image = [UIImage imageNamed:@"event_green"];
+    }
+    
+    
+    cell.textLabel.numberOfLines = 2;
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
+    cell.textLabel.font = font;
+    cell.detailTextLabel.numberOfLines = 2;
+    cell.detailTextLabel.font = font;
+    
     cell.textLabel.text = title;
+    cell.detailTextLabel.text = date;
     
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+    if(self.associatedArray.count != 0){
+        return @"Øvrige dager knyttet til arrangementet";
+    }
+    else{
+        //tableView.tableHeaderVie
+        return @"Ingen tilknyttede arrangement funnet";
+    }
+}
+
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
+    
+    Events *method = nil;
+    method = [self.associatedArray objectAtIndex:indexPath.row];
+    self.selectedEvent = method;
+    
+    for (int i = 0; i<self.filterArray.count; i++) {
+        Events *method2 = [self.filterArray objectAtIndex:i];
+        if ([self.selectedEvent.start_date isEqualToString:method2.start_date]) {
+            self.day = i + 1;
+        }
+    }
+   // if (self.selectedEvent.start_date > method.start_date) {
+  //  }
+    [self viewDidLoad];
 }
 
 - (void) filterAssociated{
@@ -340,6 +400,26 @@ GMSMapView *mapView_;
     }
     
 }
+-(void) filterSameEvents{
+    self.filterArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i<self.eventArray.count; i++) {
+        Events *method = nil;
+        method = [self.eventArray objectAtIndex:i];
+        if (self.selectedEvent.event_id == method.event_id) {
+            [self.filterArray addObject:method];
+        }
+    }
+}
+-(void) daySubEvents{
+    self.daySub = [[NSMutableArray alloc] init];
+    //self.filterArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i<self.filterArray.count; i++) {
+        if (i+1 != self.day) {
+            [self.daySub addObject:[NSNumber numberWithInteger:i+1]];
+        }
+    }
+}
+
 
 
 #pragma mark - Navigation
