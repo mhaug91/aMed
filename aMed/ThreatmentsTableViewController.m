@@ -185,12 +185,10 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
             
             // Søkefelt fiksa =)
         if (self.searchDisplayController.active) {
-            NSLog(@"søkeresultat overgang");
             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
             method = [searchResults objectAtIndex:indexPath.row];
         }
          else {
-            NSLog(@"metode overgang");
             indexPath = [self.tableView indexPathForCell:sender];
             method = [self.threatmentsArray objectAtIndex:indexPath.row];
         }

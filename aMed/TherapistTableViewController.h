@@ -11,7 +11,7 @@
 #import "TherapistViewController.h"
 
 @interface TherapistTableViewController : UITableViewController
-<UITableViewDataSource, UITableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;

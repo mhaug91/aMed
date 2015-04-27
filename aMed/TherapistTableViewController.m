@@ -10,7 +10,7 @@
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 
-static NSString *finnBehandlerID = @"finnBehandlerID";
+static NSString *tableCellID = @"finnBehandlerID";
 
 
 @interface TherapistTableViewController ()
@@ -19,7 +19,9 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
 @end
 
-@implementation TherapistTableViewController
+@implementation TherapistTableViewController{
+    NSArray *searchResults;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,31 +33,43 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    NSLog(@"%ld", [self.therapists count]);
     tableView.rowHeight = 50;
-    return [self.therapists count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+    }
+    else{
+        return [self.therapists count];
+
+    }
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
-                             finnBehandlerID forIndexPath:indexPath];
+                             tableCellID forIndexPath:indexPath];
     if(cell == nil){
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleSubtitle
-                reuseIdentifier:finnBehandlerID];
+                reuseIdentifier:tableCellID];
     }
-    Therapists *method = nil;
-    method = [self.therapists objectAtIndex:indexPath.row];
-    NSString *name = [NSString stringWithFormat:@"%@ %@", method.firstName, method.lastName];
+    Therapists *therapist = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        therapist =[searchResults objectAtIndex:indexPath.row];
 
-    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", method.avatar];
+    }
+    else{
+        therapist = [self.therapists objectAtIndex:indexPath.row];
+
+    }
+    NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
+
+    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
     
     cell.imageView.image = [UIImage imageNamed:imagepath];
-    NSString *therapistTreatments = [[method.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
+    NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
-    if([method.avatar isEqual:[NSNull null]]){
+    if([therapist.avatar isEqual:[NSNull null]]){
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
         cell.imageView.image = [UIImage imageWithData:image];
         CGSize itemSize = CGSizeMake(45, 50);
@@ -80,7 +94,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     
 
     
-    cell.textLabel.text = method.company;
+    cell.textLabel.text = therapist.company;
     //cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:19];
 
     
@@ -91,6 +105,42 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
     
     return cell;
 }
+
+#pragma mark - search delegate methods
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    /* The predicate object searches through all the Threatments and returns the matched objects.
+     * it returns true or false.
+     * Filter the threatments using "title" as the search criteria.
+     * [c] means case sensitive.
+     */
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"firstName contains[c] %@",
+                                    searchText];
+    searchResults = [self.therapists filteredArrayUsingPredicate:resultPredicate];
+    
+}
+
+- (void)searchDisplayController:(UISearchDisplayController *)controller
+  didLoadSearchResultsTableView:(UITableView *)tableView
+{
+    [tableView registerClass:[UITableViewCell class]
+      forCellReuseIdentifier:tableCellID];
+}
+
+
 
 
 /*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -113,22 +163,7 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
 
 #pragma mark - Table view data source
 
-/*- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
- #warning Potentially incomplete method implementation.
- // Return the number of sections.
- return 0;
- }*/
 
-
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
 
 /*
  // Override to support conditional editing of the table view.
@@ -173,18 +208,22 @@ static NSString *finnBehandlerID = @"finnBehandlerID";
  // Pass the selected object to the new view controller.
  
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
- 
          NSIndexPath *indexPath = nil;
-         Therapists *method = nil;
-         NSString *title = method.company;
-
-         NSLog(@"metode overgang");
-         indexPath = [self.tableView indexPathForCell:sender];
-         method = [self.therapists objectAtIndex:indexPath.row];
+         Therapists *therapist = nil;
+         
+         if (self.searchDisplayController.active) {
+             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+             therapist = [searchResults objectAtIndex:indexPath.row];
+         }
+         else {
+             indexPath = [self.tableView indexPathForCell:sender];
+             therapist = [self.therapists objectAtIndex:indexPath.row];
+         }
+         NSString *title = therapist.company;
 
          TherapistViewController *destViewController = segue.destinationViewController; // Getting new view controller
          destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
-         [destViewController getTherapistObject:method]; // Passing object to ThreamentInfoController
+         [destViewController getTherapistObject:therapist]; // Passing object to ThreamentInfoController
          //Therapists  *Therapist = [self.rd retrieveTherapists:method.company]; // Passing the ThreatmentMethod objects alias to get its info
          //[method setIntroText:introtext]; //
      }
