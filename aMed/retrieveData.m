@@ -116,13 +116,13 @@
         @finally {
         }
         NSString *comment = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_ajaxtekst")];
-        NSString *treatmentMethods = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
+        NSString *treatmentMethodString = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
         
         //Splitting string of treatment methods into an array.
-        tr_methods = [treatmentMethods componentsSeparatedByString:(@"|*|")];
+        tr_methods = [treatmentMethodString componentsSeparatedByString:(@"|*|")];
         
         address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
-        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods];
+        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString];
         
         [therapists addObject:therapist];
         

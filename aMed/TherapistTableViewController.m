@@ -21,6 +21,8 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 @implementation TherapistTableViewController{
     NSArray *searchResults;
+    NSMutableArray *predicates;
+
 }
 
 - (void)viewDidLoad {
@@ -33,7 +35,6 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
-    tableView.rowHeight = 50;
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         return [searchResults count];
     }
@@ -43,10 +44,15 @@ static NSString *tableCellID = @"finnBehandlerID";
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
                              tableCellID forIndexPath:indexPath];
     if(cell == nil){
         cell = [[UITableViewCell alloc]
@@ -123,15 +129,50 @@ shouldReloadTableForSearchString:(NSString *)searchString
 {
     /* The predicate object searches through all the Threatments and returns the matched objects.
      * it returns true or false.
-     * Filter the threatments using "title" as the search criteria.
-     * [c] means case sensitive.
+     * Filter the threatments using "..................." as the search criteria.
+     * [c] means case in- sensitive.
      */
-    NSPredicate *resultPredicate = [NSPredicate
-                                    predicateWithFormat:@"firstName contains[c] %@",
-                                    searchText];
-    searchResults = [self.therapists filteredArrayUsingPredicate:resultPredicate];
+    predicates = [[NSMutableArray alloc] init];
+
+    if(3>1){
+        NSPredicate *firstNamePredicate= [NSPredicate predicateWithFormat:@"firstName contains[c] %@",
+                          searchText];
+        NSPredicate *lastNamePredicate= [NSPredicate predicateWithFormat:@"lastName contains[c] %@",
+                                          searchText];
+        [predicates addObject:firstNamePredicate];
+        [predicates addObject:lastNamePredicate];
+    }
+    if(3>2){
+        NSPredicate *compPredicate= [NSPredicate predicateWithFormat:@"company contains[c] %@",
+                          searchText];
+        [predicates addObject:compPredicate];
+
+    }
+    if(3>2){
+        NSPredicate *cityPredicate= [NSPredicate predicateWithFormat:@"address.city contains[c] %@",
+                                     searchText];
+        [predicates addObject:cityPredicate];
+        
+    }
+    if(3>2){
+        NSPredicate *statePredicate= [NSPredicate predicateWithFormat:@"address.state contains[c] %@",
+                                     searchText];
+        [predicates addObject:statePredicate];
+    }
+    if(3>2){
+        NSPredicate *methodPredicate= [NSPredicate predicateWithFormat:@"treatmentMethodString contains[c] %@",
+                                      searchText];
+        [predicates addObject:methodPredicate];
+    }
+    
+
+    
+    NSCompoundPredicate *compoundPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];
+    
+    searchResults = [self.therapists filteredArrayUsingPredicate:compoundPredicate];
     
 }
+
 
 - (void)searchDisplayController:(UISearchDisplayController *)controller
   didLoadSearchResultsTableView:(UITableView *)tableView
@@ -140,8 +181,17 @@ shouldReloadTableForSearchString:(NSString *)searchString
       forCellReuseIdentifier:tableCellID];
 }
 
+//Tells the application what to do when a table cell is pressed.
 
-
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(self.searchDisplayController.active){
+        UITableViewCell *sender = [self.searchDisplayController.searchResultsTableView cellForRowAtIndexPath:indexPath];
+        
+        [self performSegueWithIdentifier:@"pushTherapist" sender:sender];
+    }
+    
+}
 
 /*- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier forIndexPath:indexPath];
@@ -206,14 +256,13 @@ shouldReloadTableForSearchString:(NSString *)searchString
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
- 
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
          NSIndexPath *indexPath = nil;
          Therapists *therapist = nil;
-         
          if (self.searchDisplayController.active) {
-             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+             indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:sender];
              therapist = [searchResults objectAtIndex:indexPath.row];
+             
          }
          else {
              indexPath = [self.tableView indexPathForCell:sender];

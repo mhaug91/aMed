@@ -10,7 +10,7 @@
 
 @implementation Therapists
 
--(id) initWithFirstName:(NSString *)firstName andLastName:(NSString *)lastName andAvatar:(NSString *)avatar andWebsite:(NSString *)website andOccupation:(NSString *)occupation andCompany:(NSString *)company andAddress:(Address *)address andPhone:(NSInteger *)phone andComment:(NSString *)comment andTreatmentMethods:(NSArray *)treatmentMethods{
+-(id) initWithFirstName:(NSString *)firstName andLastName:(NSString *)lastName andAvatar:(NSString *)avatar andWebsite:(NSString *)website andOccupation:(NSString *)occupation andCompany:(NSString *)company andAddress:(Address *)address andPhone:(NSInteger *)phone andComment:(NSString *)comment andTreatmentMethods:(NSArray *)treatmentMethods andTreatmentMethodString:(NSString *) treatmentMethodString{
     self = [super init];
     if (self){
         self.firstName = firstName;
@@ -23,6 +23,7 @@
         self.phone = *phone;
         self.comment = comment;
         self.treatmentMethods = treatmentMethods;
+        self.treatmentMethodString = treatmentMethodString;
     }
     return self;
 }

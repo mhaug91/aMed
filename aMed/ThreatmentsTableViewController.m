@@ -102,7 +102,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     /* The predicate object searches through all the Threatments and returns the matched objects.
      * it returns true or false.
      * Filter the threatments using "title" as the search criteria.
-     * [c] means case sensitive. 
+     * [c] means case in-sensitive. 
      */
     NSPredicate *resultPredicate = [NSPredicate
                                     predicateWithFormat:@"title contains[c] %@",

@@ -17,6 +17,6 @@
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *therapists;
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
-        cellForRowAtIndexPath:(NSIndexPath *)indexPath;
+
+
 @end
