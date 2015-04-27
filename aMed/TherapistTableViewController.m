@@ -206,11 +206,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
  - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
- 
+     NSLog(@"jipjp");
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
          NSIndexPath *indexPath = nil;
          Therapists *therapist = nil;
-         
+         NSLog(@"ouhouo");
          if (self.searchDisplayController.active) {
              indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
              therapist = [searchResults objectAtIndex:indexPath.row];
