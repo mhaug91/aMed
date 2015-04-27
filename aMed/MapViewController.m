@@ -37,15 +37,6 @@ GMSMapView *mapView_;
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     self.navigationItem.rightBarButtonItem = infoButtonItem;
-    /*UIButton *btn = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:btn];
-    [self buttonAction: self.navigationItem.rightBarButtonItem];*/
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]
-                                               initWithTitle:@"Info" style:UIBarButtonItemStylePlain
-                                               target:self action:@selector(buttonAction:)];
-
-    
 
     //Laster inn kartet.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:63.4187362
