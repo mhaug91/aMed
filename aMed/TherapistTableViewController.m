@@ -160,12 +160,11 @@ shouldReloadTableForSearchString:(NSString *)searchString
         [predicates addObject:statePredicate];
     }
     if(3>2){
-        NSPredicate *methodPredicate= [NSPredicate predicateWithFormat:@"treatmentMethods contains[c] %@",
+        NSPredicate *methodPredicate= [NSPredicate predicateWithFormat:@"treatmentMethodString contains[c] %@",
                                       searchText];
         [predicates addObject:methodPredicate];
     }
     
-    //NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
 
     
     NSCompoundPredicate *compoundPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicates];

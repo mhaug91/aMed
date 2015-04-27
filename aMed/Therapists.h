@@ -21,8 +21,10 @@
 @property NSInteger phone;
 @property(strong, nonatomic)NSString *comment;
 @property(strong, nonatomic)NSArray *treatmentMethods;
+@property(strong, nonatomic)NSString *treatmentMethodString;
 
--(id) initWithFirstName: (NSString * ) firstName andLastName: (NSString *) lastName andAvatar: (NSString *) avatar andWebsite: (NSString *) website andOccupation: (NSString *) occupation andCompany: (NSString *) company andAddress: (Address *) address andPhone: (NSInteger *) phone andComment: (NSString *) comment andTreatmentMethods: (NSArray *) treatmentMethods;
+
+-(id) initWithFirstName: (NSString * ) firstName andLastName: (NSString *) lastName andAvatar: (NSString *) avatar andWebsite: (NSString *) website andOccupation: (NSString *) occupation andCompany: (NSString *) company andAddress: (Address *) address andPhone: (NSInteger *) phone andComment: (NSString *) comment andTreatmentMethods: (NSArray *) treatmentMethods andTreatmentMethodString: (NSString *) treatmentMethodString;
 
 -(id) initWithFirstName: (NSString *) firstName andLastName: (NSString *) lastName andAddress:(Address *) address;
 @end
