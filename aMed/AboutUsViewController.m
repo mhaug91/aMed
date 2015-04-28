@@ -36,10 +36,6 @@
     
     UIImageView *pinImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 200)];
     pinImage.image = [UIImage imageNamed:@"ic_amed_logo"];
-    /*
-    CGPoint centerImageView = pinImage.center;
-    centerImageView = CGPointMake(self.view.frame.size.width/2, 50);
-    pinImage.center = centerImageView;*/
     [self.contentView addSubview:pinImage];
     
 }
@@ -115,14 +111,5 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/amedno"]];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -210,7 +210,7 @@
         <scene sceneID="U8L-O6-mal">
             <objects>
                 <navigationController id="W6H-Hn-YFr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nyheter" id="ciN-Fu-F8T"/>
+                    <tabBarItem key="tabBarItem" title="Nyheter" image="News-25" id="ciN-Fu-F8T"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Js-ce-BCo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -302,11 +302,46 @@
                     </view>
                     <connections>
                         <outlet property="contentView" destination="rAB-mH-ISi" id="3FR-LF-Vcn"/>
+                        <segue destination="AwB-CY-Ckp" kind="show" identifier="showLicense" id="3Fu-tp-CfL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLh-nA-ndo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2386" y="1176"/>
+        </scene>
+        <!--Google License-->
+        <scene sceneID="TPx-Bd-RTg">
+            <objects>
+                <viewController title="Google License" id="AwB-CY-Ckp" customClass="GoogleLicenseViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bk0-xJ-zc9"/>
+                        <viewControllerLayoutGuide type="bottom" id="wFM-wq-P32"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2UI-fx-PFt">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iB5-k3-rbb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="iB5-k3-rbb" secondAttribute="bottom" id="ZCC-dJ-RmO"/>
+                            <constraint firstAttribute="trailing" secondItem="iB5-k3-rbb" secondAttribute="trailing" id="ZGa-wk-bzj"/>
+                            <constraint firstItem="iB5-k3-rbb" firstAttribute="leading" secondItem="2UI-fx-PFt" secondAttribute="leading" id="jCL-ur-QNp"/>
+                            <constraint firstItem="iB5-k3-rbb" firstAttribute="top" secondItem="2UI-fx-PFt" secondAttribute="top" id="kTa-NE-U0K"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="iB5-k3-rbb" id="6Ox-Ce-3nM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fpf-vV-Vb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2382" y="1926"/>
         </scene>
         <!--Therapist View Controller-->
         <scene sceneID="SfD-0w-0YH">
@@ -350,7 +385,7 @@
         <scene sceneID="8ze-Eh-eZI">
             <objects>
                 <navigationController id="REr-lC-9zg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Finn behandler" id="iPK-jv-Jpd"/>
+                    <tabBarItem key="tabBarItem" title="Finn behandler" image="Find User-25" id="iPK-jv-Jpd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a7O-0v-x9U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -456,7 +491,7 @@
         <scene sceneID="3Qp-8c-zAT">
             <objects>
                 <navigationController title="Arrangementer" id="K2x-MG-8Mm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arrangementer" id="LZr-ey-r27"/>
+                    <tabBarItem key="tabBarItem" title="Arrangementer" image="Today-25" id="LZr-ey-r27"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kwv-e3-jvd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -473,7 +508,7 @@
         <scene sceneID="g5b-4r-shl">
             <objects>
                 <navigationController title="Nærmeste behandler" id="a4U-cm-4Wa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nærmeste behandler" id="wJE-mr-O60"/>
+                    <tabBarItem key="tabBarItem" title="Nærmeste behandler" image="Map Marker-25" id="wJE-mr-O60"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Jz-FD-B7E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -645,7 +680,7 @@
                             <outlet property="delegate" destination="Hdm-hb-nwD" id="b9W-5o-G1x"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Kontakt oss" id="NZb-91-wuQ"/>
+                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" id="NZb-91-wuQ"/>
                     <connections>
                         <outlet property="nameField" destination="xAA-WY-h4U" id="FLn-YS-PLF"/>
                         <outlet property="phoneField" destination="SD6-cZ-Tfq" id="Nxf-En-uPA"/>
@@ -713,7 +748,7 @@
         <scene sceneID="6TY-1C-3Hr">
             <objects>
                 <navigationController id="AMF-Qe-VeF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Behandlingsmetoder" image="first" id="NeK-N1-S34"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Behandlingsmetoder" image="Hospital-25" id="NeK-N1-S34"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8K-eP-Mqb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -753,7 +788,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </scrollView>
-                    <tabBarItem key="tabBarItem" title="Om oss" id="zlm-zC-0gi"/>
+                    <tabBarItem key="tabBarItem" title="Om oss" image="Info-25" id="zlm-zC-0gi"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -770,7 +805,7 @@
                 <tabBarController storyboardIdentifier="TabBar" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8Vz-LB-ZM5"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                    <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="fill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -793,7 +828,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
+        <image name="Email-25" width="25" height="25"/>
+        <image name="Find User-25" width="25" height="25"/>
+        <image name="Hospital-25" width="25" height="25"/>
+        <image name="Info-25" width="25" height="25"/>
+        <image name="Map Marker-25" width="25" height="25"/>
+        <image name="News-25" width="25" height="25"/>
+        <image name="Today-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Osu-7c-azi"/>

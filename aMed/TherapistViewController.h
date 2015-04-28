@@ -13,7 +13,7 @@
 #import "ThreatmentMethod.h"
 #import "Therapists.h"
 
-@interface TherapistViewController : UIViewController
+@interface TherapistViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
@@ -25,5 +25,4 @@
 
 
 - (void) getTherapistObject: (id) therapistObject;
-- (IBAction)buttonTapped:(UIButton *)sender;
 @end

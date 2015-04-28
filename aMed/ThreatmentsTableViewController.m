@@ -77,9 +77,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
         metode = [self.threatmentsArray objectAtIndex:indexPath.row];
     }
     
-    cell.textLabel.text = metode.title/*self.metoder[indexPath.row] */;
-    UIImage *image = [UIImage imageNamed:@"second"];
-    cell.imageView.image = image;
+    cell.textLabel.text = metode.title;
     return cell;
 }
 

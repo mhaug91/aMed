@@ -56,8 +56,6 @@ GMSMapView *mapView_;
     self.tableView = [self makeTableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
-   // [[UILabel appearance] setBackgroundColor:[UIColor grayColor]];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -105,7 +103,6 @@ GMSMapView *mapView_;
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor blackColor];
-    //[[UILabel appearance] setBackgroundColor:UIColorFromRGB(0x602167)];
     label.font = [UIFont fontWithName:@"ArialMT" size:(16.0)];
     [self.contentView addSubview:label];
     label.text = summary;
@@ -154,7 +151,6 @@ GMSMapView *mapView_;
 -(void) sixthLabel{
     NSString *street = self.selectedEvent.location.address.street;
     NSString *city = self.selectedEvent.location.address.city;
-   // NSInteger post = self.selectedEvent.location.address.postcode;
     NSString *postCode = [NSString stringWithFormat:@"%ld",self.selectedEvent.location.address.postcode ];
     NSString *place = [NSString stringWithFormat:@"%@, %@", city, postCode];
     
@@ -174,10 +170,6 @@ GMSMapView *mapView_;
     if ([city isEqual:[NSNull null]] || [city isEqualToString:@""]){
         place = @"--";
     }
-    /*if ([postCode isEqual:[NSNull null]] || [postCode isEqualToString:@"0"]) {
-        postCode = @"--";
-        
-    }*/
     label.text = [NSString stringWithFormat:@"%@\n\n%@", street, place];
     [label sizeToFit];
 }
@@ -362,7 +354,6 @@ titleForHeaderInSection:(NSInteger)section {
         return @"Øvrige dager knyttet til arrangementet";
     }
     else{
-        //tableView.tableHeaderVie
         return @"Ingen tilknyttede arrangement funnet";
     }
 }
@@ -380,8 +371,6 @@ titleForHeaderInSection:(NSInteger)section {
             self.day = i + 1;
         }
     }
-   // if (self.selectedEvent.start_date > method.start_date) {
-  //  }
     [self viewDidLoad];
 }
 
@@ -412,7 +401,6 @@ titleForHeaderInSection:(NSInteger)section {
 }
 -(void) daySubEvents{
     self.daySub = [[NSMutableArray alloc] init];
-    //self.filterArray = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.filterArray.count; i++) {
         if (i+1 != self.day) {
             [self.daySub addObject:[NSNumber numberWithInteger:i+1]];
@@ -420,14 +408,4 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
-
-
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-/*
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-
-}
-*/
 @end

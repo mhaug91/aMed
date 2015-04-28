@@ -46,41 +46,48 @@ GMSMapView *mapView_;
     mapView_.settings.compassButton = YES;
     mapView_.settings.zoomGestures = YES;
     mapView_.settings.myLocationButton = YES;
-    CLLocation *l = mapView_.myLocation;
     
     [mapView_ addObserver:self forKeyPath:@"myLocation" options:NSKeyValueObservingOptionNew context:NULL];
     self.view = mapView_;
     
-    for(Therapists *t in self.therapists){
-            NSString *therapistAddress = [NSString stringWithFormat:@"%@, %@, %@", t.address.street, t.address.city, t.address.state];
+    
+
+    
+    mapView_.myLocationEnabled = YES;
+
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_async(queue, ^{
+        for(Therapists *t in self.therapists){
+            [self addMarker:t];
+        }
+    });
+    
+}
+- (void) viewDidAppear:(BOOL)animated{
+
+}
+- (void) addMarker:(Therapists *) t{
+    NSDate *startTime = [NSDate date];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    [NSThread sleepForTimeInterval:.2];
+    dispatch_async(queue, ^{
+        NSString *therapistAddress = [NSString stringWithFormat:@"%@, %@, %@", t.address.street, t.address.city, t.address.state];
         [gc geocodeAddress:therapistAddress];
         double lat = [[gc.geocode objectForKey:@"lat"] doubleValue];
         double lng = [[gc.geocode objectForKey:@"lng"] doubleValue];
-        [NSThread sleepForTimeInterval:.2];
+        //[NSThread sleepForTimeInterval:.2];
         
-        GMSMarker *marker = [[GMSMarker alloc] init];
-        marker.position = CLLocationCoordinate2DMake(lat, lng);
-        marker.title = t.company;
-        marker.snippet = t.address.street;
-        marker.map = mapView_;
-        
-    }
-    //Metode for å legge inn behandlere på kartet.
-    /*NSArray *behandlere = @[@"Beate", @"Kjell", @"Knut"];
-    double koordinater[6] = {-33.86, 151.20, -37.4849, 144.5747, -35.1827, 149.0727};
-    NSInteger tall = 0;
-    for (int i=0; i<behandlere.count; i++) {
-            GMSMarker *marker = [[GMSMarker alloc]init];
-            marker.position = CLLocationCoordinate2DMake(koordinater[tall], koordinater[1+tall]);
-            marker.title = behandlere[i];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            GMSMarker *marker = [[GMSMarker alloc] init];
+            marker.position = CLLocationCoordinate2DMake(lat, lng);
+            marker.title = t.company;
+            marker.snippet = t.address.street;
             marker.map = mapView_;
-        tall+=2;
-    }*/
-//63.4187362,10.4387621
-    dispatch_async(dispatch_get_main_queue(), ^{
-        mapView_.myLocationEnabled = YES;
+        });
+        
+        NSDate *endTime = [NSDate date];
+        NSLog(@"Completed in %f seconds", [endTime timeIntervalSinceDate:startTime]);
     });
-    
 }
 
 - (void) getTherapistObject:(id)therapistObject{
@@ -117,8 +124,6 @@ GMSMapView *mapView_;
     
     if ([[segue identifier] isEqualToString:@"PushMapInfo"])
     {
-        
-        NSIndexPath *indexPath = nil;
 
         //MapInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         //destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view

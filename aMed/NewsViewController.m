@@ -24,13 +24,6 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.dwarves = @[@"Sleepy", @"Sneezy", @"Bashful", @"Happy",
-                     @"Doc", @"Grumpy", @"Dopey",
-                     @"Thorin", @"Dorin", @"Nori", @"Ori",
-                     @"Balin", @"Dwalin", @"Fili", @"Kili",
-                     @"Oin", @"Gloin", @"Bifur", @"Bofur",
-                     @"Bombur"];
     self.rd = [[RetrieveData alloc] init];
     self.newsArray = [self.rd retrieveNewsData];
 
@@ -68,25 +61,6 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
     cell.textLabel.text = news.title;
     return cell;
 }
-
-/*
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *rowValue = nil;
-        rowValue = self.dwarves[indexPath.row];
-    NSString *message = [[NSString alloc] initWithFormat:
-                         @"You selected %@", rowValue];
-    UIAlertView *alert = [[UIAlertView alloc]
-                          initWithTitle:@"Row Selected!"
-                          message:message
-                          delegate:nil
-                          cancelButtonTitle:@"Yes I Did"
-                          otherButtonTitles:nil];
-    [alert show];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
- */
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

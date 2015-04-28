@@ -22,7 +22,6 @@
 @property(nonatomic, strong) NSMutableArray *associatedTherapists;
 @property(nonatomic, strong) RetrieveData *rd;
 @property (strong, nonatomic) UITableView *tableView;
-//@property(nonatomic, weak)  TherapistTableViewController *f;
 
 
 
