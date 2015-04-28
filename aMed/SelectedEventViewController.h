@@ -13,7 +13,7 @@
 #import <GoogleMaps/GoogleMaps.h>
 
 
-@interface SelectedEventViewController : UIViewController
+@interface SelectedEventViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 
 @property(strong, nonatomic) Events *selectedEvent;
 @property(strong, nonatomic) RetrieveData *rd;

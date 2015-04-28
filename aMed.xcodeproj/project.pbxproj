@@ -41,6 +41,7 @@
 		5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2A3E801AD566AD0003A164 /* Therapists.m */; };
 		5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */; };
 		5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7002591ADD085800ACB51B /* TherapistViewController.m */; };
+		5C98C3FB1AEF88C400463F23 /* GoogleLicenseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98C3FA1AEF88C400463F23 /* GoogleLicenseViewController.m */; };
 		5CD9B7161AEA1F8C0016F03E /* TherapistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */; };
 		5CF68D2F1AE62ADB005038CD /* MapInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D2E1AE62ADB005038CD /* MapInfoViewController.m */; };
 		5CF68D321AE63747005038CD /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D311AE63747005038CD /* Events.m */; };
@@ -115,6 +116,8 @@
 		5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedEventViewController.m; sourceTree = "<group>"; };
 		5C7002581ADD085800ACB51B /* TherapistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TherapistViewController.h; sourceTree = "<group>"; };
 		5C7002591ADD085800ACB51B /* TherapistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TherapistViewController.m; sourceTree = "<group>"; };
+		5C98C3F91AEF88C400463F23 /* GoogleLicenseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleLicenseViewController.h; sourceTree = "<group>"; };
+		5C98C3FA1AEF88C400463F23 /* GoogleLicenseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleLicenseViewController.m; sourceTree = "<group>"; };
 		5CF68D2D1AE62ADB005038CD /* MapInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapInfoViewController.h; sourceTree = "<group>"; };
 		5CF68D2E1AE62ADB005038CD /* MapInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapInfoViewController.m; sourceTree = "<group>"; };
 		5CF68D301AE63747005038CD /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Events.h; sourceTree = "<group>"; };
@@ -185,6 +188,8 @@
 				5CF68D371AE65743005038CD /* AboutUsViewController.m */,
 				5C60375B1AE7CEB10072E5DF /* SelectedEventViewController.h */,
 				5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */,
+				5C98C3F91AEF88C400463F23 /* GoogleLicenseViewController.h */,
+				5C98C3FA1AEF88C400463F23 /* GoogleLicenseViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -423,6 +428,7 @@
 				042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */,
 				04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */,
 				5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */,
+				5C98C3FB1AEF88C400463F23 /* GoogleLicenseViewController.m in Sources */,
 				042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

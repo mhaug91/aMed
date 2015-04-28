@@ -25,6 +25,7 @@
     [self FourthLabel];
     [self FifthLabel];
     [self SixthLabel];
+    [self googleBtn];
     // Do any additional setup after loading the view.
 }
 
@@ -106,15 +107,20 @@
     label.text = [NSString stringWithFormat: @"Du kan ved å trykke på en av markørene finne ut hvem som er registrert på denne lokasjonen(hvis ingen markører vises frem i kartet, eller hvis du blir plassert på feil sted - prøv å starte om enheten!)."];
 }
 
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void) googleBtn{
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self
+               action:@selector(googleLicense:)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Se google lisens her" forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 320.0, 160.0, 40.0);
+    [self.contentView addSubview:button];
 }
-*/
+
+-(IBAction)googleLicense:(id)sender{
+    [self performSegueWithIdentifier:@"showLicense" sender:sender];
+}
+
+
 
 @end

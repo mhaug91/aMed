@@ -18,6 +18,8 @@
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
+@property (strong, nonatomic) UISearchController *searchController;
+
 
 #pragma marks
 #pragma mark - Class methods
