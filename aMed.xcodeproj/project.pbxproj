@@ -10,9 +10,6 @@
 		042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */; };
 		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
 		043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */; };
-		049CC3DC1AFA06040005E268 /* libPods-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 049CC3D71AFA059A0005E268 /* libPods-JTCalendar.a */; };
-		049CC3DD1AFA06080005E268 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 049CC3D51AFA059A0005E268 /* libPods.a */; };
-		049CC3E01AFA08BE0005E268 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 049CC3DF1AFA08BE0005E268 /* CalendarViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04C1F9631AE911EC00F41D28 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */; };
@@ -54,34 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		049CC3D41AFA059A0005E268 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 02D89F80D3C8199DC904D548;
-			remoteInfo = Pods;
-		};
-		049CC3D61AFA059A0005E268 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C94534899FD001EC97D752CC;
-			remoteInfo = "Pods-JTCalendar";
-		};
-		049CC3D81AFA05DB0005E268 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FB1995C70B49B4F6F2E9C4BA;
-			remoteInfo = Pods;
-		};
-		049CC3DA1AFA05DE0005E268 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = CD61D77E1E0D31DAC7AE4602;
-			remoteInfo = "Pods-JTCalendar";
-		};
 		04FACEDE1AADBCF9009789BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 04FACEB91AADBCF9009789BA /* Project object */;
@@ -98,9 +67,6 @@
 		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
 		043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentsTableViewController.h; sourceTree = "<group>"; };
 		043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentsTableViewController.m; sourceTree = "<group>"; };
-		049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = ../../Downloads/JTCalendar/Example/Pods/Pods.xcodeproj; sourceTree = "<group>"; };
-		049CC3DE1AFA08BE0005E268 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
-		049CC3DF1AFA08BE0005E268 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentInfoViewController.h; sourceTree = "<group>"; };
 		04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentInfoViewController.m; sourceTree = "<group>"; };
 		04BC0BEC1AD515D500570763 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -169,8 +135,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049CC3DD1AFA06080005E268 /* libPods.a in Frameworks */,
-				049CC3DC1AFA06040005E268 /* libPods-JTCalendar.a in Frameworks */,
 				5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */,
 				5C0701DB1AB9A4F300A9DB39 /* QuartzCore.framework in Frameworks */,
 				5C0701D91AB9A4E800A9DB39 /* OpenGLES.framework in Frameworks */,
@@ -197,15 +161,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		049CC3D01AFA059A0005E268 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				049CC3D51AFA059A0005E268 /* libPods.a */,
-				049CC3D71AFA059A0005E268 /* libPods-JTCalendar.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		04B533A41AC42E530050013C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +227,6 @@
 		04FACEB81AADBCF9009789BA = {
 			isa = PBXGroup;
 			children = (
-				049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */,
 				5C0701C11AB9A30600A9DB39 /* Framework */,
 				04FACEC31AADBCF9009789BA /* aMed */,
 				04FACEE01AADBCF9009789BA /* aMedTests */,
@@ -299,8 +253,6 @@
 				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
 				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
 				04FACED11AADBCF9009789BA /* Main.storyboard */,
-				049CC3DE1AFA08BE0005E268 /* CalendarViewController.h */,
-				049CC3DF1AFA08BE0005E268 /* CalendarViewController.m */,
 				04FACED41AADBCF9009789BA /* Images.xcassets */,
 				04FACEC41AADBCF9009789BA /* Supporting Files */,
 			);
@@ -368,8 +320,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				049CC3DB1AFA05DE0005E268 /* PBXTargetDependency */,
-				049CC3D91AFA05DB0005E268 /* PBXTargetDependency */,
 			);
 			name = aMed;
 			productName = aMed;
@@ -424,12 +374,6 @@
 			mainGroup = 04FACEB81AADBCF9009789BA;
 			productRefGroup = 04FACEC21AADBCF9009789BA /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 049CC3D01AFA059A0005E268 /* Products */;
-					ProjectRef = 049CC3CF1AFA059A0005E268 /* Pods.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				04FACEC01AADBCF9009789BA /* aMed */,
@@ -437,23 +381,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		049CC3D51AFA059A0005E268 /* libPods.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libPods.a;
-			remoteRef = 049CC3D41AFA059A0005E268 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		049CC3D71AFA059A0005E268 /* libPods-JTCalendar.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libPods-JTCalendar.a";
-			remoteRef = 049CC3D61AFA059A0005E268 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		04FACEBF1AADBCF9009789BA /* Resources */ = {
@@ -489,7 +416,6 @@
 				5C2A3E821AD566AD0003A164 /* Location.m in Sources */,
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
-				049CC3E01AFA08BE0005E268 /* CalendarViewController.m in Sources */,
 				5C2A3E811AD566AD0003A164 /* Address.m in Sources */,
 				5CF9318E1AE5396D001A079E /* GeoCoding.m in Sources */,
 				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
@@ -519,16 +445,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		049CC3D91AFA05DB0005E268 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Pods;
-			targetProxy = 049CC3D81AFA05DB0005E268 /* PBXContainerItemProxy */;
-		};
-		049CC3DB1AFA05DE0005E268 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-JTCalendar";
-			targetProxy = 049CC3DA1AFA05DE0005E268 /* PBXContainerItemProxy */;
-		};
 		04FACEDF1AADBCF9009789BA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 04FACEC01AADBCF9009789BA /* aMed */;
@@ -635,19 +551,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				HEADER_SEARCH_PATHS = (
-					"<Multiple",
-					"values>",
-					"\"$(OBJROOT)/UninstalledProducts/include\"",
-					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
-					"$(SRCROOT)/Pods/Headers/**",
-				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/Pods/Headers/**";
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				OTHER_LDFLAGS = "";
-				"OTHER_LDFLAGS[arch=*]" = "-all_load";
+				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -665,12 +572,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-				);
-				HEADER_SEARCH_PATHS = (
-					"<Multiple",
-					"values>",
-					"\"$(OBJROOT)/UninstalledProducts/include\"",
-					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 				);
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
