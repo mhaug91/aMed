@@ -22,7 +22,7 @@
 		<key>32901DE3EEA37A47D16917EE5FC69C6E3E4FB30B</key>
 		<string>../..</string>
 		<key>47C9B10A449C73DD51E3BF34718DF950F30CE5D7</key>
-		<string>../../../../Downloads/JTCalendar/Example/Pods</string>
+		<string>../../../Downloads/JTCalendar/Example/Pods</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mhaug91/aMed.git</string>
