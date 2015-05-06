@@ -32,8 +32,42 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     // Load data
-    self.rd = [[RetrieveData alloc] init];
-    self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    }
+    @catch (NSException *exception) {
+    }
+}
+
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.threatmentsArray.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.threatmentsArray = [self.rd retrieveThreatmentsData];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.tableView reloadData];
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,6 +76,8 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 }
 
 #pragma mark - Table view data source
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -193,8 +229,15 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
         ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
-        NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
-        [method setIntroText:introtext]; //
+            @try {
+                NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias];
+                [method setIntroText:introtext];
+            }
+            @catch (NSException *exception) {
+
+            }
+ // Passing the ThreatmentMethod objects alias to get its info
+ //
         }
 }
 

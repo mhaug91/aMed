@@ -28,7 +28,11 @@
 }
 
 - (void) setWebView{
-    self.htmlString = [GMSServices openSourceLicenseInfo]; // stores the introtext in an own variable
+    @try {
+            self.htmlString = [GMSServices openSourceLicenseInfo]; // stores the introtext in an own variable
+    }
+    @catch (NSException *exception) {
+    }
     
     self.lisensString = @"Under følger en utfyllende lisens fra Google Inc. som gjør det mulig, for oss som utviklere, å ta i bruk Google Maps Api i denne applikasjonen. Dette gjør at du som bruker ikke behøver å gå ut av applikasjonen for å se på et kart for å finne nærmeste behandler eller kommende arrangementer. Det er ikke nødvendig å lese lisensen, den er der kun for opphavsrettighetens skyld. Om det skulle være ønskelig å lese mer om opphavsrettene, kan du trykke på linkene som er markert med blå tekst.<br><br>";
     

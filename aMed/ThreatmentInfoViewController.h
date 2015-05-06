@@ -13,7 +13,7 @@
 #import "TherapistTableViewController.h"
 #import "NewsInfoViewController.h"
 #import "NewsViewController.h"
-@interface ThreatmentInfoViewController : UIViewController
+@interface ThreatmentInfoViewController : UIViewController <UIAlertViewDelegate>
 
 
 @property(nonatomic, strong) ThreatmentMethod *currentMethod;

@@ -26,9 +26,15 @@
     [super viewDidLoad];
     
     //Getting data from the database
-    self.rd = [[RetrieveData alloc] init];
-    self.therapists = [self.rd retrieveTherapists];
-    self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.therapists = [self.rd retrieveTherapists];
+        self.threatmentsArray = [self.rd retrieveThreatmentsData];
+    }
+    @catch (NSException *exception) {
+
+    }
+
     
     self.navigationItem.title = self.currentTherapist.company;
     
@@ -44,6 +50,25 @@
     [self.view addSubview:self.tableView];
 
 }
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.therapists.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.therapists = [self.rd retrieveTherapists];
+            self.threatmentsArray = [self.rd retrieveThreatmentsData];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.tableView setNeedsDisplay];
+    }
+}
 
 - (void) getTherapistObject:(id)therapistObject{
     self.currentTherapist = therapistObject;
@@ -54,6 +79,18 @@
 }
 
 //Method which creates the tableView
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
+}
+
 -(UITableView *)makeTableView
 {
     double number = 0;
@@ -72,7 +109,7 @@
     tableView.rowHeight = 40;
     tableView.sectionFooterHeight = 10;
     tableView.sectionHeaderHeight = 10;
-    tableView.scrollEnabled = YES;
+    tableView.scrollEnabled = NO;
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
     tableView.bounces = YES;
@@ -241,8 +278,16 @@
         ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
-        NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
-        [method setIntroText:introtext];
+        @try {
+            NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
+            [method setIntroText:introtext];
+        }
+        @catch (NSException *exception) {
+            
+        }
+        @finally {
+            
+        }
 
     }
 }

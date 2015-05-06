@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "News.h"
 
-@interface NewsInfoViewController : UIViewController
+@interface NewsInfoViewController : UIViewController <UIAlertViewDelegate>
 
 @property(strong, nonatomic) News *currentNews;
 

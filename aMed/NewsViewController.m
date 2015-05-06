@@ -24,14 +24,60 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.rd = [[RetrieveData alloc] init];
-    self.newsArray = [self.rd retrieveNewsData];
+    
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.newsArray = [self.rd retrieveNewsData];
+        [self.tableView reloadData];
+    }
+    @catch (NSException *exception) {
+        
+    }
 
 }
+
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.newsArray.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.newsArray = [self.rd retrieveNewsData];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+         [self.tableView reloadData];
+    }
+}
+/*
+-(void)viewWillAppear:(BOOL)animated{
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Feil"
+                                                        message:@"kunne ikke hente data" delegate:self
+                                              cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+    [alertView show];
+
+}*/
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+
+    }
 }
 
 #pragma mark -
@@ -72,9 +118,18 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
          News *news = [self.newsArray objectAtIndex:indexPath.row];
          NewsInfoViewController *destVC = segue.destinationViewController;
-         [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]];
-         destVC.navigationItem.title = news.title;
-         [destVC getNewsObject:news];
+         @try {
+             [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]];
+             destVC.navigationItem.title = news.title;
+             [destVC getNewsObject:news];
+         }
+         @catch (NSException *exception) {
+             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                                 message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                       cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+             [alertView show];
+             
+         }
          
          
     }

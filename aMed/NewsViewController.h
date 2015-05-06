@@ -13,7 +13,7 @@
 #import "RetrieveData.h"
 
 @interface NewsViewController : UITableViewController
-<UITableViewDataSource, UITableViewDelegate>
+<UITableViewDataSource, UITableViewDelegate,UIAlertViewDelegate>
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;

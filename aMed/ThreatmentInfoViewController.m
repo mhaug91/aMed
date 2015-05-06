@@ -12,6 +12,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
 
 @interface ThreatmentInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
@@ -20,12 +21,19 @@ static NSString *CellIdentifier = @"newTherapistCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWebView];
-    self.rd = [[RetrieveData alloc] init];
-    self.allTherapists = [self.rd retrieveTherapists];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.allTherapists = [self.rd retrieveTherapists];
+    }
+    @catch (NSException *exception) {
+
+    }
+
     [self findAssociatedTherapists];
     //if(self.associatedTherapists.count != 0){
         self.tableView = [self makeTableView];
         [self.view addSubview:self.tableView];
+    self.tableView.scrollsToTop = NO;
     //}
     //else{
         //[self.view addSubview:[self makeLabel]];
@@ -41,6 +49,37 @@ static NSString *CellIdentifier = @"newTherapistCell";
 - (void) getThreatmentMethod:(id)threatmentObject{
     self.currentMethod=threatmentObject;
 }
+
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.allTherapists.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.allTherapists = [self.rd retrieveTherapists];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.view setNeedsDisplay];
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
+}
+
 
 /* Puts the introtext made of html inside the webview
  * Some adjustments to the string has to be made to display well.
@@ -138,18 +177,20 @@ static NSString *CellIdentifier = @"newTherapistCell";
 
 -(UITableView *)makeTableView
 {
-    double number = 139;
-    number = 139;
+    double number = 150;
+    number = 200;
     CGFloat x = 0;
-    CGFloat y = 400;
+    CGFloat y =self.view.frame.size.height -number - 22 -49 - 64
+    ;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = number;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
-    tableView.rowHeight = 50;
+    tableView.rowHeight = number/3;
     tableView.sectionHeaderHeight = 22;
+    tableView.tableFooterView = [UIView new];
     
     tableView.delegate = self;
     tableView.dataSource = self;

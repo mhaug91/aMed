@@ -24,16 +24,50 @@ NSInteger EXHIBITION_2 = 86; //green
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.rd = [[RetrieveData alloc] init];
-    self.eventArray = [self.rd retrieveEvents];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.eventArray = [self.rd retrieveEvents];
+    }
+    @catch (NSException *exception) {
+    }
+
     [self filterArrayID];
+    self.tableView.tableFooterView = [UIView new];
 
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.eventArray.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.eventArray = [self.rd retrieveEvents];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.view setNeedsDisplay];
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
 }
 
 #pragma mark - Table view data source

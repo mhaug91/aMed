@@ -31,8 +31,14 @@ GMSMapView *mapView_;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.rd = [[RetrieveData alloc] init];
-    self.eventArray = [self.rd retrieveEvents];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.eventArray = [self.rd retrieveEvents];
+    }
+    @catch (NSException *exception) {
+        
+    }
+
     
     [self filterAssociated];
     [self filterSameEvents];
@@ -58,6 +64,26 @@ GMSMapView *mapView_;
     [self.view addSubview:self.tableView];
 }
 
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.eventArray.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.eventArray = [self.rd retrieveEvents];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.view setNeedsDisplay];
+    }
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -66,6 +92,18 @@ GMSMapView *mapView_;
 - (void) getEventObject:(id)eventObject{
     self.selectedEvent = eventObject;
 }
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
+}
+
 
 -(void) firstLabel{
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 20.0, self.view.frame.size.width/3, 40) ];
