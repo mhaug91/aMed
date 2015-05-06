@@ -14,7 +14,7 @@
 #import "MapInfoViewController.h"
 
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) GeoCoding *gc;

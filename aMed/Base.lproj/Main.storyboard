@@ -83,6 +83,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="contentView" destination="vwQ-tF-Q3z" id="Lvx-Qq-kWG"/>
                         <outlet property="webView" destination="Rub-PU-Nrv" id="FzD-WI-g1t"/>
                         <segue destination="Gfb-ln-wD9" kind="show" identifier="pushTerapistInfo" id="TNK-JL-doa"/>
                     </connections>
@@ -638,8 +639,11 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MHt-WO-A6C" id="cia-1k-F3p">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ok" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkH-dA-PKq">
-                                                    <rect key="frame" x="289" y="11" width="22" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ok" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E2r-HH-KfG">
+                                                    <rect key="frame" x="279" y="11" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="XrQ-Gu-doy"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -647,8 +651,8 @@
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstItem="zkH-dA-PKq" firstAttribute="centerX" secondItem="cia-1k-F3p" secondAttribute="centerX" id="46c-zu-bnu"/>
-                                                <constraint firstItem="zkH-dA-PKq" firstAttribute="centerY" secondItem="cia-1k-F3p" secondAttribute="centerY" id="oru-Ej-JwZ"/>
+                                                <constraint firstItem="E2r-HH-KfG" firstAttribute="centerY" secondItem="cia-1k-F3p" secondAttribute="centerY" id="5NH-Ut-gCj"/>
+                                                <constraint firstItem="E2r-HH-KfG" firstAttribute="centerX" secondItem="cia-1k-F3p" secondAttribute="centerX" id="Jle-pT-rt5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -681,6 +685,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" id="NZb-91-wuQ"/>
+                    <navigationItem key="navigationItem" title="Kontakt oss" id="QxW-C4-IUE"/>
                     <connections>
                         <outlet property="nameField" destination="xAA-WY-h4U" id="FLn-YS-PLF"/>
                         <outlet property="phoneField" destination="SD6-cZ-Tfq" id="Nxf-En-uPA"/>
@@ -691,7 +696,24 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ld0-dg-iO1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="1978"/>
+            <point key="canvasLocation" x="874" y="2236"/>
+        </scene>
+        <!--Kontakt oss-->
+        <scene sceneID="i5V-Td-6GC">
+            <objects>
+                <navigationController title="Kontakt oss" id="C7W-lN-OVZ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" selectedImage="Email-32" id="qVk-dm-Qr4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yk9-aB-Kcu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Hdm-hb-nwD" kind="relationship" relationship="rootViewController" id="9dl-57-3JG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YRb-ul-IQX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="2236"/>
         </scene>
         <!--Behandlingsmetoder-->
         <scene sceneID="H0l-wh-qjj">
@@ -789,6 +811,7 @@
                         </userDefinedRuntimeAttributes>
                     </scrollView>
                     <tabBarItem key="tabBarItem" title="Om oss" image="Info-25" id="zlm-zC-0gi"/>
+                    <navigationItem key="navigationItem" title="Om oss" id="Wdk-Df-cMq"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
@@ -797,7 +820,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0Y-s8-X6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-990" y="-242"/>
+            <point key="canvasLocation" x="-1778" y="2236"/>
+        </scene>
+        <!--Om oss-->
+        <scene sceneID="Wt9-vn-JxY">
+            <objects>
+                <navigationController title="Om oss" id="Lf5-Iu-0Xm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Om oss" image="Info-25" id="6Bj-sA-Dvt"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pdJ-g8-dWc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5Id-sn-V4u" kind="relationship" relationship="rootViewController" id="TgC-bQ-KeD"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AWT-rc-ZCB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-890" y="2236"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -818,8 +858,8 @@
                         <segue destination="REr-lC-9zg" kind="relationship" relationship="viewControllers" id="0fz-fP-BXv"/>
                         <segue destination="a4U-cm-4Wa" kind="relationship" relationship="viewControllers" id="yEH-FK-kDP"/>
                         <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
-                        <segue destination="5Id-sn-V4u" kind="relationship" relationship="viewControllers" id="OYK-0s-aYZ"/>
-                        <segue destination="Hdm-hb-nwD" kind="relationship" relationship="viewControllers" id="CIs-4I-Ipl"/>
+                        <segue destination="Lf5-Iu-0Xm" kind="relationship" relationship="viewControllers" id="fDF-4A-Wd2"/>
+                        <segue destination="C7W-lN-OVZ" kind="relationship" relationship="viewControllers" id="UuW-5d-3GO"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -829,6 +869,7 @@
     </scenes>
     <resources>
         <image name="Email-25" width="25" height="25"/>
+        <image name="Email-32" width="32" height="32"/>
         <image name="Find User-25" width="25" height="25"/>
         <image name="Hospital-25" width="25" height="25"/>
         <image name="Info-25" width="25" height="25"/>
@@ -837,7 +878,7 @@
         <image name="Today-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Osu-7c-azi"/>
         <segue reference="N1l-5T-GYT"/>
+        <segue reference="TNK-JL-doa"/>
     </inferredMetricsTieBreakers>
 </document>

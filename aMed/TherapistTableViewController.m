@@ -28,10 +28,36 @@ static NSString *tableCellID = @"finnBehandlerID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.rd = [[RetrieveData alloc] init];
-    self.therapists = [self.rd retrieveTherapists];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.therapists = [self.rd retrieveTherapists];
+    }
+    @catch (NSException *exception) {
+        
+    }
+
     //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if (self.therapists.count == 0) {
+            self.rd = [[RetrieveData alloc] init];
+            self.therapists = [self.rd retrieveTherapists];
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
+        [self.tableView reloadData];
+    }
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
@@ -41,6 +67,17 @@ static NSString *tableCellID = @"finnBehandlerID";
     else{
         return [self.therapists count];
 
+    }
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
     }
 }
 

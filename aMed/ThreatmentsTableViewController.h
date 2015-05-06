@@ -13,7 +13,7 @@
 #import "RetrieveData.h"
 
 @interface ThreatmentsTableViewController : UITableViewController
-<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate>
+<UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 
 @property(strong, nonatomic) RetrieveData *rd;

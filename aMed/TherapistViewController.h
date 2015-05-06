@@ -13,7 +13,7 @@
 #import "ThreatmentMethod.h"
 #import "Therapists.h"
 
-@interface TherapistViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate>
+@interface TherapistViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIAlertViewDelegate>
 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;

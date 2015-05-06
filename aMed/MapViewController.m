@@ -31,8 +31,15 @@ GMSMapView *mapView_;
 
     gc = [[GeoCoding alloc]init];
     
-    self.rd = [[RetrieveData alloc] init];
-    self.therapists = [self.rd retrieveTherapists];
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.therapists = [self.rd retrieveTherapists];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    
+    
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
@@ -64,12 +71,34 @@ GMSMapView *mapView_;
     
 }
 - (void) viewDidAppear:(BOOL)animated{
+    @try {
+        if(self.therapists.count == 0){
+            self.rd = [[RetrieveData alloc] init];
+            self.therapists = [self.rd retrieveTherapists];
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+            dispatch_async(queue, ^{
+                for(Therapists *t in self.therapists){
+                    [self addMarker:t];
+                }
+            });
+        }
+    }
+    @catch (NSException *exception) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
+                                                            message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
+                                                  cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
+        [alertView show];
+        NSLog(@"Exception:s %@", exception.reason);
+    }
+    @finally {
 
+    }
 }
+
 - (void) addMarker:(Therapists *) t{
     NSDate *startTime = [NSDate date];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    [NSThread sleepForTimeInterval:.2];
+    [NSThread sleepForTimeInterval:.22];
     dispatch_async(queue, ^{
         NSString *therapistAddress = [NSString stringWithFormat:@"%@, %@, %@", t.address.street, t.address.city, t.address.state];
         [gc geocodeAddress:therapistAddress];
@@ -111,6 +140,17 @@ GMSMapView *mapView_;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if( 0 == buttonIndex ){ //cancel button
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+    } else if ( 1 == buttonIndex ){
+        [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+        
+    }
 }
 
 
