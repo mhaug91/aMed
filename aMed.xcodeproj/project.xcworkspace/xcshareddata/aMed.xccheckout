@@ -12,6 +12,8 @@
 	<dict>
 		<key>32901DE3EEA37A47D16917EE5FC69C6E3E4FB30B</key>
 		<string>https://github.com/mhaug91/aMed.git</string>
+		<key>47C9B10A449C73DD51E3BF34718DF950F30CE5D7</key>
+		<string>https://github.com/mhaug91/Pods.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>aMed.xcodeproj</string>
@@ -19,6 +21,8 @@
 	<dict>
 		<key>32901DE3EEA37A47D16917EE5FC69C6E3E4FB30B</key>
 		<string>../..</string>
+		<key>47C9B10A449C73DD51E3BF34718DF950F30CE5D7</key>
+		<string>../../../../Downloads/JTCalendar/Example/Pods</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/mhaug91/aMed.git</string>
@@ -35,6 +39,14 @@
 			<string>32901DE3EEA37A47D16917EE5FC69C6E3E4FB30B</string>
 			<key>IDESourceControlWCCName</key>
 			<string>aMed</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>47C9B10A449C73DD51E3BF34718DF950F30CE5D7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Pods</string>
 		</dict>
 	</array>
 </dict>
