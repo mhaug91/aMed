@@ -635,10 +635,11 @@
 				HEADER_SEARCH_PATHS = (
 					"<Multiple",
 					"values>",
-					"$(OBJROOT)/UninstalledProducts/include",
-					"$(TARGET_BUILD_DIR)/usr/local/lib/include",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
+					"$(SRCROOT)/Pods/Headers/**",
 				);
-				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/mac/Downloads/JTCalendar/Example/Pods/Headers/**";
+				"HEADER_SEARCH_PATHS[arch=*]" = "$(SRCROOT)/Pods/Headers/**";
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -662,8 +663,8 @@
 				HEADER_SEARCH_PATHS = (
 					"<Multiple",
 					"values>",
-					"$(OBJROOT)/UninstalledProducts/include",
-					"$(TARGET_BUILD_DIR)/usr/local/lib/include",
+					"\"$(OBJROOT)/UninstalledProducts/include\"",
+					"\"$(TARGET_BUILD_DIR)/usr/local/lib/include\"",
 				);
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
