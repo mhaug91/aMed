@@ -219,7 +219,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 
 //Tells the application what to do when a table cell is pressed.
-
+/*
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.searchDisplayController.active){
@@ -229,6 +229,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     }
     
 }
+ */
 
 
 - (void)didReceiveMemoryWarning {

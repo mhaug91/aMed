@@ -10,6 +10,8 @@
 		042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */; };
 		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
 		043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */; };
+		044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044AF5821AFB52F500630054 /* CalendarViewController.m */; };
+		044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */; };
 		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04C1F9631AE911EC00F41D28 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */; };
@@ -48,6 +50,7 @@
 		5CF68D351AE643F2005038CD /* EventsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D341AE643F2005038CD /* EventsTableViewController.m */; };
 		5CF68D381AE65743005038CD /* AboutUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF68D371AE65743005038CD /* AboutUsViewController.m */; };
 		5CF9318E1AE5396D001A079E /* GeoCoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF9318D1AE5396D001A079E /* GeoCoding.m */; };
+		A9F54CCCC36C12034AB09F33 /* libPods-aMed.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB08405A3777FE1005D0264 /* libPods-aMed.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,9 @@
 		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
 		043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentsTableViewController.h; sourceTree = "<group>"; };
 		043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentsTableViewController.m; sourceTree = "<group>"; };
+		044AF5811AFB52F500630054 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		044AF5821AFB52F500630054 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-aMed-JTCalendar.a"; path = "Pods/../build/Debug-iphoneos/libPods-aMed-JTCalendar.a"; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentInfoViewController.h; sourceTree = "<group>"; };
 		04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentInfoViewController.m; sourceTree = "<group>"; };
 		04BC0BEC1AD515D500570763 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 		04FACEDD1AADBCF9009789BA /* aMedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = aMedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEE21AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		04FACEE31AADBCF9009789BA /* aMedTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = aMedTests.m; sourceTree = "<group>"; };
+		54AC0776477A13A3E23D0B4B /* Pods-aMed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aMed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aMed/Pods-aMed.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0701C21AB9A3C600A9DB39 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		5C0701C41AB9A42900A9DB39 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		5C0701C61AB9A46100A9DB39 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -128,6 +135,8 @@
 		5CF68D371AE65743005038CD /* AboutUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutUsViewController.m; sourceTree = "<group>"; };
 		5CF9318C1AE5396D001A079E /* GeoCoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoCoding.h; sourceTree = "<group>"; };
 		5CF9318D1AE5396D001A079E /* GeoCoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoCoding.m; sourceTree = "<group>"; };
+		CFB08405A3777FE1005D0264 /* libPods-aMed.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-aMed.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB523E6DBC1BABB93AB63B71 /* Pods-aMed.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aMed.release.xcconfig"; path = "Pods/Target Support Files/Pods-aMed/Pods-aMed.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */,
 				5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */,
 				5C0701DB1AB9A4F300A9DB39 /* QuartzCore.framework in Frameworks */,
 				5C0701D91AB9A4E800A9DB39 /* OpenGLES.framework in Frameworks */,
@@ -148,6 +158,7 @@
 				5C0701C91AB9A47200A9DB39 /* CoreData.framework in Frameworks */,
 				5C0701C71AB9A46100A9DB39 /* AVFoundation.framework in Frameworks */,
 				5C0701C31AB9A3C600A9DB39 /* GoogleMaps.framework in Frameworks */,
+				A9F54CCCC36C12034AB09F33 /* libPods-aMed.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +201,8 @@
 				5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */,
 				5C98C3F91AEF88C400463F23 /* GoogleLicenseViewController.h */,
 				5C98C3FA1AEF88C400463F23 /* GoogleLicenseViewController.m */,
+				044AF5811AFB52F500630054 /* CalendarViewController.h */,
+				044AF5821AFB52F500630054 /* CalendarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -231,6 +244,8 @@
 				04FACEC31AADBCF9009789BA /* aMed */,
 				04FACEE01AADBCF9009789BA /* aMedTests */,
 				04FACEC21AADBCF9009789BA /* Products */,
+				C800CC50716B4BBCE920F241 /* Pods */,
+				E4FFBBE75B63F31E6951E3E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +321,24 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
+		C800CC50716B4BBCE920F241 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54AC0776477A13A3E23D0B4B /* Pods-aMed.debug.xcconfig */,
+				DB523E6DBC1BABB93AB63B71 /* Pods-aMed.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E4FFBBE75B63F31E6951E3E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */,
+				CFB08405A3777FE1005D0264 /* libPods-aMed.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -313,9 +346,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04FACEE71AADBCF9009789BA /* Build configuration list for PBXNativeTarget "aMed" */;
 			buildPhases = (
+				60BD30351509271E33E43336 /* Check Pods Manifest.lock */,
 				04FACEBD1AADBCF9009789BA /* Sources */,
 				04FACEBE1AADBCF9009789BA /* Frameworks */,
 				04FACEBF1AADBCF9009789BA /* Resources */,
+				198DD49A71C9F868A9804F73 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -403,6 +438,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		198DD49A71C9F868A9804F73 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aMed/Pods-aMed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60BD30351509271E33E43336 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		04FACEBD1AADBCF9009789BA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -412,6 +480,7 @@
 				04C1F9631AE911EC00F41D28 /* ContactTableViewController.m in Sources */,
 				5CF68D351AE643F2005038CD /* EventsTableViewController.m in Sources */,
 				5CF68D2F1AE62ADB005038CD /* MapInfoViewController.m in Sources */,
+				044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */,
 				04BC0BEE1AD515D500570763 /* News.m in Sources */,
 				5C2A3E821AD566AD0003A164 /* Location.m in Sources */,
 				04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */,
@@ -542,6 +611,7 @@
 		};
 		04FACEE81AADBCF9009789BA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54AC0776477A13A3E23D0B4B /* Pods-aMed.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
@@ -554,6 +624,10 @@
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -564,6 +638,7 @@
 		};
 		04FACEE91AADBCF9009789BA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB523E6DBC1BABB93AB63B71 /* Pods-aMed.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-2";
@@ -576,6 +651,10 @@
 				INFOPLIST_FILE = aMed/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

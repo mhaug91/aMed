@@ -839,6 +839,40 @@
             </objects>
             <point key="canvasLocation" x="-890" y="2236"/>
         </scene>
+        <!--Kalender-->
+        <scene sceneID="otI-6B-1Aw">
+            <objects>
+                <viewController id="5dW-z3-6Av" customClass="CalendarViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HaZ-m3-F6v"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fvt-jb-PFJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EPu-pv-zdu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8eK-hh-kzp" customClass="JTCalendarContentView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mSG-su-WBM" customClass="JTCalendarContentView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8eK-hh-kzp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Kalender" id="3YF-QV-U2f"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ADj-tg-mze" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-699" y="-97"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
@@ -860,6 +894,7 @@
                         <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
                         <segue destination="Lf5-Iu-0Xm" kind="relationship" relationship="viewControllers" id="fDF-4A-Wd2"/>
                         <segue destination="C7W-lN-OVZ" kind="relationship" relationship="viewControllers" id="UuW-5d-3GO"/>
+                        <segue destination="5dW-z3-6Av" kind="relationship" relationship="viewControllers" id="8vP-fJ-Bgr"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
