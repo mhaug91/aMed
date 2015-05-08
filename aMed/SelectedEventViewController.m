@@ -116,6 +116,7 @@ GMSMapView *mapView_;
     [label sizeToFit];
 }
 
+
 -(void) secondLabel{
     if(self.day == 0){
         self.day = 1;
@@ -427,6 +428,7 @@ titleForHeaderInSection:(NSInteger)section {
     }
     
 }
+
 -(void) filterSameEvents{
     self.filterArray = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.eventArray.count; i++) {
@@ -437,6 +439,8 @@ titleForHeaderInSection:(NSInteger)section {
         }
     }
 }
+
+
 -(void) daySubEvents{
     self.daySub = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.filterArray.count; i++) {
