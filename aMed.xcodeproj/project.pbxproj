@@ -172,6 +172,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		045C21C11B00A040001A6EE2 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
+				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
+			);
+			name = AppDelegate;
+			sourceTree = "<group>";
+		};
+		045C21C21B00A061001A6EE2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04DD67B81AE1329D005F7084 /* Launch Screen.xib */,
+				04FACED11AADBCF9009789BA /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		04B533A41AC42E530050013C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,13 +225,13 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		04B533A51AC42E8E0050013C /* Utils */ = {
+		04B533A51AC42E8E0050013C /* RetrieveData */ = {
 			isa = PBXGroup;
 			children = (
 				042F18261AC56B0B0036D474 /* RetrieveData.h */,
 				042F18271AC56B0B0036D474 /* RetrieveData.m */,
 			);
-			name = Utils;
+			name = RetrieveData;
 			sourceTree = "<group>";
 		};
 		04D77C851AC01DB4009D74A1 /* Objects */ = {
@@ -261,13 +279,11 @@
 		04FACEC31AADBCF9009789BA /* aMed */ = {
 			isa = PBXGroup;
 			children = (
-				04DD67B81AE1329D005F7084 /* Launch Screen.xib */,
-				04B533A51AC42E8E0050013C /* Utils */,
+				045C21C21B00A061001A6EE2 /* Views */,
+				045C21C11B00A040001A6EE2 /* AppDelegate */,
+				04B533A51AC42E8E0050013C /* RetrieveData */,
 				04B533A41AC42E530050013C /* Controllers */,
 				04D77C851AC01DB4009D74A1 /* Objects */,
-				04FACEC81AADBCF9009789BA /* AppDelegate.h */,
-				04FACEC91AADBCF9009789BA /* AppDelegate.m */,
-				04FACED11AADBCF9009789BA /* Main.storyboard */,
 				04FACED41AADBCF9009789BA /* Images.xcassets */,
 				04FACEC41AADBCF9009789BA /* Supporting Files */,
 			);
