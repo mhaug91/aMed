@@ -1014,13 +1014,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "452596525.135846"
+            timestampString = "452776241.365791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
-            landmarkName = "-makeTableView"
-            landmarkType = "5">
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "@implementation ThreatmentInfoViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1030,13 +1030,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "452596525.135846"
+            timestampString = "452776241.365791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "-makeTableView"
-            landmarkType = "5">
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "@implementation ThreatmentInfoViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -1046,13 +1046,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "452596525.135846"
+            timestampString = "452776241.365791"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "-makeTableView"
-            landmarkType = "5">
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "@implementation ThreatmentInfoViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
