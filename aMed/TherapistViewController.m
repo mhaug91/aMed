@@ -127,7 +127,7 @@
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Firmanavn: %@", company];
 }
@@ -161,7 +161,7 @@
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Behandlingsmetoder:"];
 }
@@ -214,7 +214,7 @@
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Addresse: %@ \n Postnummer: %@ \n Sted: %@ \n Fylke: %@ \n Telefon: %@ \n Epost: --",address, zipcode, city, state, phone];
     label.numberOfLines = 6;
