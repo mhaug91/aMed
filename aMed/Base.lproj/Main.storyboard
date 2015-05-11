@@ -840,6 +840,23 @@
             <point key="canvasLocation" x="-890" y="2236"/>
         </scene>
         <!--Kalender-->
+        <scene sceneID="wi7-rD-Cg1">
+            <objects>
+                <navigationController title="Kalender" id="kZG-fU-iZ3" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Kalender" image="Calendar-25" id="yJW-1s-6T2"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pnE-8g-RMC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="5dW-z3-6Av" kind="relationship" relationship="rootViewController" id="mgX-DF-yIm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fwI-uZ-JDA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1100" y="-40"/>
+        </scene>
+        <!--Kalender-->
         <scene sceneID="otI-6B-1Aw">
             <objects>
                 <viewController id="5dW-z3-6Av" customClass="CalendarViewController" sceneMemberID="viewController">
@@ -860,14 +877,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S7Q-Zf-GsE" customClass="JTCalendarMenuView">
-                                <rect key="frame" x="0.0" y="20" width="600" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3vj-su-2ZD"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMJ-Jt-6Ha">
-                                <rect key="frame" x="46" y="400" width="35" height="30"/>
+                                <rect key="frame" x="46" y="444" width="35" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="WGn-VR-yqd"/>
                                 </constraints>
@@ -879,7 +896,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TB5-QM-5RB">
-                                <rect key="frame" x="473" y="400" width="81" height="30"/>
+                                <rect key="frame" x="473" y="444" width="81" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Nu6-Al-BJU"/>
                                 </constraints>
@@ -891,7 +908,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OZH-fu-OPe" customClass="JTCalendarContentView">
-                                <rect key="frame" x="0.0" y="70" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="114" width="600" height="300"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="LZt-op-W3X"/>
@@ -931,6 +948,7 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Kalender" image="Calendar-25" id="3YF-QV-U2f"/>
+                    <navigationItem key="navigationItem" title="Kalender" id="gk2-HD-Mfj"/>
                     <connections>
                         <outlet property="calendarContentView" destination="OZH-fu-OPe" id="FRK-sX-dot"/>
                         <outlet property="calendarMenuView" destination="S7Q-Zf-GsE" id="MJE-ce-TTV"/>
@@ -939,7 +957,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADj-tg-mze" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1746" y="87"/>
+            <point key="canvasLocation" x="-2516" y="-73"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -962,7 +980,7 @@
                         <segue destination="K2x-MG-8Mm" kind="relationship" relationship="viewControllers" id="zt9-YL-J9x"/>
                         <segue destination="Lf5-Iu-0Xm" kind="relationship" relationship="viewControllers" id="fDF-4A-Wd2"/>
                         <segue destination="C7W-lN-OVZ" kind="relationship" relationship="viewControllers" id="UuW-5d-3GO"/>
-                        <segue destination="5dW-z3-6Av" kind="relationship" relationship="viewControllers" id="8vP-fJ-Bgr"/>
+                        <segue destination="kZG-fU-iZ3" kind="relationship" relationship="viewControllers" id="CZy-hR-hdp"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
