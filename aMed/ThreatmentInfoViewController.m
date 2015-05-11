@@ -30,15 +30,40 @@ static NSString *CellIdentifier = @"newTherapistCell";
     }
 
     [self findAssociatedTherapists];
+    
+
+    
+    
     //if(self.associatedTherapists.count != 0){
-        self.tableView = [self makeTableView];
-        [self.view addSubview:self.tableView];
-    self.tableView.scrollsToTop = NO;
+    
+   // self.tableView = [self makeTableView];
+    //[self.webView addSubview:self.tableView];
+    //self.tableView.scrollsToTop = NO;
     //}
     //else{
         //[self.view addSubview:[self makeLabel]];
         // make a label telling theres no ssociated therapists with this treatment method.
     //}
+    /*
+    NSDictionary *viewsDictionary = @{@"tableView":self.tableView, @"webView":self.webView};
+    
+    NSArray *constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[tableView(100)]" options:0 metrics:nil views:viewsDictionary];
+    
+    NSArray *constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[tableView(100)]" options:0 metrics:nil views:viewsDictionary];
+    
+    [self.tableView addConstraints:constraint_H];
+    [self.tableView addConstraints:constraint_V];
+    
+    NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[webView]-50-[tableView]"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:viewsDictionary];
+    [self.view addConstraints:constraint_POS_V];
+    */
+    NSLog(@"Webview size w:%f h:%f", self.webView.frame.size.width, self.webView.frame.size.height);
+    NSLog(@"Contentview size w:%f h:%f", self.contentView.frame.size.width, self.contentView.frame.size.height);
+    NSLog(@"view size w:%f h:%f", self.view.frame.size.width, self.view.frame.size.height);
+    NSLog(@"Tableview size w:%f h:%f", self.tableView.frame.size.width, self.tableView.frame.size.height);
 }
 
 
@@ -86,10 +111,14 @@ static NSString *CellIdentifier = @"newTherapistCell";
  */
 - (void) setWebView{
     self.htmlString = self.currentMethod.introText; // stores the introtext in an own variable
+    NSString *videoSize = [NSString stringWithFormat:@"width=\"%f\" height=\"%f\"", self.contentView.frame.size.width/2, self.contentView.frame.size.width/2];
     
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
     if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
         self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+    }
+    if([self.htmlString rangeOfString:@"width=\"560\" height=\"315\""].location != NSNotFound){
+        self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"width=\"560\" height=\"315\"" withString:videoSize];
     }
     
     /* Amed.no (the website) has a custom backbutton used on the pages for the
@@ -116,6 +145,12 @@ static NSString *CellIdentifier = @"newTherapistCell";
     
     
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
 
 //Creates the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -164,7 +199,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
         }
         cell.textLabel.numberOfLines = 2;
         cell.textLabel.text = therapist.company;
-        UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
+        UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:10];
         cell.detailTextLabel.numberOfLines = 2;
         cell.detailTextLabel.font = font;
         NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
@@ -174,13 +209,13 @@ static NSString *CellIdentifier = @"newTherapistCell";
 
 
 //Method which creates the tableView
-
+/*
 -(UITableView *)makeTableView
 {
     double number = 150;
-    number = 200;
+    number = self.contentView.frame.size.height/4;
     CGFloat x = 0;
-    CGFloat y =self.view.frame.size.height -number - 22 -49 - 64
+    CGFloat y =self.view.frame.size.height - self.view.frame.size.height/2;
     ;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = number;
@@ -188,7 +223,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
-    tableView.rowHeight = number/3;
+    tableView.rowHeight = 40;
     tableView.sectionHeaderHeight = 22;
     tableView.tableFooterView = [UIView new];
     
@@ -197,7 +232,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
     
     
     return tableView;
-}
+}*/
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {

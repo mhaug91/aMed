@@ -46,7 +46,7 @@
     label.numberOfLines = 10 ;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Arial-BoldMT" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Amed.no er et samlested for folk med interesse innen alternativ medisin og behandling. Amed inneholder informasjon om alternativ behandling,kurs/messer/festivaler innenfor alternativ medisin, nyheter, behandlingsmetoder og mye mer. Man kan også finne de alternative behandlerne som er registrert hos oss!"];
 }
@@ -57,7 +57,7 @@
     label.numberOfLines = 115 ;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"ArialMT" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Applikasjonen aMed er en mobilvennlig versjon av nettsiden amed.no, og ble utviklet våren 2013. Nettstedet ble forøvrig introdusert for Internett i februar 2012.\n\nDet dukker stadig vekk opp nye nettsted innenfor alternativ behandling. Vi har som målsetting å være en av de mest oppdaterte sidene innenfor emnet.\n\nHar du forslag til endringer, eller reagerer du over noe på nettstedet? Ta kontakt!\nSå langt det er mulig vil vi gjøre det vi kan for at din feedback kommer brukerne av nettstedet til gode."];
 }
@@ -68,7 +68,7 @@
     label.numberOfLines = 2;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"Arial-BoldMT" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat:@"Følg oss på:"];
 }
