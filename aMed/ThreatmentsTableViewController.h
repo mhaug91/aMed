@@ -12,20 +12,17 @@
 #import "ThreatmentInfoViewController.h"
 #import "RetrieveData.h"
 
+
+/**
+ *  This controller controls the Threatments table view.
+ *  Consists of a table view and a search bar. 
+ */
 @interface ThreatmentsTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 
 @property(strong, nonatomic) RetrieveData *rd;
-@property(strong, nonatomic) NSMutableArray *threatmentsArray;
-@property (strong, nonatomic) UISearchController *searchController;
-
-
-#pragma marks
-#pragma mark - Class methods
-//- (void) retrieveData;
-//- (void) setWebView;
-
+@property(strong, nonatomic) NSMutableArray *threatmentsArray; /// Array of threatment objects
 
 
 @end

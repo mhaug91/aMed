@@ -82,6 +82,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="subviews">
+                    <exclude reference="tic-zd-OgB"/>
                     <exclude reference="XAc-K1-Nea"/>
                     <exclude reference="H6a-SJ-rtJ"/>
                     <exclude reference="6iw-WZ-gvA"/>
