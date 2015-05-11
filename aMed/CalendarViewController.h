@@ -20,12 +20,13 @@
 @property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
 @property (weak, nonatomic) NSString *eventID;// = @"eventID";
+
 //@property (strong, nonatomic) NSInteger COURSE;// = 66; // blue
 //@property (weak, nonatomic) NSInteger FESTIVAL;// = 71; //red
 //@property (weak, nonatomic) NSInteger EXHIBITION;// = 70; //green
 //@property (weak, nonatomic) NSInteger EXHIBITION_2;// = 86; //green
 
-
+@property(weak, nonatomic) Events *event;
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *eventArray;

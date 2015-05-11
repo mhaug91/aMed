@@ -10,9 +10,14 @@
 
 
 
-@interface CalendarViewController ()
+@interface CalendarViewController (){
+    NSInteger eventIndex;
+    NSMutableDictionary *eventsByDate;
+    
+}
 
-@property (nonatomic, assign) NSInteger eventIndex;
+
+
 
 @end
 
@@ -24,7 +29,7 @@
 
 - (void)viewDidLoad
 {
-    self.eventIndex = 0;
+    eventIndex = 0;
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -39,7 +44,6 @@
     self.navigationItem.rightBarButtonItem = infoButtonItem;
 
     
-    
     self.calendar = [JTCalendar new];
     
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
@@ -53,6 +57,8 @@
     [self.calendar setMenuMonthsView:self.calendarMenuView];
     [self.calendar setContentView:self.calendarContentView];
     [self.calendar setDataSource:self];
+    [self createEvents];
+    
 
 }
 
@@ -139,30 +145,49 @@
 }
 
 
+- (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
+{
+    NSString *key = [[self dateFormatter] stringFromDate:date];
+    
+    if(eventsByDate[key] && [eventsByDate[key] count] > 0){
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
+{
+    if([self calendarHaveEvent:calendar date:date]){
+        NSLog(@"Date: %@", date);
+        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
+        
+    }
+}
 
 
+
+/*
 - (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
 
 {
     Events *e = nil;
-    e = [self.eventArray objectAtIndex:self.eventIndex];
+    e = [self.eventArray objectAtIndex:eventIndex];
     
     // *dateString = e.start_date;
     NSString *dateString = [e.start_date substringToIndex:10];
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *stringFromDate = [formatter stringFromDate:date];
+    NSString *kalenderDatoString = [formatter stringFromDate:date];
     NSString *eksDate = @"2015-02-26";
-    if([stringFromDate isEqualToString:dateString]){
-        if(self.eventIndex < self.eventArray.count-1){
-            self.eventIndex++;
-            
+    if([kalenderDatoString isEqualToString:eksDate]){
+        if(eventIndex < self.eventArray.count-1){
+            eventIndex++;
+            return YES;
         }
-        return YES;
-    }else{
-        return NO;
     }
-    
+
+            return NO;
 }
 
 
@@ -178,11 +203,81 @@
     }
     
 }
+ */
+
+- (void)createEvents
+{
+    eventsByDate = [NSMutableDictionary new];
+    
+    for(int i = 0; i < self.eventArray.count; ++i){
+        // Generate 30 random dates between now and 60 days later
+        Events *e = nil;
+        e = [self.eventArray objectAtIndex:i];
+        
+        NSString *dateString = e.start_date;
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *randomDate = [dateFormat dateFromString:dateString];
+        
+        //NSDate *randomDate = [NSDate dateWithTimeInterval:(rand() % (3600 * 24 * 60)) sinceDate:[NSDate date]];
+        
+        // Use the date as key for eventsByDate
+        NSString *key = [[self dateFormatter] stringFromDate:randomDate];
+        
+        if(!eventsByDate[key]){
+            eventsByDate[key] = [NSMutableArray new];
+        }
+        
+        [eventsByDate[key] addObject:randomDate];
+        
+    }
+}
+
+
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    
+    return dateFormatter;
+}
 
 - (void) infoPressed:(id) sender{
     NSString *title = @"Kalender";
     NSString *info = @"Arrangements kalender";
     [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+}
+
+- (Events *) findEventForDate:(NSString *) date{
+    Events *event = nil;
+    NSString *dateString;
+    for(int i=0; i<self.eventArray.count; ++i){
+        event = [self.eventArray objectAtIndex:i];
+        dateString = [event.start_date substringToIndex:10];
+        //dateString = [[self dateFormatter] ]
+        if([dateString isEqualToString:date]){
+            //event = [self.eventArray]
+            event = [self.eventArray objectAtIndex:i];
+            return event;
+        }
+        //[formatter setDateFormat:@"yyyy-MM-dd"];
+    }
+    return nil;
+
+}
+
+-(void) filterSameEvents{
+    self.filterArray = [[NSMutableArray alloc] init];
+    for (int i = 0; i<self.eventArray.count; i++) {
+        Events *method = nil;
+        method = [self.eventArray objectAtIndex:i];
+        if (self.event.event_id == method.event_id) {
+            [self.filterArray addObject:method];
+        }
+    }
 }
 
 
@@ -193,12 +288,23 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     if([[segue identifier] isEqualToString:@"pushSelectedDate"]){
-        Events *event = nil;
-        event = [self.eventArray objectAtIndex:0];
-
+        NSString *key = [[self dateFormatter] stringFromDate:sender];
+        NSArray *events = eventsByDate[key];
+        NSLog(@"Date: %@ - %ld events", sender, [events count]);
+        self.event = [self findEventForDate:key];
         SelectedEventViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = @"event"; // Setting title in the navigation bar of next view
-        [destViewController getEventObject:event];
+        [destViewController getEventObject:self.event];
+        
+        [self filterSameEvents];
+        Events *e = nil;
+        for (int i = 0; i<self.filterArray.count; i++) {
+            e =[self.filterArray objectAtIndex:i];
+            if (e.start_date == self.event.start_date ) {
+                [destViewController setDay:i+1];
+            }
+        }
+
         
     }
 }
