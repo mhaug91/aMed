@@ -62,7 +62,7 @@
         NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
         
         //add the threatment object to our threatments array
-        [threatmentsArray addObject:[[ThreatmentMethod alloc]initWithTitle:title andAlias:alias]];
+        [threatmentsArray addObject:[[TreatmentMethod alloc]initWithTitle:title andAlias:alias]];
         
     }
     return threatmentsArray;

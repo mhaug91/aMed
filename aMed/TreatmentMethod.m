@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "ThreatmentMethod.h"
+#import "TreatmentMethod.h"
 
-@implementation ThreatmentMethod
+@implementation TreatmentMethod
 
 - (id) initWithTitle: (NSString *) title andAlias: (NSString *) alias andIntroText: (NSString *) iText{
     self = [super init];

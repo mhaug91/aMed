@@ -7,25 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ThreatmentMethod.h"
+#import "TreatmentMethod.h"
 #import "BehMetViewController.h"
-#import "ThreatmentInfoViewController.h"
+#import "TreatmentInfoViewController.h"
 #import "RetrieveData.h"
 
-@interface ThreatmentsTableViewController : UITableViewController
+
+/**
+ *  This controller controls the Threatments table view.
+ *  Consists of a table view and a search bar. 
+ */
+@interface TreatmentsTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 
 @property(strong, nonatomic) RetrieveData *rd;
-@property(strong, nonatomic) NSMutableArray *threatmentsArray;
-@property (strong, nonatomic) UISearchController *searchController;
-
-
-#pragma marks
-#pragma mark - Class methods
-//- (void) retrieveData;
-//- (void) setWebView;
-
+@property(strong, nonatomic) NSMutableArray *threatmentsArray; /// Array of threatment objects
 
 
 @end

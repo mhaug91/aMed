@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */; };
 		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
-		043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */; };
+		043B78FE1AB6E17200D7E10B /* TreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */; };
 		044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044AF5821AFB52F500630054 /* CalendarViewController.m */; };
 		044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */; };
-		04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */; };
+		04A011B61ABAE9FD00A3341D /* TreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04C1F9631AE911EC00F41D28 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */; };
-		04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */; };
+		04D77C881AC01E49009D74A1 /* TreatmentMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = 04D77C871AC01E49009D74A1 /* TreatmentMethod.m */; };
 		04DD67B91AE1329D005F7084 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04DD67B81AE1329D005F7084 /* Launch Screen.xib */; };
 		04FACEC71AADBCF9009789BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC61AADBCF9009789BA /* main.m */; };
 		04FACECA1AADBCF9009789BA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 04FACEC91AADBCF9009789BA /* AppDelegate.m */; };
@@ -68,19 +68,19 @@
 		042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoViewController.m; sourceTree = "<group>"; };
 		042F18261AC56B0B0036D474 /* RetrieveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveData.h; sourceTree = "<group>"; };
 		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
-		043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentsTableViewController.h; sourceTree = "<group>"; };
-		043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentsTableViewController.m; sourceTree = "<group>"; };
+		043B78FC1AB6E17200D7E10B /* TreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentsTableViewController.h; sourceTree = "<group>"; };
+		043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentsTableViewController.m; sourceTree = "<group>"; };
 		044AF5811AFB52F500630054 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		044AF5821AFB52F500630054 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-aMed-JTCalendar.a"; path = "Pods/../build/Debug-iphoneos/libPods-aMed-JTCalendar.a"; sourceTree = "<group>"; };
-		04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentInfoViewController.h; sourceTree = "<group>"; };
-		04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentInfoViewController.m; sourceTree = "<group>"; };
+		04A011B41ABAE9FD00A3341D /* TreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentInfoViewController.h; sourceTree = "<group>"; };
+		04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentInfoViewController.m; sourceTree = "<group>"; };
 		04BC0BEC1AD515D500570763 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
 		04BC0BED1AD515D500570763 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		04C1F9611AE911EC00F41D28 /* ContactTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactTableViewController.h; sourceTree = "<group>"; };
 		04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactTableViewController.m; sourceTree = "<group>"; };
-		04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreatmentMethod.h; sourceTree = "<group>"; };
-		04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreatmentMethod.m; sourceTree = "<group>"; };
+		04D77C861AC01E49009D74A1 /* TreatmentMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentMethod.h; sourceTree = "<group>"; };
+		04D77C871AC01E49009D74A1 /* TreatmentMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentMethod.m; sourceTree = "<group>"; };
 		04DD67B81AE1329D005F7084 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		04FACEC11AADBCF9009789BA /* aMed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = aMed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04FACEC51AADBCF9009789BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -199,10 +199,10 @@
 				5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */,
 				5C218CCC1AADC5AA00D408AC /* TherapistTableViewController.h */,
 				5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */,
-				04A011B41ABAE9FD00A3341D /* ThreatmentInfoViewController.h */,
-				04A011B51ABAE9FD00A3341D /* ThreatmentInfoViewController.m */,
-				043B78FC1AB6E17200D7E10B /* ThreatmentsTableViewController.h */,
-				043B78FD1AB6E17200D7E10B /* ThreatmentsTableViewController.m */,
+				04A011B41ABAE9FD00A3341D /* TreatmentInfoViewController.h */,
+				04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */,
+				043B78FC1AB6E17200D7E10B /* TreatmentsTableViewController.h */,
+				043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */,
 				042D14A41AB9C3DD0013D306 /* NewsInfoViewController.h */,
 				042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */,
 				04FACECB1AADBCF9009789BA /* NewsViewController.h */,
@@ -237,8 +237,8 @@
 		04D77C851AC01DB4009D74A1 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				04D77C861AC01E49009D74A1 /* ThreatmentMethod.h */,
-				04D77C871AC01E49009D74A1 /* ThreatmentMethod.m */,
+				04D77C861AC01E49009D74A1 /* TreatmentMethod.h */,
+				04D77C871AC01E49009D74A1 /* TreatmentMethod.m */,
 				5C2A3E7B1AD566AD0003A164 /* Address.h */,
 				5C2A3E7C1AD566AD0003A164 /* Address.m */,
 				5C2A3E7D1AD566AD0003A164 /* Location.h */,
@@ -503,16 +503,16 @@
 				5C0701E01AB9AB3100A9DB39 /* MapViewController.m in Sources */,
 				5C2A3E811AD566AD0003A164 /* Address.m in Sources */,
 				5CF9318E1AE5396D001A079E /* GeoCoding.m in Sources */,
-				04D77C881AC01E49009D74A1 /* ThreatmentMethod.m in Sources */,
+				04D77C881AC01E49009D74A1 /* TreatmentMethod.m in Sources */,
 				04FACECD1AADBCF9009789BA /* NewsViewController.m in Sources */,
 				04FACEC71AADBCF9009789BA /* main.m in Sources */,
 				5CD9B7161AEA1F8C0016F03E /* TherapistTableViewController.m in Sources */,
 				5C60375D1AE7CEB10072E5DF /* SelectedEventViewController.m in Sources */,
 				5C70025A1ADD085800ACB51B /* TherapistViewController.m in Sources */,
 				5CF68D321AE63747005038CD /* Events.m in Sources */,
-				043B78FE1AB6E17200D7E10B /* ThreatmentsTableViewController.m in Sources */,
+				043B78FE1AB6E17200D7E10B /* TreatmentsTableViewController.m in Sources */,
 				042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */,
-				04A011B61ABAE9FD00A3341D /* ThreatmentInfoViewController.m in Sources */,
+				04A011B61ABAE9FD00A3341D /* TreatmentInfoViewController.m in Sources */,
 				5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */,
 				5C98C3FB1AEF88C400463F23 /* GoogleLicenseViewController.m in Sources */,
 				042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */,

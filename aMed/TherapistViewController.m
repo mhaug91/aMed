@@ -194,7 +194,7 @@
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    ThreatmentMethod *method = nil;
+    TreatmentMethod *method = nil;
     
     method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
     NSString *title = [NSString stringWithFormat:@"%@", method];
@@ -257,7 +257,7 @@
 - (void) findAssociatedTherapists{
     if(self.threatmentsArray != nil){
         self.associatedMethods = [[NSMutableArray alloc] init];
-        for(ThreatmentMethod *t in self.threatmentsArray){ // Short for- loop. Loops through all therapists
+        for(TreatmentMethod *t in self.threatmentsArray){ // Short for- loop. Loops through all therapists
             for(NSString *s in self.currentTherapist.treatmentMethods){ // Loops through the threatmentmethods of a therapist.
                 if([t.title isEqualToString:s]){ // if current method is associated with therapist
                    // NSLog(@"%@", t.title);
@@ -285,9 +285,9 @@
 
         
         indexPath = [self.tableView indexPathForCell:sender];
-        ThreatmentMethod *method = self.associatedMethods[indexPath.row];
+        TreatmentMethod *method = self.associatedMethods[indexPath.row];
         
-        ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
+        TreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
         @try {

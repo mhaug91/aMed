@@ -10,7 +10,7 @@
 #import "News.h"
 
 @interface NewsInfoViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIWebView *webView; // Contains the article
 
 @end
 

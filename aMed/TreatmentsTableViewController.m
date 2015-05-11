@@ -6,40 +6,39 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "ThreatmentsTableViewController.h"
+#import "TreatmentsTableViewController.h"
 
 
-#define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
-#define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
-
-
+/**
+ *  Identifier of cell made in the storyboard.
+ */
 static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 
 
-@implementation ThreatmentsTableViewController{
+@implementation TreatmentsTableViewController{
+    /**
+     *  Array of threatments that corresponds with the search.
+     */
     NSArray *searchResults;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     // Load data
     @try {
         self.rd = [[RetrieveData alloc] init];
-        self.threatmentsArray = [self.rd retrieveThreatmentsData];
+        self.threatmentsArray = [self.rd retrieveThreatmentsData]; // Fills up the threatmentsarray with threatments from the database. (See RetrieveData.m).
     }
     @catch (NSException *exception) {
     }
 }
 
+/**
+ *  This method is only in use when viewDidLoad doesnt retrieve data from database.
+ *
+ */
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.threatmentsArray.count == 0) {
@@ -59,11 +58,17 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     }
 }
 
+
+/**
+ *  Handles the alertview that shows when no internet or other exception.
+ *
+ *
+ */
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
         [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-    } else if ( 1 == buttonIndex ){
+    } else if ( 1 == buttonIndex ){ /// Ok button
         [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
         
@@ -104,16 +109,15 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
-    ThreatmentMethod *metode = nil;
-    metode = [self.threatmentsArray objectAtIndex:indexPath.row];
+    TreatmentMethod *metode = nil;
     
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        metode = [searchResults objectAtIndex:indexPath.row];
+    if (tableView == self.searchDisplayController.searchResultsTableView) { /// if the searchcontroller is active..
+        metode = [searchResults objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod from searchresults array corresponding with the index in the table view.
     } else {
-        metode = [self.threatmentsArray objectAtIndex:indexPath.row];
+        metode = [self.threatmentsArray objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod in the whole threatmentsarray corresponding with the index in the table view.
     }
     
-    cell.textLabel.text = metode.title;
+    cell.textLabel.text = metode.title; // Sets the title of the cell with the right object.
     return cell;
 }
 
@@ -131,6 +135,15 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 
 
+
+/**
+ *  Filters the array based on searchText.
+ *
+ *  @param searchText input from user in searchbar.
+ *  @param scope
+ 
+ *  @note This method is called every time the user does something in the searchbar. (input, backspace with more).
+ */
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     /* The predicate object searches through all the Threatments and returns the matched objects.
@@ -153,53 +166,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
 }
 
 
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
 
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
-
-/*
-- (void)tableView:(UITableView *)tableView
-didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *metode = nil;
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        metode = [searchResults objectAtIndex:indexPath.row];
-    } else {
-        metode = [self.metoder objectAtIndex:indexPath.row];
-    }
-    NSLog(@"valgte: %@", metode);
-}
- */
 
 
 
@@ -210,34 +177,30 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
-    if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])
-        {
+    /// checks if the segue is equal to the segue specified in the storyboard.
+    if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])         {
             
         NSIndexPath *indexPath = nil;
-        ThreatmentMethod *method = nil;
-        /*Fortsatt litt rot med søkefeltet */
+        TreatmentMethod *method = nil;
             
-            // Søkefelt fiksa =)
-        if (self.searchDisplayController.active) {
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
-            method = [searchResults objectAtIndex:indexPath.row];
+        if (self.searchDisplayController.active) { // if searchbar is active..
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow]; // Fetch the indexpath selected by the user.
+            method = [searchResults objectAtIndex:indexPath.row]; // Fetch the right Treatment method object to pass to destination view controller. Fetched from searchResults array.
         }
-         else {
+         else { // Same as if the searchbar is active. But fetch method from the threatmentsarray.
             indexPath = [self.tableView indexPathForCell:sender];
             method = [self.threatmentsArray objectAtIndex:indexPath.row];
         }
-        ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
-        destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
-        [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
+        TreatmentInfoViewController *destViewController = segue.destinationViewController; // Setting the destination view controller
+        destViewController.navigationItem.title = method.title; // Setting title of selected method in the navigation bar of the next view.
+        [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController. (See ThreatmentInfoViewController.m)
             @try {
-                NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias];
-                [method setIntroText:introtext];
+                NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retrieve introtext from selected treatment. (The introtext is the article text about the treatment).
+                [method setIntroText:introtext]; /// Set the method's introtext.
             }
             @catch (NSException *exception) {
 
             }
- // Passing the ThreatmentMethod objects alias to get its info
- //
         }
 }
 

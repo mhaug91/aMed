@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ThreatmentMethod.h"
+#import "TreatmentMethod.h"
 #import "Therapists.h"
 #import "retrieveData.h"
 #import "TherapistTableViewController.h"
 #import "NewsInfoViewController.h"
 #import "NewsViewController.h"
-@interface ThreatmentInfoViewController : UIViewController <UIAlertViewDelegate>
+
+/**
+ *  Controls the Treatment info view. 
+ *  Has a webview with treatment info, and a table view with associated therapists.
+ *  Segue to associated therapists info. 
+ */
+@interface TreatmentInfoViewController : UIViewController <UIAlertViewDelegate>
 
 
-@property(nonatomic, strong) ThreatmentMethod *currentMethod;
+@property(nonatomic, strong) TreatmentMethod *currentMethod;
 @property(nonatomic, strong) NSString *htmlString;
 @property(nonatomic, strong) NSMutableArray *allTherapists;
 @property(nonatomic, strong) NSMutableArray *associatedTherapists;
