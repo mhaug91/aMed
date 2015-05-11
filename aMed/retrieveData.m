@@ -52,7 +52,7 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
-    // setting up threatments Array
+    // Setting up threatments Array
     NSMutableArray *threatmentsArray = [[NSMutableArray alloc] init];
     
     //Loop through json Array
@@ -68,9 +68,15 @@
     return threatmentsArray;
 }
 
+/**
+ *  Method for getting therapist from database
+ *
+ *  @return Returns an array of all therapists
+ */
 
 -(NSMutableArray *) retrieveTherapists {
     
+    //Initializing arrays and objects used in the method
     NSMutableArray *therapists = [[NSMutableArray alloc] init];
     Therapists *therapist = [[Therapists alloc] init];
     Address *address = [[Address alloc] init];
@@ -83,10 +89,13 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
-    
+    /*
+    * Loops through an JSON array to get the attributes of and Address and Therapist.
+    * A therapist includes an Address object.
+    */
     for (int i = 0; i<self.jsonArray.count; i++) {
         
-        //Address
+        //
         NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"address")];
         NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
         NSString *state = [[self.jsonArray objectAtIndex:i] objectForKey:(@"state")];
@@ -121,14 +130,23 @@
         //Splitting string of treatment methods into an array.
         tr_methods = [treatmentMethodString componentsSeparatedByString:(@"|*|")];
         
+        //Adding attributes to Address
         address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
+        //Adding attributes and Address to Therapist object.
         therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString];
         
+        //Adding one Therapist object to the therapists array.
         [therapists addObject:therapist];
         
     }
     return therapists;
 }
+
+/**
+ *  Method for retrieving News for database.
+ *
+ *  @return Returns a News array.
+ */
 
 - (NSMutableArray *) retrieveNewsData{
     
@@ -136,7 +154,7 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
-    // setting up threatments Array
+    // Setting up threatments Array
     NSMutableArray *newsArray = [[NSMutableArray alloc] init];
     
     //Loop through json Array
@@ -145,14 +163,22 @@
         NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
         NSString *alias = [[self.jsonArray objectAtIndex:i] objectForKey:(@"alias")];
         
-        //add the threatment object to our threatments array
+        //Add the threatment object to our threatments array
         [newsArray addObject:[[News alloc]initWithTitle:title andAlias:alias]];
         
     }
     return newsArray;
 }
 
+/**
+ *  Method for retrieving events from database.
+ *
+ *  @return Returns an array of Events objects.
+ */
+
 - (NSMutableArray *) retrieveEvents{
+    
+    //Declaring number values used in method.
     NSInteger event_id, eventdetail_id, category_id, location_id, postcode;
     
     NSNumber *geo_longitude, *geo_latitude;
@@ -161,13 +187,15 @@
     NSData *data = [NSData dataWithContentsOfURL:url];
     self.jsonArray = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     
+    //Initializing Objects and arrays.
     Events *event = [[Events alloc] init];
     Address *address = [[Address alloc] init];
     Location *location = [[Location alloc] init];
     NSMutableArray *eventArray = [[NSMutableArray alloc] init];
     
-    
+    //Loops through JSON array from database.
     for (int i = 0; i<self.jsonArray.count; i++) {
+        
         //Address
         @try {
             postcode = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"postcode")] integerValue];
@@ -180,6 +208,7 @@
         }
         NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"street")];
         NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
+        
         //Location
         @try {
             location_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"loc_id")] integerValue];
@@ -196,6 +225,7 @@
             NSLog(@"Finally");
         }
         NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
+        
         //Events
         @try {
             event_id = [[[self.jsonArray objectAtIndex:i] objectForKey:(@"eventid")] integerValue];
@@ -225,17 +255,28 @@
         NSString *end_date = [[self.jsonArray objectAtIndex:i] objectForKey:(@"endrepeat")];
         NSString *summary = [[self.jsonArray objectAtIndex:i] objectForKey:(@"summary")];
         
+        //Adding attributes to Address object.
         address = [[Address alloc] initWithStreet:street andCity:city andPostcode:&postcode];
         
+        //Adding attributes and Address to Location objects.
         location = [[Location alloc] initWithLocation_id:&location_id andTitle:title andAddress:address andGeo_longitude:geo_longitude andGeo_latitude:geo_latitude];
         
+        //Adding attributes and Location to Event object.
         event = [[Events alloc]initWithEvent_id:&event_id andEventdetail_id:&eventdetail_id andStart_date:start_date andEnd_date:end_date andSummary:summary andLocation:location andCategory_id:&category_id];
+        
+        //Adding Event to event array.
         [eventArray addObject:event];
             
     }
     return eventArray;
 
 }
+
+/**
+ *  Retrieving news info for a spesific news.
+ *
+ *  @return returns the info.
+ */
 
 - (NSString *) retrieveNewsInfoData: (NSString *) alias
 {

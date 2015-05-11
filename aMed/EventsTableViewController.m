@@ -16,12 +16,19 @@ NSInteger FESTIVAL = 71; //red
 NSInteger EXHIBITION = 70; //green
 NSInteger EXHIBITION_2 = 86; //green
 
+/**
+ *  This controller shows a tableView with a list of all upcomming events.
+ */
+
+
 @interface EventsTableViewController ()
 
 @end
 
 @implementation EventsTableViewController
 
+
+//Retrieves data from database, uses exception handling incase of no network connection.
 - (void)viewDidLoad {
     [super viewDidLoad];
     @try {
@@ -40,6 +47,8 @@ NSInteger EXHIBITION_2 = 86; //green
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.eventArray.count == 0) {
@@ -59,6 +68,7 @@ NSInteger EXHIBITION_2 = 86; //green
     }
 }
 
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
@@ -80,7 +90,7 @@ NSInteger EXHIBITION_2 = 86; //green
     return [self.filterArray count];
 }
 
-
+//Adds content to the table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventID" forIndexPath:indexPath];
     if(cell == nil){
@@ -94,8 +104,10 @@ NSInteger EXHIBITION_2 = 86; //green
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
     cell.textLabel.font = font;
     
+    //Text label will be the name of the event.
     cell.textLabel.text = method.summary;
 
+    //Sets image to a spesific color. Depending on the type of event.
     if(method.category_id == COURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
     } else if (method.category_id == FESTIVAL){
@@ -110,6 +122,8 @@ NSInteger EXHIBITION_2 = 86; //green
     
     return cell;
 }
+
+//Method for filtering the events. Adds the first day of the event to filterArray.
 -(void) filterArrayID{
     int k = 0;
     self.filterArray = [[NSMutableArray alloc] init];

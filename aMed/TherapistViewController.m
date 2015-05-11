@@ -12,6 +12,11 @@
 #define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 #define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
 
+/**
+ *  This is the controller used for showing a therapist which the user has selected in TherapistTableView.
+ */
+
+
 @interface TherapistViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -25,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //Getting data from the database
+    //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.therapists = [self.rd retrieveTherapists];
@@ -50,6 +55,7 @@
     [self.view addSubview:self.tableView];
 
 }
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.therapists.count == 0) {
@@ -91,6 +97,11 @@
     }
 }
 
+/**
+ *  Creates the tableview with the gives description.
+ *
+ *  @return Return the tableview.
+ */
 -(UITableView *)makeTableView
 {
     double number = 0;
@@ -127,7 +138,7 @@
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Firmanavn: %@", company];
 }
@@ -161,7 +172,7 @@
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Behandlingsmetoder:"];
 }
@@ -210,14 +221,14 @@
     NSString *state = self.currentTherapist.address.state;
     NSString *phone = [NSString stringWithFormat:@"%ld", self.currentTherapist.phone];
     
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, (326.0 + distance), self.view.frame.size.width, 100) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, (326.0 + distance), self.view.frame.size.width, 120) ];
     label.textAlignment =  NSTextAlignmentCenter;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
+    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Addresse: %@ \n Postnummer: %@ \n Sted: %@ \n Fylke: %@ \n Telefon: %@ \n Epost: --",address, zipcode, city, state, phone];
-    label.numberOfLines = 6;
+    label.numberOfLines = 0;
 }
 //Show an url link to the therapists website.
 -(void) textField{
@@ -229,6 +240,7 @@
     textView.frame = CGRectMake(0.0,(286 + distance), self.view.frame.size.width, 40);
     textView.scrollEnabled = NO;
     textView.text=[NSString stringWithFormat:@"Nettsted: %@", url];
+    textView.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.)];
     textView.editable = NO;
     textView.dataDetectorTypes = UIDataDetectorTypeLink;
     textView.textAlignment = NSTextAlignmentCenter;

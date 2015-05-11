@@ -7,7 +7,9 @@
 //
 
 #import "MapInfoViewController.h"
-
+/**
+ *  This isn a simple view for dislplaying information about the Map view.
+ */
 @interface MapInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
@@ -33,7 +35,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/**
+ *  All of these labels are static textlabel.
+ */
 -(void) firstLabel{
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 0.0, self.view.frame.size.width, 40) ];
     label.textAlignment =  NSTextAlignmentCenter;
@@ -62,6 +66,8 @@
     [self.contentView addSubview:label];
     label.text = [NSString stringWithFormat: @"Symbolforklaring:"];
 }
+
+//Two imageViews thats show images of markers.
 -(void) imageView{
 
     UIImageView *pinImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 160, 30, 30)];
@@ -107,6 +113,7 @@
     label.text = [NSString stringWithFormat: @"Du kan ved å trykke på en av markørene finne ut hvem som er registrert på denne lokasjonen(hvis ingen markører vises frem i kartet, eller hvis du blir plassert på feil sted - prøv å starte om enheten!)."];
 }
 
+//Button sending the user to the google licensene view.
 -(void) googleBtn{
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [button addTarget:self

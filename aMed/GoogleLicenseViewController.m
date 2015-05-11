@@ -8,6 +8,12 @@
 
 #import "GoogleLicenseViewController.h"
 
+/**
+ *  This is a simple viewController which displays the google license.
+ *  This has to be shown inside the app since we use the google maps framework.
+ *  The string that is shown is a open source license info and is given by Google Inc.
+ */
+
 @interface GoogleLicenseViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 

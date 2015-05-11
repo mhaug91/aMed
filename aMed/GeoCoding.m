@@ -6,11 +6,9 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 #define kBgQueue dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) //1
-//#define KBgQueue dispatch_queue_create("com.example.appress.BID.aMed", DISPATCH_QUEUE_SERIAL)
 #import "GeoCoding.h"
 
 @implementation GeoCoding{
-   // dispatch_queue_t kBgQueue;
     NSData *_data;
 }
 
@@ -28,9 +26,9 @@
     NSString *url = [NSString stringWithFormat:@"%@address=%@&sensor=false", geocodingBaseUrl,address];
     url = [url stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     NSURL *queryUrl = [NSURL URLWithString:url];
-   // kBgQueue = dispatch_queue_create("com.yourcompany.yourMeaningfulLabel", DISPATCH_QUEUE_SERIAL);
+
+    
     dispatch_sync(kBgQueue, ^{
-        //[NSThread sleepForTimeInterval:.2];
         NSData *data = [NSData dataWithContentsOfURL: queryUrl];
         [self fetchedData:data];
         

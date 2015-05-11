@@ -12,6 +12,10 @@
 
 static NSString *tableCellID = @"finnBehandlerID";
 
+/**
+ *  This is the controller which displays the a list of all the therapists
+ *  All therapists are shown in a table view.
+ */
 
 @interface TherapistTableViewController ()
 
@@ -20,6 +24,8 @@ static NSString *tableCellID = @"finnBehandlerID";
 @end
 
 @implementation TherapistTableViewController{
+    
+    //Initializing an array of searchresults
     NSArray *searchResults;
     NSMutableArray *predicates;
 
@@ -28,6 +34,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.therapists = [self.rd retrieveTherapists];
@@ -35,10 +42,9 @@ static NSString *tableCellID = @"finnBehandlerID";
     @catch (NSException *exception) {
         
     }
-
-    //self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.therapists.count == 0) {
@@ -58,7 +64,9 @@ static NSString *tableCellID = @"finnBehandlerID";
     }
 }
 
-
+/*Method for setting the amount of rows in the tableview.
+ *That amount is either all therapists or the result of a search.
+ */
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section{
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -69,7 +77,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 
     }
 }
-
+//Alert View which is shown when the user isn't connected to a network.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
@@ -80,13 +88,13 @@ static NSString *tableCellID = @"finnBehandlerID";
         
     }
 }
-
+//Sets the height of a row.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
 }
 
-
+// Method of what the cells in the table view should contain.
 -(UITableViewCell *)tableView:(UITableView *)tableView
         cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
@@ -97,6 +105,8 @@ static NSString *tableCellID = @"finnBehandlerID";
                 reuseIdentifier:tableCellID];
     }
     Therapists *therapist = nil;
+    
+    //Handling of search results.
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         therapist =[searchResults objectAtIndex:indexPath.row];
 
@@ -105,13 +115,19 @@ static NSString *tableCellID = @"finnBehandlerID";
         therapist = [self.therapists objectAtIndex:indexPath.row];
 
     }
+    //Name of the therapist put into one string.
     NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
-
+    
+    //Imagepath to the image in the table view cell.
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
+    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
     
     cell.imageView.image = [UIImage imageNamed:imagepath];
+    
+    //Using description string for database to show the therapists treatment methods.
     NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
-    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
+    
+    //Setting the image in cell to imagepath or noAvatar. The image is scaled, so all have the same size.
     if([therapist.avatar isEqual:[NSNull null]]){
         NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
         cell.imageView.image = [UIImage imageWithData:image];
@@ -136,12 +152,10 @@ static NSString *tableCellID = @"finnBehandlerID";
     }
     
 
-    
-    cell.textLabel.text = therapist.company;
-    //cell.textLabel.font = [UIFont fontWithName:@"Calibri" size:19];
-
-    
     NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
+    
+    //Setting textLabel and detailTextLabel
+    cell.textLabel.text = therapist.company;
     cell.detailTextLabel.text = description;
     cell.detailTextLabel.numberOfLines = 2;
     
@@ -218,18 +232,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
       forCellReuseIdentifier:tableCellID];
 }
 
-//Tells the application what to do when a table cell is pressed.
-/*
-- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(self.searchDisplayController.active){
-        UITableViewCell *sender = [self.searchDisplayController.searchResultsTableView cellForRowAtIndexPath:indexPath];
-        
-        [self performSegueWithIdentifier:@"pushTherapist" sender:sender];
-    }
-    
-}
- */
 
 
 - (void)didReceiveMemoryWarning {
@@ -264,8 +266,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
          TherapistViewController *destViewController = segue.destinationViewController; // Getting new view controller
          destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
          [destViewController getTherapistObject:therapist]; // Passing object to ThreamentInfoController
-         //Therapists  *Therapist = [self.rd retrieveTherapists:method.company]; // Passing the ThreatmentMethod objects alias to get its info
-         //[method setIntroText:introtext]; //
      }
 }
 

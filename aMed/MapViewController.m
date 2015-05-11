@@ -12,6 +12,10 @@
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 
+/**
+ *  This is the controller used for showing therapists on a map.
+ *  Map used in this application is Google Maps.
+ */
 
 @interface MapViewController ()
 
@@ -29,8 +33,10 @@ GMSMapView *mapView_;
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //Initialzing geocoding.
     gc = [[GeoCoding alloc]init];
     
+    //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.therapists = [self.rd retrieveTherapists];
@@ -39,16 +45,17 @@ GMSMapView *mapView_;
         
     }
     
-    
+    //Info button in the top right corner of the screen.
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoDark];
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     self.navigationItem.rightBarButtonItem = infoButtonItem;
 
-    //Laster inn kartet.
+    //Loading Google maps into the map View.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:63.4187362
                                                             longitude:22.1 zoom:12];
     
+    //Setting camera, compassbutton, zoom and users location to show on the map.
     mapView_= [GMSMapView mapWithFrame:CGRectZero camera:camera];
     mapView_.settings.compassButton = YES;
     mapView_.settings.zoomGestures = YES;
@@ -59,9 +66,10 @@ GMSMapView *mapView_;
     
     
 
-    
+    //Enabling the map to get the users location
     mapView_.myLocationEnabled = YES;
-
+    
+    //Dispatching a queue to add markers of the therapists on the map
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
         for(Therapists *t in self.therapists){
@@ -70,6 +78,8 @@ GMSMapView *mapView_;
     });
     
 }
+
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if(self.therapists.count == 0){
@@ -94,18 +104,24 @@ GMSMapView *mapView_;
 
     }
 }
-
+/**
+ *  Method for adding markers on the map.
+ *
+ *  Uses the therapists address and geocodes it into coordinates.
+ */
 - (void) addMarker:(Therapists *) t{
     NSDate *startTime = [NSDate date];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     [NSThread sleepForTimeInterval:.22];
+    
+    //Dispating new queue for geocoding.
     dispatch_async(queue, ^{
         NSString *therapistAddress = [NSString stringWithFormat:@"%@, %@, %@", t.address.street, t.address.city, t.address.state];
         [gc geocodeAddress:therapistAddress];
         double lat = [[gc.geocode objectForKey:@"lat"] doubleValue];
         double lng = [[gc.geocode objectForKey:@"lng"] doubleValue];
-        //[NSThread sleepForTimeInterval:.2];
         
+        //Dispatching main queue. Initializes marker and gives it attributes.
         dispatch_async(dispatch_get_main_queue(), ^{
             GMSMarker *marker = [[GMSMarker alloc] init];
             marker.position = CLLocationCoordinate2DMake(lat, lng);
@@ -119,15 +135,17 @@ GMSMapView *mapView_;
     });
 }
 
+//Getting therapist object of the selected therapist.
 - (void) getTherapistObject:(id)therapistObject{
     self.currentTherapist = therapistObject;
 }
 
+//Describes what the info putting is going to to when pressed.
 - (void) buttonAction:(id) sender{
     [self performSegueWithIdentifier:@"PushMapInfo" sender:sender];
 }
 
-
+//Updates users location.
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     if (!firstLocationUpdate_){
         firstLocationUpdate_ = YES;
@@ -139,9 +157,9 @@ GMSMapView *mapView_;
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button

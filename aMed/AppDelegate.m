@@ -16,15 +16,24 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+/**
+ *  Setting apperance of the application when it launches.
+ */
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //Application key for using Google Maps and Geocoding
     [GMSServices provideAPIKey:@"AIzaSyBOAoQDT7kKhNcjzsNEGSjvF2319iPm7Us"];
-    //Setter farge på navigation baren.
+    
+    //Set color of the Navigation Bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
     [[UINavigationBar appearance] setTranslucent:NO];
-    //Setter farge på navigation baren.
+    
+    //Set color of the Tab Bar
     [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
     [[UITabBar appearance] setTranslucent:NO];
-    //Endrer tittelen på navigation baren.
+    
+    //Change the title of the Navigation Bar
     [[UINavigationBar appearance] setTitleTextAttributes:
     [NSDictionary dictionaryWithObjectsAndKeys:
     [UIColor whiteColor], NSForegroundColorAttributeName,
@@ -32,7 +41,6 @@
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
-    //UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:@"Behandlingsmetoder" image:[UIImage imageNamed:@"close.png"] tag:1];
     return YES;
 }
 

@@ -15,6 +15,10 @@ NSInteger sFESTIVAL = 71; //red
 NSInteger sEXHIBITION = 70; //green
 NSInteger sEXHIBITION_2 = 86; //green
 
+/**
+ *  This view controller displays the selected event the user has selected in EventsTableViewController.
+ */
+
 @interface SelectedEventViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
@@ -24,6 +28,7 @@ NSInteger sEXHIBITION_2 = 86; //green
 
 @implementation SelectedEventViewController
 
+//Initializing mapView.
 GMSMapView *mapView_;
 
 
@@ -31,6 +36,7 @@ GMSMapView *mapView_;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -64,6 +70,7 @@ GMSMapView *mapView_;
     [self.view addSubview:self.tableView];
 }
 
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.eventArray.count == 0) {
@@ -89,10 +96,12 @@ GMSMapView *mapView_;
     // Dispose of any resources that can be recreated.
 }
 
+//Getting the event Object that is selected.
 - (void) getEventObject:(id)eventObject{
     self.selectedEvent = eventObject;
 }
 
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
@@ -104,6 +113,10 @@ GMSMapView *mapView_;
     }
 }
 
+/**
+ *  All the labels below (from one to ten and mapLabel), are labels that display information about the event.
+ *  The labels either display a static string or a string from the database.
+ */
 
 -(void) firstLabel{
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 20.0, self.view.frame.size.width/3, 40) ];
@@ -279,8 +292,10 @@ GMSMapView *mapView_;
     [label sizeToFit];
 }
 
+//Method for generating the map that displays the location of the event.
 -(void) mapView{
     
+    //Putting title and coordinates into variables.
     NSString *title = self.selectedEvent.location.title;
     NSNumber *geoLat = self.selectedEvent.location.geo_latitude;
     double doubleLat = [geoLat doubleValue];
@@ -288,18 +303,20 @@ GMSMapView *mapView_;
     NSNumber *geoLong = self.selectedEvent.location.geo_longitude;
     double doubleLong = [geoLong doubleValue];
     
+    //If the event doesn't have any coordinates, sets them to 0.
     if ([title isEqual:[NSNull null]] || [title isEqualToString:@""]) {
         title = @"--";
         doubleLat = 0,0;
         doubleLong = 0,0;
     }
-    
+    //Position and zoom of camera.
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:doubleLat
                                                             longitude:doubleLong
                                                                  zoom:12];
     mapView_ = [GMSMapView mapWithFrame:CGRectMake(10.0, 345, self.view.frame.size.width-20, 150.0) camera:camera];
     mapView_.settings.zoomGestures = YES;
     
+    //Adds marker on the map, this marker uses the locations coordinates.
     GMSMarker *marker = [[GMSMarker alloc] init];
     marker.position = CLLocationCoordinate2DMake(doubleLat, doubleLong);
     marker.title = title;
@@ -309,6 +326,8 @@ GMSMapView *mapView_;
     
     
 }
+
+//Creating tableView that contains the associated events.
 -(UITableView *)makeTableView
 {
     double number = 0;
@@ -387,6 +406,7 @@ GMSMapView *mapView_;
     return cell;
 }
 
+//Setting title of tableview.
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
     if(self.associatedArray.count != 0){
@@ -397,6 +417,10 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
+/**
+ *  Defines what will happen if a cell is pressed.
+ *  If a cell is pressed it changed set value of self.day.
+ */
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     
@@ -413,6 +437,7 @@ titleForHeaderInSection:(NSInteger)section {
     [self viewDidLoad];
 }
 
+//Method for filtering associated events with the selected one.
 - (void) filterAssociated{
     self.associatedArray = [[NSMutableArray alloc] init];
     
@@ -429,6 +454,7 @@ titleForHeaderInSection:(NSInteger)section {
     
 }
 
+//Adds all events with the same event id to the filterarray.
 -(void) filterSameEvents{
     self.filterArray = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.eventArray.count; i++) {
@@ -440,7 +466,7 @@ titleForHeaderInSection:(NSInteger)section {
     }
 }
 
-
+//Changes the self.daySub Variable depending on the event selected in the tableview.
 -(void) daySubEvents{
     self.daySub = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.filterArray.count; i++) {

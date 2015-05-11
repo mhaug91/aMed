@@ -8,6 +8,10 @@
 
 #import "AboutUsViewController.h"
 
+/**
+ *  Simple view that gives the user som information about amed.no and the app.
+ */
+
 @interface AboutUsViewController ()
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
@@ -32,6 +36,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+//Image of amed.no logo.
 -(void) imageView{
     
     UIImageView *pinImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 200)];
@@ -39,7 +44,9 @@
     [self.contentView addSubview:pinImage];
     
 }
-
+/**
+ *  These labels are static, and each contains a string.
+ */
 -(void) firstLabel{
     UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 200.0, self.view.frame.size.width, 100) ];
     label.textAlignment =  NSTextAlignmentLeft;
@@ -102,11 +109,11 @@
     [self.view addSubview:twitterButton];
 }
 
-
+//Sends the user to Ameds facebook page.
 -(IBAction)facebookAction:(id)sender{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://m.facebook.com/pages/Amedno-Nettsted-for-aktuell-og-alternativ-medisin/151872066743"]];
 }
-
+//Sends the user to Ameds twitter account.
 -(IBAction)twitterAction:(id)sender{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/amedno"]];
 }
