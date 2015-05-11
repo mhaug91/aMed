@@ -8,7 +8,12 @@
 
 #import "ContactTableViewController.h"
 
+/**
+ *  Controls the contact us view
+ *
+ */
 @interface ContactTableViewController ()
+
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
 @property (weak, nonatomic) IBOutlet UITextField *phoneField;
 @property (weak, nonatomic) IBOutlet UITextView *requestField;
@@ -19,14 +24,15 @@
 
 @implementation ContactTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.navigationItem.rightBarButtonItem = infoButtonItem;
-    self.tableView.tableFooterView = [UIView new];
+    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; // Creates an infobutton.
+    [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside]; // Adds action to the button.
+    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton]; // Inits the button as a barButton.
+    self.navigationItem.rightBarButtonItem = infoButtonItem; // Plces the button in the navigation bar.
+    //self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,6 +108,11 @@
     }
 }
 
+/**
+ *  Validating a textfield
+ *
+ *  @return errorMessage
+ */
 - (NSString *) validateFields{
     NSString *errorMessage;
     if([self.requestField.text length] == 0){
