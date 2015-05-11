@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "ThreatmentsTableViewController.h"
+#import "TreatmentsTableViewController.h"
 
 
 /**
@@ -16,7 +16,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 
 
-@implementation ThreatmentsTableViewController{
+@implementation TreatmentsTableViewController{
     /**
      *  Array of threatments that corresponds with the search.
      */
@@ -109,12 +109,12 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:SimpleTableIdentifier];
     }
-    ThreatmentMethod *metode = nil;
+    TreatmentMethod *metode = nil;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) { /// if the searchcontroller is active..
-        metode = [searchResults objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod in searchresults array at selected row
+        metode = [searchResults objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod from searchresults array corresponding with the index in the table view.
     } else {
-        metode = [self.threatmentsArray objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod in the whole threatmentsarray at the selected row
+        metode = [self.threatmentsArray objectAtIndex:indexPath.row]; /// Fetches the threatmentmethod in the whole threatmentsarray corresponding with the index in the table view.
     }
     
     cell.textLabel.text = metode.title; // Sets the title of the cell with the right object.
@@ -181,18 +181,18 @@ shouldReloadTableForSearchString:(NSString *)searchString
     if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])         {
             
         NSIndexPath *indexPath = nil;
-        ThreatmentMethod *method = nil;
+        TreatmentMethod *method = nil;
             
         if (self.searchDisplayController.active) { // if searchbar is active..
-            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow]; // Fetch right indexpath.
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow]; // Fetch the indexpath selected by the user.
             method = [searchResults objectAtIndex:indexPath.row]; // Fetch the right Treatment method object to pass to destination view controller. Fetched from searchResults array.
         }
          else { // Same as if the searchbar is active. But fetch method from the threatmentsarray.
             indexPath = [self.tableView indexPathForCell:sender];
             method = [self.threatmentsArray objectAtIndex:indexPath.row];
         }
-        ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
-        destViewController.navigationItem.title = method.title; // Setting title of the method selected in the navigation bar of next view.
+        TreatmentInfoViewController *destViewController = segue.destinationViewController; // Setting the destination view controller
+        destViewController.navigationItem.title = method.title; // Setting title of selected method in the navigation bar of the next view.
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController. (See ThreatmentInfoViewController.m)
             @try {
                 NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retrieve introtext from selected treatment. (The introtext is the article text about the treatment).

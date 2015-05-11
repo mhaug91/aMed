@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ThreatmentMethod.h"
 #import "Therapists.h"
 #import "Address.h"
 #import "Location.h"
 #import "News.h"
 #import "Events.h"
+#import "TreatmentMethod.h"
+
 
 @interface RetrieveData : NSObject
 

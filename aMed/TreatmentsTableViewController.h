@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ThreatmentMethod.h"
+#import "TreatmentMethod.h"
 #import "BehMetViewController.h"
-#import "ThreatmentInfoViewController.h"
+#import "TreatmentInfoViewController.h"
 #import "RetrieveData.h"
 
 
@@ -17,7 +17,7 @@
  *  This controller controls the Threatments table view.
  *  Consists of a table view and a search bar. 
  */
-@interface ThreatmentsTableViewController : UITableViewController
+@interface TreatmentsTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 

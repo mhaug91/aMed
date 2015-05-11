@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TherapistTableViewController.h"
 #import "retrieveData.h"
-#import "ThreatmentInfoViewController.h"
-#import "ThreatmentMethod.h"
+#import "TreatmentInfoViewController.h"
+#import "TreatmentMethod.h"
 #import "Therapists.h"
 
 @interface TherapistViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIAlertViewDelegate>
@@ -19,7 +19,7 @@
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *therapists;
 @property(strong, nonatomic) Therapists *currentTherapist;
-@property(strong, nonatomic) ThreatmentMethod *selectedTreatmentMethod;
+@property(strong, nonatomic) TreatmentMethod *selectedTreatmentMethod;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
 @property(nonatomic, strong) NSMutableArray *associatedMethods;
 

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ThreatmentMethod : NSObject
+@interface TreatmentMethod : NSObject
 
 @property(strong, nonatomic) NSString *title;
 @property(strong, nonatomic) NSString *alias;

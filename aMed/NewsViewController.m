@@ -8,26 +8,26 @@
 
 #import "NewsViewController.h"
 
-static NSString *newsTableIdentifier = @"NewsTableIdentifier";
+
+/**
+ *  Identifier of cell made in the storyboard.
+ */
+static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 
 @interface NewsViewController ()
 
-@property (copy, nonatomic) NSArray *dwarves;
 
 @end
 
-@implementation NewsViewController{
-    NSMutableArray *filteredNames;
-    NSArray *searchResults;
-    
-}
+@implementation NewsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     @try {
         self.rd = [[RetrieveData alloc] init];
-        self.newsArray = [self.rd retrieveNewsData];
+        self.newsArray = [self.rd retrieveNewsData]; // Fills up the newstsarray with threatments from the database. (See RetrieveData.m).
+
         [self.tableView reloadData];
     }
     @catch (NSException *exception) {
@@ -36,6 +36,10 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 
 }
 
+/**
+ *  This method is only in use when viewDidLoad doesnt retrieve data from database.
+ *
+ */
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.newsArray.count == 0) {
@@ -54,14 +58,7 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
          [self.tableView reloadData];
     }
 }
-/*
--(void)viewWillAppear:(BOOL)animated{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Feil"
-                                                        message:@"kunne ikke hente data" delegate:self
-                                              cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-    [alertView show];
 
-}*/
 
 
 - (void)didReceiveMemoryWarning {
@@ -69,6 +66,12 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
     // Dispose of any resources that can be recreated.
 }
 
+
+/**
+ *  Handles the alertview that shows when no internet or other exception.
+ *
+ *
+ */
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
@@ -84,7 +87,6 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 #pragma mark Table View Data Source Methods
 
 
-#pragma marks
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
@@ -97,31 +99,33 @@ static NSString *newsTableIdentifier = @"NewsTableIdentifier";
 {
     
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:
-                             newsTableIdentifier];
+                             newsTableCellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
-                reuseIdentifier:newsTableIdentifier];
+                reuseIdentifier:newsTableCellIdentifier];
     }
-    News *news = [self.newsArray objectAtIndex:indexPath.row];
-    cell.textLabel.text = news.title;
+    News *news = [self.newsArray objectAtIndex:indexPath.row];/// Fetches the news object at corresponding index in the table view.
+    cell.textLabel.text = news.title; /// Set the title of the cell from the news object. 
     return cell;
 }
 
 
+// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    
+    /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
-         NSLog(@"pushNewsInfo");
-         
-         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-         News *news = [self.newsArray objectAtIndex:indexPath.row];
-         NewsInfoViewController *destVC = segue.destinationViewController;
+         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
+
+         News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
+         NewsInfoViewController *destVC = segue.destinationViewController; // Setting the destination view controller
          @try {
-             [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]];
-             destVC.navigationItem.title = news.title;
-             [destVC getNewsObject:news];
+             [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
+             destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
+             [destVC getNewsObject:news]; // Passing object to destination view controller. (See NewsInfoViewController).
          }
          @catch (NSException *exception) {
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"

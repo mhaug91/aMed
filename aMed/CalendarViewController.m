@@ -11,17 +11,11 @@
 
 
 @interface CalendarViewController (){
-    NSInteger eventIndex;
     NSMutableDictionary *eventsByDate;
-    
 }
-
-
-
 
 @end
 
-#define getEventsURL @"http://www.amed.no/AmedApplication/getEvents.php"
 
 
 
@@ -29,7 +23,6 @@
 
 - (void)viewDidLoad
 {
-    eventIndex = 0;
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -103,12 +96,18 @@
     }
 }
 
-
+/**
+ *  Takes u back to today's date
+ */
 - (IBAction)didGoTodayTouch
 {
     [self.calendar setCurrentDate:[NSDate date]];
 }
 
+
+/**
+ *  Change between week and month view
+ */
 - (IBAction)didChangeModeTouch
 {
     self.calendar.calendarAppearance.isWeekMode = !self.calendar.calendarAppearance.isWeekMode;
@@ -117,6 +116,10 @@
 }
 
 
+/**
+ *  Transition between week an month views
+ * The height of the content view is changed between them.
+ */
 - (void)transitionExample
 {
     CGFloat newHeight = 300;
@@ -156,70 +159,40 @@
     return NO;
 }
 
-- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
-{
-    if([self calendarHaveEvent:calendar date:date]){
-        NSLog(@"Date: %@", date);
-        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
-        
-    }
-}
-
-
-
-/*
-- (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
-
-{
-    Events *e = nil;
-    e = [self.eventArray objectAtIndex:eventIndex];
-    
-    // *dateString = e.start_date;
-    NSString *dateString = [e.start_date substringToIndex:10];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"yyyy-MM-dd"];
-    NSString *kalenderDatoString = [formatter stringFromDate:date];
-    NSString *eksDate = @"2015-02-26";
-    if([kalenderDatoString isEqualToString:eksDate]){
-        if(eventIndex < self.eventArray.count-1){
-            eventIndex++;
-            return YES;
-        }
-    }
-
-            return NO;
-}
-
-
-
-- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
-
-{
-    
-    if([self calendarHaveEvent:calendar date:date]){
-        NSLog(@"Date: %@", date);
-        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
-        
-    }
-    
-}
+/**
+ *  Runs when a date is selected
+ *
+ *  @param calendar the calendar in our storyboard
+ *  @param date     selected date
+ *  @note Does nothing if there's no events that date
  */
+- (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
+{
+    if([self calendarHaveEvent:calendar date:date]){
+        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
+        
+    }
+}
 
+
+ /**
+ *  creates events.
+    Takes the events from the events array and fills an events by date- dictionary.
+    The dictionary is used to display the events on the right date in the calendar.
+ */
 - (void)createEvents
 {
     eventsByDate = [NSMutableDictionary new];
     
-    for(int i = 0; i < self.eventArray.count; ++i){
-        // Generate 30 random dates between now and 60 days later
+    for(int i = 0; i < self.eventArray.count; ++i){ // Loops through the events array
         Events *e = nil;
         e = [self.eventArray objectAtIndex:i];
         
-        NSString *dateString = e.start_date;
+        NSString *dateString = e.start_date; // Fetches the startdate
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *randomDate = [dateFormat dateFromString:dateString];
+        NSDate *randomDate = [dateFormat dateFromString:dateString]; // Changes the format of the startdate of the event
         
-        //NSDate *randomDate = [NSDate dateWithTimeInterval:(rand() % (3600 * 24 * 60)) sinceDate:[NSDate date]];
         
         // Use the date as key for eventsByDate
         NSString *key = [[self dateFormatter] stringFromDate:randomDate];
@@ -228,7 +201,7 @@
             eventsByDate[key] = [NSMutableArray new];
         }
         
-        [eventsByDate[key] addObject:randomDate];
+        [eventsByDate[key] addObject:randomDate]; // Adds object to the events by date- dictionary.
         
     }
 }
@@ -245,37 +218,50 @@
     return dateFormatter;
 }
 
+/**
+ *  Runs when infoButton is pressed
+ *
+ *  @param sender infobutton
+ */
 - (void) infoPressed:(id) sender{
     NSString *title = @"Kalender";
     NSString *info = @"Arrangements kalender";
     [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
 }
 
+/**
+ *  Method for finding event on date.
+ *
+ *  @param date selected date
+ *
+ *  @return the first event that has startdate matching selected date
+ *  @note This method must be changed so that you can select between several events on a given date
+ */
 - (Events *) findEventForDate:(NSString *) date{
     Events *event = nil;
     NSString *dateString;
     for(int i=0; i<self.eventArray.count; ++i){
         event = [self.eventArray objectAtIndex:i];
         dateString = [event.start_date substringToIndex:10];
-        //dateString = [[self dateFormatter] ]
         if([dateString isEqualToString:date]){
-            //event = [self.eventArray]
             event = [self.eventArray objectAtIndex:i];
             return event;
         }
-        //[formatter setDateFormat:@"yyyy-MM-dd"];
     }
     return nil;
 
 }
 
+/**
+ *  Filters events with the same event id.
+ */
 -(void) filterSameEvents{
     self.filterArray = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.eventArray.count; i++) {
-        Events *method = nil;
-        method = [self.eventArray objectAtIndex:i];
-        if (self.event.event_id == method.event_id) {
-            [self.filterArray addObject:method];
+        Events *e = nil;
+        e = [self.eventArray objectAtIndex:i];
+        if (self.event.event_id == e.event_id) {
+            [self.filterArray addObject:e];
         }
     }
 }
@@ -287,7 +273,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"pushSelectedDate"]){
+    
+    
+    if([[segue identifier] isEqualToString:@"pushSelectedDate"]){ // check if the segue matches the one in the storyboard. 
         NSString *key = [[self dateFormatter] stringFromDate:sender];
         NSArray *events = eventsByDate[key];
         NSLog(@"Date: %@ - %ld events", sender, [events count]);

@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "News.h"
-
+/**
+ *  Controlling the newsinfo view. 
+ * Contains a webwiev with article.
+ */
 @interface NewsInfoViewController : UIViewController <UIAlertViewDelegate>
 
 @property(strong, nonatomic) News *currentNews;

@@ -6,64 +6,35 @@
 //  Copyright (c) 2015 MacBarhaug. All rights reserved.
 //
 
-#import "ThreatmentInfoViewController.h"
+#import "TreatmentInfoViewController.h"
 
+
+/**
+ *  Cell identifier.
+ @note This is not made in the storyboard. It is used to create new cells programatically.
+ */
 static NSString *CellIdentifier = @"newTherapistCell";
 
-@interface ThreatmentInfoViewController ()
+@interface TreatmentInfoViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end
 
-@implementation ThreatmentInfoViewController
+@implementation TreatmentInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setWebView];
     @try {
         self.rd = [[RetrieveData alloc] init];
-        self.allTherapists = [self.rd retrieveTherapists];
+        self.allTherapists = [self.rd retrieveTherapists]; /// Fills array with all therapists from DB. (See RetrieveData.m).
     }
     @catch (NSException *exception) {
 
     }
 
-    [self findAssociatedTherapists];
-    
-
-    
-    
-    //if(self.associatedTherapists.count != 0){
-    
-   // self.tableView = [self makeTableView];
-    //[self.webView addSubview:self.tableView];
-    //self.tableView.scrollsToTop = NO;
-    //}
-    //else{
-        //[self.view addSubview:[self makeLabel]];
-        // make a label telling theres no ssociated therapists with this treatment method.
-    //}
-    /*
-    NSDictionary *viewsDictionary = @{@"tableView":self.tableView, @"webView":self.webView};
-    
-    NSArray *constraint_H = [NSLayoutConstraint constraintsWithVisualFormat:@"V:[tableView(100)]" options:0 metrics:nil views:viewsDictionary];
-    
-    NSArray *constraint_V = [NSLayoutConstraint constraintsWithVisualFormat:@"H:[tableView(100)]" options:0 metrics:nil views:viewsDictionary];
-    
-    [self.tableView addConstraints:constraint_H];
-    [self.tableView addConstraints:constraint_V];
-    
-    NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|[webView]-50-[tableView]"
-                                                                        options:0
-                                                                        metrics:nil
-                                                                          views:viewsDictionary];
-    [self.view addConstraints:constraint_POS_V];
-    */
-    NSLog(@"Webview size w:%f h:%f", self.webView.frame.size.width, self.webView.frame.size.height);
-    NSLog(@"Contentview size w:%f h:%f", self.contentView.frame.size.width, self.contentView.frame.size.height);
-    NSLog(@"view size w:%f h:%f", self.view.frame.size.width, self.view.frame.size.height);
-    NSLog(@"Tableview size w:%f h:%f", self.tableView.frame.size.width, self.tableView.frame.size.height);
+    [self findAssociatedTherapists]; /// Finds the associated therapists. 
 }
 
 
@@ -75,6 +46,11 @@ static NSString *CellIdentifier = @"newTherapistCell";
     self.currentMethod=threatmentObject;
 }
 
+
+/**
+ *  This method is only in use when viewDidLoad doesnt retrieve data from database.
+ *
+ */
 - (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.allTherapists.count == 0) {
@@ -94,6 +70,12 @@ static NSString *CellIdentifier = @"newTherapistCell";
     }
 }
 
+
+/**
+ *  Handles the alertview that shows when no internet or other exception.
+ *
+ *
+ */
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if( 0 == buttonIndex ){ //cancel button
@@ -106,8 +88,12 @@ static NSString *CellIdentifier = @"newTherapistCell";
 }
 
 
-/* Puts the introtext made of html inside the webview
- * Some adjustments to the string has to be made to display well.
+
+/**
+ *  Inserts the introtext (the article text) of the treatment inside the webview.
+ Some adjustments has to be made to display as we want it.
+ 
+ @note The introtext from the database is in HTML format. We save it in an own variable htmlString.
  */
 - (void) setWebView{
     self.htmlString = self.currentMethod.introText; // stores the introtext in an own variable
@@ -117,6 +103,8 @@ static NSString *CellIdentifier = @"newTherapistCell";
     if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
         self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
+    
+    /* Scales the video image to be smaller. */
     if([self.htmlString rangeOfString:@"width=\"560\" height=\"315\""].location != NSNotFound){
         self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"width=\"560\" height=\"315\"" withString:videoSize];
     }
@@ -129,7 +117,9 @@ static NSString *CellIdentifier = @"newTherapistCell";
     
 }
 
-/* This method finds the associated therapists with the current threatmentmethod */
+/**
+ * This method finds the associated therapists with the current threatmentmethod 
+ */
 - (void) findAssociatedTherapists{
     if(self.allTherapists != nil){
         self.associatedTherapists = [[NSMutableArray alloc] init];
@@ -152,7 +142,6 @@ static NSString *CellIdentifier = @"newTherapistCell";
 }
 
 
-//Creates the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return self.associatedTherapists.count;
@@ -168,7 +157,6 @@ static NSString *CellIdentifier = @"newTherapistCell";
         Therapists *therapist = nil;
         therapist = [self.associatedTherapists objectAtIndex:indexPath.row];
         NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
-        //cell.textLabel.text = name;
 
         NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
 
@@ -208,31 +196,6 @@ static NSString *CellIdentifier = @"newTherapistCell";
 }
 
 
-//Method which creates the tableView
-/*
--(UITableView *)makeTableView
-{
-    double number = 150;
-    number = self.contentView.frame.size.height/4;
-    CGFloat x = 0;
-    CGFloat y =self.view.frame.size.height - self.view.frame.size.height/2;
-    ;
-    CGFloat width = self.view.frame.size.width;
-    CGFloat height = number;
-    CGRect tableFrame = CGRectMake(x, y, width, height);
-    
-    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
-    
-    tableView.rowHeight = 40;
-    tableView.sectionHeaderHeight = 22;
-    tableView.tableFooterView = [UIView new];
-    
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    
-    
-    return tableView;
-}*/
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {

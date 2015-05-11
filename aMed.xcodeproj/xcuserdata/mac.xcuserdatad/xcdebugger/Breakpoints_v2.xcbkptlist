@@ -57,54 +57,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "aMed/TherapistTableViewController.m"
             timestampString = "451829206.215531"
             startingColumnNumber = "9223372036854775807"
@@ -153,12 +105,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentsTableViewController.m"
-            timestampString = "450269332.4093"
+            filePath = "aMed/TreatmentsTableViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,12 +121,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentsTableViewController.m"
-            timestampString = "450271585.5245"
+            filePath = "aMed/TreatmentsTableViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -185,12 +137,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentsTableViewController.m"
-            timestampString = "450271585.5245"
+            filePath = "aMed/TreatmentsTableViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -217,13 +169,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
+            filePath = "aMed/TreatmentInfoViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "@implementation ThreatmentInfoViewController"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "@implementation TreatmentInfoViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,13 +185,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
+            filePath = "aMed/TreatmentInfoViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "@implementation ThreatmentInfoViewController"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "@implementation TreatmentInfoViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -249,28 +201,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
+            filePath = "aMed/TreatmentInfoViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "-viewDidAppear:"
             landmarkType = "5">
          </BreakpointContent>
@@ -281,13 +217,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
+            filePath = "aMed/TreatmentInfoViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
-            landmarkName = "@implementation ThreatmentInfoViewController"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "@implementation TreatmentInfoViewController"
             landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
@@ -297,12 +233,12 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "aMed/ThreatmentInfoViewController.m"
-            timestampString = "451389051.051466"
+            filePath = "aMed/TreatmentInfoViewController.m"
+            timestampString = "453041110.210349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>

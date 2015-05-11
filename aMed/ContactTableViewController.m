@@ -8,19 +8,6 @@
 
 #import "ContactTableViewController.h"
 
-/**
- *  Controls the contact us view.
- *  The view displays a contact form. 
- */
-@interface ContactTableViewController ()
-
-@property (weak, nonatomic) IBOutlet UITextField *nameField;
-@property (weak, nonatomic) IBOutlet UITextField *phoneField;
-@property (weak, nonatomic) IBOutlet UITextView *requestField;
-@property (weak, nonatomic) IBOutlet UITableViewCell *sendCell;
-@property (weak, nonatomic) IBOutlet UITableViewCell *resetCell;
-
-@end
 
 @implementation ContactTableViewController
 

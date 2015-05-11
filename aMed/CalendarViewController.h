@@ -12,21 +12,20 @@
 #import "SelectedEventViewController.h"
 
 
-
+/**
+ *  This class creates a calendar by using the JTCalendar library. The library is found on the Pods file that is included in this project. We use a dependancy manager called Cocoa Pods to import the required libraries. To update the library you have to run some commands against cocoa pods. More details in the system documentation of our app. All credits to Jonathan Tribouharet for making the calendar.
+ 
+ The class is found on https://github.com/jonathantribouharet/JTCalendar and we have customized it so we can use it in our application. It has events on the right dates of the calendar, and u can click one to display event info on that day. It has views for both month and week. Both views are scrollable so u can drag from periode to periode.
+ */
 @interface CalendarViewController : UIViewController<JTCalendarDataSource>
 
-@property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView;
+@property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView; // the calendar menu view
 
-@property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView;
+@property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView; // calendar content view
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight;
-@property (weak, nonatomic) NSString *eventID;// = @"eventID";
+@property (weak, nonatomic) NSString *eventID;
 
-//@property (strong, nonatomic) NSInteger COURSE;// = 66; // blue
-//@property (weak, nonatomic) NSInteger FESTIVAL;// = 71; //red
-//@property (weak, nonatomic) NSInteger EXHIBITION;// = 70; //green
-//@property (weak, nonatomic) NSInteger EXHIBITION_2;// = 86; //green
-
-@property(weak, nonatomic) Events *event;
+@property(weak, nonatomic) Events *event; // 
 @property(strong, nonatomic) RetrieveData *rd;
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *eventArray;
