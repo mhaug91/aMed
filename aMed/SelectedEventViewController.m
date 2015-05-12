@@ -119,7 +119,7 @@ GMSMapView *mapView_;
  */
 
 -(void) firstLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 20.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 20.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -137,7 +137,7 @@ GMSMapView *mapView_;
     NSString *summary = self.selectedEvent.summary;
     NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
-                      (self.view.frame.size.width/3, 20.0, (self.view.frame.size.width/1.5), 80)];
+                      ((self.view.frame.size.width/3)-8, 20.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -162,7 +162,7 @@ GMSMapView *mapView_;
 }
 
 -(void) thirdLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 105.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 105.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -175,7 +175,7 @@ GMSMapView *mapView_;
 -(void) fourthLabel{
     NSString *title = self.selectedEvent.location.title;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
-                      (self.view.frame.size.width/3, 105.0, (self.view.frame.size.width/1.5), 80)];
+                      ((self.view.frame.size.width/3-8), 105.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -190,7 +190,7 @@ GMSMapView *mapView_;
 }
 
 -(void) fifthLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 165.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 165.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -208,7 +208,7 @@ GMSMapView *mapView_;
     
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
-                      (self.view.frame.size.width/3, 165.0, (self.view.frame.size.width/1.5), 80)];
+                      ((self.view.frame.size.width/3-8), 165.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -226,7 +226,7 @@ GMSMapView *mapView_;
     [label sizeToFit];
 }
 -(void) seventhLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 245.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 245.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -239,7 +239,7 @@ GMSMapView *mapView_;
 -(void) eigthLabel{
     NSString *startDate = self.selectedEvent.start_date;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
-                      (self.view.frame.size.width/3, 245.0, (self.view.frame.size.width/1.5), 40)];
+                      ((self.view.frame.size.width/3-8), 245.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -254,7 +254,7 @@ GMSMapView *mapView_;
 }
 
 -(void) ninthLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 285.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 285.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -267,7 +267,7 @@ GMSMapView *mapView_;
 -(void) tenthLabel{
     NSString *endDate = self.selectedEvent.end_date;
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
-                      (self.view.frame.size.width/3, 285.0, (self.view.frame.size.width/1.5), 40)];
+                      ((self.view.frame.size.width/3-8), 285.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
@@ -282,7 +282,7 @@ GMSMapView *mapView_;
 }
 
 -(void) mapLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 325.0, self.view.frame.size.width/3, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 325.0, self.view.frame.size.width/3, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.textColor = [UIColor blackColor];
     label.backgroundColor = [UIColor whiteColor];
