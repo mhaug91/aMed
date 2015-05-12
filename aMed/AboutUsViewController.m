@@ -27,6 +27,7 @@
     [self ThirdLabel];
     [self addFacebookButton];
     [self addTwitterButton];
+    [self textField];
     
     // Do any additional setup after loading the view.
 }
@@ -39,16 +40,19 @@
 //Image of amed.no logo.
 -(void) imageView{
     
-    UIImageView *pinImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 200)];
+    UIImageView *pinImage = [ [UIImageView alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2 - 150, 0, 300, 200)];
     pinImage.image = [UIImage imageNamed:@"ic_amed_logo"];
     [self.contentView addSubview:pinImage];
+    
+    NSLog(@"%f", self.view.frame.size.width);
+    NSLog(@"%f", self.view.frame.size.width);
     
 }
 /**
  *  These labels are static, and each contains a string.
  */
 -(void) firstLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 200.0, self.view.frame.size.width, 100) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 200.0, self.view.frame.size.width-8, 100) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.numberOfLines = 10 ;
     label.textColor = [UIColor blackColor];
@@ -59,7 +63,7 @@
 }
 
 -(void) secondLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 300.0, self.view.frame.size.width, 200) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 300.0, self.view.frame.size.width-8, 200) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.numberOfLines = 115 ;
     label.textColor = [UIColor blackColor];
@@ -70,7 +74,7 @@
 }
 
 -(void) ThirdLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 500.0, 100, 40) ];
+    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(8.0, 500.0, 100, 40) ];
     label.textAlignment =  NSTextAlignmentLeft;
     label.numberOfLines = 2;
     label.textColor = [UIColor blackColor];
@@ -117,6 +121,23 @@
 -(IBAction)twitterAction:(id)sender{
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://twitter.com/amedno"]];
 }
+
+-(void) textField{
+    NSString *url = @"www.amed.no";
+    
+    UITextView *textView = [[UITextView alloc] init];
+    textView.frame = CGRectMake(0.0,580, self.view.frame.size.width, 40);
+    textView.scrollEnabled = NO;
+    textView.text=[NSString stringWithFormat:@"Nettsted: %@", url];
+    textView.font = [UIFont fontWithName:@"HelveticaNeue" size:(20.0)];
+    textView.editable = NO;
+    textView.dataDetectorTypes = UIDataDetectorTypeLink;
+    textView.textAlignment = NSTextAlignmentLeft;
+    textView.delegate = self;
+    [self.contentView addSubview:textView];
+    
+}
+
 
 
 @end

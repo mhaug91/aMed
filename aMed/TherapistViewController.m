@@ -12,6 +12,8 @@
 #define getDataThreatmentsURL @"http://www.amed.no/AmedApplication/getTreatmentmethods.php"
 #define getDataThreatmentInfoURL @"http://www.amed.no/AmedApplication/getTreatmentmethodInfo.php?alias="
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 /**
  *  This is the controller used for showing a therapist which the user has selected in TherapistTableView.
  */
@@ -21,6 +23,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView2;
 
 @end
 
@@ -46,13 +49,14 @@
     //Initiating methods to make each label and tableview
     [self firstLabel];
     [self imageView];
-    [self secondLabel];
     [self textField];
-    [self thirdlabel];
     [self findAssociatedTherapists];
     self.tableView = [self makeTableView];
+    self.tableView2 = [self makeTableView2];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
+    [self.tableView2 registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.tableView2];
 
 }
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -104,22 +108,19 @@
  */
 -(UITableView *)makeTableView
 {
-    double number = 0;
-    for (int i = 0 ; i<self.currentTherapist.treatmentMethods.count; i++) {
-        number += 40;
-    }
+    double number = self.currentTherapist.treatmentMethods.count * 40;
     
     CGFloat x = 0;
     CGFloat y = 280;
     CGFloat width = self.view.frame.size.width;
-    CGFloat height = number;
+    CGFloat height = number + 20;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
     
     tableView.rowHeight = 40;
     tableView.sectionFooterHeight = 10;
-    tableView.sectionHeaderHeight = 10;
+    tableView.sectionHeaderHeight = 20;
     tableView.scrollEnabled = NO;
     tableView.showsVerticalScrollIndicator = YES;
     tableView.userInteractionEnabled = YES;
@@ -130,6 +131,38 @@
     
     return tableView;
 }
+-(UITableView *)makeTableView2
+{
+    double distance = (self.currentTherapist.treatmentMethods.count * 40);
+    double number = 220;
+    
+    CGFloat x = 0;
+    CGFloat y = 326 + distance;
+    CGFloat width = self.view.frame.size.width;
+    CGFloat height = number+ 30;
+    CGRect tableFrame = CGRectMake(x, y, width, height);
+    
+    UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
+    
+    tableView.rowHeight = 40;
+    tableView.sectionFooterHeight = 10;
+    tableView.sectionHeaderHeight = 5;
+    tableView.backgroundColor = [UIColor blackColor];
+    tableView.scrollEnabled = NO;
+    tableView.showsVerticalScrollIndicator = YES;
+    tableView.userInteractionEnabled = YES;
+    tableView.bounces = YES;
+    
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    NSLog(@"%f", self.view.frame.size.height);
+    NSLog(@"%f", y);
+    NSLog(@"%f", self.contentView.frame.size.height);
+    
+    
+    return tableView;
+}
+
 
 //First label of the view, shows the company name of the chosen therapist.
 -(void) firstLabel{
@@ -166,29 +199,38 @@
     }
 
 }
-//Text label that is just a string.
--(void) secondLabel{
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, 243.0, self.view.frame.size.width, 43) ];
-    label.textAlignment =  NSTextAlignmentCenter;
-    label.textColor = [UIColor blackColor];
-    label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
-    [self.contentView addSubview:label];
-    label.text = [NSString stringWithFormat: @"Behandlingsmetoder:"];
-}
 
 //Creates the tableview.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-
-        return [self.currentTherapist.treatmentMethods count];
-        
+    double rows = 0;
+    if (tableView == self.tableView) {
+        rows = [self.currentTherapist.treatmentMethods count];
+    } else if (tableView == self.tableView2) {
+        rows = 6;
+    }
+    return rows;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
+    NSString *title = nil;
+    
+    if (tableView == self.tableView) {
+        title = @"Behandlingsmetoder: ";
+    } else {
+        title = @" ";
+    }
+    return title;
+}
+
 //Defines each cell of the table view.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"TreatmentMethods";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    if (tableView == self.tableView){
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
@@ -199,37 +241,43 @@
     method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
     NSString *title = [NSString stringWithFormat:@"%@", method];
     cell.textLabel.text = title;
-
-    
+    } else if ( tableView == self.tableView2){
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        }
+        NSString *address = self.currentTherapist.address.street;
+        NSString *zipcode = [NSString stringWithFormat:@"%ld", (long)self.currentTherapist.address.postcode];
+        NSString *city =self.currentTherapist.address.city;
+        NSString *state = self.currentTherapist.address.state;
+        NSString *phone = [NSString stringWithFormat:@"%ld", (long)self.currentTherapist.phone];
+        
+        NSArray *elements = @[address, zipcode, city, state, phone, @" -- "];
+        NSArray *elements2 = @[@"Addresse:", @"Postnummer:", @"Sted:", @"Fylke:", @"Telefon:", @"Epost:"];
+       // TreatmentMethod *method = nil;
+        
+        //method = [self.currentTherapist.treatmentMethods objectAtIndex:indexPath.row];
+        NSString *title = [elements objectAtIndex:indexPath.row];
+        NSString *text = [elements2 objectAtIndex:indexPath.row];
+        NSString *pikk = [NSString stringWithFormat:@"%@ %@", text, title];
+        cell.textLabel.text = pikk;
+        NSString *penis = [elements objectAtIndex:indexPath.row];
+        cell.detailTextLabel.text = penis;
+        cell.detailTextLabel.numberOfLines = 0;
+    }
     return cell;
 }
 
 //Tells the application what to do when a table cell is pressed.
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *sender = [self.tableView cellForRowAtIndexPath:indexPath];
+    if (theTableView == self.tableView) {
+        UITableViewCell *sender = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
+    }
+}
 
-    [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
-}
-//Label which shows the contact information and address to the given therapist.
--(void) thirdlabel{
-    double distance = (self.currentTherapist.treatmentMethods.count * 40);
-    
-    NSString *address = self.currentTherapist.address.street;
-    NSString *zipcode = [NSString stringWithFormat:@"%ld", self.currentTherapist.address.postcode];
-    NSString *city = self.currentTherapist.address.city;
-    NSString *state = self.currentTherapist.address.state;
-    NSString *phone = [NSString stringWithFormat:@"%ld", self.currentTherapist.phone];
-    
-    UILabel *label = [ [UILabel alloc ] initWithFrame:CGRectMake(0.0, (326.0 + distance), self.view.frame.size.width, 120) ];
-    label.textAlignment =  NSTextAlignmentCenter;
-    label.textColor = [UIColor blackColor];
-    label.backgroundColor = [UIColor whiteColor];
-    label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
-    [self.contentView addSubview:label];
-    label.text = [NSString stringWithFormat: @"Addresse: %@ \n Postnummer: %@ \n Sted: %@ \n Fylke: %@ \n Telefon: %@ \n Epost: --",address, zipcode, city, state, phone];
-    label.numberOfLines = 0;
-}
 //Show an url link to the therapists website.
 -(void) textField{
     double distance = (self.currentTherapist.treatmentMethods.count * 40);
@@ -237,13 +285,13 @@
     
     
     UITextView *textView = [[UITextView alloc] init];
-    textView.frame = CGRectMake(0.0,(286 + distance), self.view.frame.size.width, 40);
+    textView.frame = CGRectMake(0.0,(340 + distance + 240), self.view.frame.size.width, 40);
     textView.scrollEnabled = NO;
-    textView.text=[NSString stringWithFormat:@"Nettsted: %@", url];
-    textView.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.)];
+    textView.text=[NSString stringWithFormat:@"   Nettsted: %@", url];
+    textView.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:(16.)];
     textView.editable = NO;
     textView.dataDetectorTypes = UIDataDetectorTypeLink;
-    textView.textAlignment = NSTextAlignmentCenter;
+    textView.textAlignment = NSTextAlignmentLeft;
     textView.delegate = self;
     [self.contentView addSubview:textView];
     
