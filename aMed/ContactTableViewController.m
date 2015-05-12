@@ -19,6 +19,7 @@
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside]; // Adds action to the button. See method: buttonAction. 
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton]; // Inits the button as a barButton.
     self.navigationItem.rightBarButtonItem = infoButtonItem; // Places the button in the navigation bar.
+    self.tableView.tableFooterView = [UIView new];
 }
 
 - (void)didReceiveMemoryWarning {
