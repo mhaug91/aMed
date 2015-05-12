@@ -95,11 +95,11 @@
                             <mask key="constraints">
                                 <exclude reference="LoJ-n9-6ij"/>
                                 <exclude reference="PFK-sb-uDJ"/>
-                                <exclude reference="MoN-ax-P1x"/>
-                                <exclude reference="r3C-x0-qK0"/>
                                 <exclude reference="6e4-z1-abu"/>
                                 <exclude reference="Yxm-jT-PPY"/>
                                 <exclude reference="n7v-L2-57g"/>
+                                <exclude reference="MoN-ax-P1x"/>
+                                <exclude reference="r3C-x0-qK0"/>
                             </mask>
                         </variation>
                     </view>
