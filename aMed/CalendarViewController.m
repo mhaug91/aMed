@@ -11,7 +11,7 @@
 
 
 @interface CalendarViewController (){
-    NSMutableDictionary *eventsByDate;
+    NSMutableDictionary *eventsByDate; // Events sorted by date
 }
 
 @end
@@ -55,7 +55,7 @@
 
 }
 
-
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void)viewDidAppear:(BOOL)animated
 
 {
@@ -84,6 +84,9 @@
     [self.calendar reloadData]; // Must be call in viewDidAppear
     
 }
+
+
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -148,6 +151,14 @@
 }
 
 
+ /**
+ *  Checks if a date has a event
+ *
+ *  @param calendar our calendar.
+ *  @param date
+ *
+ *  @return Yes if it has events. No if it doesn't.
+ */
 - (BOOL)calendarHaveEvent:(JTCalendar *)calendar date:(NSDate *)date
 {
     NSString *key = [[self dateFormatter] stringFromDate:date];
@@ -162,7 +173,7 @@
 /**
  *  Runs when a date is selected
  *
- *  @param calendar the calendar in our storyboard
+ *  @param calendar our calendar
  *  @param date     selected date
  *  @note Does nothing if there's no events that date
  */
@@ -230,12 +241,12 @@
 }
 
 /**
- *  Method for finding event on date.
+ *  Method for finding an event on date.
  *
  *  @param date selected date
  *
  *  @return the first event that has startdate matching selected date
- *  @note This method must be changed so that you can select between several events on a given date
+ *  @note This method returns only ONE event.
  */
 - (Events *) findEventForDate:(NSString *) date{
     Events *event = nil;
@@ -253,14 +264,14 @@
 }
 
 /**
- *  Filters events with the same event id.
+ *  Fills an array with events with the same event id.
  */
--(void) filterSameEvents{
+-(void) filterSameEvents:(NSInteger) eventId{
     self.filterArray = [[NSMutableArray alloc] init];
     for (int i = 0; i<self.eventArray.count; i++) {
         Events *e = nil;
         e = [self.eventArray objectAtIndex:i];
-        if (self.event.event_id == e.event_id) {
+        if (eventId == e.event_id) {
             [self.filterArray addObject:e];
         }
     }
@@ -270,27 +281,36 @@
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)date {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
     
     if([[segue identifier] isEqualToString:@"pushSelectedDate"]){ // check if the segue matches the one in the storyboard. 
-        NSString *key = [[self dateFormatter] stringFromDate:sender];
-        NSArray *events = eventsByDate[key];
-        NSLog(@"Date: %@ - %ld events", sender, [events count]);
-        self.event = [self findEventForDate:key];
+        NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
+        
+        /**
+         *  The code uncommented is required if we want to display all the events on a selected date.
+         *  Our solution just displays 1 event a day. 
+         *  To fix this we need to create a new view beneath our calendar that displays a list of the:
+         *  eventsByDate[dateKey];
+         */
+        /*NSArray *events = eventsByDate[dateKey];                           // Finds all events for that dateString
+        NSLog(@"Date: %@ - %ld events", sender, [events count]);            // Logs it
+         */
+        Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
         SelectedEventViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = @"event"; // Setting title in the navigation bar of next view
-        [destViewController getEventObject:self.event];
+        [destViewController getEventObject:eventOnDate];    // Sets the eventobject in the destination view controller. (See Selected Event View Controller.
         
-        [self filterSameEvents];
-        Events *e = nil;
-        for (int i = 0; i<self.filterArray.count; i++) {
-            e =[self.filterArray objectAtIndex:i];
-            if (e.start_date == self.event.start_date ) {
-                [destViewController setDay:i+1];
+        [self filterSameEvents:eventOnDate.event_id];
+        int dayIndex=1;                   // Used to set the day of the event in the next view. One event can have many days.
+        for(Events *e in self.filterArray){         // Loops through the events in the filtered array.
+            if (e.start_date == eventOnDate.start_date ) { // if the event in filtered array has same date as selected...
+                [destViewController setDay:dayIndex];           // Set the dayIndex
             }
+            ++dayIndex;
+
         }
 
         

@@ -21,7 +21,7 @@
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
 
-@property(strong, nonatomic) RetrieveData *rd;
+@property(strong, nonatomic) RetrieveData *rd; /// Object to retrieve data from the database. 
 @property(strong, nonatomic) NSMutableArray *threatmentsArray; /// Array of threatment objects
 
 

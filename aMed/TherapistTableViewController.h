@@ -13,8 +13,7 @@
 @interface TherapistTableViewController : UITableViewController
 <UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate, UIAlertViewDelegate>
 
-@property(strong, nonatomic) RetrieveData *rd;
-@property(strong, nonatomic) NSMutableArray *jsonArray;
+@property(strong, nonatomic) RetrieveData *rd; /// Object to retrieve data from the database.
 @property(strong, nonatomic) NSMutableArray *therapists;
 
 

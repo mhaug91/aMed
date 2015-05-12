@@ -23,6 +23,12 @@
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
 @property(nonatomic, strong) NSMutableArray *associatedMethods;
 
+/**
+ *  Sets the currentTherapist object.
+ *
+ *  @param therapistObject
+ *  @note In our app we use this method in the therapist table view controller
+ */
 
 - (void) getTherapistObject: (id) therapistObject;
 @end

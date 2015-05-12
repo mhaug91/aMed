@@ -14,8 +14,14 @@
  */
 @interface NewsInfoViewController : UIViewController <UIAlertViewDelegate>
 
-@property(strong, nonatomic) News *currentNews;
+@property(strong, nonatomic) News *currentNews; // Current newsobject to display info about.
 
+/**
+ *  Sets the currentNews object.
+ *
+ *  @param newsObject 
+ *  @note In our app we use this method in the news table view controller
+ */
 - (void) getNewsObject: (id) newsObject;
 
 @end

@@ -22,11 +22,11 @@
 @interface TreatmentInfoViewController : UIViewController <UIAlertViewDelegate>
 
 
-@property(nonatomic, strong) TreatmentMethod *currentMethod;
+@property(nonatomic, strong) TreatmentMethod *currentMethod; /// Current method we want to display info about.
 @property(nonatomic, strong) NSString *htmlString;
 @property(nonatomic, strong) NSMutableArray *allTherapists;
 @property(nonatomic, strong) NSMutableArray *associatedTherapists;
-@property(nonatomic, strong) RetrieveData *rd;
+@property(nonatomic, strong) RetrieveData *rd; /// Object to retrieve data from the database. 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 
@@ -35,7 +35,14 @@
 #pragma marks
 #pragma mark Methods
 
+/**
+ *  Sets the currentMethod object.
+ *
+ *  @param newsObject
+ *  @note In our app we use this method in the threatments table view controller
+ */
 - (void) getThreatmentMethod:(id)threatmentObject;
+
 - (void) setWebView;
 
 @end
