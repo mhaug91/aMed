@@ -251,8 +251,9 @@
         NSString *city =self.currentTherapist.address.city;
         NSString *state = self.currentTherapist.address.state;
         NSString *phone = [NSString stringWithFormat:@"%ld", (long)self.currentTherapist.phone];
+        NSString *email = self.currentTherapist.email;
         
-        NSArray *elements = @[address, zipcode, city, state, phone, @" -- "];
+        NSArray *elements = @[address, zipcode, city, state, phone, email];
         NSArray *elements2 = @[@"Addresse:", @"Postnummer:", @"Sted:", @"Fylke:", @"Telefon:", @"Epost:"];
        // TreatmentMethod *method = nil;
         

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="C7W-lN-OVZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -24,7 +24,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                            <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -32,7 +32,7 @@
                                     <outlet property="delegate" destination="kq0-N3-XFN" id="HuK-Jn-tSp"/>
                                 </connections>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
                                 <rect key="frame" x="0.0" y="414" width="600" height="137"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -659,9 +659,9 @@
                                                     <exclude reference="SD6-cZ-Tfq"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="ehO-Pn-rBP"/>
                                                     <exclude reference="SDI-y4-FQY"/>
                                                     <exclude reference="fnb-nD-Xvy"/>
-                                                    <exclude reference="ehO-Pn-rBP"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -731,7 +731,6 @@
                                                     <exclude reference="bcx-sp-fQR"/>
                                                 </mask>
                                                 <mask key="constraints">
-                                                    <exclude reference="sc4-mD-SNW"/>
                                                     <exclude reference="3D6-bV-OuF"/>
                                                     <exclude reference="7hU-DG-mOL"/>
                                                     <exclude reference="RRu-yF-Yei"/>
@@ -740,6 +739,7 @@
                                                     <exclude reference="jwy-Bm-xf2"/>
                                                     <exclude reference="kOC-Lr-8Uh"/>
                                                     <exclude reference="rZ8-yB-rEz"/>
+                                                    <exclude reference="sc4-mD-SNW"/>
                                                     <exclude reference="P2o-3a-ZNa"/>
                                                     <exclude reference="UAf-39-6bd"/>
                                                     <exclude reference="VZL-dU-3NK"/>

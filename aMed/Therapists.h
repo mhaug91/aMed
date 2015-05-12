@@ -15,6 +15,7 @@
 @property(strong, nonatomic)NSString *lastName;
 @property(strong, nonatomic)NSString *avatar;
 @property(strong, nonatomic)NSString *website;
+@property(strong, nonatomic)NSString *email;
 @property(strong, nonatomic)NSString *occupation;
 @property(strong, nonatomic)NSString *company;
 @property(strong, nonatomic)Address *address;
@@ -24,7 +25,7 @@
 @property(strong, nonatomic)NSString *treatmentMethodString;
 
 
--(id) initWithFirstName: (NSString * ) firstName andLastName: (NSString *) lastName andAvatar: (NSString *) avatar andWebsite: (NSString *) website andOccupation: (NSString *) occupation andCompany: (NSString *) company andAddress: (Address *) address andPhone: (NSInteger *) phone andComment: (NSString *) comment andTreatmentMethods: (NSArray *) treatmentMethods andTreatmentMethodString: (NSString *) treatmentMethodString;
+-(id) initWithFirstName: (NSString * ) firstName andLastName: (NSString *) lastName andAvatar: (NSString *) avatar andWebsite: (NSString *) website andEmail: (NSString *) email andOccupation: (NSString *) occupation andCompany: (NSString *) company andAddress: (Address *) address andPhone: (NSInteger *) phone andComment: (NSString *) comment andTreatmentMethods: (NSArray *) treatmentMethods andTreatmentMethodString: (NSString *) treatmentMethodString;
 
 -(id) initWithFirstName: (NSString *) firstName andLastName: (NSString *) lastName andAddress:(Address *) address;
 @end

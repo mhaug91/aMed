@@ -95,7 +95,7 @@
     */
     for (int i = 0; i<self.jsonArray.count; i++) {
         
-        //
+        //Address
         NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"address")];
         NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
         NSString *state = [[self.jsonArray objectAtIndex:i] objectForKey:(@"state")];
@@ -114,6 +114,7 @@
         NSString *lastName = [[self.jsonArray objectAtIndex:i] objectForKey:(@"lastname")];
         NSString *avatar = [[self.jsonArray objectAtIndex:i] objectForKey:(@"avatar")];
         NSString *website = [[self.jsonArray objectAtIndex:i] objectForKey:(@"website")];
+        NSString *email = [[self.jsonArray objectAtIndex:i] objectForKey:(@"email")];
         NSString *occupation = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_yrke")];
         NSString *company = [[self.jsonArray objectAtIndex:i] objectForKey:(@"company")];
         @try {
@@ -133,7 +134,7 @@
         //Adding attributes to Address
         address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
         //Adding attributes and Address to Therapist object.
-        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString];
+        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andEmail:email andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString];
         
         //Adding one Therapist object to the therapists array.
         [therapists addObject:therapist];
