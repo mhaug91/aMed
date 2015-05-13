@@ -24,7 +24,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                            <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -32,7 +32,7 @@
                                     <outlet property="delegate" destination="kq0-N3-XFN" id="HuK-Jn-tSp"/>
                                 </connections>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
                                 <rect key="frame" x="0.0" y="415" width="600" height="136"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
