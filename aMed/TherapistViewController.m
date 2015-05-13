@@ -155,9 +155,7 @@
     
     tableView.delegate = self;
     tableView.dataSource = self;
-    NSLog(@"%f", self.view.frame.size.height);
-    NSLog(@"%f", y);
-    NSLog(@"%f", self.contentView.frame.size.height);
+
     
     
     return tableView;
@@ -309,9 +307,7 @@
         for(TreatmentMethod *t in self.threatmentsArray){ // Short for- loop. Loops through all therapists
             for(NSString *s in self.currentTherapist.treatmentMethods){ // Loops through the threatmentmethods of a therapist.
                 if([t.title isEqualToString:s]){ // if current method is associated with therapist
-                   // NSLog(@"%@", t.title);
                     [self.associatedMethods addObject:t]; // add the therapist to associated therapists array.
-                    NSLog(@"%lu", (unsigned long)self.associatedMethods.count);
                 }
                 
             }

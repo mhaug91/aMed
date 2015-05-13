@@ -205,7 +205,6 @@
             NSLog(@"Exception:s %@", exception.reason);
         }
         @finally {
-            NSLog(@"finally");
         }
         NSString *street = [[self.jsonArray objectAtIndex:i] objectForKey:(@"street")];
         NSString *city = [[self.jsonArray objectAtIndex:i] objectForKey:(@"city")];
@@ -223,7 +222,6 @@
             NSLog(@"Exception:h %@", exception.reason);
         }
         @finally {
-            NSLog(@"Finally");
         }
         NSString *title = [[self.jsonArray objectAtIndex:i] objectForKey:(@"title")];
         
