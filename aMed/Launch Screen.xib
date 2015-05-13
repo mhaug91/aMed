@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
@@ -102,16 +103,16 @@
                     <exclude reference="k1o-5w-Q3T"/>
                     <exclude reference="rQF-pI-zbX"/>
                     <exclude reference="suI-qm-SY8"/>
-                    <exclude reference="Ik2-br-HKA"/>
-                    <exclude reference="RQY-sX-y9h"/>
-                    <exclude reference="W8p-sR-CzD"/>
-                    <exclude reference="Hyu-9H-xoC"/>
-                    <exclude reference="ucm-RI-k1T"/>
                     <exclude reference="CCP-Vp-bOT"/>
                     <exclude reference="NJc-4p-7rz"/>
                     <exclude reference="hxu-xv-2RG"/>
                     <exclude reference="tko-CG-I9E"/>
                     <exclude reference="xlf-e1-nCf"/>
+                    <exclude reference="Ik2-br-HKA"/>
+                    <exclude reference="RQY-sX-y9h"/>
+                    <exclude reference="W8p-sR-CzD"/>
+                    <exclude reference="Hyu-9H-xoC"/>
+                    <exclude reference="ucm-RI-k1T"/>
                     <exclude reference="2ht-Kq-sw8"/>
                     <exclude reference="sX1-5U-iE4"/>
                 </mask>
