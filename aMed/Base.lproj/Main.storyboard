@@ -36,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="415" width="600" height="136"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="61t-3o-uVx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UnusedTableCellID" id="61t-3o-uVx">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="61t-3o-uVx" id="4Kk-wT-YzB">
@@ -55,6 +55,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="131" id="fCC-tD-7rO"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fCC-tD-7rO"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="kq0-N3-XFN" id="MhH-pl-0mm"/>
                                     <outlet property="delegate" destination="kq0-N3-XFN" id="kpH-PM-NiM"/>
@@ -638,6 +643,11 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Eo9-ud-ZXJ"/>
+                                                        </mask>
+                                                    </variation>
                                                 </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-post:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nkk-y6-aNs">
                                                     <rect key="frame" x="8" y="14" width="56" height="21"/>
@@ -670,7 +680,9 @@
                                                 </mask>
                                                 <mask key="constraints">
                                                     <exclude reference="ehO-Pn-rBP"/>
+                                                    <exclude reference="0Al-hZ-qAG"/>
                                                     <exclude reference="SDI-y4-FQY"/>
+                                                    <exclude reference="cnO-ya-V9N"/>
                                                     <exclude reference="fnb-nD-Xvy"/>
                                                 </mask>
                                             </variation>
@@ -749,6 +761,8 @@
                                                     <exclude reference="jwy-Bm-xf2"/>
                                                     <exclude reference="kOC-Lr-8Uh"/>
                                                     <exclude reference="rZ8-yB-rEz"/>
+                                                    <exclude reference="HW8-mr-dX8"/>
+                                                    <exclude reference="pHz-s5-wnt"/>
                                                     <exclude reference="sc4-mD-SNW"/>
                                                     <exclude reference="P2o-3a-ZNa"/>
                                                     <exclude reference="UAf-39-6bd"/>
