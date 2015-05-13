@@ -11,7 +11,7 @@
 
 /**
  *  Cell identifier.
- @note This is not made in the storyboard. It is used to create new cells programatically.
+ @note This cell is not made in the storyboard. It is used to create new cells programatically.
  */
 static NSString *CellIdentifier = @"newTherapistCell";
 
@@ -100,13 +100,15 @@ static NSString *CellIdentifier = @"newTherapistCell";
     NSString *videoSize = [NSString stringWithFormat:@"width=\"%f\" height=\"%f\"", self.contentView.frame.size.width/2, self.contentView.frame.size.width/2];
     
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
-    if ([self.htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
-        self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+    if ([self.htmlString rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
+        
+        self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+        
     }
     
     /* Scales the video image to be smaller. */
     if([self.htmlString rangeOfString:@"width=\"560\" height=\"315\""].location != NSNotFound){
-        self.htmlString = [self.currentMethod.introText stringByReplacingOccurrencesOfString:@"width=\"560\" height=\"315\"" withString:videoSize];
+        self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"width=\"560\" height=\"315\"" withString:videoSize];
     }
     
     /* Amed.no (the website) has a custom backbutton used on the pages for the
@@ -210,8 +212,8 @@ titleForHeaderInSection:(NSInteger)section {
 
 
 
-/* Creates a label saying there's no associated therapists.
-*Method not in use .
+/** Creates a label saying there's no associated therapists.
+* @note Method not in use .
 */
 - (UILabel *) makeLabel
 {
@@ -260,43 +262,6 @@ titleForHeaderInSection:(NSInteger)section {
 }
 */
 
-/*
- 
- //Tells the application what to do when a table cell is pressed.
- - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
- UITableViewCell *sender = [self.tableView cellForRowAtIndexPath:indexPath];
- 
- [self performSegueWithIdentifier:@"PushTreatmentInfo" sender:sender];
- }
- 
- 
- #pragma mark - Navigation
- //Segue that sends forward information from this view to the next.
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- 
- 
- if ([[segue identifier] isEqualToString:@"PushTreatmentInfo"])
- {
- 
- NSIndexPath *indexPath = nil;
- 
- 
- 
- 
- indexPath = [self.tableView indexPathForCell:sender];
- ThreatmentMethod *method = self.associatedMethods[indexPath.row];
- 
- ThreatmentInfoViewController *destViewController = segue.destinationViewController; // Getting new view controller
- destViewController.navigationItem.title = method.title; // Setting title in the navigation bar of next view
- [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController
- NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
- [method setIntroText:introtext];
- 
- }
- }
 
-
- */
 
 @end

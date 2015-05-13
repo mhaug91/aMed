@@ -36,10 +36,8 @@
 - (void) setWebView{
     NSString *htmlString = self.currentNews.introText;
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
-    if ([htmlString rangeOfString:@"images"].location != NSNotFound) { // If the substring "images" is found
-        /* Replace it with the string "https://www.amed.no/images" */
-        htmlString = [self.currentNews.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
-        
+    if ([htmlString rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
+        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
     
     /* Amed.no (the website) has a custom backbutton used on the pages for the
