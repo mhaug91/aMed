@@ -826,7 +826,7 @@
         <scene sceneID="i5V-Td-6GC">
             <objects>
                 <navigationController title="Kontakt oss" id="C7W-lN-OVZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" selectedImage="Email-32" id="qVk-dm-Qr4"/>
+                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" id="qVk-dm-Qr4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yk9-aB-Kcu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1108,13 +1108,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-6" y="-4"/>
         </scene>
     </scenes>
     <resources>
         <image name="Calendar-25" width="25" height="25"/>
         <image name="Email-25" width="25" height="25"/>
-        <image name="Email-32" width="32" height="32"/>
         <image name="Find User-25" width="25" height="25"/>
         <image name="Hospital-25" width="25" height="25"/>
         <image name="Info-25" width="25" height="25"/>
