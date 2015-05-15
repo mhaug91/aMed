@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="5dW-z3-6Av">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -24,7 +25,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
+                            <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
                                 <rect key="frame" x="0.0" y="64" width="600" height="348"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
@@ -32,7 +33,7 @@
                                     <outlet property="delegate" destination="kq0-N3-XFN" id="HuK-Jn-tSp"/>
                                 </connections>
                             </webView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
                                 <rect key="frame" x="0.0" y="415" width="600" height="136"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -1043,6 +1044,31 @@
                                     <constraint firstAttribute="height" constant="300" id="LZt-op-W3X"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="gZa-CC-0KJ">
+                                <rect key="frame" x="0.0" y="482" width="600" height="127"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="127" id="n4V-jA-S95"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="EventCellID" id="pbv-Ps-z7P">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbv-Ps-z7P" id="lM0-G3-dFd">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="n4V-jA-S95"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <outlet property="dataSource" destination="5dW-z3-6Av" id="lDo-Mi-YPU"/>
+                                    <outlet property="delegate" destination="5dW-z3-6Av" id="k4N-6g-Ma9"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1052,10 +1078,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="S7Q-Zf-GsE" secondAttribute="trailing" id="8ba-GP-nhE"/>
                             <constraint firstItem="S7Q-Zf-GsE" firstAttribute="leading" secondItem="EPu-pv-zdu" secondAttribute="leadingMargin" constant="-16" id="8nl-ZY-u8c"/>
                             <constraint firstAttribute="trailingMargin" secondItem="S7Q-Zf-GsE" secondAttribute="trailing" constant="-16" id="Brv-hE-S1a"/>
+                            <constraint firstItem="gZa-CC-0KJ" firstAttribute="leading" secondItem="EPu-pv-zdu" secondAttribute="leadingMargin" constant="-16" id="Brz-iW-0gC"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="gZa-CC-0KJ" secondAttribute="bottom" constant="-9" id="D4b-pT-Tmn"/>
                             <constraint firstItem="S7Q-Zf-GsE" firstAttribute="top" secondItem="HaZ-m3-F6v" secondAttribute="bottom" id="T2V-5D-TF2"/>
                             <constraint firstItem="OZH-fu-OPe" firstAttribute="top" secondItem="S7Q-Zf-GsE" secondAttribute="bottom" id="aQR-W3-lkR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gZa-CC-0KJ" secondAttribute="trailing" constant="-16" id="b6q-oV-obg"/>
                             <constraint firstItem="CMJ-Jt-6Ha" firstAttribute="top" secondItem="OZH-fu-OPe" secondAttribute="bottom" constant="30" id="c3v-bJ-nl2"/>
                             <constraint firstItem="OZH-fu-OPe" firstAttribute="top" secondItem="S7Q-Zf-GsE" secondAttribute="bottom" id="hb2-O7-YHI"/>
+                            <constraint firstItem="gZa-CC-0KJ" firstAttribute="top" secondItem="TB5-QM-5RB" secondAttribute="bottom" constant="8" id="ncd-Dv-CWu"/>
                             <constraint firstItem="OZH-fu-OPe" firstAttribute="leading" secondItem="EPu-pv-zdu" secondAttribute="leadingMargin" constant="-16" id="nws-2E-N3L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TB5-QM-5RB" secondAttribute="trailing" constant="30" id="oA5-wj-dDL"/>
                             <constraint firstItem="S7Q-Zf-GsE" firstAttribute="leading" secondItem="EPu-pv-zdu" secondAttribute="leadingMargin" id="suP-Qd-Sx0"/>
@@ -1081,6 +1111,7 @@
                     <connections>
                         <outlet property="calendarContentView" destination="OZH-fu-OPe" id="FRK-sX-dot"/>
                         <outlet property="calendarMenuView" destination="S7Q-Zf-GsE" id="MJE-ce-TTV"/>
+                        <outlet property="tableView" destination="gZa-CC-0KJ" id="5TF-CZ-psc"/>
                         <segue destination="szC-ZQ-asV" kind="show" identifier="pushSelectedDate" id="2S9-ae-bR5"/>
                     </connections>
                 </viewController>
@@ -1128,7 +1159,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2S9-ae-bR5"/>
-        <segue reference="TNK-JL-doa"/>
         <segue reference="7iX-jM-EA2"/>
+        <segue reference="TNK-JL-doa"/>
     </inferredMetricsTieBreakers>
 </document>

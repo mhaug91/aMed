@@ -8,10 +8,12 @@
 
 #import "CalendarViewController.h"
 
+static NSString *eventCellIdentifier = @"eventCellID";
 
 
 @interface CalendarViewController (){
     NSMutableDictionary *eventsByDate; // Events sorted by date
+    __weak IBOutlet UITableView *tableView;
 }
 
 @end
@@ -276,6 +278,27 @@
         }
     }
 }
+
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self->tableView dequeueReusableCellWithIdentifier:
+                             eventCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:eventCellIdentifier];
+    }
+    return cell;
+}
+
+
 
 
 #pragma mark - Navigation
