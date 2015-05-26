@@ -31,6 +31,8 @@ NSInteger EXHIBITION_2 = 86; //green
 //Retrieves data from database, uses exception handling incase of no network connection.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];

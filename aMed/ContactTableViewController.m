@@ -14,6 +14,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; // Creates an infobutton.
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside]; // Adds action to the button. See method: buttonAction. 

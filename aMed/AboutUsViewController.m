@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     [self imageView];
     [self firstLabel];
     [self secondLabel];

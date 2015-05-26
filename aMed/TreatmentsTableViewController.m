@@ -26,6 +26,8 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+    
     // Load data
     @try {
         self.rd = [[RetrieveData alloc] init];

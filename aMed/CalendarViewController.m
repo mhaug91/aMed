@@ -31,7 +31,8 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
     @catch (NSException *exception) {
     }
-    
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     [super viewDidLoad];
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchUpInside];
