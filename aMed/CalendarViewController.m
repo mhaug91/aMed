@@ -164,11 +164,12 @@ static NSString *eventCellIdentifier = @"eventCellID";
 {
     NSString *key = [[self dateFormatter] stringFromDate:date];
     
+   
     if(eventsByDate[key] && [eventsByDate[key] count] > 0){
         return YES;
     }
     
-    return NO;
+    return YES; /// Return NO
 }
 
 /**
@@ -181,9 +182,18 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
     if([self calendarHaveEvent:calendar date:date]){
-        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
+        [self displayEventsTable:date];
+        //[self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
         
     }
+}
+
+- (void) displayEventsTable:(NSDate *) date{
+    NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
+
+    NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
+    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
+    // Continue this later.
 }
 
 
@@ -295,7 +305,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
-    
+    cell.textLabel.text = @"Ingen hendelser";
     return cell;
 }
 
@@ -319,7 +329,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
          *  To fix this we need to create a new view beneath our calendar that displays a list of the:
          *  eventsByDate[dateKey];
          */
-        /*NSArray *events = eventsByDate[dateKey];                           // Finds all events for that dateString
+        /*NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
         NSLog(@"Date: %@ - %ld events", sender, [events count]);            // Logs it
          */
         Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
