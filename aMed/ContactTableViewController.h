@@ -20,7 +20,7 @@
   *  Textfields for name, phone, and requests. 
  */
     @property (weak, nonatomic) IBOutlet UITextField *nameField;
-    @property (weak, nonatomic) IBOutlet UITextField *phoneField;
+    @property (weak, nonatomic) IBOutlet UITextField *emailField;
     @property (weak, nonatomic) IBOutlet UITextView *requestField;
     @property (weak, nonatomic) IBOutlet UITableViewCell *sendCell; // User can select press this cell (works as a button), to confirm info in written in fields and move on to the mail view.
     @property (weak, nonatomic) IBOutlet UITableViewCell *resetCell; // User can press this cell to reset all the fields. 

@@ -25,6 +25,8 @@ static NSString *eventCellIdentifier = @"eventCellID";
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -33,7 +35,6 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
     [self.navigationController.navigationBar setTranslucent:NO];
 
-    [super viewDidLoad];
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
@@ -81,9 +82,6 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 
     [super viewDidAppear:animated];
-    
-    
-    
     [self.calendar reloadData]; // Must be call in viewDidAppear
     
 }
@@ -280,6 +278,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 }
 
+#pragma mark - table view delegate
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
@@ -296,6 +295,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
+    
     return cell;
 }
 
