@@ -128,6 +128,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
 {
     CGFloat newHeight = 300;
     if(self.calendar.calendarAppearance.isWeekMode){
+        
         newHeight = 75.;
     }
     
