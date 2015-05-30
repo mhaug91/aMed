@@ -35,7 +35,7 @@ GMSMapView *mapView_;
 
     //Initialzing geocoding.
     gc = [[GeoCoding alloc]init];
-    
+    NSLog(@"Current identifier: %@", [[NSBundle mainBundle] bundleIdentifier]);
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];

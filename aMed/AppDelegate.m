@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //Application key for using Google Maps and Geocoding
-    [GMSServices provideAPIKey:@"AIzaSyBOAoQDT7kKhNcjzsNEGSjvF2319iPm7Us"];
+    [GMSServices provideAPIKey:@"AIzaSyAStmByBRbjtqO7WfmZHiRdrCZwcm3aofQ"];
     
     //Set color of the Navigation Bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
