@@ -193,6 +193,8 @@
 		04B533A41AC42E530050013C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				044AF5811AFB52F500630054 /* CalendarViewController.h */,
+				044AF5821AFB52F500630054 /* CalendarViewController.m */,
 				04C1F9611AE911EC00F41D28 /* ContactTableViewController.h */,
 				04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */,
 				5C0701DE1AB9AB3100A9DB39 /* MapViewController.h */,
@@ -219,8 +221,6 @@
 				5C60375C1AE7CEB10072E5DF /* SelectedEventViewController.m */,
 				5C98C3F91AEF88C400463F23 /* GoogleLicenseViewController.h */,
 				5C98C3FA1AEF88C400463F23 /* GoogleLicenseViewController.m */,
-				044AF5811AFB52F500630054 /* CalendarViewController.h */,
-				044AF5821AFB52F500630054 /* CalendarViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

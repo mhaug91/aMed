@@ -14,6 +14,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     [self setBorderOfRequestField]; // Have to manually set the border of the requestfield
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight]; // Creates an infobutton.
     [infoButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside]; // Adds action to the button. See method: buttonAction. 
@@ -62,14 +64,14 @@
             if([self.nameField.text length] != 0 ){ /// But only if name is filled in form
                 nameString = [NSString stringWithFormat:@"Navn: %@ %@", self.nameField.text, @"\n"];
             }
-            NSString *phoneString=@""; // Same as nameString..
-            if([self.phoneField.text length] != 0 ){
-                phoneString = [NSString stringWithFormat:@"Telefonnr: %@ %@", self.phoneField.text, @"\n"];
+            NSString *emailString=@""; // Same as nameString..
+            if([self.emailField.text length] != 0 ){
+                emailString = [NSString stringWithFormat:@"e-post: %@ %@", self.emailField.text, @"\n"];
 
             }
             NSString *requestText = self.requestField.text; // Create requestString
             // Email Content
-            NSString *messageBody = [NSString stringWithFormat: @"%@ %@ %@ %@ %@", nameString, phoneString, @"\nHenvendelse: ",requestText, @"\n\n"]; // Create messagebody from name, phone and request.
+            NSString *messageBody = [NSString stringWithFormat: @"%@ %@ %@ %@ %@", nameString, emailString, @"\nHenvendelse: ",requestText, @"\n\n"]; // Create messagebody from name, phone and request.
             NSArray *toRecipents = [NSArray arrayWithObject:@"post@amed.no"];
         
             MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init]; /// initialize mailcontroller
@@ -122,7 +124,7 @@
  */
 - (void) resetFields{
     self.nameField.text=@"";
-    self.phoneField.text=@"";
+    self.emailField.text=@"";
     self.requestField.text=@"";
 
 }

@@ -23,7 +23,8 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.newsArray = [self.rd retrieveNewsData]; // Fills up the newstsarray with threatments from the database. (See RetrieveData.m).

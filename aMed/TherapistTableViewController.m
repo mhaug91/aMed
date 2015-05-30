@@ -33,7 +33,8 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];

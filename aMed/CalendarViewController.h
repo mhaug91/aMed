@@ -17,7 +17,7 @@
  
  This class is found on https://github.com/jonathantribouharet/JTCalendar and we have customized it so we can use it in our application. It displays events on the right dates of the calendar, and u can click one event to display event info that day. It has views for both month and week. Both views are scrollable so u can swipe for the next periode.
  */
-@interface CalendarViewController : UIViewController<JTCalendarDataSource>
+@interface CalendarViewController : UIViewController<JTCalendarDataSource, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView; // the calendar menu view
 

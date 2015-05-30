@@ -27,12 +27,15 @@
     
     //Set color of the Navigation Bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
-    [[UINavigationBar appearance] setTranslucent:NO];
+    //[[UINavigationBar appearance] setTranslucent:NO];
     
     //Set color of the Tab Bar
-    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
-    [[UITabBar appearance] setTranslucent:NO];
+    //[[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
     
+    // set these in first nav controller instead
+    //[[UITabBar appearance] setTranslucent:NO];
+    //[[UINavigationBar appearance] setTranslucent:NO];
+
     //Change the title of the Navigation Bar
     [[UINavigationBar appearance] setTitleTextAttributes:
     [NSDictionary dictionaryWithObjectsAndKeys:

@@ -8,10 +8,12 @@
 
 #import "CalendarViewController.h"
 
+static NSString *eventCellIdentifier = @"eventCellID";
 
 
 @interface CalendarViewController (){
     NSMutableDictionary *eventsByDate; // Events sorted by date
+    __weak IBOutlet UITableView *tableView;
 }
 
 @end
@@ -23,14 +25,16 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
     }
     @catch (NSException *exception) {
     }
-    
-    [super viewDidLoad];
+    [self.navigationController.navigationBar setTranslucent:NO];
+
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
@@ -78,9 +82,6 @@
     }
 
     [super viewDidAppear:animated];
-    
-    
-    
     [self.calendar reloadData]; // Must be call in viewDidAppear
     
 }
@@ -127,6 +128,7 @@
 {
     CGFloat newHeight = 300;
     if(self.calendar.calendarAppearance.isWeekMode){
+        
         newHeight = 75.;
     }
     
@@ -163,11 +165,12 @@
 {
     NSString *key = [[self dateFormatter] stringFromDate:date];
     
+   
     if(eventsByDate[key] && [eventsByDate[key] count] > 0){
         return YES;
     }
     
-    return NO;
+    return YES; /// Return NO
 }
 
 /**
@@ -180,9 +183,18 @@
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
     if([self calendarHaveEvent:calendar date:date]){
-        [self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
+        [self displayEventsTable:date];
+        //[self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
         
     }
+}
+
+- (void) displayEventsTable:(NSDate *) date{
+    NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
+
+    NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
+    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
+    // Continue this later.
 }
 
 
@@ -277,6 +289,29 @@
     }
 }
 
+#pragma mark - table view delegate
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
+{
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self->tableView dequeueReusableCellWithIdentifier:
+                             eventCellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:eventCellIdentifier];
+    }
+    cell.textLabel.text = @"Ingen hendelser";
+    return cell;
+}
+
+
+
 
 #pragma mark - Navigation
 
@@ -295,7 +330,7 @@
          *  To fix this we need to create a new view beneath our calendar that displays a list of the:
          *  eventsByDate[dateKey];
          */
-        /*NSArray *events = eventsByDate[dateKey];                           // Finds all events for that dateString
+        /*NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
         NSLog(@"Date: %@ - %ld events", sender, [events count]);            // Logs it
          */
         Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
