@@ -130,6 +130,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
     if(self.calendar.calendarAppearance.isWeekMode){
         
         newHeight = 75.;
+        
     }
     
     [UIView animateWithDuration:.5

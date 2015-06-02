@@ -2,7 +2,7 @@
 # platform :ios, '7.0'
 
 target 'aMed' do
-pod 'JTCalendar', '~> 1.0.0'
+pod 'JTCalendar', '~> 1.1'
 end
 
 target 'aMedTests' do

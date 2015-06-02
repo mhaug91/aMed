@@ -1,5 +1,5 @@
 //
-//  JTCalendarContentView.h
+//  JTCalendarDataCache.h
 //  JTCalendar
 //
 //  Created by Jonathan Tribouharet
@@ -9,13 +9,11 @@
 
 @class JTCalendar;
 
-@interface JTCalendarContentView : UIScrollView
+@interface JTCalendarDataCache : NSObject
 
 @property (weak, nonatomic) JTCalendar *calendarManager;
 
-@property (nonatomic) NSDate *currentDate;
-
 - (void)reloadData;
-- (void)reloadAppearance;
+- (BOOL)haveEvent:(NSDate *)date;
 
 @end

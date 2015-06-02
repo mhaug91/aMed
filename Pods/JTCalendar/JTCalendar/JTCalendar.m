@@ -10,7 +10,6 @@
 #define NUMBER_PAGES_LOADED 5 // Must be the same in JTCalendarView, JTCalendarMenuView, JTCalendarContentView
 
 @interface JTCalendar(){
-    JTCalendarAppearance *calendarAppearance;
     BOOL cacheLastWeekMode;
     NSUInteger cacheFirstWeekDay;
 }
@@ -27,9 +26,18 @@
     }
     
     self->_currentDate = [NSDate date];
-    calendarAppearance = [JTCalendarAppearance new];
+    self->_calendarAppearance = [JTCalendarAppearance new];
+    self->_dataCache = [JTCalendarDataCache new];
+    self.dataCache.calendarManager = self;
     
     return self;
+}
+
+// Bug in iOS
+- (void)dealloc
+{
+    [self->_menuMonthsView setDelegate:nil];
+    [self->_contentView setDelegate:nil];
 }
 
 - (void)setMenuMonthsView:(JTCalendarMenuView *)menuMonthsView
@@ -63,13 +71,10 @@
 
 - (void)reloadData
 {
-    // Position to the middle page
-    CGFloat pageWidth = CGRectGetWidth(self.contentView.frame);
-    self.contentView.contentOffset = CGPointMake(pageWidth * ((NUMBER_PAGES_LOADED / 2)), self.contentView.contentOffset.y);
- 
-    CGFloat menuPageWidth = CGRectGetWidth([self.menuMonthsView.subviews.firstObject frame]);
-    self.menuMonthsView.contentOffset = CGPointMake(menuPageWidth * ((NUMBER_PAGES_LOADED / 2)), self.menuMonthsView.contentOffset.y);
+    // Erase cache
+    [self.dataCache reloadData];
     
+    [self repositionViews];
     [self.contentView reloadData];
 }
 
@@ -81,23 +86,27 @@
     if(cacheLastWeekMode != self.calendarAppearance.isWeekMode || cacheFirstWeekDay != self.calendarAppearance.calendar.firstWeekday){
         cacheLastWeekMode = self.calendarAppearance.isWeekMode;
         cacheFirstWeekDay = self.calendarAppearance.calendar.firstWeekday;
-        [self setCurrentDate:self.currentDate]; // Reload all data
+        
+        if(self.calendarAppearance.focusSelectedDayChangeMode && self.currentDateSelected){
+            [self setCurrentDate:self.currentDateSelected];
+        }
+        else{
+            [self setCurrentDate:self.currentDate];
+        }
     }
 }
 
 - (void)setCurrentDate:(NSDate *)currentDate
 {
+    NSAssert(currentDate, @"JTCalendar currentDate cannot be null");
+
     self->_currentDate = currentDate;
     
     [self.menuMonthsView setCurrentDate:currentDate];
     [self.contentView setCurrentDate:currentDate];
     
-    [self reloadData]; // For be on the good page and update all DayView
-}
-
-- (JTCalendarAppearance *)calendarAppearance
-{
-    return calendarAppearance;
+    [self repositionViews];
+    [self.contentView reloadData];
 }
 
 #pragma mark - UIScrollView delegate
@@ -112,7 +121,7 @@
     if(isnan(ratio)){
         ratio = 1.;
     }
-    ratio *= calendarAppearance.ratioContentMenu;
+    ratio *= self.calendarAppearance.ratioContentMenu;
     
     if(sender == self.menuMonthsView && self.menuMonthsView.scrollEnabled){
         self.contentView.contentOffset = CGPointMake(sender.contentOffset.x * ratio, self.contentView.contentOffset.y);
@@ -150,13 +159,18 @@
         
     int currentPage = roundf(fractionalPage);
     if (currentPage == (NUMBER_PAGES_LOADED / 2)){
-        self.menuMonthsView.scrollEnabled = YES;
+        if(!self.calendarAppearance.isWeekMode){
+            self.menuMonthsView.scrollEnabled = YES;
+        }
         self.contentView.scrollEnabled = YES;
         return;
     }
     
-    NSCalendar *calendar = calendarAppearance.calendar;
+    NSCalendar *calendar = self.calendarAppearance.calendar;
     NSDateComponents *dayComponent = [NSDateComponents new];
+    
+    dayComponent.month = 0;
+    dayComponent.day = 0;
     
     if(!self.calendarAppearance.isWeekMode){
         dayComponent.month = currentPage - (NUMBER_PAGES_LOADED / 2);
@@ -165,21 +179,54 @@
         dayComponent.day = 7 * (currentPage - (NUMBER_PAGES_LOADED / 2));
     }
     
+    if(self.calendarAppearance.readFromRightToLeft){
+        dayComponent.month *= -1;
+        dayComponent.day *= -1;
+    }
+        
     NSDate *currentDate = [calendar dateByAddingComponents:dayComponent toDate:self.currentDate options:0];
     
     [self setCurrentDate:currentDate];
     
-    self.menuMonthsView.scrollEnabled = YES;
+    if(!self.calendarAppearance.isWeekMode){
+        self.menuMonthsView.scrollEnabled = YES;
+    }
     self.contentView.scrollEnabled = YES;
+    
+    if(currentPage < (NUMBER_PAGES_LOADED / 2)){
+        if([self.dataSource respondsToSelector:@selector(calendarDidLoadPreviousPage)]){
+            [self.dataSource calendarDidLoadPreviousPage];
+        }
+    }
+    else if(currentPage > (NUMBER_PAGES_LOADED / 2)){
+        if([self.dataSource respondsToSelector:@selector(calendarDidLoadNextPage)]){
+            [self.dataSource calendarDidLoadNextPage];
+        }
+    }
+}
+
+- (void)repositionViews
+{
+    // Position to the middle page
+    CGFloat pageWidth = CGRectGetWidth(self.contentView.frame);
+    self.contentView.contentOffset = CGPointMake(pageWidth * ((NUMBER_PAGES_LOADED / 2)), self.contentView.contentOffset.y);
+    
+    CGFloat menuPageWidth = CGRectGetWidth([self.menuMonthsView.subviews.firstObject frame]);
+    self.menuMonthsView.contentOffset = CGPointMake(menuPageWidth * ((NUMBER_PAGES_LOADED / 2)), self.menuMonthsView.contentOffset.y);
 }
 
 - (void)loadNextMonth
 {
-    if(self.calendarAppearance.isWeekMode){
-        NSLog(@"JTCalendar loadNextMonth ignored");
-        return;
-    }
-    
+    [self loadNextPage];
+}
+
+- (void)loadPreviousMonth
+{
+    [self loadPreviousPage];
+}
+
+- (void)loadNextPage
+{
     self.menuMonthsView.scrollEnabled = NO;
     
     CGRect frame = self.contentView.frame;
@@ -188,13 +235,8 @@
     [self.contentView scrollRectToVisible:frame animated:YES];
 }
 
-- (void)loadPreviousMonth
+- (void)loadPreviousPage
 {
-    if(self.calendarAppearance.isWeekMode){
-        NSLog(@"JTCalendar loadPreviousMonth ignored");
-        return;
-    }
-    
     self.menuMonthsView.scrollEnabled = NO;
     
     CGRect frame = self.contentView.frame;
