@@ -22,11 +22,12 @@
 @property (weak, nonatomic) IBOutlet JTCalendarMenuView *calendarMenuView; // the calendar menu view
 
 @property (weak, nonatomic) IBOutlet JTCalendarContentView *calendarContentView; // calendar content view
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight; // Sets the height of the content view
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *calendarContentViewHeight; // Keeps the height of the content view. This is a constraint found in the storyboard on the calendar content view. 
 
 @property(strong, nonatomic) RetrieveData *rd; // Object retrieving data from the database.
 @property(strong, nonatomic) NSMutableArray *eventArray; // Array containing all the events retrieved from the database
 @property(strong, nonatomic) NSMutableArray *filterArray; // Array containing events with the same event id as selected event.
+@property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate;
 
 
 

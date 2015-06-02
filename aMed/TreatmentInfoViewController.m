@@ -205,7 +205,6 @@ titleForHeaderInSection:(NSInteger)section {
         return @"Behandlere";
     }
     else{
-        //tableView.tableHeaderVie
         return @"Ingen behandlere funnet";
     }
 }

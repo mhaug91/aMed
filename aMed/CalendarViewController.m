@@ -26,7 +26,6 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -126,7 +125,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
  */
 - (void)transitionExample
 {
-    CGFloat newHeight = 300;
+    CGFloat newHeight = 300; // Used to set the new height of the content view.
     if(self.calendar.calendarAppearance.isWeekMode){
         
         newHeight = 75.;
@@ -135,7 +134,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
     
     [UIView animateWithDuration:.5
                      animations:^{
-                         self.calendarContentViewHeight.constant = newHeight;
+                         self.calendarContentViewHeight.constant = newHeight; // Sets the constant of the calendarContentViewHeight constraint declared in header. 
                          [self.view layoutIfNeeded];
                      }];
     
@@ -190,45 +189,10 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 }
 
-- (void) displayEventsTable:(NSDate *) date{
-    NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
-
-    NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
-    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
-    // Continue this later.
-}
 
 
- /**
- *  creates events.
-    Takes the events from the events array and fills an events by date- dictionary.
-    The dictionary is used to display the events on the right date in the calendar.
- */
-- (void)createEvents
-{
-    eventsByDate = [NSMutableDictionary new];
-    
-    for(int i = 0; i < self.eventArray.count; ++i){ // Loops through the events array
-        Events *e = nil;
-        e = [self.eventArray objectAtIndex:i];
-        
-        NSString *dateString = e.start_date; // Fetches the startdate
-        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        NSDate *randomDate = [dateFormat dateFromString:dateString]; // Changes the format of the startdate of the event
-        
-        
-        // Use the date as key for eventsByDate
-        NSString *key = [[self dateFormatter] stringFromDate:randomDate];
-        
-        if(!eventsByDate[key]){
-            eventsByDate[key] = [NSMutableArray new];
-        }
-        
-        [eventsByDate[key] addObject:randomDate]; // Adds object to the events by date- dictionary.
-        
-    }
-}
+
+
 
 
 - (NSDateFormatter *)dateFormatter
@@ -290,24 +254,74 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 }
 
+/**
+ *  creates events.
+ Takes the events from the events array and fills an events by date- dictionary.
+ The dictionary is used to display the events on the right date in the calendar.
+ */
+- (void)createEvents
+{
+    eventsByDate = [NSMutableDictionary new];
+    
+    for(int i = 0; i < self.eventArray.count; ++i){ // Loops through the events array
+        Events *e = nil;
+        e = [self.eventArray objectAtIndex:i];
+        
+        NSString *dateString = e.start_date; // Fetches the startdate
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        NSDate *randomDate = [dateFormat dateFromString:dateString]; // Changes the format of the startdate of the event
+        
+        
+        // Use the date as key for eventsByDate
+        NSString *key = [[self dateFormatter] stringFromDate:randomDate];
+        
+        if(!eventsByDate[key]){
+            eventsByDate[key] = [NSMutableArray new];
+        }
+        
+        [eventsByDate[key] addObject:randomDate]; // Adds object to the events by date- dictionary.
+        
+    }
+}
+
+- (void) displayEventsTable:(NSDate *) date{
+    NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
+    
+    NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
+    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
+    // Continue this later.
+    self.numberOfEventsForSelectedDate = events.count;
+}
+
+
 #pragma mark - table view delegate
+
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section {
+    return @"Arrangementer";
+}
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    //self.numberOfEventsForSelectedDate = 1;
+    return self.numberOfEventsForSelectedDate;
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [self->tableView dequeueReusableCellWithIdentifier:
                              eventCellIdentifier];
+    //tableview.backgroundView.textInputContextIdentifier
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
-    cell.textLabel.text = @"Ingen hendelser";
+    cell.textLabel.text = @"Sett inn arrangement";
     return cell;
 }
 
