@@ -27,8 +27,9 @@
 @property(strong, nonatomic) RetrieveData *rd; // Object retrieving data from the database.
 @property(strong, nonatomic) NSMutableArray *eventArray; // Array containing all the events retrieved from the database
 @property(strong, nonatomic) NSMutableArray *filterArray; // Array containing events with the same event id as selected event.
-@property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate;
-@property(assign, nonatomic) BOOL clearTable;
+@property(weak, nonatomic) NSArray *eventsOnSelectedDate; // Array containing all events on a selected date by the user
+@property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate; // the amount of events on the selected date
+@property(assign, nonatomic) BOOL clearTable; // Flag variable to decide if the table shall be cleared or not. Initially set to NO. 
 
 
 

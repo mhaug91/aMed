@@ -295,25 +295,27 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void) displayEventsTableOnDate:(NSDate *) date{
     NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
     
-    NSArray *events = eventsByDate[dateKey]; // Finds all events for that dateString
-    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
-    for (int i=0; i<events.count;i++) {
-        [tempArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    self.eventsOnSelectedDate = eventsByDate[dateKey]; // Finds all events for that dateString
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init]; // Makes a new temporarily array to help us displaying the events in our tableview.
+    for (int i=0; i<self.eventsOnSelectedDate.count;i++) {
+        [tempArray addObject:[NSIndexPath indexPathForRow:i inSection:0]]; //Fills the temp array.
     }
-    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
-    // Deleta all rows in table
+    NSLog(@"Date: %@ - %ld events", date, (unsigned long)[self.eventsOnSelectedDate count]);
+    /**
+     *  This part helps us remove all rows from the tableview. We set the flagvariable: cleartable, to Yes.
+     *  Then we reload data. The numberOfRowsInSection method will be called and number of rows will be set
+     *  to 0. All rows will then be removed from the tableview.
+     */
     self.clearTable = YES;
     [tableView reloadData];
     self.clearTable = NO;
     
-    // Continue this later.
-    self.numberOfEventsForSelectedDate = events.count;
+    /**
+     *  This part fills the tableview with new rows.
+     */
+    self.numberOfEventsForSelectedDate = self.eventsOnSelectedDate.count;
     [tableView beginUpdates];
-    
-    // insert code here
-    //[tableView reloadData];
     [tableView insertRowsAtIndexPaths:(NSArray *)tempArray withRowAnimation:UITableViewRowAnimationNone];
-    //[tableView deleteRowsAtIndexPaths:(NSArray *)tempArray withRowAnimation:UITableViewRowAnimationNone];
     [tableView endUpdates];
 }
 
@@ -327,7 +329,7 @@ titleForHeaderInSection:(NSInteger)section {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    if(self.clearTable){
+    if(self.clearTable){ // If the flagvariable: cleartable, is set to YES we set the number of rows to 0 and all rows will be removed from the tableview.
         return 0;
     }
     return self.numberOfEventsForSelectedDate;
@@ -348,6 +350,7 @@ titleForHeaderInSection:(NSInteger)section {
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
+    //Event *event =
     cell.textLabel.text = @"Sett inn arrangement";
     return cell;
 }
