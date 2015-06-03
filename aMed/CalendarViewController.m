@@ -99,6 +99,30 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 }
 
+
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    
+    return dateFormatter;
+}
+
+/**
+ *  Runs when infoButton is pressed
+ *
+ *  @param sender infobutton
+ */
+- (void) infoPressed:(id) sender{
+    NSString *title = @"Kalender";
+    NSString *info = @"Arrangements kalender";
+    [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
+}
+
+
 /**
  *  Takes u back to today's date
  */
@@ -183,7 +207,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
     if([self calendarHaveEvent:calendar date:date]){
-        [self displayEventsTable:date];
+        [self displayEventsTableOnDate:date];
         //[self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
         
     }
@@ -194,28 +218,6 @@ static NSString *eventCellIdentifier = @"eventCellID";
 
 
 
-
-- (NSDateFormatter *)dateFormatter
-{
-    static NSDateFormatter *dateFormatter;
-    if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"yyyy-MM-dd";
-    }
-    
-    return dateFormatter;
-}
-
-/**
- *  Runs when infoButton is pressed
- *
- *  @param sender infobutton
- */
-- (void) infoPressed:(id) sender{
-    NSString *title = @"Kalender";
-    NSString *info = @"Arrangements kalender";
-    [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
-}
 
 /**
  *  Method for finding an event on date.
@@ -285,13 +287,34 @@ static NSString *eventCellIdentifier = @"eventCellID";
     }
 }
 
-- (void) displayEventsTable:(NSDate *) date{
+/**
+ *  Displays a table of events on a selected date
+ *
+ *  @param date The date selected by the user
+ */
+- (void) displayEventsTableOnDate:(NSDate *) date{
     NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
     
-    NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
+    NSArray *events = eventsByDate[dateKey]; // Finds all events for that dateString
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init];
+    for (int i=0; i<events.count;i++) {
+        [tempArray addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+    }
     NSLog(@"Date: %@ - %ld events", date, (unsigned long)[events count]);
+    // Deleta all rows in table
+    self.clearTable = YES;
+    [tableView reloadData];
+    self.clearTable = NO;
+    
     // Continue this later.
     self.numberOfEventsForSelectedDate = events.count;
+    [tableView beginUpdates];
+    
+    // insert code here
+    //[tableView reloadData];
+    [tableView insertRowsAtIndexPaths:(NSArray *)tempArray withRowAnimation:UITableViewRowAnimationNone];
+    //[tableView deleteRowsAtIndexPaths:(NSArray *)tempArray withRowAnimation:UITableViewRowAnimationNone];
+    [tableView endUpdates];
 }
 
 
@@ -304,8 +327,12 @@ titleForHeaderInSection:(NSInteger)section {
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    //self.numberOfEventsForSelectedDate = 1;
+    if(self.clearTable){
+        return 0;
+    }
     return self.numberOfEventsForSelectedDate;
+
+    
 }
 
 

@@ -28,6 +28,7 @@
 @property(strong, nonatomic) NSMutableArray *eventArray; // Array containing all the events retrieved from the database
 @property(strong, nonatomic) NSMutableArray *filterArray; // Array containing events with the same event id as selected event.
 @property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate;
+@property(assign, nonatomic) BOOL clearTable;
 
 
 
