@@ -9,8 +9,12 @@
 #import "CalendarViewController.h"
 
 static NSString *eventCellIdentifier = @"eventCellID";
-
-
+/*
+NSInteger COURSE = 66; // blue
+NSInteger FESTIVAL = 71; //red
+NSInteger EXHIBITION = 70; //green
+NSInteger EXHIBITION_2 = 86; //green
+*/
 @interface CalendarViewController (){
     NSMutableDictionary *eventsByDate; // Events sorted by date
     __weak IBOutlet UITableView *tableView;
@@ -26,6 +30,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.eventsOnSelectedDate = [[NSArray alloc] init];
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.eventArray = [self.rd retrieveEvents];
@@ -53,7 +58,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
     [self.calendar setMenuMonthsView:self.calendarMenuView];
     [self.calendar setContentView:self.calendarContentView];
     [self.calendar setDataSource:self];
-    [self createEvents];
+    [self createEventsDictionary];
     
 
 }
@@ -144,8 +149,8 @@ static NSString *eventCellIdentifier = @"eventCellID";
 
 
 /**
- *  Transition between week an month views
- * The height of the content view is changed between them.
+ *  Transition between week an month mode
+ * The height of the content view is changed between the two modes.
  */
 - (void)transitionExample
 {
@@ -178,7 +183,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
 
 
  /**
- *  Checks if a date has a event
+ *  Checks if a date has an event
  *
  *  @param calendar our calendar.
  *  @param date
@@ -194,11 +199,11 @@ static NSString *eventCellIdentifier = @"eventCellID";
         return YES;
     }
     
-    return YES; /// Return NO
+    return NO; /// Return NO
 }
 
 /**
- *  Runs when a date is selected
+ *  Runs when a date is selected. If it has one or more events: display a table of the event(s)
  *
  *  @param calendar our calendar
  *  @param date     selected date
@@ -206,11 +211,8 @@ static NSString *eventCellIdentifier = @"eventCellID";
  */
 - (void)calendarDidDateSelected:(JTCalendar *)calendar date:(NSDate *)date
 {
-    if([self calendarHaveEvent:calendar date:date]){
         [self displayEventsTableOnDate:date];
         //[self performSegueWithIdentifier:@"pushSelectedDate" sender:date];
-        
-    }
 }
 
 
@@ -225,7 +227,7 @@ static NSString *eventCellIdentifier = @"eventCellID";
  *  @param date selected date
  *
  *  @return the first event that has startdate matching selected date
- *  @note This method returns only ONE event.
+ *  @note This method returns only ONE event and is from the 1.0 Version. NOT in use in version 1.1.
  */
 - (Events *) findEventForDate:(NSString *) date{
     Events *event = nil;
@@ -257,11 +259,11 @@ static NSString *eventCellIdentifier = @"eventCellID";
 }
 
 /**
- *  creates events.
+ *  creates a dictionary of events.
  Takes the events from the events array and fills an events by date- dictionary.
  The dictionary is used to display the events on the right date in the calendar.
  */
-- (void)createEvents
+- (void)createEventsDictionary
 {
     eventsByDate = [NSMutableDictionary new];
     
@@ -295,7 +297,11 @@ static NSString *eventCellIdentifier = @"eventCellID";
 - (void) displayEventsTableOnDate:(NSDate *) date{
     NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
     
-    self.eventsOnSelectedDate = eventsByDate[dateKey]; // Finds all events for that dateString
+    /**
+     *  Her er feilen. Kallet til eventsByDate(dateKey) returnerer en tabell med datoer, ikke events som jeg først trodde.
+     */
+    self.eventsOnSelectedDate = eventsByDate[dateKey]; // Finds all events for that dateString and stores in an array
+    self.numberOfEventsForSelectedDate = self.eventsOnSelectedDate.count;
     NSMutableArray *tempArray = [[NSMutableArray alloc]init]; // Makes a new temporarily array to help us displaying the events in our tableview.
     for (int i=0; i<self.eventsOnSelectedDate.count;i++) {
         [tempArray addObject:[NSIndexPath indexPathForRow:i inSection:0]]; //Fills the temp array.
@@ -313,7 +319,6 @@ static NSString *eventCellIdentifier = @"eventCellID";
     /**
      *  This part fills the tableview with new rows.
      */
-    self.numberOfEventsForSelectedDate = self.eventsOnSelectedDate.count;
     [tableView beginUpdates];
     [tableView insertRowsAtIndexPaths:(NSArray *)tempArray withRowAnimation:UITableViewRowAnimationNone];
     [tableView endUpdates];
@@ -342,18 +347,26 @@ titleForHeaderInSection:(NSInteger)section {
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    /* Bruker egentlig ikke denne cella. Den kommer ikke til å vises. */
     UITableViewCell *cell = [self->tableView dequeueReusableCellWithIdentifier:
                              eventCellIdentifier];
-    //tableview.backgroundView.textInputContextIdentifier
     if (cell == nil) {
         cell = [[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
-    //Event *event =
-    cell.textLabel.text = @"Sett inn arrangement";
+    Events *eventOnSelectedDate = [self.eventsOnSelectedDate objectAtIndex:indexPath.row];
+    cell.textLabel.text = eventOnSelectedDate.description;
+    
     return cell;
 }
+
+- (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *selectedEventCell = [self->tableView cellForRowAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"PushEventInfo" sender:selectedEventCell];
+}
+
 
 
 
@@ -361,13 +374,17 @@ titleForHeaderInSection:(NSInteger)section {
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)date {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)selectedEventCell {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     
     
-    if([[segue identifier] isEqualToString:@"pushSelectedDate"]){ // check if the segue matches the one in the storyboard. 
-        NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
+    if([[segue identifier] isEqualToString:@"PushEventInfo"]){ // check if the segue matches the one in the storyboard.
+        NSIndexPath *indexPath = [tableView indexPathForCell:selectedEventCell]; // Fetch the indexpath selected by the user.
+        
+        //Events *selectedEvent = [self.eventsOnSelectedDate objectAtIndex:indexPath.row]; // Fetch events object from newsarray at the indexpath's row.
+        //SelectedEventViewController *destViewController = segue.destinationViewController;  // Setting the destination view controller
+        //NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
         
         /**
          *  The code uncommented is required if we want to display all the events on a selected date.
@@ -378,20 +395,21 @@ titleForHeaderInSection:(NSInteger)section {
         /*NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
         NSLog(@"Date: %@ - %ld events", sender, [events count]);            // Logs it
          */
-        Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
+        //Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
         SelectedEventViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = @"event"; // Setting title in the navigation bar of next view
-        [destViewController getEventObject:eventOnDate];    // Sets the eventobject in the destination view controller. (See Selected Event View Controller.
-        
-        [self filterSameEvents:eventOnDate.event_id];
+        //[destViewController getEventObject:selectedEvent];    // Sets the eventobject in the destination view controller. (See Selected Event View Controller.
+        /*
+        [self filterSameEvents:selectedEvent.event_id];
         int dayIndex=1;                   // Used to set the day of the event in the next view. One event can have many days.
         for(Events *e in self.filterArray){         // Loops through the events in the filtered array.
-            if (e.start_date == eventOnDate.start_date ) { // if the event in filtered array has same date as selected...
+            if (e.start_date == selectedEvent.start_date ) { // if the event in filtered array has same date as selected...
                 [destViewController setDay:dayIndex];           // Set the dayIndex
             }
             ++dayIndex;
 
         }
+         */
 
         
     }
