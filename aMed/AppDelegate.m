@@ -27,7 +27,6 @@
     
     //Set color of the Navigation Bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
-    //[[UINavigationBar appearance] setTranslucent:NO];
     
     //Set color of the Tab Bar
     //[[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
@@ -43,7 +42,6 @@
     [UIFont fontWithName:@"ArialMT" size:16.0], NSFontAttributeName, nil]];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-
     return YES;
 }
 

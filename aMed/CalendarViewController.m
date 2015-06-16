@@ -42,12 +42,12 @@ static NSString *eventCellIdentifier = @"eventCell";
     @catch (NSException *exception) {
     }
     [self.navigationController.navigationBar setTranslucent:NO];
-/*
+    /*
     UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     [infoButton addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
     self.navigationItem.rightBarButtonItem = infoButtonItem;
-*/
+     */
     
     self.calendar = [JTCalendar new];
     
@@ -108,29 +108,18 @@ static NSString *eventCellIdentifier = @"eventCell";
     }
 }
 
-
-- (NSDateFormatter *)dateFormatter
-{
-    static NSDateFormatter *dateFormatter;
-    if(!dateFormatter){
-        dateFormatter = [NSDateFormatter new];
-        dateFormatter.dateFormat = @"yyyy-MM-dd";
-    }
-    
-    return dateFormatter;
-}
-
+#pragma mark Buttons
 /**
  *  Runs when infoButton is pressed
  *
  *  @param sender infobutton
-
+ *  @warning not in use in version 1.1
+ */
 - (void) infoPressed:(id) sender{
     NSString *title = @"Kalender";
     NSString *info = @"Arrangements kalender";
     [[[UIAlertView alloc] initWithTitle:title message:info delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Ok", nil] show];
 }
- */
 
 /**
  *  Takes u back to today's date
@@ -151,7 +140,19 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self transitionExample];
 }
 
+#pragma mark dateformatter
+- (NSDateFormatter *)dateFormatter
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    
+    return dateFormatter;
+}
 
+#pragma mark Transition
 /**
  *  Transition between week an month mode
  * The height of the content view is changed between the two modes.
@@ -160,7 +161,6 @@ static NSString *eventCellIdentifier = @"eventCell";
 {
     CGFloat newHeight = 300; // Used to set the new height of the content view.
     if(self.calendar.calendarAppearance.isWeekMode){
-        
         newHeight = 75.;
         
     }
@@ -206,7 +206,7 @@ static NSString *eventCellIdentifier = @"eventCell";
     return NO; /// Return NO
 }
 
-#pragma mark My methods
+#pragma mark event methods
 /**
  *  Runs when a date is selected. If it has one or more events: display a table of the event(s)
  *
@@ -227,13 +227,14 @@ static NSString *eventCellIdentifier = @"eventCell";
 
 
 /**
- *  Method for finding an event on date.
+ *  Method for finding one event on a date. NOT IN USE.
  *
  *  @param date selected date
  *
  *  @return the first event that has startdate matching selected date
- *  @note This method returns only ONE event and is from the 1.0 Version. NOT in use in version 1.1.
- *
+ *  @note This method returns only ONE event and is from the 1.0 Version.
+ *  @warning NOT IN USE
+ */
 - (Events *) findEventForDate:(NSString *) date{
     Events *event = nil;
     NSString *dateString;
@@ -248,7 +249,6 @@ static NSString *eventCellIdentifier = @"eventCell";
     return nil;
 
 }
- */
 
 /**
  *  Fills an array with events with the same event id.
@@ -350,40 +350,6 @@ titleForHeaderInSection:(NSInteger)section {
     
 }
 
-/*
- //Adds content to the table view cells.
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"eventID" forIndexPath:indexPath];
- if(cell == nil){
- cell = [[UITableViewCell alloc]
- initWithStyle:UITableViewCellStyleSubtitle
- reuseIdentifier:eventID];
- }
- 
- Events *method = nil;
- method = [self.filterArray objectAtIndex:indexPath.row];
- UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
- cell.textLabel.font = font;
- 
- //Text label will be the name of the event.
- cell.textLabel.text = method.summary;
- 
- //Sets image to a spesific color. Depending on the type of event.
- if(method.category_id == COURSE){
- cell.imageView.image = [UIImage imageNamed:@"event_blue"];
- } else if (method.category_id == FESTIVAL){
- cell.imageView.image = [UIImage imageNamed:@"event_red"];
- } else if (method.category_id == EXHIBITION || method.category_id == EXHIBITION_2){
- cell.imageView.image = [UIImage imageNamed:@"event_green"];
- }
- 
- 
- 
- 
- 
- return cell;
- }
- */
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -404,7 +370,6 @@ titleForHeaderInSection:(NSInteger)section {
     cell.textLabel.font = font;
 
     //Sets image to a spesific color. Depending on the type of event.
-    
     if(eventOnSelectedDate.category_id == self.COURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
     } else if (eventOnSelectedDate.category_id == self.FESTIVAL){
@@ -434,31 +399,13 @@ titleForHeaderInSection:(NSInteger)section {
     
     if([[segue identifier] isEqualToString:@"PushEventInfo"]){ // check if the segue matches the one in the storyboard.
         
-        
-        /**
-         *  The code uncommented is required if we want to display all the events on a selected date.
-         *  Our solution just displays 1 event a day. 
-         *  To fix this we need to create a new view beneath our calendar that displays a list of the:
-         *  eventsByDate[dateKey];
-         */
-        /* NSArray *events = eventsByDate[dateKey];                    // Finds all events for that dateString
-        NSLog(@"Date: %@ - %ld events", sender, [events count]);            // Logs it
-         
-        //Events *eventOnDate = [self findEventForDate:dateKey];              // Finds event for that day
-        //NSString *dateKey = [[self dateFormatter] stringFromDate:date]; // Retrieves dateString from date selected.
-        *
-        */
-        
-        
         NSIndexPath *indexPath = [tableView indexPathForCell:selectedEventCell]; // Fetch the indexpath selected by the user.
         
         Events *selectedEvent = [self.eventsOnSelectedDate objectAtIndex:indexPath.row]; // Fetch events object from newsarray at the indexpath's row.
         SelectedEventViewController *destViewController = segue.destinationViewController;  // Setting the destination view controller
         destViewController.navigationItem.title = @"event"; // Setting title in the navigation bar of next view
         [destViewController getEventObject:selectedEvent];    // Sets the eventobject in the destination view controller. (See Selected Event View Controller).
-        
-        
-        
+        /* Here we find the associated events with the one selected. */
         [self filterSameEvents:selectedEvent.event_id];
         int dayIndex=1;                   // Used to set the day of the event in the next view. One event can have many days.
         for(Events *e in self.filterArray){         // Loops through the events in the filtered array.

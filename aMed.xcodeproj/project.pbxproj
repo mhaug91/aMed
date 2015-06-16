@@ -12,6 +12,7 @@
 		043B78FE1AB6E17200D7E10B /* TreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */; };
 		044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044AF5821AFB52F500630054 /* CalendarViewController.m */; };
 		044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */; };
+		047F96CA1B307D4E00DBDCE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F96C91B307D4E00DBDCE9 /* ViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* TreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
 		04C1F9631AE911EC00F41D28 /* ContactTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C1F9621AE911EC00F41D28 /* ContactTableViewController.m */; };
@@ -73,6 +74,8 @@
 		044AF5811AFB52F500630054 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
 		044AF5821AFB52F500630054 /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
 		044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-aMed-JTCalendar.a"; path = "Pods/../build/Debug-iphoneos/libPods-aMed-JTCalendar.a"; sourceTree = "<group>"; };
+		047F96C81B307D4E00DBDCE9 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		047F96C91B307D4E00DBDCE9 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		04A011B41ABAE9FD00A3341D /* TreatmentInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentInfoViewController.h; sourceTree = "<group>"; };
 		04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentInfoViewController.m; sourceTree = "<group>"; };
 		04BC0BEC1AD515D500570763 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 		04B533A41AC42E530050013C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				047F96C81B307D4E00DBDCE9 /* ViewController.h */,
+				047F96C91B307D4E00DBDCE9 /* ViewController.m */,
 				044AF5811AFB52F500630054 /* CalendarViewController.h */,
 				044AF5821AFB52F500630054 /* CalendarViewController.m */,
 				04C1F9611AE911EC00F41D28 /* ContactTableViewController.h */,
@@ -516,6 +521,7 @@
 				5C2A3E831AD566AD0003A164 /* Therapists.m in Sources */,
 				5C98C3FB1AEF88C400463F23 /* GoogleLicenseViewController.m in Sources */,
 				042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */,
+				047F96CA1B307D4E00DBDCE9 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
