@@ -449,7 +449,7 @@ titleForHeaderInSection:(NSInteger)section {
         *
         */
         
-        /*
+        
         NSIndexPath *indexPath = [tableView indexPathForCell:selectedEventCell]; // Fetch the indexpath selected by the user.
         
         Events *selectedEvent = [self.eventsOnSelectedDate objectAtIndex:indexPath.row]; // Fetch events object from newsarray at the indexpath's row.
@@ -468,7 +468,6 @@ titleForHeaderInSection:(NSInteger)section {
             ++dayIndex;
 
         }
-         */
 
         
     }
