@@ -16,7 +16,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Quq-U9-6Wc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vwQ-tF-Q3z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Behandlingsinfo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lOm-1p-IR6">
@@ -26,7 +26,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView contentMode="scaleToFill" misplaced="YES" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
-                                <rect key="frame" x="0.0" y="64" width="600" height="348"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="299"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                 <connections>
@@ -34,7 +34,7 @@
                                 </connections>
                             </webView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
-                                <rect key="frame" x="0.0" y="366" width="600" height="136"/>
+                                <rect key="frame" x="0.0" y="415" width="600" height="136"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kq0-N3-XFN" id="gNz-Q7-HB2"/>
@@ -372,7 +372,7 @@
                         <viewControllerLayoutGuide type="bottom" id="gWe-4X-jY1"/>
                     </layoutGuides>
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="nyI-Xe-S0L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-54-YM3">
@@ -1034,23 +1034,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="127" id="n4V-jA-S95"/>
                                 </constraints>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="EventCellID" textLabel="aGa-uh-26m" style="IBUITableViewCellStyleDefault" id="pbv-Ps-z7P">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pbv-Ps-z7P" id="lM0-G3-dFd">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Ingen hendelser" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aGa-uh-26m">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="n4V-jA-S95"/>
@@ -1120,7 +1103,7 @@
                         <outlet property="calendarContentViewHeight" destination="LZt-op-W3X" id="gpS-ub-GNh"/>
                         <outlet property="calendarMenuView" destination="S7Q-Zf-GsE" id="MJE-ce-TTV"/>
                         <outlet property="tableView" destination="gZa-CC-0KJ" id="5TF-CZ-psc"/>
-                        <segue destination="szC-ZQ-asV" kind="show" identifier="pushSelectedDate" id="2S9-ae-bR5"/>
+                        <segue destination="szC-ZQ-asV" kind="show" identifier="PushEventInfo" id="kmD-OE-Yqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ADj-tg-mze" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1168,8 +1151,8 @@
         <image name="Today-25" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2S9-ae-bR5"/>
-        <segue reference="N1l-5T-GYT"/>
+        <segue reference="7iX-jM-EA2"/>
         <segue reference="TNK-JL-doa"/>
+        <segue reference="kmD-OE-Yqc"/>
     </inferredMetricsTieBreakers>
 </document>

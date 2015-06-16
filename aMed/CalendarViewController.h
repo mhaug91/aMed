@@ -31,8 +31,12 @@
 @property(strong, nonatomic) NSMutableArray *filterArray; // Array containing events with the same event id as selected event.
 @property(strong, nonatomic) NSArray *eventsOnSelectedDate; // Array containing all events on a selected date by the user
 @property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate; // the amount of events on the selected date
-@property(assign, nonatomic) BOOL clearTable; // Flag variable to decide if the table shall be cleared or not. Initially set to NO. 
+@property(assign, nonatomic) BOOL clearTable; // Flag variable to decide if the table shall be cleared or not. Initially set to NO.
 
+/* Integers to decide what kind of event is displayed. Same values are found in the database. */
+@property(assign, nonatomic) int COURSE;
+@property(assign, nonatomic) int FESTIVAL;
+@property(assign, nonatomic) int EXHIBITION, EXHIBITION_2;
 
 
 @property (strong, nonatomic) JTCalendar *calendar; // Library for calendar. 
