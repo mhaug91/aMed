@@ -30,11 +30,16 @@ NSInteger EXHIBITION_2 = 86; //green
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.eventsOnSelectedDate = [[NSArray alloc] init];
+    self.eventArray = [[NSMutableArray alloc] init];
     @try {
         self.rd = [[RetrieveData alloc] init];
-        self.eventArray = [self.rd retrieveEvents];
+        if(!([self.rd.retrieveEvents isEqual:@""])){
+            self.eventArray = [self.rd retrieveEvents];
+        }
     }
+    
     @catch (NSException *exception) {
     }
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -202,6 +207,7 @@ NSInteger EXHIBITION_2 = 86; //green
     return NO; /// Return NO
 }
 
+#pragma mark My methods
 /**
  *  Runs when a date is selected. If it has one or more events: display a table of the event(s)
  *
@@ -228,7 +234,7 @@ NSInteger EXHIBITION_2 = 86; //green
  *
  *  @return the first event that has startdate matching selected date
  *  @note This method returns only ONE event and is from the 1.0 Version. NOT in use in version 1.1.
- */
+ *
 - (Events *) findEventForDate:(NSString *) date{
     Events *event = nil;
     NSString *dateString;
@@ -243,6 +249,7 @@ NSInteger EXHIBITION_2 = 86; //green
     return nil;
 
 }
+ */
 
 /**
  *  Fills an array with events with the same event id.
@@ -265,6 +272,7 @@ NSInteger EXHIBITION_2 = 86; //green
  */
 - (void)createEventsDictionary
 {
+    
     eventsByDate = [NSMutableDictionary new];
     
     for(int i = 0; i < self.eventArray.count; ++i){ // Loops through the events array
@@ -284,7 +292,7 @@ NSInteger EXHIBITION_2 = 86; //green
             eventsByDate[key] = [NSMutableArray new];
         }
         
-        [eventsByDate[key] addObject:randomDate]; // Adds object to the events by date- dictionary.
+        [eventsByDate[key] addObject:e]; // Adds object to the events by date- dictionary.
         
     }
 }
@@ -301,8 +309,9 @@ NSInteger EXHIBITION_2 = 86; //green
      *  Her er feilen. Kallet til eventsByDate(dateKey) returnerer en tabell med datoer, ikke events som jeg først trodde.
      */
     self.eventsOnSelectedDate = eventsByDate[dateKey]; // Finds all events for that dateString and stores in an array
+    
     self.numberOfEventsForSelectedDate = self.eventsOnSelectedDate.count;
-    NSMutableArray *tempArray = [[NSMutableArray alloc]init]; // Makes a new temporarily array to help us displaying the events in our tableview.
+    NSMutableArray *tempArray = [[NSMutableArray alloc]init]; // Makes a new temporarily array to help us display the events in our tableview.
     for (int i=0; i<self.eventsOnSelectedDate.count;i++) {
         [tempArray addObject:[NSIndexPath indexPathForRow:i inSection:0]]; //Fills the temp array.
     }
@@ -355,18 +364,19 @@ titleForHeaderInSection:(NSInteger)section {
                 initWithStyle:UITableViewCellStyleDefault
                 reuseIdentifier:eventCellIdentifier];
     }
-    Events *eventOnSelectedDate = [self.eventsOnSelectedDate objectAtIndex:indexPath.row];
-    cell.textLabel.text = eventOnSelectedDate.description;
-    
+    //Events *eventOnSelectedDate = [self.eventsOnSelectedDate objectAtIndex:indexPath.row];
+    //cell.textLabel.text = eventOnSelectedDate.description;
+    cell.textLabel.text=@"Event her";
     return cell;
 }
 
+/*
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *selectedEventCell = [self->tableView cellForRowAtIndexPath:indexPath];
     [self performSegueWithIdentifier:@"PushEventInfo" sender:selectedEventCell];
 }
-
+*/
 
 
 
@@ -414,5 +424,6 @@ titleForHeaderInSection:(NSInteger)section {
         
     }
 }
+
 
 @end
