@@ -341,12 +341,19 @@ static NSString *eventCellIdentifier = @"eventCell";
 
 - (NSString *)tableView:(UITableView *)tableView
 titleForHeaderInSection:(NSInteger)section {
-    return @"Arrangementer";
+    if(self.numberOfEventsForSelectedDate>0){
+        return @"Hendelser";
+        
+    } else{
+        return @"Ingen hendelser";
+    }
+    
 }
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
     if(self.clearTable){ // If the flagvariable: cleartable, is set to YES we set the number of rows to 0 and all rows will be removed from the tableview.
+        
         return 0;
     }
     return self.numberOfEventsForSelectedDate;
