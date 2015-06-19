@@ -153,7 +153,10 @@ NSInteger EXHIBITION_2 = 86; //green
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([[segue identifier] isEqualToString:@"PushSelectedEvent"]){
-        
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 240);
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
         NSIndexPath *indexPath = nil;
         Events *method = nil;
         NSString *title = method.summary;
@@ -165,6 +168,7 @@ NSInteger EXHIBITION_2 = 86; //green
         SelectedEventViewController *destViewController = segue.destinationViewController; // Getting new view controller
         destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
         [destViewController getEventObject:method]; // Passing object to ThreamentInfoController
+            [spinner stopAnimating];
 
     }
 }

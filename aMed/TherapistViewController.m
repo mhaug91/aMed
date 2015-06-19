@@ -327,7 +327,10 @@
     
     if ([[segue identifier] isEqualToString:@"PushTreatmentInfo"])
     {
-        
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 240);
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
         NSIndexPath *indexPath = nil;
         
 
@@ -342,6 +345,7 @@
         @try {
             NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
             [method setIntroText:introtext];
+                [spinner stopAnimating];
         }
         @catch (NSException *exception) {
             

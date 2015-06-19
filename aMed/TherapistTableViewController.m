@@ -256,6 +256,10 @@ shouldReloadTableForSearchString:(NSString *)searchString
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
+         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+         spinner.center = CGPointMake(160, 240);
+         [self.view addSubview:spinner];
+         [spinner startAnimating];
          NSIndexPath *indexPath = nil;
          Therapists *therapist = nil;
          if (self.searchDisplayController.active) {
@@ -272,6 +276,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
          TherapistViewController *destViewController = segue.destinationViewController; // Getting new view controller
          destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
          [destViewController getTherapistObject:therapist]; // Passing object to ThreamentInfoController
+             [spinner stopAnimating];
      }
 }
 
