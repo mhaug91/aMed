@@ -163,7 +163,7 @@ static NSString *eventCellIdentifier = @"eventCell";
  */
 - (void)transitionExample
 {
-    CGFloat newHeight = 300; // Used to set the new height of the content view.
+    CGFloat newHeight = 200; // Used to set the new height of the content view.
     if(self.calendar.calendarAppearance.isWeekMode){
         newHeight = 75.;
         
