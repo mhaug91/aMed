@@ -18,7 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    
+    spinner.center = CGPointMake(160, 240);
+    
+    [self.view addSubview:spinner];
+    
+    [spinner startAnimating];
     [self setWebView];
+    [spinner stopAnimating];
 
     // Do any additional setup after loading the view.
 }

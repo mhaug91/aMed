@@ -23,17 +23,22 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
-
+    
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.newsArray = [self.rd retrieveNewsData]; // Fills up the newstsarray with threatments from the database. (See RetrieveData.m).
 
-        [self.tableView reloadData];
+
     }
     @catch (NSException *exception) {
         
     }
+    [spinner stopAnimating];
 
 }
 
@@ -116,9 +121,10 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    
+   
     /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
+         
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
 
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
@@ -135,6 +141,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
              [alertView show];
              
          }
+
          
          
     }

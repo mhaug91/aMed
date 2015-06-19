@@ -31,6 +31,10 @@ NSInteger EXHIBITION_2 = 86; //green
 //Retrieves data from database, uses exception handling incase of no network connection.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
 
     @try {
@@ -42,6 +46,7 @@ NSInteger EXHIBITION_2 = 86; //green
 
     [self filterArrayID];
     self.tableView.tableFooterView = [UIView new];
+        [spinner stopAnimating];
 
 }
 

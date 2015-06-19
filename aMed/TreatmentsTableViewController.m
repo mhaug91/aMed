@@ -26,6 +26,11 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
+    
     [self.navigationController.navigationBar setTranslucent:NO];
     
     // Load data
@@ -35,6 +40,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     }
     @catch (NSException *exception) {
     }
+    [spinner stopAnimating];
 }
 
 /**

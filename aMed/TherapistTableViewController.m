@@ -33,6 +33,10 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
 
     //Retrieves data from database, uses exception handling incase of no network connection.
@@ -43,6 +47,7 @@ static NSString *tableCellID = @"finnBehandlerID";
     @catch (NSException *exception) {
         
     }
+        [spinner stopAnimating];
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.

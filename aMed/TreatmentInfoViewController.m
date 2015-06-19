@@ -25,6 +25,10 @@ static NSString *CellIdentifier = @"newTherapistCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     [self setWebView];
     @try {
         self.rd = [[RetrieveData alloc] init];
@@ -33,8 +37,9 @@ static NSString *CellIdentifier = @"newTherapistCell";
     @catch (NSException *exception) {
 
     }
+    [self findAssociatedTherapists]; /// Finds the associated therapists.
+    [spinner stopAnimating];
 
-    [self findAssociatedTherapists]; /// Finds the associated therapists. 
 }
 
 

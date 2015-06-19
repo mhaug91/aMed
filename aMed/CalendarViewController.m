@@ -26,6 +26,10 @@ static NSString *eventCellIdentifier = @"eventCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     self.COURSE=66;
     self.FESTIVAL=71;
     self.EXHIBITION=70;
@@ -63,7 +67,7 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self.calendar setContentView:self.calendarContentView];
     [self.calendar setDataSource:self];
     [self createEventsDictionary];
-    
+        [spinner stopAnimating];
 
 }
 
