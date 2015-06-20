@@ -119,13 +119,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
    
     /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
-         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
          
-         spinner.center = CGPointMake(160, 240);
-         
-         [self.view addSubview:spinner];
-         
-         [spinner startAnimating];
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
 
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
@@ -133,10 +127,10 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
          @try {
              [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
              destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
-             [destVC getNewsObject:news];
-               [spinner stopAnimating];// Passing object to destination view controller. (See NewsInfoViewController).
-         }
-         @catch (NSException *exception) {
+             [destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
+
+        }
+        @catch (NSException *exception) {
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
                                                                  message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
                                                        cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];

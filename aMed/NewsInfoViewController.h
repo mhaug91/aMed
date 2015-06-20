@@ -12,9 +12,11 @@
  *  Controlling the newsinfo view. 
  * Contains a webwiev with article.
  */
-@interface NewsInfoViewController : UIViewController <UIAlertViewDelegate>
+@interface NewsInfoViewController : UIViewController <UIAlertViewDelegate, UIWebViewDelegate>
 
 @property(strong, nonatomic) News *currentNews; // Current newsobject to display info about.
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 /**
  *  Sets the currentNews object.

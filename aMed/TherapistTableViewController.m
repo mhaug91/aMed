@@ -19,7 +19,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 @interface TherapistTableViewController ()
 
-@property (copy, nonatomic) NSArray *behandlere;
+//@property (copy, nonatomic) NSArray *behandlere;
 
 @end
 
@@ -33,6 +33,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
         [self.navigationController.navigationBar setTranslucent:NO];
 
     //Retrieves data from database, uses exception handling incase of no network connection.
@@ -45,6 +46,7 @@ static NSString *tableCellID = @"finnBehandlerID";
     }
     
 }
+
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
@@ -68,19 +70,6 @@ static NSString *tableCellID = @"finnBehandlerID";
     }
 }
 
-/*Method for setting the amount of rows in the tableview.
- *That amount is either all therapists or the result of a search.
- */
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResults count];
-    }
-    else{
-        return [self.therapists count];
-
-    }
-}
 //Alert View which is shown when the user isn't connected to a network.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -92,6 +81,24 @@ static NSString *tableCellID = @"finnBehandlerID";
         
     }
 }
+
+#pragma marks
+#pragma mark table view data methods
+
+/*Method for setting the amount of rows in the tableview.
+ *That amount is either all therapists or the result of a search.
+ */
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section{
+        if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+    }
+    else{
+        return [self.therapists count];
+
+    }
+}
+
 //Sets the height of a row.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -144,6 +151,16 @@ static NSString *tableCellID = @"finnBehandlerID";
     
     
     return cell;
+}
+
+#pragma mark table view delegate
+-(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    static NSString *CellID = @"LoadCell";
+    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellID];
+    if (headerView == nil){
+        [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
+    }
+    return headerView;
 }
 
 #pragma mark - search delegate methods
