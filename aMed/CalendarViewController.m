@@ -26,33 +26,21 @@ static NSString *eventCellIdentifier = @"eventCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
     self.COURSE=66;
     self.FESTIVAL=71;
     self.EXHIBITION=70;
     self.EXHIBITION_2=86;
     self.eventsOnSelectedDate = [[NSArray alloc] init];
     self.eventArray = [[NSMutableArray alloc] init];
-    @try {
-        self.rd = [[RetrieveData alloc] init];
-        if(!([self.rd.retrieveEvents isEqual:@""])){
-            self.eventArray = [self.rd retrieveEvents];
-        }
-    }
     
-    @catch (NSException *exception) {
-    }
+    /* The activity indicator. Appears as a “gear” that is spinning in the middle of the screen. */
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
+    
     [self.navigationController.navigationBar setTranslucent:NO];
-    /*
-    UIButton *infoButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    [infoButton addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *infoButtonItem = [[UIBarButtonItem alloc] initWithCustomView:infoButton];
-    self.navigationItem.rightBarButtonItem = infoButtonItem;
-     */
-    
+   
     self.calendar = [JTCalendar new];
     
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
@@ -66,17 +54,23 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self.calendar setMenuMonthsView:self.calendarMenuView];
     [self.calendar setContentView:self.calendarContentView];
     [self.calendar setDataSource:self];
-    [self createEventsDictionary];
-        [spinner stopAnimating];
-
+    
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void)viewDidAppear:(BOOL)animated
 
 {
-    
     @try {
+        self.rd = [[RetrieveData alloc] init];
+        if(!([self.rd.retrieveEvents isEqual:@""])){
+            self.eventArray = [self.rd retrieveEvents];
+        }
+    }
+    
+    @catch (NSException *exception) {
+    }
+        @try {
         if (self.eventArray.count == 0) {
             self.rd = [[RetrieveData alloc] init];
             self.eventArray = [self.rd retrieveEvents];
@@ -95,6 +89,9 @@ static NSString *eventCellIdentifier = @"eventCell";
 
     [super viewDidAppear:animated];
     [self.calendar reloadData]; // Must be call in viewDidAppear
+    [self createEventsDictionary];
+
+    [self.spinner stopAnimating];
     
 }
 

@@ -27,15 +27,15 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
     
     // Load data
-    @try {
-        self.rd = [[RetrieveData alloc] init];
-        self.threatmentsArray = [self.rd retrieveThreatmentsData]; // Fills up the threatmentsarray with threatments from the database. (See RetrieveData.m).
-    }
-    @catch (NSException *exception) {
-    }
+    
 }
 
 /**
@@ -43,6 +43,12 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
  *
  */
 - (void) viewDidAppear:(BOOL)animated{
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.threatmentsArray = [self.rd retrieveThreatmentsData]; // Fills up the threatmentsarray with threatments from the database. (See RetrieveData.m).
+    }
+    @catch (NSException *exception) {
+    }
     @try {
         if (self.threatmentsArray.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -59,6 +65,7 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     @finally {
         [self.tableView reloadData];
     }
+     [self.spinner stopAnimating];
 }
 
 

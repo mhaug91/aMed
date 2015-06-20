@@ -253,31 +253,6 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadCell" id="Zbg-eI-F1k">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zbg-eI-F1k" id="GU9-kX-cmq">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laster..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwG-Aj-4Na">
-                                            <rect key="frame" x="270" y="15" width="61" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.46666666670000001" green="0.0" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="O9P-yc-xv2">
-                                            <rect key="frame" x="242" y="15" width="20" height="20"/>
-                                            <color key="color" red="0.46666666670000001" green="0.0" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </activityIndicatorView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="mwG-Aj-4Na" firstAttribute="leading" secondItem="O9P-yc-xv2" secondAttribute="trailing" constant="8" id="ab4-lw-YYR"/>
-                                        <constraint firstAttribute="centerX" secondItem="mwG-Aj-4Na" secondAttribute="centerX" id="hZf-x2-PGH"/>
-                                        <constraint firstAttribute="centerY" secondItem="mwG-Aj-4Na" secondAttribute="centerY" id="jCj-ch-VeB"/>
-                                        <constraint firstAttribute="centerY" secondItem="O9P-yc-xv2" secondAttribute="centerY" id="smy-zz-DI9"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="finnBehandlerID" textLabel="XgO-5N-XUf" detailTextLabel="oJv-9s-2Ra" rowHeight="50" style="IBUITableViewCellStyleSubtitle" id="IsD-nD-7iL">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IsD-nD-7iL" id="wWT-4u-xSw">

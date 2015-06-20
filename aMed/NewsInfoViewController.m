@@ -16,6 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.activityIndicator startAnimating];
+
     [self setWebView];
 
 
@@ -29,9 +31,6 @@
 #pragma marks
 
 #pragma mark webview delegate
--(void)webViewDidStartLoad:(UIWebView *)webView{
-    [self.activityIndicator startAnimating];
-}
 
 -(void) webViewDidFinishLoad:(UIWebView *)webView{
     [self.activityIndicator stopAnimating];
