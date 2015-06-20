@@ -132,10 +132,10 @@ NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/tem
         }
         NSString *comment = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_ajaxtekst")];
         NSString *treatmentMethodString = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
-        NSString *picURL = noPictureURL; // Default picture URL.
+        NSString *picURL = [NSString stringWithFormat:pictureURL, avatar];
         /* Checks if the therapist has an url to an available picture, if it has, save it as the objects picture url. */
-        if(![therapist.avatar isEqual:[NSNull null]]){
-            picURL = [NSString stringWithFormat:pictureURL, avatar];
+        if([avatar isEqual:[NSNull null]]){
+            picURL = noPictureURL; // Default picture URL.
         }
         //Splitting string of treatment methods into an array.
         tr_methods = [treatmentMethodString componentsSeparatedByString:(@"|*|")];
