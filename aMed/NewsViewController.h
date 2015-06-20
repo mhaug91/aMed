@@ -22,6 +22,8 @@
 
 @property(strong, nonatomic) RetrieveData *rd; // Handling requests to database. 
 @property(strong, nonatomic) NSMutableArray *newsArray; // News from the database.
+@property(strong, nonatomic) UIActivityIndicatorView *spinner;//An activity indicator to show that a task is in progress.
+
 
 
 @end

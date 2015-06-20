@@ -18,5 +18,6 @@
 @property(strong, nonatomic) NSMutableArray *jsonArray;
 @property(strong, nonatomic) NSMutableArray *eventArray;
 @property(strong, nonatomic) NSMutableArray *filterArray;
+@property(strong, nonatomic) UIActivityIndicatorView *spinner; //An activity indicator to show that a task is in progress. 
 
 @end

@@ -31,6 +31,12 @@ NSInteger EXHIBITION_2 = 86; //green
 //Retrieves data from database, uses exception handling incase of no network connection.
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
 
     @try {
@@ -39,8 +45,9 @@ NSInteger EXHIBITION_2 = 86; //green
     }
     @catch (NSException *exception) {
     }
-
     [self filterArrayID];
+   
+    
     self.tableView.tableFooterView = [UIView new];
 }
 
@@ -51,6 +58,8 @@ NSInteger EXHIBITION_2 = 86; //green
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
+    
+
     @try {
         if (self.eventArray.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -67,6 +76,7 @@ NSInteger EXHIBITION_2 = 86; //green
     @finally {
         [self.view setNeedsDisplay];
     }
+    [self.spinner stopAnimating];
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.

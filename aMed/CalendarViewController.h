@@ -32,6 +32,7 @@
 @property(strong, nonatomic) NSArray *eventsOnSelectedDate; // Array containing all events on a selected date by the user
 @property(assign, nonatomic) NSInteger numberOfEventsForSelectedDate; // the amount of events on the selected date
 @property(assign, nonatomic) BOOL clearTable; // Flag variable to decide if the table shall be cleared or not. Initially set to NO.
+@property(strong, nonatomic) UIActivityIndicatorView *spinner;// An activity indicator to show that a task is in progress. 
 
 
 /* Integers to decide what kind of event is displayed. Same values are found in the database. */

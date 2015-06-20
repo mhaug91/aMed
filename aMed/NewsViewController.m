@@ -23,17 +23,15 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
     
-    @try {
-        self.rd = [[RetrieveData alloc] init];
-        self.newsArray = [self.rd retrieveNewsData]; // Fills up the newstsarray with threatments from the database. (See RetrieveData.m).
-
-
-    }
-    @catch (NSException *exception) {
-        
-    }
+    
 
 }
 
@@ -42,6 +40,15 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
  *
  */
 - (void) viewDidAppear:(BOOL)animated{
+    @try {
+        self.rd = [[RetrieveData alloc] init];
+        self.newsArray = [self.rd retrieveNewsData]; // Fills up the newstsarray with threatments from the database. (See RetrieveData.m).
+        
+        
+    }
+    @catch (NSException *exception) {
+        
+    }
     @try {
         if (self.newsArray.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -58,6 +65,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
     @finally {
          [self.tableView reloadData];
     }
+    [self.spinner stopAnimating];
 }
 
 
@@ -119,13 +127,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
    
     /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
-         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
          
-         spinner.center = CGPointMake(160, 240);
-         
-         [self.view addSubview:spinner];
-         
-         [spinner startAnimating];
          NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
 
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
@@ -133,10 +135,10 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
          @try {
              [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
              destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
-             [destVC getNewsObject:news];
-               [spinner stopAnimating];// Passing object to destination view controller. (See NewsInfoViewController).
-         }
-         @catch (NSException *exception) {
+             [destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
+
+        }
+        @catch (NSException *exception) {
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
                                                                  message:@"Slå på nettverk inne på innstillinger for å få tilgang til innhold" delegate:self
                                                        cancelButtonTitle:@"Ok" otherButtonTitles:@"Innstillinger", nil];
