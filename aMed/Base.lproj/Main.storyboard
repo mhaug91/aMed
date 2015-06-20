@@ -186,6 +186,7 @@
                             <mask key="subviews">
                                 <exclude reference="yuj-Hl-cps"/>
                                 <exclude reference="VEM-bG-aa9"/>
+                                <exclude reference="7yL-R9-c0F"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="2oU-le-T3H"/>
@@ -211,7 +212,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="7yL-R9-c0F" id="uyR-Qg-JAY"/>
                         <outlet property="webView" destination="xaT-Ro-qz2" id="IbA-Oe-bx4"/>
                     </connections>
                 </viewController>

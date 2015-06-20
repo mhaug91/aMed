@@ -16,9 +16,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.activityIndicator startAnimating];
-
-    [self setWebView];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
 
 
     // Do any additional setup after loading the view.
@@ -30,10 +31,9 @@
 }
 #pragma marks
 
-#pragma mark webview delegate
-
--(void) webViewDidFinishLoad:(UIWebView *)webView{
-    [self.activityIndicator stopAnimating];
+-(void) viewWillAppear:(BOOL)animated{
+    [self setWebView];
+    [self.spinner stopAnimating];
 }
 
 #pragma mark Methods
