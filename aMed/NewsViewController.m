@@ -23,10 +23,6 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
     
     @try {
@@ -38,7 +34,6 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
     @catch (NSException *exception) {
         
     }
-    [spinner stopAnimating];
 
 }
 

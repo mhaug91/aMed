@@ -26,10 +26,6 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
     
     [self.navigationController.navigationBar setTranslucent:NO];
     
@@ -40,7 +36,6 @@ static NSString *SimpleTableIdentifier = @"MetodeCell";
     }
     @catch (NSException *exception) {
     }
-    [spinner stopAnimating];
 }
 
 /**
@@ -187,10 +182,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
     
     /// checks if the segue is equal to the segue specified in the storyboard.
     if([[segue identifier] isEqualToString:@"pushThreatmentInfo"])         {
-        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        spinner.center = CGPointMake(160, 240);
-        [self.view addSubview:spinner];
-        [spinner startAnimating];
+        
         NSIndexPath *indexPath = nil;
         TreatmentMethod *method = nil;
             
@@ -208,7 +200,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
             @try {
                 NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retrieve introtext from selected treatment. (The introtext is the article text about the treatment).
                 [method setIntroText:introtext]; /// Set the method's introtext.
-                    [spinner stopAnimating];
             }
             @catch (NSException *exception) {
 
