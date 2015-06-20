@@ -10,7 +10,7 @@
 
 @implementation Therapists
 
--(id) initWithFirstName:(NSString *)firstName andLastName:(NSString *)lastName andAvatar:(NSString *)avatar andWebsite:(NSString *)website andEmail:(NSString *)email andOccupation:(NSString *)occupation andCompany:(NSString *)company andAddress:(Address *)address andPhone:(NSInteger *)phone andComment:(NSString *)comment andTreatmentMethods:(NSArray *)treatmentMethods andTreatmentMethodString:(NSString *)treatmentMethodString{
+-(id) initWithFirstName:(NSString *)firstName andLastName:(NSString *)lastName andAvatar:(NSString *)avatar andWebsite:(NSString *)website andEmail:(NSString *)email andOccupation:(NSString *)occupation andCompany:(NSString *)company andAddress:(Address *)address andPhone:(NSInteger *)phone andComment:(NSString *)comment andTreatmentMethods:(NSArray *)treatmentMethods andTreatmentMethodString:(NSString *)treatmentMethodString andPictureURL:(NSString *) URL{
     self = [super init];
     if (self){
         self.firstName = firstName;
@@ -25,6 +25,9 @@
         self.comment = comment;
         self.treatmentMethods = treatmentMethods;
         self.treatmentMethodString = treatmentMethodString;
+        self.pictureURL=URL;
+        self.picture =[NSData dataWithContentsOfURL:[NSURL URLWithString:URL]];
+
     }
     return self;
 }

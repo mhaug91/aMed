@@ -33,11 +33,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
-    [self.navigationController.navigationBar setTranslucent:NO];
+        [self.navigationController.navigationBar setTranslucent:NO];
 
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
@@ -47,11 +43,13 @@ static NSString *tableCellID = @"finnBehandlerID";
     @catch (NSException *exception) {
         
     }
-        [spinner stopAnimating];
+    
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
 - (void) viewDidAppear:(BOOL)animated{
+    
+
     @try {
         if (self.therapists.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -124,39 +122,18 @@ static NSString *tableCellID = @"finnBehandlerID";
     //Name of the therapist put into one string.
     NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
     
-    //Imagepath to the image in the table view cell.
-    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
-    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
-    
-    cell.imageView.image = [UIImage imageNamed:imagepath];
-    
     //Using description string for database to show the therapists treatment methods.
     NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     
-    //Setting the image in cell to imagepath or noAvatar. The image is scaled, so all have the same size.
-    if([therapist.avatar isEqual:[NSNull null]]){
-        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
-        cell.imageView.image = [UIImage imageWithData:image];
-        CGSize itemSize = CGSizeMake(45, 50);
-        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-        [cell.imageView.image drawInRect:imageRect];
-        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-    
-
-    } else {
-        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
-        cell.imageView.image = [UIImage imageWithData:image];
-        CGSize itemSize = CGSizeMake(45, 50);
-        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-        [cell.imageView.image drawInRect:imageRect];
-        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-
-    }
-    
+    /* Placing the image in the cell and scales it, to a preferred size. */
+    //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
+    cell.imageView.image = [UIImage imageWithData:therapist.picture];
+    CGSize itemSize = CGSizeMake(45, 50);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 
     NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
     
@@ -256,10 +233,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
-         UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-         spinner.center = CGPointMake(160, 240);
-         [self.view addSubview:spinner];
-         [spinner startAnimating];
+         
          NSIndexPath *indexPath = nil;
          Therapists *therapist = nil;
          if (self.searchDisplayController.active) {
@@ -276,7 +250,6 @@ shouldReloadTableForSearchString:(NSString *)searchString
          TherapistViewController *destViewController = segue.destinationViewController; // Getting new view controller
          destViewController.navigationItem.title = title; // Setting title in the navigation bar of next view
          [destViewController getTherapistObject:therapist]; // Passing object to ThreamentInfoController
-             [spinner stopAnimating];
      }
 }
 
