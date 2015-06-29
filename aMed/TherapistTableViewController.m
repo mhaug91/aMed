@@ -11,6 +11,10 @@
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 
 static NSString *tableCellID = @"finnBehandlerID";
+//static NSString *headerCellID = @"HeaderCell";
+
+//static NSString *loaderCellID = @"LoadCell";
+
 
 /**
  *  This is the controller which displays the a list of all the therapists
@@ -19,7 +23,7 @@ static NSString *tableCellID = @"finnBehandlerID";
 
 @interface TherapistTableViewController ()
 
-@property (copy, nonatomic) NSArray *behandlere;
+//@property (copy, nonatomic) NSArray *behandlere;
 
 @end
 
@@ -32,10 +36,20 @@ static NSString *tableCellID = @"finnBehandlerID";
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+        [super viewDidLoad];
     [self.navigationController.navigationBar setTranslucent:NO];
+    /* Adding an activity indicator to show that a task is in progress. 
+     * It appears as a spinning gear in the middle of the screen. */
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
+}
 
-    //Retrieves data from database, uses exception handling incase of no network connection.
+
+
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
+- (void) viewDidAppear:(BOOL)animated{
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.therapists = [self.rd retrieveTherapists];
@@ -43,11 +57,10 @@ static NSString *tableCellID = @"finnBehandlerID";
     @catch (NSException *exception) {
         
     }
-}
 
-// This method is only in use when viewDidLoad doesnt retrieve data from database.
-- (void) viewDidAppear:(BOOL)animated{
     @try {
+        //Retrieves data from database, uses exception handling incase of no network connection.
+       
         if (self.therapists.count == 0) {
             self.rd = [[RetrieveData alloc] init];
             self.therapists = [self.rd retrieveTherapists];
@@ -63,21 +76,9 @@ static NSString *tableCellID = @"finnBehandlerID";
     @finally {
         [self.tableView reloadData];
     }
+    [self.spinner stopAnimating];
 }
 
-/*Method for setting the amount of rows in the tableview.
- *That amount is either all therapists or the result of a search.
- */
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section{
-    if (tableView == self.searchDisplayController.searchResultsTableView) {
-        return [searchResults count];
-    }
-    else{
-        return [self.therapists count];
-
-    }
-}
 //Alert View which is shown when the user isn't connected to a network.
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -89,6 +90,23 @@ static NSString *tableCellID = @"finnBehandlerID";
         
     }
 }
+
+#pragma marks
+#pragma mark table view data methods
+
+/*Method for setting the amount of rows in the tableview.
+ *That amount is either all therapists or the result of a search.
+ */
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section{
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [searchResults count];
+    }else{
+        return [self.therapists count];
+    }
+
+}
+
 //Sets the height of a row.
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -119,39 +137,18 @@ static NSString *tableCellID = @"finnBehandlerID";
     //Name of the therapist put into one string.
     NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
     
-    //Imagepath to the image in the table view cell.
-    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
-    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
-    
-    cell.imageView.image = [UIImage imageNamed:imagepath];
-    
     //Using description string for database to show the therapists treatment methods.
     NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     
-    //Setting the image in cell to imagepath or noAvatar. The image is scaled, so all have the same size.
-    if([therapist.avatar isEqual:[NSNull null]]){
-        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
-        cell.imageView.image = [UIImage imageWithData:image];
-        CGSize itemSize = CGSizeMake(45, 50);
-        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-        [cell.imageView.image drawInRect:imageRect];
-        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-    
-
-    } else {
-        NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
-        cell.imageView.image = [UIImage imageWithData:image];
-        CGSize itemSize = CGSizeMake(45, 50);
-        UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
-        CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
-        [cell.imageView.image drawInRect:imageRect];
-        cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-
-    }
-    
+    /* Placing the image in the cell and scales it, to a preferred size. */
+    //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
+    cell.imageView.image = [UIImage imageWithData:therapist.picture];
+    CGSize itemSize = CGSizeMake(45, 50);
+    UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
+    CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
+    [cell.imageView.image drawInRect:imageRect];
+    cell.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
 
     NSString *description = [NSString stringWithFormat:@"%@\r%@", name, therapistTreatments];
     
@@ -251,6 +248,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
  // Get the new view controller using [segue destinationViewController].
  // Pass the selected object to the new view controller.
      if([[segue identifier] isEqualToString:@"pushTherapist"]){
+         
          NSIndexPath *indexPath = nil;
          Therapists *therapist = nil;
          if (self.searchDisplayController.active) {

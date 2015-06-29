@@ -15,7 +15,12 @@
 #define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
 #define getNewsDataInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
 #define getEventsURL @"http://www.amed.no/AmedApplication/getEvents.php"
-
+#define pictureURL @"https://www.amed.no/images/comprofiler/%@"
+#define noPictureURL @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png"
+/*
+NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
+NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
+*/
 
 
 
@@ -127,15 +132,18 @@
         }
         NSString *comment = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_ajaxtekst")];
         NSString *treatmentMethodString = [[self.jsonArray objectAtIndex:i] objectForKey:(@"cb_behandlingsmetode6")];
-        
+        NSString *picURL = [NSString stringWithFormat:pictureURL, avatar];
+        /* Checks if the therapist has an url to an available picture, if it has, save it as the objects picture url. */
+        if([avatar isEqual:[NSNull null]]){
+            picURL = noPictureURL; // Default picture URL.
+        }
         //Splitting string of treatment methods into an array.
         tr_methods = [treatmentMethodString componentsSeparatedByString:(@"|*|")];
         
         //Adding attributes to Address
         address = [[Address alloc] initWithStreet:street andCity:city andState:state andPostcode:&postcode andCountry:country];
         //Adding attributes and Address to Therapist object.
-        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andEmail:email andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString];
-        
+        therapist = [[Therapists alloc] initWithFirstName:firstName andLastName:lastName andAvatar:avatar andWebsite:website andEmail:email andOccupation:occupation andCompany:company andAddress:address andPhone:&phone andComment:comment andTreatmentMethods:tr_methods andTreatmentMethodString:treatmentMethodString andPictureURL:picURL];
         //Adding one Therapist object to the therapists array.
         [therapists addObject:therapist];
         

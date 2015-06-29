@@ -18,8 +18,6 @@
 @interface RetrieveData : NSObject
 
 @property(strong, nonatomic) NSMutableArray *jsonArray;
-@property(strong, nonatomic) NSMutableArray *threatmentsArray;
-@property(strong, nonatomic) NSMutableArray *therapistArray;
 
 
 

@@ -33,7 +33,6 @@ GMSMapView *mapView_;
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController.navigationBar setTranslucent:NO];
-
     //Initialzing geocoding.
     gc = [[GeoCoding alloc]init];
     NSLog(@"Current identifier: %@", [[NSBundle mainBundle] bundleIdentifier]);

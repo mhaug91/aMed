@@ -32,7 +32,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
@@ -57,6 +60,7 @@
     [self.tableView2 registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.tableView2];
+        [spinner stopAnimating];
 
 }
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -323,7 +327,10 @@
     
     if ([[segue identifier] isEqualToString:@"PushTreatmentInfo"])
     {
-        
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 240);
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
         NSIndexPath *indexPath = nil;
         
 
@@ -338,6 +345,7 @@
         @try {
             NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Passing the ThreatmentMethod objects alias to get its info
             [method setIntroText:introtext];
+                [spinner stopAnimating];
         }
         @catch (NSException *exception) {
             

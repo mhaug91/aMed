@@ -33,8 +33,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
     @catch (NSException *exception) {
 
     }
-
-    [self findAssociatedTherapists]; /// Finds the associated therapists. 
+    [self findAssociatedTherapists]; /// Finds the associated therapists.
 }
 
 

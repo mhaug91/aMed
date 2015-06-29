@@ -10,15 +10,17 @@
 #import "News.h"
 
 @interface NewsInfoViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *webView; // Contains the article
-
 @end
 
 @implementation NewsInfoViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setWebView];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
+
 
     // Do any additional setup after loading the view.
 }
@@ -28,6 +30,12 @@
     // Dispose of any resources that can be recreated.
 }
 #pragma marks
+
+-(void) viewWillAppear:(BOOL)animated{
+    [self setWebView];
+    [self.spinner stopAnimating];
+}
+
 #pragma mark Methods
 
 - (void) getNewsObject: (id) newsObject{

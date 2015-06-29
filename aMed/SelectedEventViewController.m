@@ -35,6 +35,10 @@ GMSMapView *mapView_;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinner.center = CGPointMake(160, 240);
+    [self.view addSubview:spinner];
+    [spinner startAnimating];
     
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
@@ -68,6 +72,7 @@ GMSMapView *mapView_;
     self.tableView = [self makeTableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
+        [spinner stopAnimating];
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
