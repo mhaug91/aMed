@@ -189,12 +189,12 @@
                                 <exclude reference="7yL-R9-c0F"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="g7P-0Z-nXe"/>
                                 <exclude reference="2oU-le-T3H"/>
                                 <exclude reference="Yvd-Vl-HQV"/>
                                 <exclude reference="9rN-TD-czx"/>
                                 <exclude reference="OF0-dl-bx1"/>
                                 <exclude reference="leP-go-3yi"/>
-                                <exclude reference="g7P-0Z-nXe"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -202,12 +202,12 @@
                                 <include reference="VEM-bG-aa9"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="g7P-0Z-nXe"/>
                                 <include reference="2oU-le-T3H"/>
                                 <include reference="Yvd-Vl-HQV"/>
                                 <exclude reference="9rN-TD-czx"/>
                                 <exclude reference="OF0-dl-bx1"/>
                                 <exclude reference="leP-go-3yi"/>
-                                <exclude reference="g7P-0Z-nXe"/>
                             </mask>
                         </variation>
                     </view>

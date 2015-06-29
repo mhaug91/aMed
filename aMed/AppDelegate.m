@@ -29,7 +29,7 @@
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
     
     //Set color of the Tab Bar
-    [[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
+    //[[UITabBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];
     
     // set these in first nav controller instead
     //[[UITabBar appearance] setTranslucent:NO];
