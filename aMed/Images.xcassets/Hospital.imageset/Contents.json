@@ -3,11 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Info-25.png"
+      "filename" : "Hospital-25.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x"
+      "scale" : "2x",
+      "filename" : "Hospital@2x.png"
     },
     {
       "idiom" : "universal",

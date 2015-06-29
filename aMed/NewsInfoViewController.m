@@ -40,6 +40,10 @@
         htmlString = [htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
     
+    if ([htmlString rangeOfString:@""].location == NSNotFound){
+    //    htmlString = [htmlString string
+    }
+    
     /* Amed.no (the website) has a custom backbutton used on the pages for the
      * treatment methods. This has to be removed from the text: */
     htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];

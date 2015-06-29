@@ -36,6 +36,7 @@
     //[[UINavigationBar appearance] setTranslucent:NO];
 
     //Change the title of the Navigation Bar
+    [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTitleTextAttributes:
     [NSDictionary dictionaryWithObjectsAndKeys:
     [UIColor whiteColor], NSForegroundColorAttributeName,

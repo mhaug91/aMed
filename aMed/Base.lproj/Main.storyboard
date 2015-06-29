@@ -230,7 +230,7 @@
         <scene sceneID="U8L-O6-mal">
             <objects>
                 <navigationController id="W6H-Hn-YFr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Nyheter" image="News-25" id="ciN-Fu-F8T"/>
+                    <tabBarItem key="tabBarItem" title="Nyheter" image="News" id="ciN-Fu-F8T"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Js-ce-BCo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -402,7 +402,7 @@
         <scene sceneID="8ze-Eh-eZI">
             <objects>
                 <navigationController id="REr-lC-9zg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Behandlere" image="Find User-25" id="iPK-jv-Jpd"/>
+                    <tabBarItem key="tabBarItem" title="Behandlere" image="Find User" id="iPK-jv-Jpd"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="a7O-0v-x9U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -515,7 +515,7 @@
         <scene sceneID="3Qp-8c-zAT">
             <objects>
                 <navigationController title="Arrangementer" id="K2x-MG-8Mm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Arrangementer" image="Today-25" id="LZr-ey-r27"/>
+                    <tabBarItem key="tabBarItem" title="Arrangementer" image="Today" id="LZr-ey-r27"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kwv-e3-jvd">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -532,7 +532,7 @@
         <scene sceneID="g5b-4r-shl">
             <objects>
                 <navigationController title="Nærmeste behandler" id="a4U-cm-4Wa" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kart" image="Map Marker-25" id="wJE-mr-O60"/>
+                    <tabBarItem key="tabBarItem" title="Kart" image="Map Marker" id="wJE-mr-O60"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="9Jz-FD-B7E">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -808,7 +808,7 @@
                             <outlet property="delegate" destination="Hdm-hb-nwD" id="b9W-5o-G1x"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" id="NZb-91-wuQ"/>
+                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email" id="NZb-91-wuQ"/>
                     <navigationItem key="navigationItem" title="Kontakt oss" id="QxW-C4-IUE"/>
                     <connections>
                         <outlet property="emailField" destination="nBy-Mk-OJw" id="3u7-ux-hrb"/>
@@ -826,7 +826,7 @@
         <scene sceneID="i5V-Td-6GC">
             <objects>
                 <navigationController title="Kontakt oss" id="C7W-lN-OVZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email-25" id="qVk-dm-Qr4"/>
+                    <tabBarItem key="tabBarItem" title="Kontakt oss" image="Email" id="qVk-dm-Qr4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="yk9-aB-Kcu">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -894,7 +894,7 @@
         <scene sceneID="6TY-1C-3Hr">
             <objects>
                 <navigationController id="AMF-Qe-VeF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" tag="1" title="Behandlinger" image="Hospital-25" id="NeK-N1-S34"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="Behandlinger" image="Hospital" id="NeK-N1-S34"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="V8K-eP-Mqb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -950,7 +950,7 @@
         <scene sceneID="Wt9-vn-JxY">
             <objects>
                 <navigationController title="Om oss" id="Lf5-Iu-0Xm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Om oss" image="Info-25" id="6Bj-sA-Dvt"/>
+                    <tabBarItem key="tabBarItem" title="Om oss" image="Info" id="6Bj-sA-Dvt"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pdJ-g8-dWc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -967,7 +967,7 @@
         <scene sceneID="wi7-rD-Cg1">
             <objects>
                 <navigationController title="Kalender" id="kZG-fU-iZ3" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Kalender" image="Calendar-25" id="yJW-1s-6T2"/>
+                    <tabBarItem key="tabBarItem" title="Kalender" image="Calendar" id="yJW-1s-6T2"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pnE-8g-RMC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1090,7 +1090,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Kalender" image="Calendar-25" id="3YF-QV-U2f"/>
+                    <tabBarItem key="tabBarItem" title="Kalender" image="Calendar" id="3YF-QV-U2f"/>
                     <navigationItem key="navigationItem" title="Kalender" id="gk2-HD-Mfj"/>
                     <connections>
                         <outlet property="calendarContentView" destination="OZH-fu-OPe" id="FRK-sX-dot"/>
@@ -1137,14 +1137,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Calendar-25" width="25" height="25"/>
-        <image name="Email-25" width="25" height="25"/>
-        <image name="Find User-25" width="25" height="25"/>
-        <image name="Hospital-25" width="25" height="25"/>
+        <image name="Calendar" width="25" height="25"/>
+        <image name="Email" width="25" height="25"/>
+        <image name="Find User" width="25" height="25"/>
+        <image name="Hospital" width="25" height="25"/>
+        <image name="Info" width="25" height="25"/>
         <image name="Info-25" width="25" height="25"/>
-        <image name="Map Marker-25" width="25" height="25"/>
-        <image name="News-25" width="25" height="25"/>
-        <image name="Today-25" width="25" height="25"/>
+        <image name="Map Marker" width="25" height="25"/>
+        <image name="News" width="25" height="25"/>
+        <image name="Today" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7iX-jM-EA2"/>
