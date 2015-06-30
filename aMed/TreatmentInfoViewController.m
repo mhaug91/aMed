@@ -186,7 +186,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
             UIGraphicsEndImageContext();
     
         }
-        cell.textLabel.numberOfLines = 2;
+        cell.textLabel.numberOfLines = 1;
         cell.textLabel.text = therapist.company;
         UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:10];
         cell.detailTextLabel.numberOfLines = 2;

@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Quq-U9-6Wc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vwQ-tF-Q3z">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" allowsInlineMediaPlayback="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rub-PU-Nrv">
-                                <rect key="frame" x="0.0" y="64" width="600" height="299"/>
+                                <rect key="frame" x="0.0" y="20" width="600" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
                                 <connections>
@@ -28,7 +28,7 @@
                                 </connections>
                             </webView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Ya5-QH-qLg">
-                                <rect key="frame" x="0.0" y="366" width="600" height="136"/>
+                                <rect key="frame" x="0.0" y="489" width="600" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="kq0-N3-XFN" id="gNz-Q7-HB2"/>
@@ -66,11 +66,11 @@
                             <constraint firstItem="Rub-PU-Nrv" firstAttribute="leading" secondItem="vwQ-tF-Q3z" secondAttribute="leading" id="AiT-D6-kHz"/>
                             <constraint firstAttribute="trailing" secondItem="Rub-PU-Nrv" secondAttribute="trailing" id="IaR-0i-nT6"/>
                             <constraint firstItem="rax-lA-vbB" firstAttribute="top" secondItem="Rub-PU-Nrv" secondAttribute="bottom" constant="8" id="MoN-ax-P1x"/>
-                            <constraint firstItem="Quq-U9-6Wc" firstAttribute="top" secondItem="Rub-PU-Nrv" secondAttribute="bottom" constant="188" id="Os2-7L-wCp"/>
-                            <constraint firstItem="Ya5-QH-qLg" firstAttribute="bottom" secondItem="Quq-U9-6Wc" secondAttribute="top" constant="-49" id="U97-4f-uId"/>
+                            <constraint firstItem="Quq-U9-6Wc" firstAttribute="top" secondItem="Rub-PU-Nrv" secondAttribute="bottom" constant="113" id="Os2-7L-wCp"/>
+                            <constraint firstItem="Ya5-QH-qLg" firstAttribute="bottom" secondItem="Quq-U9-6Wc" secondAttribute="top" constant="-1" id="U97-4f-uId"/>
                             <constraint firstItem="Ya5-QH-qLg" firstAttribute="leading" secondItem="Rub-PU-Nrv" secondAttribute="leading" id="XDG-V5-nBR"/>
                             <constraint firstItem="Rub-PU-Nrv" firstAttribute="trailing" secondItem="rax-lA-vbB" secondAttribute="trailing" id="Yxm-jT-PPY"/>
-                            <constraint firstItem="Ya5-QH-qLg" firstAttribute="top" secondItem="Rub-PU-Nrv" secondAttribute="bottom" constant="3" id="dfl-8k-ofP"/>
+                            <constraint firstItem="Ya5-QH-qLg" firstAttribute="top" secondItem="Rub-PU-Nrv" secondAttribute="bottom" constant="2" id="dfl-8k-ofP"/>
                             <constraint firstItem="Rub-PU-Nrv" firstAttribute="bottom" secondItem="Quq-U9-6Wc" secondAttribute="top" id="n7v-L2-57g"/>
                             <constraint firstItem="rax-lA-vbB" firstAttribute="bottom" secondItem="Quq-U9-6Wc" secondAttribute="top" id="r3C-x0-qK0"/>
                             <constraint firstItem="Ya5-QH-qLg" firstAttribute="trailing" secondItem="Rub-PU-Nrv" secondAttribute="trailing" id="sT4-nm-bWc"/>
@@ -364,19 +364,29 @@
                         <viewControllerLayoutGuide type="top" id="2FK-o4-zrx"/>
                         <viewControllerLayoutGuide type="bottom" id="gWe-4X-jY1"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="nyI-Xe-S0L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="nyI-Xe-S0L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-54-YM3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JDh-54-YM3">
                                 <rect key="frame" x="0.0" y="-13" width="600" height="1000"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1000" id="aYU-bD-yWt"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JDh-54-YM3" secondAttribute="trailing" id="47w-Ux-JpE"/>
+                            <constraint firstItem="JDh-54-YM3" firstAttribute="centerX" secondItem="nyI-Xe-S0L" secondAttribute="centerX" id="KCa-Ln-S7a"/>
+                            <constraint firstAttribute="bottom" secondItem="JDh-54-YM3" secondAttribute="bottom" constant="-387" id="MVq-7r-Dhv"/>
+                            <constraint firstItem="JDh-54-YM3" firstAttribute="leading" secondItem="nyI-Xe-S0L" secondAttribute="leading" id="TEh-XZ-rrA"/>
+                            <constraint firstItem="JDh-54-YM3" firstAttribute="top" secondItem="nyI-Xe-S0L" secondAttribute="topMargin" constant="-13" id="aK1-1f-35D"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                <size key="value" width="320" height="1000"/>
+                                <size key="value" width="320" height="800"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <variation key="widthClass=compact" ambiguous="YES">
@@ -1174,7 +1184,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kmD-OE-Yqc"/>
-        <segue reference="Osu-7c-azi"/>
+        <segue reference="TNK-JL-doa"/>
         <segue reference="7iX-jM-EA2"/>
     </inferredMetricsTieBreakers>
 </document>
