@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -386,7 +386,7 @@
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
-                                <size key="value" width="320" height="800"/>
+                                <size key="value" width="320" height="2000"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                         <variation key="widthClass=compact" ambiguous="YES">
@@ -408,7 +408,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RLk-Ti-fPT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2310" y="468"/>
+            <point key="canvasLocation" x="2322" y="460"/>
         </scene>
         <!--Behandlere-->
         <scene sceneID="8ze-Eh-eZI">
@@ -967,7 +967,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         </variation>
                     </scrollView>
-                    <tabBarItem key="tabBarItem" title="Om oss" image="Info-25" id="zlm-zC-0gi"/>
+                    <tabBarItem key="tabBarItem" title="Om oss" image="Info" id="zlm-zC-0gi"/>
                     <navigationItem key="navigationItem" title="Om oss" id="Wdk-Df-cMq"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="600"/>
@@ -1177,7 +1177,6 @@
         <image name="Find User" width="25" height="25"/>
         <image name="Hospital" width="25" height="25"/>
         <image name="Info" width="25" height="25"/>
-        <image name="Info-25" width="25" height="25"/>
         <image name="Map Marker" width="25" height="25"/>
         <image name="News" width="25" height="25"/>
         <image name="Today" width="25" height="25"/>

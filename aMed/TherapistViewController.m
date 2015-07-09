@@ -32,10 +32,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
+    // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner startAnimating];
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
@@ -49,6 +50,11 @@
     
     self.navigationItem.title = self.currentTherapist.company;
     
+    
+
+}
+// This method is only in use when viewDidLoad doesnt retrieve data from database.
+- (void) viewDidAppear:(BOOL)animated{
     //Initiating methods to make each label and tableview
     [self firstLabel];
     [self imageView];
@@ -60,11 +66,6 @@
     [self.tableView2 registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.tableView2];
-        [spinner stopAnimating];
-
-}
-// This method is only in use when viewDidLoad doesnt retrieve data from database.
-- (void) viewDidAppear:(BOOL)animated{
     @try {
         if (self.therapists.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -82,6 +83,7 @@
     @finally {
         [self.tableView setNeedsDisplay];
     }
+     [self.spinner stopAnimating];// Stops the spinner
 }
 
 - (void) getTherapistObject:(id)therapistObject{

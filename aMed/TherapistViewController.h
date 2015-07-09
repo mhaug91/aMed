@@ -22,6 +22,7 @@
 @property(strong, nonatomic) TreatmentMethod *selectedTreatmentMethod;
 @property(strong, nonatomic) NSMutableArray *threatmentsArray;
 @property(nonatomic, strong) NSMutableArray *associatedMethods;
+@property(strong, nonatomic) UIActivityIndicatorView *spinner;//An activity indicator to show that a task is in progress. 
 
 /**
  *  Sets the currentTherapist object.
