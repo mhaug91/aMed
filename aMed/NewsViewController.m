@@ -9,6 +9,8 @@
 #import "NewsViewController.h"
 
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 /**
  *  Identifier of cell made in the storyboard.
  */
@@ -27,6 +29,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
     // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];

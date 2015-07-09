@@ -22,6 +22,7 @@
 @property(strong, nonatomic) NSMutableArray *filterArray;
 @property(strong, nonatomic) NSMutableArray *daySub;
 @property int day;
+@property(strong, nonatomic) UIActivityIndicatorView *spinner; ///An activity indicator to show that a task is in progress.
 
 
 - (void) getEventObject: (id) eventObject;

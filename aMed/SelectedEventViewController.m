@@ -35,11 +35,13 @@ GMSMapView *mapView_;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    spinner.center = CGPointMake(160, 240);
-    [self.view addSubview:spinner];
-    [spinner startAnimating];
+    // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     
+    [self.spinner startAnimating];
     //Retrieves data from database, uses exception handling incase of no network connection.
     @try {
         self.rd = [[RetrieveData alloc] init];
@@ -72,7 +74,7 @@ GMSMapView *mapView_;
     self.tableView = [self makeTableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
     [self.view addSubview:self.tableView];
-        [spinner stopAnimating];
+        [self.spinner stopAnimating];
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.

@@ -8,6 +8,8 @@
 
 #import "TreatmentInfoViewController.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 
 /**
  *  Cell identifier.
@@ -25,7 +27,12 @@ static NSString *CellIdentifier = @"newTherapistCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setWebView];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
+    self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    
+    [self.spinner startAnimating];
     @try {
         self.rd = [[RetrieveData alloc] init];
         self.allTherapists = [self.rd retrieveTherapists]; /// Fills array with all therapists from DB. (See RetrieveData.m).
@@ -33,7 +40,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
     @catch (NSException *exception) {
 
     }
-    [self findAssociatedTherapists]; /// Finds the associated therapists.
+    
 }
 
 
@@ -51,6 +58,8 @@ static NSString *CellIdentifier = @"newTherapistCell";
  *
  */
 - (void) viewDidAppear:(BOOL)animated{
+    [self setWebView];
+    [self findAssociatedTherapists]; /// Finds the associated therapists.
     @try {
         if (self.allTherapists.count == 0) {
             self.rd = [[RetrieveData alloc] init];
@@ -67,6 +76,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
     @finally {
         [self.view setNeedsDisplay];
     }
+    [self.spinner stopAnimating];
 }
 
 

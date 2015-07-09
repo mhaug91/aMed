@@ -8,6 +8,10 @@
 
 #import "CalendarViewController.h"
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+
 static NSString *eventCellIdentifier = @"eventCell";
 
 
@@ -37,12 +41,12 @@ static NSString *eventCellIdentifier = @"eventCell";
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
     [self.spinner startAnimating];
     
     [self.navigationController.navigationBar setTranslucent:NO];
    
     self.calendar = [JTCalendar new];
-    
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
     // Or you will have to call reloadAppearance
     {
@@ -61,6 +65,7 @@ static NSString *eventCellIdentifier = @"eventCell";
 - (void)viewDidAppear:(BOOL)animated
 
 {
+    
     @try {
         self.rd = [[RetrieveData alloc] init];
         if(!([self.rd.retrieveEvents isEqual:@""])){
@@ -88,8 +93,10 @@ static NSString *eventCellIdentifier = @"eventCell";
     }
 
     [super viewDidAppear:animated];
-    [self.calendar reloadData]; // Must be call in viewDidAppear
+    //[self.calendar reloadData]; // Must be called in viewDidAppear
+    // Uncertain how this works. But when called it can remove some of the dots marking that the date has some event(s)!
     [self createEventsDictionary];
+
 
     [self.spinner stopAnimating];
     
@@ -200,7 +207,7 @@ static NSString *eventCellIdentifier = @"eventCell";
     NSString *key = [[self dateFormatter] stringFromDate:date];
     
    
-    if(eventsByDate[key] && [eventsByDate[key] count] > 0){
+    if(eventsByDate[key] /*&& [eventsByDate[key] count] > 0 */){
         return YES;
     }
     
