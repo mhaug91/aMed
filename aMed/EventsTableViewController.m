@@ -119,6 +119,7 @@ NSInteger EXHIBITION_2 = 86; //green
     
     //Text label will be the name of the event.
     cell.textLabel.text = method.summary;
+    cell.detailTextLabel.text= method.start_date;
 
     //Sets image to a spesific color. Depending on the type of event.
     if(method.category_id == COURSE){
