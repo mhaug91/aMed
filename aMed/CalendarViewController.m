@@ -207,7 +207,7 @@ static NSString *eventCellIdentifier = @"eventCell";
     NSString *key = [[self dateFormatter] stringFromDate:date];
     
    
-    if(eventsByDate[key] /*&& [eventsByDate[key] count] > 0 */){
+    if(eventsByDate[key] && [eventsByDate[key] count] > 0){
         return YES;
     }
     
