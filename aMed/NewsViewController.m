@@ -9,6 +9,8 @@
 #import "NewsViewController.h"
 
 
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
 /**
  *  Identifier of cell made in the storyboard.
  */
@@ -27,6 +29,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
     // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -127,13 +130,14 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
    
     /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
-         
-         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
+         // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+                  NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
 
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
          NewsInfoViewController *destVC = segue.destinationViewController; // Setting the destination view controller
          @try {
-             [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
+             NSString *introText = [self.rd retrieveNewsInfoData:news.alias];
+             [news setIntroText:introText]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
              destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
              [destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
 
@@ -145,7 +149,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
              [alertView show];
              
          }
-
+         
          
          
     }

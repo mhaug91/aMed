@@ -9,6 +9,7 @@
 #import "EventsTableViewController.h"
 
 #define getEventsURL @"http://www.amed.no/AmedApplication/getEvents.php"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 static NSString *eventID = @"eventID";
 NSInteger COURSE = 66; // blue
@@ -35,6 +36,7 @@ NSInteger EXHIBITION_2 = 86; //green
     // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self.spinner startAnimating];
     [self.navigationController.navigationBar setTranslucent:NO];
@@ -117,6 +119,7 @@ NSInteger EXHIBITION_2 = 86; //green
     
     //Text label will be the name of the event.
     cell.textLabel.text = method.summary;
+    cell.detailTextLabel.text= method.start_date;
 
     //Sets image to a spesific color. Depending on the type of event.
     if(method.category_id == COURSE){

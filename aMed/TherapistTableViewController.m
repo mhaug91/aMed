@@ -9,6 +9,7 @@
 #import "TherapistTableViewController.h"
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 static NSString *tableCellID = @"finnBehandlerID";
 //static NSString *headerCellID = @"HeaderCell";
@@ -42,6 +43,7 @@ static NSString *tableCellID = @"finnBehandlerID";
      * It appears as a spinning gear in the middle of the screen. */
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
+    [self.spinner setColor:UIColorFromRGB(0x602167)];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
     [self.spinner startAnimating];
 }
