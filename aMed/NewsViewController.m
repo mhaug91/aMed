@@ -130,13 +130,14 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
    
     /// checks if the segue is equal to the segue specified in the storyboard.
      if ([segue.identifier isEqualToString:@"pushNewsInfo"]) {
-         
-         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
+         // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
+                  NSIndexPath *indexPath = [self.tableView indexPathForCell:sender]; // Fetch the indexpath selected by the user.
 
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
          NewsInfoViewController *destVC = segue.destinationViewController; // Setting the destination view controller
          @try {
-             [news setIntroText:[self.rd retrieveNewsInfoData:news.alias]]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
+             NSString *introText = [self.rd retrieveNewsInfoData:news.alias];
+             [news setIntroText:introText]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
              destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
              [destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
 
@@ -148,7 +149,7 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
              [alertView show];
              
          }
-
+         
          
          
     }

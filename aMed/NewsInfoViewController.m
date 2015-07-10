@@ -45,6 +45,7 @@
     self.currentNews = newsObject;
 }
 - (void) setWebView{
+    
     NSString *htmlString = self.currentNews.introText;
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
     if ([htmlString rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
