@@ -136,10 +136,11 @@ static NSString *newsTableCellIdentifier = @"NewsTableIdentifier";
          News *news = [self.newsArray objectAtIndex:indexPath.row]; // Fetch news object from newsarray at the indexpath's row.
          NewsInfoViewController *destVC = segue.destinationViewController; // Setting the destination view controller
          @try {
-             NSString *introText = [self.rd retrieveNewsInfoData:news.alias];
-             [news setIntroText:introText]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
+             //NSString *alias = [self.rd retrieveNewsInfoData:news.alias];
+             //[news setIntroText:alias]; // Setting the introtext (article text), in news object. (See Retrievedata.m).
              destVC.navigationItem.title = news.title; // Setting the new's title in the navigation bar of the next view. 
-             [destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
+             //[destVC getNewsObject:news];// Passing object to destination view controller. (See NewsInfoViewController).
+             [destVC getAlias:news.alias];
 
         }
         @catch (NSException *exception) {

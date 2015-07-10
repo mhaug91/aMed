@@ -34,32 +34,47 @@
 }
 #pragma marks
 
--(void) viewWillAppear:(BOOL)animated{
+-(void) viewDidAppear:(BOOL)animated{
+    self.rd = [[RetrieveData alloc] init];
+    [self retrieveIntroText];
     [self setWebView];
+    
     [self.spinner stopAnimating];
 }
 
 #pragma mark Methods
 
+/* Not in use Version 1.2
 - (void) getNewsObject: (id) newsObject{
     self.currentNews = newsObject;
 }
+ */
+
+-(void) getAlias:(NSString *) alias{
+    self.alias = alias;
+
+}
+
+-(void) retrieveIntroText{
+    self.introText= [self.rd retrieveNewsInfoData:self.alias];
+}
+
 - (void) setWebView{
     
-    NSString *htmlString = self.currentNews.introText;
+    //NSString *htmlString = self.currentNews.introText;
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
-    if ([htmlString rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
-        htmlString = [htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+    if ([self.introText rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
+        self.introText = [self.introText stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
     }
     
-    if ([htmlString rangeOfString:@""].location == NSNotFound){
+    if ([self.introText rangeOfString:@""].location == NSNotFound){
     //    htmlString = [htmlString string
     }
     
     /* Amed.no (the website) has a custom backbutton used on the pages for the
      * treatment methods. This has to be removed from the text: */
-    htmlString = [htmlString stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];
-    [self.webView loadHTMLString:htmlString baseURL:nil];
+    self.introText = [self.introText stringByReplacingOccurrencesOfString:@"{backbutton}" withString:@""];
+    [self.webView loadHTMLString:self.introText baseURL:nil];
 }
 
 
