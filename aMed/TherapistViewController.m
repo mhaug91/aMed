@@ -41,14 +41,8 @@
     [self.spinner setColor:UIColorFromRGB(0x602167)];
     [self.spinner startAnimating];
     //Retrieves data from database, uses exception handling incase of no network connection.
-    @try {
-        self.rd = [[RetrieveData alloc] init];
-        self.therapists = [self.rd retrieveTherapists];
-        self.threatmentsArray = [self.rd retrieveThreatmentsData];
-    }
-    @catch (NSException *exception) {
-
-    }
+    
+    
 
     
     self.navigationItem.title = self.currentTherapist.company;
@@ -70,6 +64,10 @@
     [self.view addSubview:self.tableView];
     [self.view addSubview:self.tableView2];
     @try {
+        
+        self.rd = [[RetrieveData alloc] init];
+        self.therapists = [self.rd retrieveTherapists];
+        self.threatmentsArray = [self.rd retrieveThreatmentsData];
         if (self.therapists.count == 0) {
             self.rd = [[RetrieveData alloc] init];
             self.therapists = [self.rd retrieveTherapists];

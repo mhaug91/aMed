@@ -206,6 +206,8 @@
 				5C0701DF1AB9AB3100A9DB39 /* MapViewController.m */,
 				5C218CCC1AADC5AA00D408AC /* TherapistTableViewController.h */,
 				5C218CCD1AADC5AA00D408AC /* TherapistTableViewController.m */,
+				5C7002581ADD085800ACB51B /* TherapistViewController.h */,
+				5C7002591ADD085800ACB51B /* TherapistViewController.m */,
 				04A011B41ABAE9FD00A3341D /* TreatmentInfoViewController.h */,
 				04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */,
 				043B78FC1AB6E17200D7E10B /* TreatmentsTableViewController.h */,
@@ -214,8 +216,6 @@
 				042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */,
 				04FACECB1AADBCF9009789BA /* NewsViewController.h */,
 				04FACECC1AADBCF9009789BA /* NewsViewController.m */,
-				5C7002581ADD085800ACB51B /* TherapistViewController.h */,
-				5C7002591ADD085800ACB51B /* TherapistViewController.m */,
 				5CF68D2D1AE62ADB005038CD /* MapInfoViewController.h */,
 				5CF68D2E1AE62ADB005038CD /* MapInfoViewController.m */,
 				5CF68D331AE643F2005038CD /* EventsTableViewController.h */,
@@ -644,7 +644,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = aMed/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -668,7 +668,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = aMed/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
