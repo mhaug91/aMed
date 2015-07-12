@@ -206,13 +206,7 @@ shouldReloadTableForSearchString:(NSString *)searchString
         TreatmentInfoViewController *destViewController = segue.destinationViewController; // Setting the destination view controller
         destViewController.navigationItem.title = method.title; // Setting title of selected method in the navigation bar of the next view.
         [destViewController getThreatmentMethod:method]; // Passing object to ThreamentInfoController. (See ThreatmentInfoViewController.m)
-            @try {
-                NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retrieve introtext from selected treatment. (The introtext is the article text about the treatment).
-                [method setIntroText:introtext]; /// Set the method's introtext.
-            }
-            @catch (NSException *exception) {
-
-            }
+            
         }
 }
 

@@ -13,6 +13,7 @@
 #import "TherapistTableViewController.h"
 #import "NewsInfoViewController.h"
 #import "NewsViewController.h"
+#import "RetrieveData.h"
 
 /**
  *  Controls the Treatment info view. 
@@ -26,9 +27,10 @@
 @property(nonatomic, strong) NSString *htmlString;
 @property(nonatomic, strong) NSMutableArray *allTherapists;
 @property(nonatomic, strong) NSMutableArray *associatedTherapists;
-@property(nonatomic, strong) RetrieveData *rd; /// Object to retrieve data from the database. 
+@property(nonatomic, strong) RetrieveData *rd; /// Object to retrieve data from the database.
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property(strong, nonatomic) UIActivityIndicatorView *spinner;//An activity indicator to show that a task is in progress. 
+@property(strong, nonatomic) UIActivityIndicatorView *spinner;//An activity indicator to show that a task is in progress.
+@property(strong, nonatomic) NSString *introText; // articletext of the selected treatment.
 
 
 

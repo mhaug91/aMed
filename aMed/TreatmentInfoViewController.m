@@ -31,40 +31,36 @@ static NSString *CellIdentifier = @"newTherapistCell";
     [self.view addSubview:self.spinner];
     [self.spinner setColor:UIColorFromRGB(0x602167)];
     self.spinner.center = CGPointMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2);
-    
     [self.spinner startAnimating];
-    @try {
-        self.rd = [[RetrieveData alloc] init];
-        self.allTherapists = [self.rd retrieveTherapists]; /// Fills array with all therapists from DB. (See RetrieveData.m).
-    }
+    self.rd = [[RetrieveData alloc] init];
+     @try {
+         self.allTherapists = [self.rd retrieveTherapists];
+     }
     @catch (NSException *exception) {
-
     }
-    
+
+
+    [self findAssociatedTherapists]; /// Finds the associated therapists.
+
 }
 
 
 
 #pragma marks
 #pragma mark Methods
-
-- (void) getThreatmentMethod:(id)threatmentObject{
-    self.currentMethod=threatmentObject;
-}
-
+/*
+NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retrieve introtext from selected treatment. (The introtext is the article text about the treatment).
+[method setIntroText:introtext]; /// Set the method's introtext.
+*/
 
 /**
  *  This method is only in use when viewDidLoad doesnt retrieve data from database.
  *
  */
 - (void) viewDidAppear:(BOOL)animated{
-    [self setWebView];
-    [self findAssociatedTherapists]; /// Finds the associated therapists.
     @try {
-        if (self.allTherapists.count == 0) {
-            self.rd = [[RetrieveData alloc] init];
-            self.allTherapists = [self.rd retrieveTherapists];
-        }
+            self.introText = [self.rd retrieveThreatmentInfoData:self.currentMethod.alias];
+    
     }
     @catch (NSException *exception) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
@@ -76,8 +72,19 @@ static NSString *CellIdentifier = @"newTherapistCell";
     @finally {
         [self.view setNeedsDisplay];
     }
+    [self setWebView];
+    
     [self.spinner stopAnimating];
 }
+
+
+
+- (void) getThreatmentMethod:(id)threatmentObject{
+    self.currentMethod=threatmentObject;
+}
+
+
+
 
 
 /**
@@ -105,7 +112,7 @@ static NSString *CellIdentifier = @"newTherapistCell";
  @note The introtext from the database is in HTML format. We save it in an own variable htmlString.
  */
 - (void) setWebView{
-    self.htmlString = self.currentMethod.introText; // stores the introtext in an own variable
+    self.htmlString = self.introText; // stores the introtext in an own variable
     NSString *videoSize = [NSString stringWithFormat:@"width=\"%f\" height=\"%f\"", self.contentView.frame.size.width/2, self.contentView.frame.size.width/2];
     
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
