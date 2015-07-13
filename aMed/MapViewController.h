@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "GeoCoding.h"
-#import <GoogleMaps/GoogleMaps.h>
+#import <GoogleMapsM4B/GoogleMaps.h>
 #import "Therapists.h"
 #import "RetrieveData.h"
 #import "MapInfoViewController.h"

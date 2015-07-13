@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <GoogleMaps/GoogleMaps.h>
+#import <GoogleMapsM4B/GoogleMaps.h>
 
 @interface GoogleLicenseViewController : UIViewController
 

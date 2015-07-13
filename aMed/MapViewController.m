@@ -8,7 +8,7 @@
 
 #import "MapViewController.h"
 #import "GeoCoding.h"
-#import <GoogleMaps/GoogleMaps.h>
+#import <GoogleMapsM4B/GoogleMaps.h>
 
 #define getDataTherapistsURL @"http://www.amed.no/AmedApplication/getTherapists.php"
 
