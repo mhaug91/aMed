@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
@@ -953,16 +953,26 @@
                         <viewControllerLayoutGuide type="top" id="gXu-gy-M9g"/>
                         <viewControllerLayoutGuide type="bottom" id="M3i-3v-Yzo"/>
                     </layoutGuides>
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" indicatorStyle="white" id="sV9-BB-F7w">
+                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" id="sV9-BB-F7w">
                         <rect key="frame" x="0.0" y="-1" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-FH-Nmf">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vzs-FH-Nmf">
                                 <rect key="frame" x="0.0" y="-13" width="600" height="1100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1100" id="0ob-7C-qpF"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Vzs-FH-Nmf" firstAttribute="top" secondItem="sV9-BB-F7w" secondAttribute="topMargin" constant="-13" id="5Ha-e6-sIh"/>
+                            <constraint firstAttribute="bottom" secondItem="Vzs-FH-Nmf" secondAttribute="bottom" constant="-536" id="8Pk-1R-8kC"/>
+                            <constraint firstItem="Vzs-FH-Nmf" firstAttribute="centerX" secondItem="sV9-BB-F7w" secondAttribute="centerX" id="KBL-vb-cW7"/>
+                            <constraint firstItem="Vzs-FH-Nmf" firstAttribute="leading" secondItem="sV9-BB-F7w" secondAttribute="leading" id="bao-o6-Ktg"/>
+                            <constraint firstAttribute="trailing" secondItem="Vzs-FH-Nmf" secondAttribute="trailing" id="jMb-ib-18J"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="size" keyPath="contentSize">
                                 <size key="value" width="320" height="800"/>
