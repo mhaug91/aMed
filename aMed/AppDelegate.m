@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import <GoogleMapsM4B/GoogleMaps.h>
+#import <GoogleMaps/GoogleMaps.h>
 @interface AppDelegate ()
 
 @end
@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     //Application key for using Google Maps and Geocoding
-    [GMSServices provideAPIKey:@"AIzaSyAStmByBRbjtqO7WfmZHiRdrCZwcm3aofQ"];
+    [GMSServices provideAPIKey:@"AIzaSyCDQlzu2VRKtonasQR8zebTtjZBCNjV52o"];
     
     //Set color of the Navigation Bar
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x602167)];

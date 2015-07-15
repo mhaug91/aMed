@@ -10,8 +10,7 @@
 #import "retrieveData.h"
 #import "EventsTableViewController.h"
 #import "Events.h"
-#import <GoogleMapsM4B/GoogleMaps.h>
-
+#import <GoogleMaps/GoogleMaps.h>
 
 @interface SelectedEventViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 

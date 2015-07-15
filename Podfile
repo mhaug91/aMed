@@ -3,6 +3,7 @@
 
 target 'aMed' do
 pod 'JTCalendar', '~> 1.1'
+pod 'GoogleMaps'
 end
 
 target 'aMedTests' do
