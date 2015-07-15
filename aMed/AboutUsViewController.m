@@ -72,7 +72,7 @@
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:(12.0)];
     [self.contentView addSubview:label];
-    label.text = [NSString stringWithFormat: @"Applikasjonen aMed er en mobilvennlig versjon av nettsiden amed.no, og ble utviklet våren 2013. Nettstedet ble forøvrig introdusert for Internett i februar 2012.\n\nDet dukker stadig vekk opp nye nettsted innenfor alternativ behandling. Vi har som målsetting å være en av de mest oppdaterte sidene innenfor emnet.\n\nHar du forslag til endringer, eller reagerer du over noe på nettstedet? Ta kontakt!\nSå langt det er mulig vil vi gjøre det vi kan for at din feedback kommer brukerne av nettstedet til gode."];
+    label.text = [NSString stringWithFormat: @"Applikasjonen aMed er en mobilvennlig versjon av nettsiden amed.no, og ble utviklet våren 2013 for Android, og våren 2015 for iOS. Nettstedet ble forøvrig introdusert for Internett i februar 2012.\n\nDet dukker stadig vekk opp nye nettsted innenfor alternativ behandling. Vi har som målsetting å være en av de mest oppdaterte sidene innenfor emnet.\n\nHar du forslag til endringer, eller reagerer du over noe på nettstedet? Ta kontakt!\nSå langt det er mulig vil vi gjøre det vi kan for at din feedback kommer brukerne av nettstedet til gode."];
 }
 
 -(void) ThirdLabel{
