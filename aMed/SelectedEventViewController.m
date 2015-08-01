@@ -103,6 +103,30 @@ GMSMapView *mapView_;
     // Dispose of any resources that can be recreated.
 }
 
+
+#pragma mark dateformatters
+- (NSDateFormatter *)dateFormatterWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatterNorwegianWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy, HH:mm";
+    }
+    
+    return dateFormatter;
+}
+
 //Getting the event Object that is selected.
 - (void) getEventObject:(id)eventObject{
     self.selectedEvent = eventObject;
@@ -119,6 +143,10 @@ GMSMapView *mapView_;
         
     }
 }
+
+
+#pragma mark - labels
+
 
 /**
  *  All the labels below (from one to ten and mapLabel), are labels that display information about the event.
@@ -299,6 +327,8 @@ GMSMapView *mapView_;
     [label sizeToFit];
 }
 
+
+#pragma mark - other views
 //Method for generating the map that displays the location of the event.
 -(void) mapView{
     
@@ -364,6 +394,8 @@ GMSMapView *mapView_;
     return tableView;
 }
 
+#pragma mark - table view data source
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
@@ -398,30 +430,36 @@ GMSMapView *mapView_;
         
     }
     
-    Events *method = nil;
-    
-    method = [self.associatedArray objectAtIndex:indexPath.row];
-    
+    Events *event = [self.associatedArray objectAtIndex:indexPath.row];
     [self daySubEvents];
     //NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
-    NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
-    NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], method.start_date];
-    UIFont *font = [UIFont fontWithName:@"Helvetica" size:8];
-    cell.textLabel.font = font;
+    //NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
     
-    if(method.category_id == sCOURSE){
+    
+    NSString *start_date = event.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
+    
+    NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], formattedDateNorwegian];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
+    
+    cell.textLabel.font = font;
+    cell.textLabel.text = text;
+    if(event.category_id == sCOURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
-    } else if (method.category_id == sFESTIVAL){
+    } else if (event.category_id == sFESTIVAL){
         cell.imageView.image = [UIImage imageNamed:@"event_red"];
-    } else if (method.category_id == sEXHIBITION || method.category_id == sEXHIBITION_2){
+    } else if (event.category_id == sEXHIBITION || event.category_id == sEXHIBITION_2){
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
     } else{
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
     }
-    cell.textLabel.text = text;
+    
     
     return cell;
 }
+
+# pragma mark - table view delegates
 
 //Setting title of tableview.
 - (NSString *)tableView:(UITableView *)tableView
@@ -453,6 +491,8 @@ titleForHeaderInSection:(NSInteger)section {
     }
     [self viewDidLoad];
 }
+
+#pragma mark - other methods
 
 //Method for filtering associated events with the selected one.
 - (void) filterAssociated{
