@@ -72,9 +72,9 @@ GMSMapView *mapView_;
     [self mapView];
     
     self.tableView = [self makeTableView];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellId"];
     [self.view addSubview:self.tableView];
-        [self.spinner stopAnimating];
+    [self.spinner stopAnimating];
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -370,16 +370,32 @@ GMSMapView *mapView_;
     return [self.associatedArray count];
     
 }
+/*
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    // ignore the style argument, use our own to override
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // If you need any further customization
+    }
+    return self;
+}
+ */
 
 
-//Defines each cell of the table view.
+/**
+ * @warning - this method will not be able create cells with cellstyle: subtitle since the registerclass method
+ * sends the default cellstyle by default
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TreatmentMethods";
+    static NSString *CellIdentifier = @"CellId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:CellIdentifier];
+        
     }
     
     Events *method = nil;
@@ -387,9 +403,11 @@ GMSMapView *mapView_;
     method = [self.associatedArray objectAtIndex:indexPath.row];
     
     [self daySubEvents];
-    NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
+    //NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
     NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
-    
+    NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], method.start_date];
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:8];
+    cell.textLabel.font = font;
     
     if(method.category_id == sCOURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
@@ -397,18 +415,10 @@ GMSMapView *mapView_;
         cell.imageView.image = [UIImage imageNamed:@"event_red"];
     } else if (method.category_id == sEXHIBITION || method.category_id == sEXHIBITION_2){
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
+    } else{
+        cell.imageView.image = [UIImage imageNamed:@"event_green"];
     }
-    
-    
-    cell.textLabel.numberOfLines = 2;
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-    cell.textLabel.font = font;
-    cell.detailTextLabel.numberOfLines = 2;
-    cell.detailTextLabel.font = font;
-    
-    cell.textLabel.text = title;
-    cell.detailTextLabel.text = date;
-    
+    cell.textLabel.text = text;
     
     return cell;
 }

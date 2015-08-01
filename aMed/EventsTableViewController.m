@@ -93,6 +93,29 @@ NSInteger EXHIBITION_2 = 86; //green
     }
 }
 
+#pragma mark dateformatters
+- (NSDateFormatter *)dateFormatterWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatterNorwegianWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy, HH:mm";
+    }
+    
+    return dateFormatter;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -112,21 +135,27 @@ NSInteger EXHIBITION_2 = 86; //green
                 reuseIdentifier:eventID];
     }
     
-    Events *method = nil;
-    method = [self.filterArray objectAtIndex:indexPath.row];
+    Events *event = nil;
+    event = [self.filterArray objectAtIndex:indexPath.row];
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
     cell.textLabel.font = font;
     
     //Text label will be the name of the event.
-    cell.textLabel.text = method.summary;
-    cell.detailTextLabel.text= method.start_date;
+    
+    NSString *start_date = event.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
+    cell.textLabel.text = event.summary;
+    cell.detailTextLabel.text= formattedDateNorwegian;
 
     //Sets image to a spesific color. Depending on the type of event.
-    if(method.category_id == COURSE){
+    if(event.category_id == COURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
-    } else if (method.category_id == FESTIVAL){
+    } else if (event.category_id == FESTIVAL){
         cell.imageView.image = [UIImage imageNamed:@"event_red"];
-    } else if (method.category_id == EXHIBITION || method.category_id == EXHIBITION_2){
+    } else if (event.category_id == EXHIBITION || event.category_id == EXHIBITION_2){
+        cell.imageView.image = [UIImage imageNamed:@"event_green"];
+    } else{
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
     }
 
