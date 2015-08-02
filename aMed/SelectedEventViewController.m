@@ -74,7 +74,7 @@ GMSMapView *mapView_;
     self.tableView = [self makeTableView];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellId"];
     [self.view addSubview:self.tableView];
-    [self.spinner stopAnimating];
+    
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -95,6 +95,7 @@ GMSMapView *mapView_;
     @finally {
         [self.view setNeedsDisplay];
     }
+    [self.spinner stopAnimating];
 }
 
 
@@ -368,14 +369,17 @@ GMSMapView *mapView_;
 -(UITableView *)makeTableView
 {
     double number = 0;
+    CGFloat viewHeight = 960;
     for (int i = 0 ; i<self.associatedArray.count; i++) {
         number += 40;
+        viewHeight+=40;
     }
     
     CGFloat x = 0;
     CGFloat y = 500;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = number+20;
+    self.viewHeight.constant = viewHeight;
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];

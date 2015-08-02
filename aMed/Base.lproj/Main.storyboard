@@ -506,10 +506,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3XP-iB-XMa">
-                                <rect key="frame" x="0.0" y="-13" width="600" height="1650"/>
+                                <rect key="frame" x="0.0" y="-13" width="600" height="960"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="1650" id="A5g-0a-mI0"/>
+                                    <constraint firstAttribute="height" constant="960" id="A5g-0a-mI0"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -531,6 +531,7 @@
                     <size key="freeformSize" width="600" height="600"/>
                     <connections>
                         <outlet property="contentView" destination="3XP-iB-XMa" id="VBA-NR-9Pz"/>
+                        <outlet property="viewHeight" destination="A5g-0a-mI0" id="1AL-H2-mlF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TNi-bm-d4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
