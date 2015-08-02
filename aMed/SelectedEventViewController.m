@@ -171,7 +171,7 @@ GMSMapView *mapView_;
         self.day = 1;
     }
     NSString *summary = self.selectedEvent.summary;
-    NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
+    //NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3)-8, 20.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -179,7 +179,7 @@ GMSMapView *mapView_;
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
-    label.text = summaryDay;
+    label.text = summary;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -273,7 +273,9 @@ GMSMapView *mapView_;
 }
 
 -(void) eigthLabel{
-    NSString *startDate = self.selectedEvent.start_date;
+    NSString *start_date = self.selectedEvent.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3-8), 245.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -281,10 +283,10 @@ GMSMapView *mapView_;
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
-    if([startDate isEqual:[NSNull null]] || [startDate isEqualToString:@""]){
-        startDate = @"--";
+    if([start_date isEqual:[NSNull null]] || [start_date isEqualToString:@""]){
+        start_date = @"--";
     }
-    label.text = startDate;
+    label.text = formattedDateNorwegian;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -302,6 +304,8 @@ GMSMapView *mapView_;
 
 -(void) tenthLabel{
     NSString *endDate = self.selectedEvent.end_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:endDate];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3-8), 285.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -312,7 +316,7 @@ GMSMapView *mapView_;
     if([endDate isEqual:[NSNull null]] || [endDate isEqualToString:@""]){
         endDate = @"--";
     }
-    label.text = endDate;
+    label.text = formattedDateNorwegian;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -369,17 +373,17 @@ GMSMapView *mapView_;
 -(UITableView *)makeTableView
 {
     double number = 0;
-    CGFloat viewHeight = 960;
+    CGFloat viewHeight = 960; // Float variable uset to determine the height of the entire view
     for (int i = 0 ; i<self.associatedArray.count; i++) {
         number += 40;
-        viewHeight+=40;
+        viewHeight+=40; // For each table cell the view has to grow 40 points to fit all content
     }
     
     CGFloat x = 0;
     CGFloat y = 500;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = number+20;
-    self.viewHeight.constant = viewHeight;
+    self.viewHeight.constant = viewHeight; // Sets the height of the view.
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
@@ -444,11 +448,12 @@ GMSMapView *mapView_;
     NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
     NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     
-    NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], formattedDateNorwegian];
+    //NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], formattedDateNorwegian];
+    /* text er utelatt fordi dagnr. på arrangementet blir feil. */
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
     
     cell.textLabel.font = font;
-    cell.textLabel.text = text;
+    cell.textLabel.text = formattedDateNorwegian;
     if(event.category_id == sCOURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
     } else if (event.category_id == sFESTIVAL){

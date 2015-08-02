@@ -22,7 +22,7 @@
 @property(strong, nonatomic) NSMutableArray *daySub;
 @property int day;
 @property(strong, nonatomic) UIActivityIndicatorView *spinner; ///An activity indicator to show that a task is in progress.
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *viewHeight; // Constraint for the height of the entire view
 
 
 - (void) getEventObject: (id) eventObject;
