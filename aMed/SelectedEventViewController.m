@@ -373,7 +373,7 @@ GMSMapView *mapView_;
 -(UITableView *)makeTableView
 {
     double number = 0;
-    CGFloat viewHeight = 960; // Float variable uset to determine the height of the entire view
+    CGFloat viewHeight = 920; // Float variable uset to determine the height of the entire view
     for (int i = 0 ; i<self.associatedArray.count; i++) {
         number += 40;
         viewHeight+=40; // For each table cell the view has to grow 40 points to fit all content
