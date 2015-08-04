@@ -65,7 +65,6 @@ static NSString *eventCellIdentifier = @"eventCell";
 
 {
     
-   
     @try {
         self.rd = [[RetrieveData alloc] init];
         if(!([self.rd.retrieveEvents isEqual:@""])){
@@ -93,10 +92,10 @@ static NSString *eventCellIdentifier = @"eventCell";
     }
     //[self didGoTodayTouch];
     [super viewDidAppear:animated];
-    //[self.calendar reloadData]; // Must be called in viewDidAppear
-    // Uncertain how this works. But when called it will remove some of the dots marking that the date has some event(s)!
     [self createEventsDictionary];
-    //[self.calendar setCurrentDate:[NSDate date]];
+    [self.calendar reloadData]; // Must be called in viewDidAppear
+    // Uncertain how this works. But when called it will remove some of the dots marking that the date has some event(s)!
+    // EDIT: Previous I called this BEFORE creating the events dictionary. Now when it has been corrected it works correctly.
     [self.spinner stopAnimating];
     
 }
@@ -231,6 +230,7 @@ static NSString *eventCellIdentifier = @"eventCell";
    
     if(eventsByDate[key] && [eventsByDate[key] count] > 0){
         return YES;
+        
     }
     
     return NO; /// Return NO
