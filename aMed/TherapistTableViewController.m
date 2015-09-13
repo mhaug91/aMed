@@ -143,9 +143,11 @@ static NSString *tableCellID = @"finnBehandlerID";
     NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
     
     /* Placing the image in the cell and scales it, to a preferred size. */
-    //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
-    //cell.imageView.image = [UIImage imageWithData:therapist.picture]; // Not used now since the connection is unsecure
-    cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
+    NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
+   // cell.imageView.image = [UIImage imageWithData:therapist.picture]; // Not used now since the connection is unsecure
+    cell.imageView.image = [UIImage imageWithData:image]; // Not used now since the connection is unsecure
+
+    //cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
     
     CGSize itemSize = CGSizeMake(45, 50);
     UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
