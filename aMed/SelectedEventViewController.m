@@ -72,9 +72,9 @@ GMSMapView *mapView_;
     [self mapView];
     
     self.tableView = [self makeTableView];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"CellId"];
     [self.view addSubview:self.tableView];
-        [self.spinner stopAnimating];
+    
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -95,12 +95,37 @@ GMSMapView *mapView_;
     @finally {
         [self.view setNeedsDisplay];
     }
+    [self.spinner stopAnimating];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark dateformatters
+- (NSDateFormatter *)dateFormatterWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatterNorwegianWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy, HH:mm";
+    }
+    
+    return dateFormatter;
 }
 
 //Getting the event Object that is selected.
@@ -119,6 +144,10 @@ GMSMapView *mapView_;
         
     }
 }
+
+
+#pragma mark - labels
+
 
 /**
  *  All the labels below (from one to ten and mapLabel), are labels that display information about the event.
@@ -142,7 +171,7 @@ GMSMapView *mapView_;
         self.day = 1;
     }
     NSString *summary = self.selectedEvent.summary;
-    NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
+    //NSString *summaryDay = [NSString stringWithFormat:@"%@, dag %d", summary, self.day];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3)-8, 20.0, (self.view.frame.size.width/1.5), 80)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -150,7 +179,7 @@ GMSMapView *mapView_;
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
-    label.text = summaryDay;
+    label.text = summary;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -244,7 +273,9 @@ GMSMapView *mapView_;
 }
 
 -(void) eigthLabel{
-    NSString *startDate = self.selectedEvent.start_date;
+    NSString *start_date = self.selectedEvent.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3-8), 245.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -252,10 +283,10 @@ GMSMapView *mapView_;
     label.backgroundColor = [UIColor whiteColor];
     label.font = [UIFont fontWithName:@"HelveticaNeue" size:(16.0)];
     [self.contentView addSubview:label];
-    if([startDate isEqual:[NSNull null]] || [startDate isEqualToString:@""]){
-        startDate = @"--";
+    if([start_date isEqual:[NSNull null]] || [start_date isEqualToString:@""]){
+        start_date = @"--";
     }
-    label.text = startDate;
+    label.text = formattedDateNorwegian;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -273,6 +304,8 @@ GMSMapView *mapView_;
 
 -(void) tenthLabel{
     NSString *endDate = self.selectedEvent.end_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:endDate];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake
                       ((self.view.frame.size.width/3-8), 285.0, (self.view.frame.size.width/1.5), 40)];
     label.textAlignment = NSTextAlignmentLeft;
@@ -283,7 +316,7 @@ GMSMapView *mapView_;
     if([endDate isEqual:[NSNull null]] || [endDate isEqualToString:@""]){
         endDate = @"--";
     }
-    label.text = endDate;
+    label.text = formattedDateNorwegian;
     label.numberOfLines = 0;
     [label sizeToFit];
 }
@@ -299,6 +332,8 @@ GMSMapView *mapView_;
     [label sizeToFit];
 }
 
+
+#pragma mark - other views
 //Method for generating the map that displays the location of the event.
 -(void) mapView{
     
@@ -338,14 +373,17 @@ GMSMapView *mapView_;
 -(UITableView *)makeTableView
 {
     double number = 0;
+    CGFloat viewHeight = 920; // Float variable uset to determine the height of the entire view
     for (int i = 0 ; i<self.associatedArray.count; i++) {
         number += 40;
+        viewHeight+=40; // For each table cell the view has to grow 40 points to fit all content
     }
     
     CGFloat x = 0;
     CGFloat y = 500;
     CGFloat width = self.view.frame.size.width;
     CGFloat height = number+20;
+    self.viewHeight.constant = viewHeight; // Sets the height of the view.
     CGRect tableFrame = CGRectMake(x, y, width, height);
     
     UITableView *tableView = [[UITableView alloc]initWithFrame:tableFrame style:UITableViewStylePlain];
@@ -364,54 +402,73 @@ GMSMapView *mapView_;
     return tableView;
 }
 
+#pragma mark - table view data source
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
     return [self.associatedArray count];
     
 }
+/*
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    // ignore the style argument, use our own to override
+    self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // If you need any further customization
+    }
+    return self;
+}
+ */
 
 
-//Defines each cell of the table view.
+/**
+ * @warning - this method will not be able create cells with cellstyle: subtitle since the registerclass method
+ * sends the default cellstyle by default
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TreatmentMethods";
+    static NSString *CellIdentifier = @"CellId";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    if(cell == nil){
+        cell = [[UITableViewCell alloc]
+                initWithStyle:UITableViewCellStyleDefault
+                reuseIdentifier:CellIdentifier];
+        
     }
     
-    Events *method = nil;
-    
-    method = [self.associatedArray objectAtIndex:indexPath.row];
-    
+    Events *event = [self.associatedArray objectAtIndex:indexPath.row];
     [self daySubEvents];
-    NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
-    NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
+    //NSString *title = [NSString stringWithFormat:@"%@, dag %@", method.summary, self.daySub[indexPath.row]];
+    //NSString *date = [NSString stringWithFormat:@"%@", method.start_date];
     
     
-    if(method.category_id == sCOURSE){
+    NSString *start_date = event.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
+    
+    //NSString *text = [NSString stringWithFormat:@"dag %@, %@", self.daySub[indexPath.row], formattedDateNorwegian];
+    /* text er utelatt fordi dagnr. på arrangementet blir feil. */
+    UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
+    
+    cell.textLabel.font = font;
+    cell.textLabel.text = formattedDateNorwegian;
+    if(event.category_id == sCOURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
-    } else if (method.category_id == sFESTIVAL){
+    } else if (event.category_id == sFESTIVAL){
         cell.imageView.image = [UIImage imageNamed:@"event_red"];
-    } else if (method.category_id == sEXHIBITION || method.category_id == sEXHIBITION_2){
+    } else if (event.category_id == sEXHIBITION || event.category_id == sEXHIBITION_2){
+        cell.imageView.image = [UIImage imageNamed:@"event_green"];
+    } else{
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
     }
     
     
-    cell.textLabel.numberOfLines = 2;
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-    cell.textLabel.font = font;
-    cell.detailTextLabel.numberOfLines = 2;
-    cell.detailTextLabel.font = font;
-    
-    cell.textLabel.text = title;
-    cell.detailTextLabel.text = date;
-    
-    
     return cell;
 }
+
+# pragma mark - table view delegates
 
 //Setting title of tableview.
 - (NSString *)tableView:(UITableView *)tableView
@@ -443,6 +500,8 @@ titleForHeaderInSection:(NSInteger)section {
     }
     [self viewDidLoad];
 }
+
+#pragma mark - other methods
 
 //Method for filtering associated events with the selected one.
 - (void) filterAssociated{

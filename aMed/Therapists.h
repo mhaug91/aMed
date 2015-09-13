@@ -10,6 +10,7 @@
 #import "Address.h"
 
 @interface Therapists : NSObject
+<NSURLConnectionDelegate>
 
 @property(strong, nonatomic)NSString *firstName;
 @property(strong, nonatomic)NSString *lastName;
@@ -24,7 +25,8 @@
 @property(strong, nonatomic)NSArray *treatmentMethods;
 @property(strong, nonatomic)NSString *treatmentMethodString;
 @property(strong, nonatomic) NSString *pictureURL;
-@property(strong, nonatomic) NSData *picture;
+@property(strong, nonatomic) NSMutableData *picture;
+
 
 
 

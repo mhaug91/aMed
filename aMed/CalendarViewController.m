@@ -30,6 +30,7 @@ static NSString *eventCellIdentifier = @"eventCell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     self.COURSE=66;
     self.FESTIVAL=71;
     self.EXHIBITION=70;
@@ -45,7 +46,6 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self.spinner startAnimating];
     
     [self.navigationController.navigationBar setTranslucent:NO];
-   
     self.calendar = [JTCalendar new];
     // All modifications on calendarAppearance have to be done before setMenuMonthsView and setContentView
     // Or you will have to call reloadAppearance
@@ -58,7 +58,6 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self.calendar setMenuMonthsView:self.calendarMenuView];
     [self.calendar setContentView:self.calendarContentView];
     [self.calendar setDataSource:self];
-    
 }
 
 // This method is only in use when viewDidLoad doesnt retrieve data from database.
@@ -91,13 +90,12 @@ static NSString *eventCellIdentifier = @"eventCell";
     @finally {
         [self.view setNeedsDisplay];
     }
-
+    //[self didGoTodayTouch];
     [super viewDidAppear:animated];
-    //[self.calendar reloadData]; // Must be called in viewDidAppear
-    // Uncertain how this works. But when called it can remove some of the dots marking that the date has some event(s)!
     [self createEventsDictionary];
-
-
+    [self.calendar reloadData]; // Must be called in viewDidAppear
+    // Uncertain how this works. But when called it will remove some of the dots marking that the date has some event(s)!
+    // EDIT: Previous I called this BEFORE creating the events dictionary. Now when it has been corrected it works correctly.
     [self.spinner stopAnimating];
     
 }
@@ -148,13 +146,36 @@ static NSString *eventCellIdentifier = @"eventCell";
     [self transitionExample];
 }
 
-#pragma mark dateformatter
+#pragma mark dateformatters
+
 - (NSDateFormatter *)dateFormatter
 {
     static NSDateFormatter *dateFormatter;
     if(!dateFormatter){
         dateFormatter = [NSDateFormatter new];
         dateFormatter.dateFormat = @"yyyy-MM-dd";
+    }
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatterWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+    }
+    
+    return dateFormatter;
+}
+
+- (NSDateFormatter *)dateFormatterNorwegianWithTime
+{
+    static NSDateFormatter *dateFormatter;
+    if(!dateFormatter){
+        dateFormatter = [NSDateFormatter new];
+        dateFormatter.dateFormat = @"dd-MM-yyyy, HH:mm";
     }
     
     return dateFormatter;
@@ -209,6 +230,7 @@ static NSString *eventCellIdentifier = @"eventCell";
    
     if(eventsByDate[key] && [eventsByDate[key] count] > 0){
         return YES;
+        
     }
     
     return NO; /// Return NO
@@ -380,16 +402,22 @@ titleForHeaderInSection:(NSInteger)section {
                 reuseIdentifier:eventCellIdentifier];
     }
     Events *eventOnSelectedDate = [self.eventsOnSelectedDate objectAtIndex:indexPath.row];
+    NSString *start_date = eventOnSelectedDate.start_date;
+    NSDate *formatted = [[self dateFormatterWithTime] dateFromString:start_date];
+    NSString *formattedDateNorwegian = [[self dateFormatterNorwegianWithTime] stringFromDate:formatted];
     cell.textLabel.text = eventOnSelectedDate.summary;
+    cell.detailTextLabel.text = formattedDateNorwegian;
+    //cell.textLabel
     UIFont *font = [UIFont fontWithName:@"Helvetica" size:12];
     cell.textLabel.font = font;
-
     //Sets image to a spesific color. Depending on the type of event.
     if(eventOnSelectedDate.category_id == self.COURSE){
         cell.imageView.image = [UIImage imageNamed:@"event_blue"];
     } else if (eventOnSelectedDate.category_id == self.FESTIVAL){
         cell.imageView.image = [UIImage imageNamed:@"event_red"];
-    } else if (eventOnSelectedDate.category_id == self.EXHIBITION || eventOnSelectedDate.category_id == self.EXHIBITION_2){
+    } else if(eventOnSelectedDate.category_id == self.EXHIBITION || eventOnSelectedDate.category_id == self.EXHIBITION_2){
+        cell.imageView.image = [UIImage imageNamed:@"event_green"];
+    } else{
         cell.imageView.image = [UIImage imageNamed:@"event_green"];
     }
     return cell;
