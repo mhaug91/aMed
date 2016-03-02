@@ -29,7 +29,8 @@
         self.treatmentMethodString = treatmentMethodString;
         self.pictureURL=URL;
         
-        self.picture =[NSData dataWithContentsOfURL:[NSURL URLWithString:URL]];
+        //self.picture = [NSMutableData dataWithContentsOfURL:[NSURL URLWithString:URL]];
+        self.picture = nil;
         //[self findPicture]; //Method for fetching the picture through an unsecure connection
 
     }

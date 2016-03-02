@@ -188,8 +188,10 @@
 
     UIImageView *avatarImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 43, 200, 200)];
     if([self.currentTherapist.avatar isEqual:[NSNull null]]){
-        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
-        avatarImage.image = [UIImage imageWithData:imageData];
+        /* URL of picture has changed. Therefore providing local picture from images folder. */
+        //NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
+        //avatarImage.image = [UIImage imageWithData:imageData];
+        avatarImage.image = [UIImage imageNamed:@"emptyProfil"];
         [self.contentView addSubview:avatarImage];
         CGPoint centerImageView = avatarImage.center;
         centerImageView = CGPointMake((self.view.frame.size.width / 2), 100 + 43);
