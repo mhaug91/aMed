@@ -130,7 +130,7 @@ GMSMapView *mapView_;
         });
         
         NSDate *endTime = [NSDate date];
-        NSLog(@"Completed in %f seconds", [endTime timeIntervalSinceDate:startTime]);
+        //NSLog(@"Completed in %f seconds", [endTime timeIntervalSinceDate:startTime]);
     });
 }
 
