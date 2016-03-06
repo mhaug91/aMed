@@ -145,12 +145,14 @@ static NSString *tableCellID = @"finnBehandlerID";
     /* Placing the image in the cell and scales it, to a preferred size. 
      * This has been commeted out
      */
-    //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
-   // cell.imageView.image = [UIImage imageWithData:therapist.picture]; // Not used now since the connection is unsecure
-    //cell.imageView.image = [UIImage imageWithData:image]; // Not used now since the connection is unsecure
+    if([therapist.avatar isEqual:[NSNull null]]){
+        cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
 
-    cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
-    
+    }
+    else{
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:therapist.pictureURL]];
+        cell.imageView.image = [UIImage imageWithData:imageData]; // Not used now since the connection is unsecure
+    }
     CGSize itemSize = CGSizeMake(45, 50);
     UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
     CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);

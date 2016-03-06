@@ -34,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     // Initiating the activity indicator and set it as subview. Appears as a “gear” that is spinning in the middle of the screen.
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     [self.view addSubview:self.spinner];
@@ -56,7 +57,6 @@
     [self firstLabel];
     [self imageView];
     [self textField];
-    [self findAssociatedTherapists];
     self.tableView = [self makeTableView];
     self.tableView2 = [self makeTableView2];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"TreatmentMethods"];
@@ -73,6 +73,7 @@
             self.therapists = [self.rd retrieveTherapists];
             self.threatmentsArray = [self.rd retrieveThreatmentsData];
         }
+        
     }
     @catch (NSException *exception) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Ingen tilgang til nettverk"
@@ -83,8 +84,11 @@
     }
     @finally {
         [self.tableView setNeedsDisplay];
+        [self findAssociatedMethods];
+        [self.spinner stopAnimating];// Stops the spinner
+
+
     }
-     [self.spinner stopAnimating];// Stops the spinner
 }
 
 - (void) getTherapistObject:(id)therapistObject{
@@ -182,7 +186,7 @@
 }
 //Finds and shows the image of the chosen therapist.
 -(void) imageView{
-    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", self.currentTherapist.avatar];
+    NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/OLD/images/comprofiler/%@", self.currentTherapist.avatar];
     NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
     
 
@@ -310,7 +314,7 @@
 }
 
 //Compate the treatment methods of the therapist, to all the treatment methods existing in the database.
-- (void) findAssociatedTherapists{
+- (void) findAssociatedMethods{
     if(self.threatmentsArray != nil){
         self.associatedMethods = [[NSMutableArray alloc] init];
         for(TreatmentMethod *t in self.threatmentsArray){ // Short for- loop. Loops through all therapists

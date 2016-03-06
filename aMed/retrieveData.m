@@ -15,7 +15,8 @@
 #define getNewsDataURL @"http://www.amed.no/AmedApplication/getNews.php"
 #define getNewsDataInfoURL @"http://www.amed.no/AmedApplication/getNewsInfo.php?alias="
 #define getEventsURL @"http://www.amed.no/AmedApplication/getEvents.php"
-#define pictureURL @"https://www.amed.no/images/comprofiler/%@"
+#define pictureURL @"https://www.amed.no/OLD/images/comprofiler/%@"
+#define newPictureURL @"https://amed.no/wp-content/uploads/avatars/"
 #define noPictureURL @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png"
 /*
 NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
