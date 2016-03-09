@@ -4,29 +4,29 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-aMed 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Pods-aMed-JTCalendar 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>Pods-aMed-JTCalendar.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-aMed.xcscheme</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1125887FC1489E7EFE1A9A61</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3BD8A78C79CFAB735A0E81F7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>75072C4CB0E29549782B5F5F</key>
 		<dict>
 			<key>primary</key>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		042D14A61AB9C3DD0013D306 /* NewsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */; };
 		042F18281AC56B0B0036D474 /* RetrieveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 042F18271AC56B0B0036D474 /* RetrieveData.m */; };
+		043923F21C8CD3AB0074477B /* libJTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043923F11C8CD3AB0074477B /* libJTCalendar.a */; };
 		043B78FE1AB6E17200D7E10B /* TreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */; };
 		044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044AF5821AFB52F500630054 /* CalendarViewController.m */; };
 		044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */; };
@@ -70,6 +71,7 @@
 		042D14A51AB9C3DD0013D306 /* NewsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoViewController.m; sourceTree = "<group>"; };
 		042F18261AC56B0B0036D474 /* RetrieveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetrieveData.h; sourceTree = "<group>"; };
 		042F18271AC56B0B0036D474 /* RetrieveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetrieveData.m; sourceTree = "<group>"; };
+		043923F11C8CD3AB0074477B /* libJTCalendar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libJTCalendar.a; path = "Pods/../build/Debug-iphoneos/libJTCalendar.a"; sourceTree = "<group>"; };
 		043B78FC1AB6E17200D7E10B /* TreatmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TreatmentsTableViewController.h; sourceTree = "<group>"; };
 		043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TreatmentsTableViewController.m; sourceTree = "<group>"; };
 		044AF5811AFB52F500630054 /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				043923F21C8CD3AB0074477B /* libJTCalendar.a in Frameworks */,
 				5C21676A1B5467EC00A14A5C /* Accelerate.framework in Frameworks */,
 				5C2167681B5467E700A14A5C /* CoreBluetooth.framework in Frameworks */,
 				044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */,
@@ -357,6 +360,7 @@
 		E4FFBBE75B63F31E6951E3E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				043923F11C8CD3AB0074477B /* libJTCalendar.a */,
 				5C2167691B5467EC00A14A5C /* Accelerate.framework */,
 				5C2167671B5467E700A14A5C /* CoreBluetooth.framework */,
 				044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */,
