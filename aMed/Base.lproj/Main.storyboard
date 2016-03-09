@@ -782,6 +782,9 @@
                                                     <exclude reference="bcx-sp-fQR"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="HW8-mr-dX8"/>
+                                                    <exclude reference="pHz-s5-wnt"/>
+                                                    <exclude reference="sc4-mD-SNW"/>
                                                     <exclude reference="3D6-bV-OuF"/>
                                                     <exclude reference="7hU-DG-mOL"/>
                                                     <exclude reference="RRu-yF-Yei"/>
@@ -790,9 +793,6 @@
                                                     <exclude reference="jwy-Bm-xf2"/>
                                                     <exclude reference="kOC-Lr-8Uh"/>
                                                     <exclude reference="rZ8-yB-rEz"/>
-                                                    <exclude reference="HW8-mr-dX8"/>
-                                                    <exclude reference="pHz-s5-wnt"/>
-                                                    <exclude reference="sc4-mD-SNW"/>
                                                     <exclude reference="P2o-3a-ZNa"/>
                                                     <exclude reference="UAf-39-6bd"/>
                                                     <exclude reference="VZL-dU-3NK"/>

@@ -176,14 +176,11 @@ NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retr
         therapist = [self.associatedTherapists objectAtIndex:indexPath.row];
         NSString *name = [NSString stringWithFormat:@"%@ %@", therapist.firstName, therapist.lastName];
 
-        //NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/images/comprofiler/%@", therapist.avatar];
+        
 
-        cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
         NSString *therapistTreatments = [[therapist.treatmentMethods valueForKey:@"description"] componentsJoinedByString:@", "];
-        //NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
         if([therapist.avatar isEqual:[NSNull null]]){
-            //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:noAvatar]];
-            //cell.imageView.image = [UIImage imageWithData:image]; Uncommented because wrong picURL
+            cell.imageView.image = [UIImage imageNamed:@"emptyProfil"];
             CGSize itemSize = CGSizeMake(45, 50);
             UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
             CGRect imageRect = CGRectMake(0.0, 0.0, itemSize.width, itemSize.height);
@@ -193,7 +190,10 @@ NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retr
             
     
         } else {
-            //NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
+            /* Tror dette skal være riktig. Ikke inkludert i nyeste versjon av appen */
+            NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/OLD/images/comprofiler/%@", therapist.avatar];
+            NSData *image = [NSData dataWithContentsOfURL:[NSURL URLWithString:imagepath]];
+            cell.imageView.image = [UIImage imageWithData:image];
             //cell.imageView.image = [UIImage imageWithData:image];
             CGSize itemSize = CGSizeMake(45, 50);
             UIGraphicsBeginImageContextWithOptions(itemSize, NO, UIScreen.mainScreen.scale);
