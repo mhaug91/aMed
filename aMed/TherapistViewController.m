@@ -187,7 +187,7 @@
 //Finds and shows the image of the chosen therapist.
 -(void) imageView{
     NSString *imagepath = [NSString stringWithFormat:@"https://www.amed.no/OLD/images/comprofiler/%@", self.currentTherapist.avatar];
-    NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
+    //NSString *noAvatar = @"https://www.amed.no/components/com_comprofiler/plugin/templates/default/images/avatar/nophoto_n.png";
     
 
     UIImageView *avatarImage = [ [UIImageView alloc] initWithFrame:CGRectMake(0, 43, 200, 200)];
