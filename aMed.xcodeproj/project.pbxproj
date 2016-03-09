@@ -12,7 +12,6 @@
 		043923F21C8CD3AB0074477B /* libJTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 043923F11C8CD3AB0074477B /* libJTCalendar.a */; };
 		043B78FE1AB6E17200D7E10B /* TreatmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043B78FD1AB6E17200D7E10B /* TreatmentsTableViewController.m */; };
 		044AF5831AFB52F500630054 /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 044AF5821AFB52F500630054 /* CalendarViewController.m */; };
-		044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 044AF5841AFB585300630054 /* libPods-aMed-JTCalendar.a */; };
 		047F96CA1B307D4E00DBDCE9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 047F96C91B307D4E00DBDCE9 /* ViewController.m */; };
 		04A011B61ABAE9FD00A3341D /* TreatmentInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04A011B51ABAE9FD00A3341D /* TreatmentInfoViewController.m */; };
 		04BC0BEE1AD515D500570763 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BC0BED1AD515D500570763 /* News.m */; };
@@ -154,7 +153,6 @@
 				043923F21C8CD3AB0074477B /* libJTCalendar.a in Frameworks */,
 				5C21676A1B5467EC00A14A5C /* Accelerate.framework in Frameworks */,
 				5C2167681B5467E700A14A5C /* CoreBluetooth.framework in Frameworks */,
-				044AF5851AFB585300630054 /* libPods-aMed-JTCalendar.a in Frameworks */,
 				5C0701DD1AB9A50100A9DB39 /* SystemConfiguration.framework in Frameworks */,
 				5C0701DB1AB9A4F300A9DB39 /* QuartzCore.framework in Frameworks */,
 				5C0701D91AB9A4E800A9DB39 /* OpenGLES.framework in Frameworks */,
@@ -381,6 +379,7 @@
 				04FACEBE1AADBCF9009789BA /* Frameworks */,
 				04FACEBF1AADBCF9009789BA /* Resources */,
 				198DD49A71C9F868A9804F73 /* Copy Pods Resources */,
+				257F51DE2B2EE0D8961F863F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -415,7 +414,7 @@
 		04FACEB91AADBCF9009789BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = MacBarhaug;
 				TargetAttributes = {
 					04FACEC01AADBCF9009789BA = {
@@ -481,6 +480,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aMed/Pods-aMed-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		257F51DE2B2EE0D8961F863F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aMed/Pods-aMed-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		60BD30351509271E33E43336 /* Check Pods Manifest.lock */ = {
@@ -583,6 +597,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -658,6 +673,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.aMed.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -683,6 +699,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = "no.aMed.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -704,6 +721,7 @@
 				);
 				INFOPLIST_FILE = aMedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.appress.BID.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aMed.app/aMed";
 			};
@@ -719,6 +737,7 @@
 				);
 				INFOPLIST_FILE = aMedTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.appress.BID.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/aMed.app/aMed";
 			};
