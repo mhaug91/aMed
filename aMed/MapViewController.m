@@ -109,7 +109,7 @@ GMSMapView *mapView_;
  *  Uses the therapists address and geocodes it into coordinates.
  */
 - (void) addMarker:(Therapists *) t{
-    NSDate *startTime = [NSDate date];
+    //NSDate *startTime = [NSDate date];
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     [NSThread sleepForTimeInterval:.22];
     
@@ -129,7 +129,7 @@ GMSMapView *mapView_;
             marker.map = mapView_;
         });
         
-        NSDate *endTime = [NSDate date];
+        //NSDate *endTime = [NSDate date];
         //NSLog(@"Completed in %f seconds", [endTime timeIntervalSinceDate:startTime]);
     });
 }
