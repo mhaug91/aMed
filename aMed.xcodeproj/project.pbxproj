@@ -381,7 +381,6 @@
 				04FACEBE1AADBCF9009789BA /* Frameworks */,
 				04FACEBF1AADBCF9009789BA /* Resources */,
 				198DD49A71C9F868A9804F73 /* Copy Pods Resources */,
-				01415E244E596E078300A7C6 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -469,21 +468,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		01415E244E596E078300A7C6 /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aMed/Pods-aMed-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		198DD49A71C9F868A9804F73 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
