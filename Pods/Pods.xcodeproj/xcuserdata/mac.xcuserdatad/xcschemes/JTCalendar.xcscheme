@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/JTCalendar.xcscheme
    LastUpgradeVersion = "0700"
-=======
-   LastUpgradeVersion = "0640"
->>>>>>> parent of e0d5918... Google maps og calendar:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/Pods-aMed-JTCalendar.xcscheme
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -17,19 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/JTCalendar.xcscheme
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '3A18F517C227F123F2CF35E3'
+               BlueprintIdentifier = 'D563F05F51BBEA5F4040C71A'
                BlueprintName = 'JTCalendar'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libJTCalendar.a'>
-=======
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1125887FC1489E7EFE1A9A61"
-               BuildableName = "libPods-aMed-JTCalendar.a"
-               BlueprintName = "Pods-aMed-JTCalendar"
-               ReferencedContainer = "container:Pods.xcodeproj">
->>>>>>> parent of e0d5918... Google maps og calendar:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/Pods-aMed-JTCalendar.xcscheme
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -39,45 +27,28 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
-<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/JTCalendar.xcscheme
       <AdditionalOptions>
       </AdditionalOptions>
-=======
-      <Testables>
-      </Testables>
->>>>>>> parent of e0d5918... Google maps og calendar:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/Pods-aMed-JTCalendar.xcscheme
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
-<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/JTCalendar.xcscheme
       debugServiceExtension = "internal"
       buildConfiguration = "Debug"
-=======
->>>>>>> parent of e0d5918... Google maps og calendar:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/Pods-aMed-JTCalendar.xcscheme
       allowLocationSimulation = "YES">
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
-<<<<<<< HEAD:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/JTCalendar.xcscheme
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES"
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES">
-=======
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      savedToolIdentifier = ""
-      useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
-      debugDocumentVersioning = "YES">
->>>>>>> parent of e0d5918... Google maps og calendar:Pods/Pods.xcodeproj/xcuserdata/mac.xcuserdatad/xcschemes/Pods-aMed-JTCalendar.xcscheme
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
