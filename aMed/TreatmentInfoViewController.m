@@ -116,9 +116,9 @@ NSString *introtext = [self.rd retrieveThreatmentInfoData:method.alias]; // Retr
     NSString *videoSize = [NSString stringWithFormat:@"width=\"%f\" height=\"%f\"", self.contentView.frame.size.width/2, self.contentView.frame.size.width/2];
     
     /* If the image path is bad, for example: "images/...", replace it with the full path: */
-    if ([self.htmlString rangeOfString:@"https://www.amed.no/images"].location == NSNotFound) { // If the substring "images" is not found
+    if ([self.htmlString rangeOfString:@"https://www.amed.no/OLD/images"].location == NSNotFound) { // If the substring "images" is not found
         
-        self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/images"];
+        self.htmlString = [self.htmlString stringByReplacingOccurrencesOfString:@"images" withString:@"https://www.amed.no/OLD/images"];
         
     }
     
